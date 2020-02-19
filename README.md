@@ -3,7 +3,7 @@ El repositori dels xeics
 
 Pengo millor joc
 
-<iframe width="555" height="768" src=https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSF_Qn1EpRC1SVN6N-CCaNM1lmYeQwjDnbYl_s32ShojV2Z9OZ>
+<iframe width="555" height="768" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSF_Qn1EpRC1SVN6N-CCaNM1lmYeQwjDnbYl_s32ShojV2Z9OZ">
  </iframe>
 
 
