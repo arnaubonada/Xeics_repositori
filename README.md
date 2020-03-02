@@ -12,4 +12,3 @@ Pengo millor joc
 # Andreu Landa
 # Max Llovera
 # Arnau Ustrell
-https://github.com/RedPillStudios/Last-Resort-Project/wiki/Design#stage-3
