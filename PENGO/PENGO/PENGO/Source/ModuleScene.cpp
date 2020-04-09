@@ -27,12 +27,18 @@ bool ModuleScene::Start()
 	bgTexture = App->textures->Load("Assets/background.png");
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
-	//Bottomside collider
-	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
+	//Bottomside
+	App->collisions->AddCollider({ 0, 247, 223, 8 }, Collider::Type::WALL);
 
-	//First two columns colliders
-	App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
+	//leftside
+	App->collisions->AddCollider({ 1, 0, 8, 255 }, Collider::Type::WALL);
+
+	//topside
+	App->collisions->AddCollider({ 0, 0, 223, 9 }, Collider::Type::WALL);
+
+	//rightside
+	App->collisions->AddCollider({ 215, 0, 8, 255 }, Collider::Type::WALL);
+
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 600, 80);

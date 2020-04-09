@@ -67,7 +67,7 @@ bool ModulePlayer::Start()
 
 
 
-	//collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
@@ -77,6 +77,44 @@ update_status ModulePlayer::Update()
 
 	currentAnimation = &idleAnim;
 
+	/*
+	switch (App->input->keys[SDL_Scancode])
+	{
+	case SDL_SCANCODE_A:
+
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		{
+			if (currentAnimation != &leftAnim)
+			{
+				position.x -= speed;
+				currentAnimation = &leftAnim;
+			}
+
+		}
+
+
+		break;
+
+	case SDL_SCANCODE_D:
+
+		break;
+
+	case SDL_SCANCODE_W:
+
+		break;
+
+	case SDL_SCANCODE_S:
+
+		break;
+
+
+	default:
+		break;
+	}
+	*/
+
+
+
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		if (currentAnimation != &leftAnim)
@@ -84,37 +122,48 @@ update_status ModulePlayer::Update()
 			position.x -= speed;
 			currentAnimation = &leftAnim;
 		}
-	
-	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		if (currentAnimation != &rightAnim)
+	}
+	else {
+
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			position.x += speed;
-			currentAnimation = &rightAnim;
+			if (currentAnimation != &rightAnim)
+			{
+				position.x += speed;
+				currentAnimation = &rightAnim;
+			}
 		}
+		else {
+			if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			{
+
+
+				if (currentAnimation != &downAnim)
+				{
+					position.y += speed;
+					currentAnimation = &downAnim;
+				}
+			}
+
+			else {
+				if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+				{
+					if (currentAnimation != &upAnim)
+					{
+						position.y -= speed;
+						currentAnimation = &upAnim;
+					}
+				}
+			}
+
+		}
+
+
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		
+	collider->SetPos(position.x, position.y);
 
-		if (currentAnimation != &downAnim)
-		{
-			position.y += speed;
-			currentAnimation = &downAnim;
-		}
-	}
-
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		if (currentAnimation != &upAnim)
-		{
-			position.y -= speed;
-			currentAnimation = &upAnim;
-		}
-	}
 	/*
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
@@ -155,17 +204,71 @@ update_status ModulePlayer::PostUpdate()
 }
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
-{/*
-	if (c1 == collider && destroyed == false)
+{
+
+
+
+
+	if (c1 == collider)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		bool valid = false;
 
-		App->audio->PlayFx(explosionFx);
 
-		destroyed = true;
-	}*/
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !valid)
+		{
+			
+			position.x = position.x + 1;
+			currentAnimation = &leftAnim;
+			valid = true;
+		
+		}
+		else {
+			if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !valid)
+			{
+				//c1->SetPos(position.x, position.y);
+				position.x = position.x - 1;
+				currentAnimation = &rightAnim;
+				valid = true;
+
+
+			}
+			else {
+				if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT /*&& !valid*/)
+				{
+
+					position.y = position.y - 1;
+					currentAnimation = &downAnim;
+					//valid = true;
+
+
+				}
+				else {
+
+					if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT/* && !valid*/)
+					{
+						position.y = position.y + 1;
+						currentAnimation = &upAnim;
+						//valid = true;
+					}
+
+					//valid = false;
+
+				}
+
+			}
+		}
+
+		//position.x = position_inix-1;
+		
+		/*
+		App->particles->AddParticle(App->particles->OnCollision, position.x, position.y, Collider::Type::NONE, 9);
+		App->particles->AddParticle(App->particles->OnCollision, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
+		App->particles->AddParticle(App->particles->OnCollision, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
+		App->particles->AddParticle(App->particles->OnCollision, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
+		App->particles->AddParticle(App->particles->OnCollision, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+
+		App->audio->PlayFx(explosionFx);*/
+
+		//destroyed = true;
+	}
 }
