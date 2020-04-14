@@ -7,7 +7,7 @@
 #include "ModuleAudio.h"
 
 #include "Enemy.h"
-#include "Enemy_RedBird.h"
+#include "Enemy_SnoBee.h"
 
 
 #define SPAWN_MARGIN 50
@@ -15,7 +15,7 @@
 
 ModuleEnemies::ModuleEnemies()
 {
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		enemies[i] = nullptr;
 }
 
@@ -26,7 +26,7 @@ ModuleEnemies::~ModuleEnemies()
 
 bool ModuleEnemies::Start()
 {
-	texture = App->textures->Load("Assets/enemies.png");
+	texture = App->textures->Load("Assets/Characters.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 
 	return true;
@@ -38,7 +38,7 @@ update_status ModuleEnemies::Update()
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr)
+		if (enemies[i] != nullptr)
 			enemies[i]->Update();
 	}
 
@@ -63,9 +63,9 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr)
+		if (enemies[i] != nullptr)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -79,9 +79,9 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
 {
 	bool ret = false;
 
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
+		if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
 		{
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
@@ -141,9 +141,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 		{
 			switch (info.type)
 			{
-				case ENEMY_TYPE::REDBIRD:
-					enemies[i] = new Enemy_RedBird(info.x, info.y);
-					break;
+			case ENEMY_TYPE::SNOBEE:
+				enemies[i] = new Enemy_SnoBee(info.x, info.y);
+				break;
 
 			}
 			enemies[i]->texture = texture;
@@ -155,9 +155,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 

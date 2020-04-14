@@ -28,26 +28,23 @@ bool ModuleScene::Start()
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 
 	//Bottomside
-	App->collisions->AddCollider({ 0, 247, 223, 8 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 248, 224, 8 }, Collider::Type::WALL);
 
 	//leftside
-	App->collisions->AddCollider({ 1, 0, 8, 255 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 8, 256 }, Collider::Type::WALL);
 
 	//topside
-	App->collisions->AddCollider({ 0, 0, 223, 9 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 0, 224, 8 }, Collider::Type::WALL);
 
 	//rightside
-	App->collisions->AddCollider({ 215, 0, 8, 255 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 216, 0, 8, 256 }, Collider::Type::WALL);
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 625, 80);
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPE::REDBIRD, 665, 80);
-
-
-
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 625, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 665, 80);
 
 	return ret;
 }

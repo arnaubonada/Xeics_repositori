@@ -22,7 +22,7 @@
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
-    <ClCompile Include="Source\Enemy_RedBird.cpp" />
+    <ClCompile Include="Source\Enemy_SnoBee.cpp" />
     <ClCompile Include="Source\Globals.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Module.cpp" />
@@ -44,7 +44,7 @@
     <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\Enemy_RedBird.h" />
+    <ClInclude Include="Source\Enemy_SnoBee.h" />
     <ClInclude Include="Source\Globals.h" />
     <ClInclude Include="Source\MemLeaks.h" />
     <ClInclude Include="Source\Module.h" />

@@ -48,9 +48,6 @@
     <ClCompile Include="Source\Enemy.cpp">
       <Filter>Archivos de recursos\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemy_RedBird.cpp">
-      <Filter>Archivos de recursos\Entities\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Particle.cpp">
       <Filter>Archivos de recursos\Entities</Filter>
     </ClCompile>
@@ -93,6 +90,9 @@
     <ClCompile Include="Source\Path.cpp">
       <Filter>Archivos de recursos\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Enemy_SnoBee.cpp">
+      <Filter>Archivos de recursos\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -105,9 +105,6 @@
       <Filter>Archivos de recursos\Application</Filter>
     </ClInclude>
     <ClInclude Include="Source\Enemy.h">
-      <Filter>Archivos de recursos\Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Enemy_RedBird.h">
       <Filter>Archivos de recursos\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Particle.h">
@@ -157,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Source\Path.h">
       <Filter>Archivos de recursos\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy_SnoBee.h">
+      <Filter>Archivos de recursos\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

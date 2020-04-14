@@ -3,13 +3,13 @@
 
 #include "Enemy.h"
 
-class Enemy_RedBird : public Enemy
+class Enemy_SnoBee : public Enemy
 {
 public:
 
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
-	Enemy_RedBird(int x, int y);
+	Enemy_SnoBee(int x, int y);
 
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
@@ -28,7 +28,10 @@ private:
 	int waveHeight = 15;
 
 	// The enemy animation
-	Animation flyAnim;
+	Animation snoUpAnim;
+	Animation snoDownAnim;
+	Animation snoLeftAnim;
+	Animation snoRightAnim;
 };
 
-#endif // __ENEMY_REDBIRD_H__
+#endif // __ENEMY_SNOBEE_H__

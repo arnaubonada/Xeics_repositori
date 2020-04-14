@@ -12,12 +12,12 @@
 
 
 char opcio = 'a';
-bool collidatoL = false;
-bool collidatoR = false;
-bool collidatoD = false;
-bool collidatoU = false;
+//bool collidatoL = false;
+//bool collidatoR = false;
+//bool collidatoD = false;
+//bool collidatoU = false;
 
-
+//char dir = 'i';
 
 ModulePlayer::ModulePlayer()
 {
@@ -112,14 +112,10 @@ update_status ModulePlayer::Update()
 	
 	current = &idleAnim;
 
-	
-
 	currentAnimation = current;
 	*/
 
-	
 	//currentAnimation = &leftAnim;
-
 	
 	switch (opcio)
 	{
@@ -155,10 +151,13 @@ update_status ModulePlayer::Update()
 		{
 			if (currentAnimation != &leftAnim)
 			{
+
 				position.x -= speed;
 				currentAnimation = &leftAnim;
 				opcio = 'l';
-				collidatoL = false;
+				//collidatoL = false;
+				//collider->SetPos(position.x, position.y);
+			
 			}
 		}
 		else {
@@ -170,7 +169,9 @@ update_status ModulePlayer::Update()
 					position.x += speed;
 					currentAnimation = &rightAnim;
 					opcio = 'r';
-					collidatoR = false;
+					//collidatoR = false;
+
+					//collider->SetPos(position.x, position.y);
 
 				}
 			}
@@ -181,10 +182,13 @@ update_status ModulePlayer::Update()
 
 					if (currentAnimation != &downAnim)
 					{
+
 						position.y += speed;
 						currentAnimation = &downAnim;
 						opcio = 'd';
-						collidatoD = false;
+						//collidatoD = false;
+						//collider->SetPos(position.x, position.y);
+
 
 					}
 				}
@@ -194,10 +198,13 @@ update_status ModulePlayer::Update()
 					{
 						if (currentAnimation != &upAnim)
 						{
+
 							position.y -= speed;
 							currentAnimation = &upAnim;
 							opcio = 'u';
-							collidatoU = false;
+							//collidatoU = false;
+							//collider->SetPos(position.x, position.y);
+
 
 						}
 					}
@@ -205,13 +212,12 @@ update_status ModulePlayer::Update()
 
 			}
 
-
 		
-	}
-	collider->SetPos(position.x, position.y);
-	
+		}
+		collider->SetPos(position.x, position.y);
 
-	/*
+
+/*
 switch (App->input->keys[SDL_Scancode])
 {
 case SDL_SCANCODE_A:
@@ -283,21 +289,55 @@ update_status ModulePlayer::PostUpdate()
 	App->render->Blit(texture, position.x, position.y, &rect);
 
 	
-	
 	return update_status::UPDATE_CONTINUE;
 }
+
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	
+	
+		if (c1 == collider && opcio == 'l')
+		{
+		
+			position.x += speed;
+			//collidatoL = true;
+
+		}
+
+
+		if (c1 == collider && opcio == 'r')
+		{
+
+			position.x -= speed;
+			//collidatoR = true;
+		}
+
+
+		if (c1 == collider && opcio == 'd')
+		{
+
+			position.y -= speed;
+			//collidatoD = true;
+
+		}
+
+
+		if (c1 == collider && opcio == 'u')
+		{
+			position.y += speed;
+			//collidatoU = true;
+
+		}
 
 	
+		//collider->SetPos(position.x, position.y);
 
-	if (c1 == collider && !collidatoL)
-	{
+
+		//OPCIO AMB SCANCODES
 		//bool valid = false;
 
-
+		/*
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 
@@ -356,8 +396,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			collidatoU = true;
 
 		}
-	}
-
+	}*/
 
 
 	/*
