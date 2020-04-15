@@ -114,8 +114,24 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\arnau\Desktop\Xeics_repositori\PENGO\PENGO\PENGO\External_Libraries;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\arnau\Desktop\Xeics_repositori\PENGO\PENGO\PENGO\External_Libraries;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)/$(SolutionName)/External_Libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -9,7 +9,7 @@
 #include "Enemy.h"
 #include "Enemy_SnoBee.h"
 
-//bonada maricon
+
 #define SPAWN_MARGIN 50
 
 
