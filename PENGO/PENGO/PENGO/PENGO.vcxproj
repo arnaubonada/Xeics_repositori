@@ -114,8 +114,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\UNI\Xeics_repositori\Xeics_repositori\PENGO\PENGO\PENGO\External_Libraries;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\UNI\Xeics_repositori\Xeics_repositori\PENGO\PENGO\PENGO\External_Libraries;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\arnau\Desktop\Xeics_repositori\PENGO\PENGO\PENGO\External_Libraries;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\arnau\Desktop\Xeics_repositori\PENGO\PENGO\PENGO\External_Libraries;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
