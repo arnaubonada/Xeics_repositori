@@ -34,7 +34,8 @@ public:
 	SDL_Texture* scTexture = nullptr;
 	SDL_Texture* segaTexture = nullptr;
 
-	//SDL_Rect two;
+	SDL_Rect A, C, T, P, one, oneblue,twoblue, pYellow, pRed, zero, Hblue, Iblue;
+
 
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;

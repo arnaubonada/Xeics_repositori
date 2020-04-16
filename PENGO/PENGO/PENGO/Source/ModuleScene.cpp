@@ -9,7 +9,10 @@
 
 ModuleScene::ModuleScene()
 {
-	//two = SDL_Rect{ 18,175,8,8 };
+	A = SDL_Rect{ 9,184,8,8 }; C = SDL_Rect{ 27,184,8,8 }; T = SDL_Rect{ 36,193,8,8 }; 
+	oneblue= SDL_Rect{ 9,202,8,8 }; P = SDL_Rect{ 0,220,8,8 }; twoblue = SDL_Rect{ 18,202,8,8 };
+	one= SDL_Rect{ 9,175,8,8 }; pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
+	zero = SDL_Rect{ 0,175,8,8 }; Hblue = SDL_Rect{ 72,211,8,8 }; Iblue = SDL_Rect{ 81,211,8,8 };
 }
 
 ModuleScene::~ModuleScene()
@@ -62,8 +65,35 @@ update_status ModuleScene::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 24, NULL);
+
 	App->render->Blit(segaTexture, 136, 280, NULL);
-	//App->render->Blit(scTexture, 216, 280, &two);
+
+	App->render->Blit(scTexture, 8, 280, &A);
+	App->render->Blit(scTexture, 16, 280, &C);
+	App->render->Blit(scTexture, 24, 280, &T);
+	App->render->Blit(scTexture, 40, 280, &one);
+
+	App->render->Blit(scTexture, 56, 280, &pYellow);
+
+	App->render->Blit(scTexture, 8, 0, &oneblue);
+	App->render->Blit(scTexture, 16, 0, &P);
+	App->render->Blit(scTexture, 152, 0, &twoblue);
+	App->render->Blit(scTexture, 160, 0, &P);
+
+	App->render->Blit(scTexture, 0, 8, &pRed);
+	App->render->Blit(scTexture, 16, 8, &pRed);
+	App->render->Blit(scTexture, 32, 8, &pRed);
+	App->render->Blit(scTexture, 48, 8, &pRed);
+
+	App->render->Blit(scTexture, 64, 0, &zero);
+	App->render->Blit(scTexture, 136, 0, &zero);
+	App->render->Blit(scTexture, 208, 0, &zero);
+	
+	App->render->Blit(scTexture, 80, 0, &Hblue); 
+	App->render->Blit(scTexture, 88, 0, &Iblue);
+	
+
+
 
 	return update_status::UPDATE_CONTINUE;
 }
