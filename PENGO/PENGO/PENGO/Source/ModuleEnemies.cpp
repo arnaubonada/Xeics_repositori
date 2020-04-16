@@ -12,7 +12,6 @@
 
 #define SPAWN_MARGIN 50
 
-//ustruuuuuuuuuuuuuuuuuuuuuuuuuuuuu gay
 ModuleEnemies::ModuleEnemies()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)

@@ -1,7 +1,8 @@
-#ifndef __ENEMY_REDBIRD_H__
-#define __ENEMY_REDBIRD_H__
+#ifndef __ENEMY_SNOBEE_H__
+#define __ENEMY_SNOBEE_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_SnoBee : public Enemy
 {
@@ -26,6 +27,8 @@ private:
 
 	// The total height of the wave
 	int waveHeight = 15;
+
+	Path path;
 
 	// The enemy animation
 	Animation snoUpAnim;

@@ -31,6 +31,10 @@ public:
 
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* scTexture = nullptr;
+	SDL_Texture* segaTexture = nullptr;
+
+	//SDL_Rect two;
 
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;

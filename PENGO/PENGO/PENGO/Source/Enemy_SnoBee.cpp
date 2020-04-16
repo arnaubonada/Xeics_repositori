@@ -18,6 +18,7 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 	snoUpAnim.PushBack({ 64, 160, 16, 16 });
 	snoUpAnim.PushBack({ 80, 160, 16, 16 });
 	snoUpAnim.speed = 0.1f;
+	currentAnim = &snoUpAnim;
 
 	// Move down
 	snoDownAnim.PushBack({ 0, 160, 16, 16 });
@@ -37,15 +38,16 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 
 	//currentAnim = &flyAnim;
 
-	collider = App->collisions->AddCollider({ 0, 0, 24, 24 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 }
 
 void Enemy_SnoBee::Update()
 {
-	waveRatio += waveRatioSpeed;
+
+	/*waveRatio += waveRatioSpeed;
 
 	position.y = spawnPos.y + (waveHeight * sinf(waveRatio));
-	position.x -= 1;
+	position.x -= 1;*/
 
 	// Call to the base class. It must be called at the end
 	// It will update the collider depending on the position
