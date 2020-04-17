@@ -6,7 +6,6 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL_Scancode.h"
 
-
 ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 {
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
@@ -88,12 +87,9 @@ update_status ModuleCollisions::PreUpdate()
 
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c2->listeners[i] != nullptr) c2->listeners[i]->OnCollision(c2, c1);
-<<<<<<< HEAD
 
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision2(c1, c2);
-=======
->>>>>>> 88747d23729cfd04bad01d4e5a4ba2f8ca4f6e46
 			}
 		}
 	}
@@ -180,16 +176,4 @@ Collider* ModuleCollisions::AddCollider(SDL_Rect rect, Collider::Type type, Modu
 	}
 
 	return ret;
-}
-
-void ModuleCollisions::RemoveCollider(Collider* collider)
-{
-	for (uint i = 0; i < MAX_COLLIDERS; ++i)
-	{
-		if (colliders[i] == collider)
-		{
-			delete colliders[i];
-			colliders[i] = nullptr;
-		}
-	}
 }
