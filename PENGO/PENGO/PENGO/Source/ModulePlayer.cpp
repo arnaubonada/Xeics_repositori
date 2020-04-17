@@ -97,10 +97,10 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Characters.png");
 	//currentAnimation = &idleAnim;
 
-	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
+	laserFx = App->audio->LoadFx("Assets/laser.wav");
+	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
 
-
+	destroyed = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
 
@@ -273,12 +273,7 @@ default:
 
 	currentAnimation->Update();
 
-	if (destroyed)
-	{
-		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
-	}*/
+	*/
 
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
@@ -286,9 +281,11 @@ default:
 
 update_status ModulePlayer::PostUpdate()
 {
-
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	App->render->Blit(texture, position.x, position.y, &rect);
+	if (!destroyed)
+	{
+		SDL_Rect rect = currentAnimation->GetCurrentFrame();
+		App->render->Blit(texture, position.x, position.y, &rect);
+	}
 
 	
 	return update_status::UPDATE_CONTINUE;
@@ -465,7 +462,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
 
-		//App->audio->PlayFx(explosionFx);
-		//destroyed = true;
+		App->audio->PlayFx(explosionFx);
+		destroyed = true;
 	
 }
