@@ -7,6 +7,8 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -19,7 +21,7 @@ char opcio = 'a';
 
 //char dir = 'i';
 
-ModulePlayer::ModulePlayer()
+ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 
 	position.x = 150;
@@ -461,17 +463,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 	*/
 	
-		//position.x = position_inix-1;
-		
-		/*
-		App->particles->AddParticle(App->particles->OnCollision, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->OnCollision, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->OnCollision, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->OnCollision, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->OnCollision, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
 
-		App->audio->PlayFx(explosionFx);*/
-
+		//App->audio->PlayFx(explosionFx);
 		//destroyed = true;
 	
 }

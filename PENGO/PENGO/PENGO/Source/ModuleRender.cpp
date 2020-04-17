@@ -9,7 +9,7 @@
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_scancode.h"
 
-ModuleRender::ModuleRender() : Module()
+ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
 
 }

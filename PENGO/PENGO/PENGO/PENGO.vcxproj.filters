@@ -93,6 +93,15 @@
     <ClCompile Include="Source\Enemy_SnoBee.cpp">
       <Filter>Archivos de recursos\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneIntro.cpp">
+      <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleFadeToBlack.cpp">
+      <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleFonts.cpp">
+      <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -157,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="Source\Enemy_SnoBee.h">
       <Filter>Archivos de recursos\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneIntro.h">
+      <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleFadeToBlack.h">
+      <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleFonts.h">
+      <Filter>Archivos de recursos\Modules\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

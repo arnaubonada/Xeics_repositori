@@ -1,19 +1,19 @@
-#ifndef __MODULE_SCENE_H__
-#define __MODULE_SCENE_H__
+#ifndef __SCENE_INTRO_H__
+#define __SCENE_INTRO_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class ModuleScene : public Module
+class SceneIntro : public Module
 {
 public:
 	//Constructor
-	ModuleScene(bool startEnabled);
+	SceneIntro(bool startEnabled);
 
 	//Destructor
-	~ModuleScene();
+	~SceneIntro();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -27,20 +27,9 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
-	bool CleanUp();
-
 public:
-
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* scTexture = nullptr;
-	SDL_Texture* segaTexture = nullptr;
-
-	SDL_Rect A, C, T, P, one, oneblue,twoblue, pYellow, pRed, zero, Hblue, Iblue;
-
-
-	// The sprite rectangle for the ground
-	SDL_Texture* starsTexture = nullptr;
 };
 
 #endif

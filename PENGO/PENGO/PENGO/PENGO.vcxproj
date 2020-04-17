@@ -29,6 +29,8 @@
     <ClCompile Include="Source\ModuleAudio.cpp" />
     <ClCompile Include="Source\ModuleCollisions.cpp" />
     <ClCompile Include="Source\ModuleEnemies.cpp" />
+    <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
+    <ClCompile Include="Source\ModuleFonts.cpp" />
     <ClCompile Include="Source\ModuleInput.cpp" />
     <ClCompile Include="Source\ModuleParticles.cpp" />
     <ClCompile Include="Source\ModulePlayer.cpp" />
@@ -38,6 +40,7 @@
     <ClCompile Include="Source\ModuleWindow.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
     <ClCompile Include="Source\Path.cpp" />
+    <ClCompile Include="Source\SceneIntro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Animation.h" />
@@ -51,6 +54,8 @@
     <ClInclude Include="Source\ModuleAudio.h" />
     <ClInclude Include="Source\ModuleCollisions.h" />
     <ClInclude Include="Source\ModuleEnemies.h" />
+    <ClInclude Include="Source\ModuleFadeToBlack.h" />
+    <ClInclude Include="Source\ModuleFonts.h" />
     <ClInclude Include="Source\ModuleInput.h" />
     <ClInclude Include="Source\ModuleParticles.h" />
     <ClInclude Include="Source\ModulePlayer.h" />
@@ -61,6 +66,7 @@
     <ClInclude Include="Source\p2Point.h" />
     <ClInclude Include="Source\Particle.h" />
     <ClInclude Include="Source\Path.h" />
+    <ClInclude Include="Source\SceneIntro.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

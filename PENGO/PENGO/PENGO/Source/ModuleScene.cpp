@@ -6,8 +6,9 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModulePlayer.h"
 
-ModuleScene::ModuleScene()
+ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 {
 	A = SDL_Rect{ 9,184,8,8 }; C = SDL_Rect{ 27,184,8,8 }; T = SDL_Rect{ 36,193,8,8 }; 
 	oneblue= SDL_Rect{ 9,202,8,8 }; P = SDL_Rect{ 0,220,8,8 }; twoblue = SDL_Rect{ 18,202,8,8 };
@@ -49,6 +50,8 @@ bool ModuleScene::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 50, 50);
 	
+	App->player->Enable();
+	App->enemies->Enable();
 
 	return ret;
 }
@@ -83,7 +86,6 @@ update_status ModuleScene::PostUpdate()
 	App->render->Blit(scTexture, 0, 8, &pRed);
 	App->render->Blit(scTexture, 16, 8, &pRed);
 	App->render->Blit(scTexture, 32, 8, &pRed);
-	App->render->Blit(scTexture, 48, 8, &pRed);
 
 	App->render->Blit(scTexture, 64, 0, &zero);
 	App->render->Blit(scTexture, 136, 0, &zero);
@@ -96,4 +98,14 @@ update_status ModuleScene::PostUpdate()
 
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+bool ModuleScene::CleanUp()
+{
+	App->player->Disable();
+	App->enemies->Disable();
+
+	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+
+	return true;
 }

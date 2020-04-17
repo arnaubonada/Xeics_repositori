@@ -12,10 +12,14 @@ class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
 class ModuleScene;
+class SceneIntro;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleEnemies;
+class ModuleFadeToBlack;
+class ModuleFonts;
 class ModuleRender;
+
 
 class Application
 {
@@ -48,11 +52,17 @@ public:
 	ModuleAudio* audio = nullptr;
 
 	ModulePlayer* player = nullptr;
+
+	SceneIntro* sceneIntro = nullptr;
 	ModuleScene* scene = nullptr;
+
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
 
 	ModuleCollisions* collisions = nullptr;
+	ModuleFadeToBlack* fade = nullptr;
+	ModuleFonts* fonts = nullptr;
+
 
 	ModuleRender* render = nullptr;
 };
