@@ -76,7 +76,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	}
 }
 
-
 update_status ModuleParticles::Update()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

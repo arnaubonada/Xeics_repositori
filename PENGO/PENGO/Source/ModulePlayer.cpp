@@ -99,7 +99,7 @@ bool ModulePlayer::Start()
 
 	position.x = 150;
 	position.y = 120;
-	
+
 	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
 
@@ -276,12 +276,7 @@ default:
 
 	currentAnimation->Update();
 
-	if (destroyed)
-	{
-		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
-	}*/
+	*/
 
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
@@ -289,12 +284,13 @@ default:
 
 update_status ModulePlayer::PostUpdate()
 {
-	if(!destroyed)
+	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -467,6 +463,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 	*/
 	
+		//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
+
+		//App->audio->PlayFx(explosionFx);
+		//destroyed = true;
+	
 }
 
 void ModulePlayer::OnCollision2(Collider* c1, Collider* c2)
@@ -475,7 +476,7 @@ void ModulePlayer::OnCollision2(Collider* c1, Collider* c2)
 	{
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
 
-		//App->audio->PlayFx(explosionFx);
+		App->audio->PlayFx(explosionFx);
 		destroyed = true;
 	}
 
