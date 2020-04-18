@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 13
+#define NUM_MODULES 14
 
 class Module;
 class ModuleWindow;
@@ -19,7 +19,7 @@ class ModuleEnemies;
 class ModuleFadeToBlack;
 class ModuleFonts;
 class ModuleRender;
-
+class ModuleBlocks;
 
 class Application
 {
@@ -58,6 +58,7 @@ public:
 
 	ModuleEnemies* enemies = nullptr;
 	ModuleParticles* particles = nullptr;
+	ModuleBlocks* blocks = nullptr;
 
 	ModuleCollisions* collisions = nullptr;
 	ModuleFadeToBlack* fade = nullptr;

@@ -34,6 +34,9 @@
     <Filter Include="Archivos de recursos\Modules\Gameplay">
       <UniqueIdentifier>{c7e8ce2c-f1cc-4773-b27c-1628f84ab7c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\Entities\Blocks">
+      <UniqueIdentifier>{38aaed06-a00a-4892-a375-543157582a53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp">
@@ -101,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="Source\ModuleFonts.cpp">
       <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleBlocks.cpp">
+      <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Block.cpp">
+      <Filter>Archivos de recursos\Entities\Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Block_Normal.cpp">
+      <Filter>Archivos de recursos\Entities\Blocks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +187,15 @@
     </ClInclude>
     <ClInclude Include="Source\ModuleFonts.h">
       <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleBlocks.h">
+      <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Block.h">
+      <Filter>Archivos de recursos\Entities\Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Block_Normal.h">
+      <Filter>Archivos de recursos\Entities\Blocks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

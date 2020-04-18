@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp" />
+    <ClCompile Include="Source\Block.cpp" />
+    <ClCompile Include="Source\Block_Normal.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Enemy_SnoBee.cpp" />
@@ -27,6 +29,7 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Module.cpp" />
     <ClCompile Include="Source\ModuleAudio.cpp" />
+    <ClCompile Include="Source\ModuleBlocks.cpp" />
     <ClCompile Include="Source\ModuleCollisions.cpp" />
     <ClCompile Include="Source\ModuleEnemies.cpp" />
     <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
@@ -45,6 +48,8 @@
   <ItemGroup>
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Application.h" />
+    <ClInclude Include="Source\Block.h" />
+    <ClInclude Include="Source\Block_Normal.h" />
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\Enemy_SnoBee.h" />
@@ -52,6 +57,7 @@
     <ClInclude Include="Source\MemLeaks.h" />
     <ClInclude Include="Source\Module.h" />
     <ClInclude Include="Source\ModuleAudio.h" />
+    <ClInclude Include="Source\ModuleBlocks.h" />
     <ClInclude Include="Source\ModuleCollisions.h" />
     <ClInclude Include="Source\ModuleEnemies.h" />
     <ClInclude Include="Source\ModuleFadeToBlack.h" />

@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleBlocks.h"
 
 ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 {
@@ -49,9 +50,13 @@ bool ModuleScene::Start()
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 50, 50);
-	
+
+	//blocks 
+	App->blocks->AddBlock(BLOCK_TYPE::NORMAL, 70, 50);
+
 	App->player->Enable();
 	App->enemies->Enable();
+	App->blocks->Enable();
 
 	return ret;
 }
@@ -104,6 +109,7 @@ bool ModuleScene::CleanUp()
 {
 	App->player->Disable();
 	App->enemies->Disable();
+	App->blocks->Disable();
 
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 

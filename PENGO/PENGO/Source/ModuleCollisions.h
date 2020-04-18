@@ -36,7 +36,7 @@ public:
 	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Module* listener = nullptr);
 
 	// Removes the collider memory and removes it from the colliders array
-	//void RemoveCollider(Collider* collider);
+	void RemoveCollider(Collider* collider);
 
 	// Draws all existing colliders with some transparency
 	void DebugDraw();
