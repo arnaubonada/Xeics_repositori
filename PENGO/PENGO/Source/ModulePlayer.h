@@ -40,6 +40,10 @@ public:
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 
+	//Where the player goes
+	char opcio = 'a';
+
+
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 	

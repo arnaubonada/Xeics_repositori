@@ -35,6 +35,22 @@ bool ModuleScene::Start()
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
 	
 
+
+	//MATRIU
+	int matriu[195];
+
+	for (int i = 0; i < 13; i++) {
+		for (int j = 0; j < 15; j++) {
+			matriu[j] = 0;
+		}
+	}
+
+
+
+
+
+
+
 	//Bottomside
 	App->collisions->AddCollider({ 0, 272, 224, 8 }, Collider::Type::WALL);
 

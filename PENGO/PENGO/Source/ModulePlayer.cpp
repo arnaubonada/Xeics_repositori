@@ -10,10 +10,10 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 
+
 #include "SDL/include/SDL_scancode.h"
 
 
-char opcio = 'a';
 //bool collidatoL = false;
 //bool collidatoR = false;
 //bool collidatoD = false;

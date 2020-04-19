@@ -111,9 +111,6 @@
     <ClCompile Include="Source\Block.cpp">
       <Filter>Archivos de recursos\Entities\Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Block_Normal.cpp">
-      <Filter>Archivos de recursos\Entities\Blocks</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -192,9 +189,6 @@
       <Filter>Archivos de recursos\Modules\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="Source\Block.h">
-      <Filter>Archivos de recursos\Entities\Blocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Block_Normal.h">
       <Filter>Archivos de recursos\Entities\Blocks</Filter>
     </ClInclude>
   </ItemGroup>

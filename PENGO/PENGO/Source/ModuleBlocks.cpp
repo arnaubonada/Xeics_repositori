@@ -2,21 +2,33 @@
 
 #include "Application.h"
 
+#include "ModuleInput.h"
+
+
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
-#include "Block_Normal.h"
 #include "Block.h"
+#include "ModuleCollisions.h"
+
+
+#include "SDL/include/SDL_scancode.h"
 
 
 
 #define SPAWN_MARGIN 50
 
+
+
+
 ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 {
 	for (uint i = 0; i < MAX_BLOCKS; ++i)
 		blocks[i] = nullptr;
+
+
+
 }
 
 ModuleBlocks::~ModuleBlocks()
@@ -26,8 +38,15 @@ ModuleBlocks::~ModuleBlocks()
 
 bool ModuleBlocks::Start()
 {
+
+	position.x = 70;
+	position.y = 70;
+
+
 	texture = App->textures->Load("Assets/Blocks.png");
 	blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+
 
 	return true;
 }
@@ -57,7 +76,13 @@ update_status ModuleBlocks::Update()
 			blocks[i]->Update();
 	}
 
+
+
 	HandleBlockDespawn();
+
+
+	collider->SetPos(position.x, position.y);
+
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -157,7 +182,7 @@ void ModuleBlocks::SpawnBlock(const BlockSpawnpoint& info)
 			switch (info.type)
 			{
 			case BLOCK_TYPE::NORMAL:
-				blocks[i] = new Block_Normal(info.x, info.y);
+				blocks[i] = new Block(info.x, info.y);
 				break;
 
 			}
@@ -170,30 +195,66 @@ void ModuleBlocks::SpawnBlock(const BlockSpawnpoint& info)
 
 void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
-	{
-		if (blocks[i] != nullptr && blocks[i]->GetCollider() == c1)
-		{
-			blocks[i]->OnCollision(c2); //Notify the enemy of a collision
 
-			delete blocks[i];
-			blocks[i] = nullptr;
-			break;
+
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
+		opcio = 'l';
+	}
+	else {
+
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			opcio = 'r';
+		}
+		else {
+			if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			{
+				opcio = 'd';
+			}
+
+			else {
+				if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+				{
+					opcio = 'u';
+				}
+			}
 		}
 	}
-}
 
-void ModuleBlocks::OnCollision2(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
+
+	if (c1 == collider && opcio == 'l')
 	{
-		if (blocks[i] != nullptr && blocks[i]->GetCollider() == c1)
-		{
-			blocks[i]->OnCollision(c2); //Notify the enemy of a collision
 
-			delete blocks[i];
-			blocks[i] = nullptr;
-			break;
-		}
+		position.x = position.x -1;
+
 	}
+
+
+	if (c1 == collider && opcio == 'r')
+	{
+
+		position.x += 1;
+	}
+
+
+	if (c1 == collider && opcio == 'd')
+	{
+
+		position.y += 1;
+
+	}
+
+
+	if (c1 == collider && opcio == 'u')
+	{
+		position.y -= 1;
+
+	}
+
+
+
+
+
+
+
 }

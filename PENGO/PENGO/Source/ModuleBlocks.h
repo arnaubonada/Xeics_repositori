@@ -2,6 +2,7 @@
 #define __MODULE_BLOCKS_H__
 
 #include "Module.h"
+#include "p2Point.h"
 
 #define MAX_BLOCKS 150
 
@@ -54,7 +55,6 @@ public:
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
-	void OnCollision2(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
 	bool AddBlock(BLOCK_TYPE type, int x, int y);
@@ -64,6 +64,15 @@ public:
 
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleBlockDespawn();
+
+	//positions
+	iPoint position;
+
+
+
+	//collider
+	Collider* collider = nullptr;
+
 
 private:
 	// Spawns a new enemy using the data from the queue
@@ -80,6 +89,9 @@ private:
 
 	// The audio fx for destroying an enemy
 	int blockDestroyedFx = 0;
+
+	char opcio = 'a';
+
 };
 
 #endif // __MODULE_BLOCKS_H__

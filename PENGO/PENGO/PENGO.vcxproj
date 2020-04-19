@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Block.cpp" />
-    <ClCompile Include="Source\Block_Normal.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Enemy_SnoBee.cpp" />
@@ -49,7 +48,6 @@
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\Block.h" />
-    <ClInclude Include="Source\Block_Normal.h" />
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\Enemy_SnoBee.h" />

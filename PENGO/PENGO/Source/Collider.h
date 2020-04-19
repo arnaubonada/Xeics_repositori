@@ -16,7 +16,7 @@ struct Collider
 		PLAYER,
 		ENEMY,
 		PLAYER_SHOT,
-		ENEMY_SHOT,
+		BLOCK,
 
 		MAX
 	};
