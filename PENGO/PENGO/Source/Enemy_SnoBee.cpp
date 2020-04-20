@@ -2,10 +2,13 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
+#include "time.h"
+
+
 
 Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 {
-
+	
 
 	//// idle animation (arcade sprite sheet)
 	//idleAnim.PushBack({ 0, 0, 16, 16 });
@@ -43,13 +46,29 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 
 void Enemy_SnoBee::Update()
 {
+	srand(time(NULL));
+	direction = rand() % 4;
+	switch (direction)
+	{
+	case 0:
+		position.x += 1;
+		break;
+	case 1:
+		position.x -= 1;
+		break;
+	case 2:
+		position.y += 1;
+		break;
+	case 3:
+		position.y -= 1;
+		break;
+	case 4:
+		position.x = position.x;
+		position.y = position.y;
+		break;
+	default:
+		break;
+	}
 
-	/*waveRatio += waveRatioSpeed;
-
-	position.y = spawnPos.y + (waveHeight * sinf(waveRatio));
-	position.x -= 1;*/
-
-	// Call to the base class. It must be called at the end
-	// It will update the collider depending on the position
 	Enemy::Update();
 }

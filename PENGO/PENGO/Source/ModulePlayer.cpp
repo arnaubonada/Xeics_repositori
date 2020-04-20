@@ -11,6 +11,7 @@
 #include "ModuleFonts.h"
 
 
+
 #include "SDL/include/SDL_scancode.h"
 
 
@@ -336,132 +337,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//collider->SetPos(position.x, position.y);
 
 
-		//OPCIO AMB SCANCODES
-		//bool valid = false;
-
-		/*
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		{
-
-			position.x = position.x + 1;
-			//currentAnimation = &leftAnim;
-			//opcio = 'l';
-			//valid = true;
-			collidatoL = true;
-
-		}
-	}
-
-	if (c1 == collider && !collidatoR)
-	{
-		//bool valid = false;
-
-
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		{
-			//c1->SetPos(position.x, position.y);
-			position.x = position.x - 1;
-			//currentAnimation = &rightAnim;
-			//opcio = 'r';
-			//valid = true;
-			collidatoR = true;
-
-
-		}
-	}
-	if (c1 == collider && !collidatoD)
-	{
-		//bool valid = false;
-
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-		{
-
-			position.y = position.y - 1;
-			//currentAnimation = &downAnim;
-			//valid = true;
-			//opcio = 'd';
-			collidatoD = true;
-
-
-		}
-	}
-	if (c1 == collider && !collidatoU)
-	{
-		//bool valid = false;
-
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-		{
-			position.y = position.y + 1;
-			//currentAnimation = &upAnim;
-			//valid = true;
-			//opcio = 'u';
-			collidatoU = true;
-
-		}
-	}*/
-
-
-	/*
-		if (c1 == collider)
-		{
-			//bool valid = false;
-
-
-			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !collidatoL)
-			{
-
-				position.x = position.x + 1;
-				//currentAnimation = &leftAnim;
-				//opcio = 'l';
-				//valid = true;
-				collidatoL = true;
-
-			}
-			else {
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !collidatoR)
-				{
-					//c1->SetPos(position.x, position.y);
-					position.x = position.x - 1;
-					//currentAnimation = &rightAnim;
-					//opcio = 'r';
-					//valid = true;
-					collidatoR = true;
-
-
-				}
-				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && !collidatoD)
-					{
-
-						position.y = position.y - 1;
-						//currentAnimation = &downAnim;
-						//valid = true;
-						//opcio = 'd';
-						collidatoD = true;
-
-
-					}
-					else {
-
-						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && !collidatoU)
-						{
-							position.y = position.y + 1;
-							//currentAnimation = &upAnim;
-							//valid = true;
-							//opcio = 'u';
-							collidatoU = true;
-
-						}
-
-						//valid = false;
-
-					}
-
-				}
-			}
-
 		
-	*/
 	
 		//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
 
@@ -470,14 +346,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	
 }
 
-void ModulePlayer::OnCollision2(Collider* c1, Collider* c2)
-{
-	if (c1 == collider && destroyed == false)
-	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
-
-		App->audio->PlayFx(explosionFx);
-		destroyed = true;
-	}
-
-}
+//void ModulePlayer::OnCollision2(Collider* c1, Collider* c2)
+//{
+//	if (c1 == collider && c2 == )
+//	{
+//		//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
+//
+//		App->audio->PlayFx(explosionFx);
+//		destroyed = true;
+//	}
+//
+//}

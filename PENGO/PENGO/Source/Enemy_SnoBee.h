@@ -3,11 +3,12 @@
 
 #include "Enemy.h"
 #include "Path.h"
+#include "time.h"
 
 class Enemy_SnoBee : public Enemy
 {
 public:
-
+	
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
 	Enemy_SnoBee(int x, int y);
@@ -24,6 +25,9 @@ private:
 
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
+
+	int direction;
+	
 
 	// The total height of the wave
 	int waveHeight = 15;

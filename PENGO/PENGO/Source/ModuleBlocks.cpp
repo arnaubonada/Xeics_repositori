@@ -1,16 +1,16 @@
 #include "ModuleBlocks.h"
 
 #include "Application.h"
-
-#include "ModuleInput.h"
-
-
-#include "ModuleRender.h"
 #include "ModuleTextures.h"
+#include "ModuleInput.h"
+#include "ModuleRender.h"
+#include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
 
 #include "Block.h"
-#include "ModuleCollisions.h"
 
 
 #include "SDL/include/SDL_scancode.h"
@@ -24,10 +24,13 @@
 
 ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 {
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
-		blocks[i] = nullptr;
+	//for (uint i = 0; i < MAX_BLOCKS; ++i)
+	//	blocks[i] = nullptr;
 
+	position.x = 70;
+	position.y = 70;
 
+	blockAnim.PushBack({ 708, 0, 16, 16 });
 
 }
 
@@ -38,11 +41,10 @@ ModuleBlocks::~ModuleBlocks()
 
 bool ModuleBlocks::Start()
 {
-
 	position.x = 70;
-	position.y = 70;
+	position.y = 70;	
 
-
+	currentAnimation = &blockAnim;
 	texture = App->textures->Load("Assets/Blocks.png");
 	blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
@@ -70,10 +72,34 @@ update_status ModuleBlocks::Update()
 {
 	HandleBlockSpawn();
 
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
+	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
 		if (blocks[i] != nullptr)
 			blocks[i]->Update();
+	}*/
+
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
+		opcio = 'l';
+	}
+	else {
+
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			opcio = 'r';
+		}
+		else {
+			if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+			{
+				opcio = 'd';
+			}
+
+			else {
+				if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+				{
+					opcio = 'u';
+				}
+			}
+		}
 	}
 
 
@@ -83,7 +109,7 @@ update_status ModuleBlocks::Update()
 
 	collider->SetPos(position.x, position.y);
 
-
+	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -195,37 +221,15 @@ void ModuleBlocks::SpawnBlock(const BlockSpawnpoint& info)
 
 void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 {
-
-
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
-		opcio = 'l';
-	}
-	else {
-
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		{
-			opcio = 'r';
-		}
-		else {
-			if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-			{
-				opcio = 'd';
-			}
-
-			else {
-				if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-				{
-					opcio = 'u';
-				}
-			}
-		}
-	}
+	
+	
 
 
 	if (c1 == collider && opcio == 'l')
 	{
 
-		position.x = position.x -1;
+		position.x -= 1;
+		currentAnimation = &blockAnim;
 
 	}
 
@@ -234,6 +238,7 @@ void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 	{
 
 		position.x += 1;
+		currentAnimation = &blockAnim;
 	}
 
 
@@ -241,14 +246,14 @@ void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 	{
 
 		position.y += 1;
-
+		currentAnimation = &blockAnim;
 	}
 
 
 	if (c1 == collider && opcio == 'u')
 	{
 		position.y -= 1;
-
+		currentAnimation = &blockAnim;
 	}
 
 

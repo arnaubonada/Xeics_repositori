@@ -1,6 +1,7 @@
 #ifndef __MODULE_BLOCKS_H__
 #define __MODULE_BLOCKS_H__
 
+#include "Animation.h"
 #include "Module.h"
 #include "p2Point.h"
 
@@ -68,6 +69,9 @@ public:
 	//positions
 	iPoint position;
 
+	Animation* currentAnimation = nullptr;
+
+	Animation blockAnim;
 
 
 	//collider
