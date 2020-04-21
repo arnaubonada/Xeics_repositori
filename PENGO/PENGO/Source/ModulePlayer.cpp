@@ -125,7 +125,7 @@ update_status ModulePlayer::Update()
 	//currentAnimation = &leftAnim;
 	
 	if (App->scene->matriu[position.x][position.y] == PENGO) {
-		currentAnimation = &downAnim;
+		//currentAnimation = &downAnim;
 	}
 
 	//App->scene->state = 1;
@@ -159,7 +159,8 @@ update_status ModulePlayer::Update()
 	}
 
 	
-	
+	App->scene->pintarPengo(App->scene->getState(position.x, position.y));
+
 
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
@@ -172,9 +173,9 @@ update_status ModulePlayer::Update()
 				//App->scene->state = 0;
 
 				if (App->scene->matriu[position.x - 16][position.y] == NOBLOCKS) {
-					App->scene->borrar(App->scene->state);
-					App->scene->state = 2;
-					App->scene->pintarPengo(App->scene->state);
+					App->scene->borrar(App->scene->getState(position.x, position.y));
+					//App->scene->state = 2;
+					App->scene->pintarPengo(App->scene->getState(position.x-16, position.y));
 
 				}
 				//App->scene->state = 2;
@@ -183,8 +184,6 @@ update_status ModulePlayer::Update()
 
 				opcio = 'l';
 
-				App->scene->pmatriux = position.x;
-				App->scene->pmatriuy = position.y;
 
 				//collidatoL = false;
 				//collider->SetPos(position.x, position.y);
@@ -204,9 +203,9 @@ update_status ModulePlayer::Update()
 					//App->scene->state = 0;
 
 					if (App->scene->matriu[position.x + 16][position.y] == NOBLOCKS) {
-						App->scene->borrar(App->scene->state);
-						App->scene->state = 2;
-						App->scene->pintarPengo(App->scene->state);
+						App->scene->borrar(App->scene->getState(position.x, position.y));
+						//App->scene->state = 2;
+						App->scene->pintarPengo(App->scene->getState(position.x+16, position.y));
 
 					}
 					//App->scene->state = 2;
@@ -215,8 +214,7 @@ update_status ModulePlayer::Update()
 
 					opcio = 'r';
 
-					App->scene->pmatriux = position.x;
-					App->scene->pmatriuy = position.y;
+			
 				}
 			}
 			else {
@@ -233,9 +231,9 @@ update_status ModulePlayer::Update()
 						//App->scene->state = 0;
 
 						if (App->scene->matriu[position.x][position.y+16] == NOBLOCKS) {
-							App->scene->borrar(App->scene->state);
-							App->scene->state = 2;
-							App->scene->pintarPengo(App->scene->state);
+							App->scene->borrar(App->scene->getState(position.x, position.y));
+							//App->scene->state = 2;
+							App->scene->pintarPengo(App->scene->getState(position.x, position.y+16));
 
 						}
 						//App->scene->state = 2;
@@ -244,8 +242,7 @@ update_status ModulePlayer::Update()
 
 						opcio = 'd';
 
-						App->scene->pmatriux = position.x;
-						App->scene->pmatriuy = position.y;
+					
 					}
 				}
 
@@ -261,9 +258,9 @@ update_status ModulePlayer::Update()
 							//App->scene->state = 0;
 
 							if (App->scene->matriu[position.x][position.y - 16] == NOBLOCKS) {
-								App->scene->borrar(App->scene->state);
-								App->scene->state = 2;
-								App->scene->pintarPengo(App->scene->state);
+								App->scene->borrar(App->scene->getState(position.x, position.y));
+								//	App->scene->state = 2;
+								App->scene->pintarPengo(App->scene->getState(position.x, position.y-16));
 
 								
 
@@ -273,9 +270,7 @@ update_status ModulePlayer::Update()
 							//currentAnimation = &leftAnim;
 
 							opcio = 'u';
-
-							App->scene->pmatriux = position.x;
-							App->scene->pmatriuy = position.y;
+							
 
 						}
 					}
@@ -285,6 +280,8 @@ update_status ModulePlayer::Update()
 
 		
 		}
+		App->scene->map.x = position.x;
+		App->scene->map.y = position.y;
 		collider->SetPos(position.x, position.y);
 
 

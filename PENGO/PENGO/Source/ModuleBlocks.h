@@ -98,4 +98,4 @@ private:
 
 };
 
-#endif // __MODULE_BLOCKS_H__
+#endif // __MODULE_BLOCKS_H____

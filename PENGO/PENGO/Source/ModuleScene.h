@@ -26,7 +26,7 @@ public:
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
 	bool Start() override;
-	int state = 0;
+	int _state = 0;
 
 
 	int getState(int x, int y);
@@ -36,7 +36,7 @@ public:
 
 
 	iPoint map;
-	int matriu[300][300];
+	int matriu[13][15];
 
 	//iPoint pMat;
 

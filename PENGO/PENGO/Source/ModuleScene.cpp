@@ -35,8 +35,8 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	chTexture = App->textures->Load("Assets/Characters.png");
 	bgTexture = App->textures->Load("Assets/background.png");
+	chTexture = App->textures->Load("Assets/Characters.png");
 	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	segaTexture = App->textures->Load("Assets/SEGA1982.png");
@@ -49,18 +49,19 @@ bool ModuleScene::Start()
 	map.x = 8;
 	map.y = 8;
 	
-	for (pmatriux = 0; pmatriux < 16; pmatriux++) {
+	for (pmatriux = 0; pmatriux < 13; pmatriux++) {
 		map.y = 8;
-		for (pmatriuy = 0; pmatriuy < 16; pmatriuy++) {
+		for (pmatriuy = 0; pmatriuy < 15; pmatriuy++) {
 
-			matriu[pmatriux][pmatriuy] = BLOCKS;
-			state = BLOCKS;
-			//App->render->Blit(blTexture, map.x, map.y, &blocks);
+			matriu[pmatriux][pmatriuy] = NOBLOCKS;
 			map.y += 16;
 
 		}
 		map.x += 16;
 	}
+
+
+
 
 
 	//Bottomside
@@ -108,30 +109,37 @@ update_status ModuleScene::Update()
 
 int ModuleScene::getState(int x, int y)
 {
-	return state;
+	return _state;
 }
 
 int ModuleScene::borrar(int state)
 {
 
-	App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
-	state = 0;
-	return state;
-}
-
-int ModuleScene::pintarPengo(int state)
-{
-	App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
-	state = 0;
-	return state;
+	App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
+	matriu[map.x][map.y] = NOBLOCKS;
+	_state = NOBLOCKS;
+	return _state;
 }
 
 int ModuleScene::pintarBlock(int state)
 {
-	App->render->Blit(blTexture, pmatriux, pmatriuy, &blocks);
-	state = 0;
-	return state;
+	App->render->Blit(blTexture, map.x, map.y, &blocks);
+	matriu[map.x][map.y] = BLOCKS;
+
+	_state = BLOCKS;
+	return _state;
 }
+
+int ModuleScene::pintarPengo(int state)
+{
+	App->render->Blit(chTexture, map.x, map.y, &pengo);
+	matriu[map.x][map.y] = PENGO;
+
+	_state = PENGO;
+	return _state;
+}
+
+
 
 
 
@@ -172,18 +180,18 @@ update_status ModuleScene::PostUpdate()
 
 
 
-
+	
 	//App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
-	if (state == NOBLOCKS) {
+	if (_state == NOBLOCKS) {
 		App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
 	}
-	else if (state == BLOCKS) {
+	else if (_state == BLOCKS) {
 		App->render->Blit(scTexture, map.x, map.y, &blocks);
 	}
-	else if (state == PENGO) {
+	else if (_state == PENGO) {
 		App->render->Blit(chTexture, map.x, map.y, &pengo);
 	}
-	else if (state == SNOBEES){
+	else if (_state == SNOBEES){
 		App->render->Blit(chTexture, map.x, map.y, &snobees);
 	}
 

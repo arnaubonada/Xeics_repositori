@@ -44,14 +44,19 @@ ModuleBlocks::~ModuleBlocks()
 
 bool ModuleBlocks::Start()
 {
-	position.x = 70;
-	position.y = 70;	
 
-	currentAnimation = &blockAnim;
+
 	texture = App->textures->Load("Assets/Blocks.png");
-	blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
+	currentAnimation = &blockAnim;
+	//blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 
+	
+	
+	/*
+	position.x = 70;
+	position.y = 70;
+	*/
 
 	return true;
 }
@@ -83,14 +88,15 @@ update_status ModuleBlocks::Update()
 
 
 
-	/*for (int i = 0; i < 16; i++) {
-		for (int j = 0; j < 16; j++) {
-			App->scene->state = 1;
-			App->scene->pintarBlock(App->scene->state);
+	for (int i = 0; i < 13; i++) {
+		for (int j = 0; j < 15; j++) {
+			if (App->scene->matriu[i][j] != BLOCKS) {
+				//App->scene->borrar(App->scene->getState(i, j));
+				App->scene->pintarBlock(App->scene->getState(i, j));
 
-
+			}
 		}
-	}*/
+	}
 
 
 
@@ -237,8 +243,8 @@ void ModuleBlocks::SpawnBlock(const BlockSpawnpoint& info)
 
 void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 {
-	
-	
+
+
 
 
 	if (c1 == collider && opcio == 'l')
