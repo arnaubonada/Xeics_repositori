@@ -17,6 +17,10 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 	oneblue= SDL_Rect{ 9,202,8,8 }; P = SDL_Rect{ 0,220,8,8 }; twoblue = SDL_Rect{ 18,202,8,8 };
 	one= SDL_Rect{ 9,175,8,8 }; pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
 	zero = SDL_Rect{ 0,175,8,8 }; Hblue = SDL_Rect{ 72,211,8,8 }; Iblue = SDL_Rect{ 81,211,8,8 };
+
+	pmatriux = 0;
+	pmatriuy = 0;
+
 }
 
 ModuleScene::~ModuleScene()
@@ -42,18 +46,22 @@ bool ModuleScene::Start()
 
 	//MATRIU
 	
+	map.x = 8;
+	map.y = 8;
 	
-
 	for (pmatriux = 0; pmatriux < 16; pmatriux++) {
+		map.y = 8;
 		for (pmatriuy = 0; pmatriuy < 16; pmatriuy++) {
 
 			matriu[pmatriux][pmatriuy] = BLOCKS;
+			state = BLOCKS;
+			//App->render->Blit(blTexture, map.x, map.y, &blocks);
+			map.y += 16;
 
-			
-			
 		}
-		
+		map.x += 16;
 	}
+
 
 	//Bottomside
 	App->collisions->AddCollider({ 0, 272, 224, 8 }, Collider::Type::WALL);
@@ -74,15 +82,11 @@ bool ModuleScene::Start()
 
 
 
-
-
-
-
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 50, 50);
 
 	//blocks 
-	App->blocks->AddBlock(BLOCK_TYPE::NORMAL, 70, 50);
+	//App->blocks->AddBlock(BLOCK_TYPE::NORMAL, 200, 200);
 
 	App->player->Enable();
 	App->enemies->Enable();
@@ -95,24 +99,37 @@ update_status ModuleScene::Update()
 {
 	//App->render->camera.x += 3;
 
+
+
 	return update_status::UPDATE_CONTINUE;
+}
+
+
+
+int ModuleScene::getState(int x, int y)
+{
+	return state;
 }
 
 int ModuleScene::borrar(int state)
 {
-	if (state == PENGO) {
-		App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
-	}
+
+	App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
 	state = 0;
 	return state;
 }
 
-int ModuleScene::pintar(int state)
+int ModuleScene::pintarPengo(int state)
 {
-	if (state == NOBLOCKS) {
-		App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
-		state = 0;
-	}
+	App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
+	state = 0;
+	return state;
+}
+
+int ModuleScene::pintarBlock(int state)
+{
+	App->render->Blit(blTexture, pmatriux, pmatriuy, &blocks);
+	state = 0;
 	return state;
 }
 
@@ -123,7 +140,7 @@ update_status ModuleScene::PostUpdate()
 {
 
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 24, NULL);
+	//App->render->Blit(bgTexture, 0, 24, NULL);
 
 	App->render->Blit(segaTexture, 136, 280, NULL);
 
@@ -152,18 +169,22 @@ update_status ModuleScene::PostUpdate()
 	
 	App->render->Blit(scTexture, 88, 0, &Iblue);
 
+
+
+
+
 	//App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
 	if (state == NOBLOCKS) {
-		App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
+		App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
 	}
 	else if (state == BLOCKS) {
-		App->render->Blit(scTexture, pmatriux, pmatriuy, &blocks);
+		App->render->Blit(scTexture, map.x, map.y, &blocks);
 	}
 	else if (state == PENGO) {
-		App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
+		App->render->Blit(chTexture, map.x, map.y, &pengo);
 	}
-	else if (state == SNOBEES) {
-		App->render->Blit(chTexture, pmatriux, pmatriuy, &snobees);
+	else if (state == SNOBEES){
+		App->render->Blit(chTexture, map.x, map.y, &snobees);
 	}
 
 	return update_status::UPDATE_CONTINUE;

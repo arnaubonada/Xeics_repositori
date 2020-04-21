@@ -3,6 +3,8 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "p2Point.h"
+
 #define NOBLOCKS 0
 #define BLOCKS 1
 #define PENGO 2
@@ -26,15 +28,17 @@ public:
 	bool Start() override;
 	int state = 0;
 
+
+	int getState(int x, int y);
 	int borrar(int state);
-	int pintar(int state);
+	int pintarBlock(int state);
+	int pintarPengo(int state);
 
 
+	iPoint map;
+	int matriu[300][300];
 
-	//iPoint map;
-	int matriu[300][300] = {};
-
-	iPoint pMat;
+	//iPoint pMat;
 
 	int pmatriux;
 	int pmatriuy;

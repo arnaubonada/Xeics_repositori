@@ -10,6 +10,9 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 
+#include "ModuleScene.h"
+
+
 #include "Block.h"
 
 
@@ -27,8 +30,8 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 	//for (uint i = 0; i < MAX_BLOCKS; ++i)
 	//	blocks[i] = nullptr;
 
-	position.x = 70;
-	position.y = 70;
+	//position.x = 70;
+	//position.y = 70;
 
 	blockAnim.PushBack({ 708, 0, 16, 16 });
 
@@ -70,13 +73,26 @@ update_status ModuleBlocks::PreUpdate()
 
 update_status ModuleBlocks::Update()
 {
-	HandleBlockSpawn();
+	//HandleBlockSpawn();
 
 	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
 		if (blocks[i] != nullptr)
 			blocks[i]->Update();
 	}*/
+
+
+
+	/*for (int i = 0; i < 16; i++) {
+		for (int j = 0; j < 16; j++) {
+			App->scene->state = 1;
+			App->scene->pintarBlock(App->scene->state);
+
+
+		}
+	}*/
+
+
 
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
 		opcio = 'l';
@@ -104,7 +120,7 @@ update_status ModuleBlocks::Update()
 
 
 
-	HandleBlockDespawn();
+	//HandleBlockDespawn();
 
 
 	collider->SetPos(position.x, position.y);

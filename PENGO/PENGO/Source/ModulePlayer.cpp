@@ -174,7 +174,7 @@ update_status ModulePlayer::Update()
 				if (App->scene->matriu[position.x - 16][position.y] == NOBLOCKS) {
 					App->scene->borrar(App->scene->state);
 					App->scene->state = 2;
-					App->scene->pintar(App->scene->state);
+					App->scene->pintarPengo(App->scene->state);
 
 				}
 				//App->scene->state = 2;
@@ -206,7 +206,7 @@ update_status ModulePlayer::Update()
 					if (App->scene->matriu[position.x + 16][position.y] == NOBLOCKS) {
 						App->scene->borrar(App->scene->state);
 						App->scene->state = 2;
-						App->scene->pintar(App->scene->state);
+						App->scene->pintarPengo(App->scene->state);
 
 					}
 					//App->scene->state = 2;
@@ -235,7 +235,7 @@ update_status ModulePlayer::Update()
 						if (App->scene->matriu[position.x][position.y+16] == NOBLOCKS) {
 							App->scene->borrar(App->scene->state);
 							App->scene->state = 2;
-							App->scene->pintar(App->scene->state);
+							App->scene->pintarPengo(App->scene->state);
 
 						}
 						//App->scene->state = 2;
@@ -263,7 +263,9 @@ update_status ModulePlayer::Update()
 							if (App->scene->matriu[position.x][position.y - 16] == NOBLOCKS) {
 								App->scene->borrar(App->scene->state);
 								App->scene->state = 2;
-								App->scene->pintar(App->scene->state);
+								App->scene->pintarPengo(App->scene->state);
+
+								
 
 							}
 							//App->scene->state = 2;
