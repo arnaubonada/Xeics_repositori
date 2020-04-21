@@ -3,6 +3,12 @@
 
 #include "Module.h"
 #include "Animation.h"
+#define NOBLOCKS 0
+#define BLOCKS 1
+#define PENGO 2
+#define SNOBEES 3
+#define LIMITS 4
+
 
 struct SDL_Texture;
 
@@ -19,6 +25,13 @@ public:
 	// Loads the necessary textures for the map background
 	bool Start() override;
 
+	//iPoint map;
+	int matriu[300][300];
+
+	int pmatriux;
+	int pmatriuy;
+
+	int state = 0;
 	// Called at the middle of the application loop
 	// Updates the scene's background animations
 	update_status Update() override;
@@ -34,8 +47,10 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* scTexture = nullptr;
+	SDL_Texture* chTexture = nullptr;
 	SDL_Texture* segaTexture = nullptr;
 
+	SDL_Rect noBlocks, blocks, pengo, snobees;
 	SDL_Rect A, C, T, P, one, oneblue,twoblue, pYellow, pRed, zero, Hblue, Iblue;
 
 

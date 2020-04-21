@@ -11,6 +11,8 @@
 
 ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 {
+	noBlocks = SDL_Rect{ 50,50,16,16 }; blocks = SDL_Rect{ 708,0,16,16 }; pengo = SDL_Rect{ 0,0,16,16 }; snobees = SDL_Rect{ 0,160,16,16 };
+
 	A = SDL_Rect{ 9,184,8,8 }; C = SDL_Rect{ 27,184,8,8 }; T = SDL_Rect{ 36,193,8,8 }; 
 	oneblue= SDL_Rect{ 9,202,8,8 }; P = SDL_Rect{ 0,220,8,8 }; twoblue = SDL_Rect{ 18,202,8,8 };
 	one= SDL_Rect{ 9,175,8,8 }; pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
@@ -29,6 +31,7 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
+	chTexture = App->textures->Load("Assets/Characters.png");
 	bgTexture = App->textures->Load("Assets/background.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	segaTexture = App->textures->Load("Assets/SEGA1982.png");
@@ -37,19 +40,19 @@ bool ModuleScene::Start()
 
 
 	//MATRIU
-	int matriu[195];
+	
+	
 
-	for (int i = 0; i < 13; i++) {
-		for (int j = 0; j < 15; j++) {
-			matriu[j] = 0;
+	for (pmatriux = 0; pmatriux < 224; pmatriux+16) {
+		for (pmatriuy = 0; pmatriuy < 256; pmatriuy+16) {
+
+			matriu[pmatriux][pmatriuy] = BLOCKS;
+
+			
+			
 		}
+		
 	}
-
-
-
-
-
-
 
 	//Bottomside
 	App->collisions->AddCollider({ 0, 272, 224, 8 }, Collider::Type::WALL);
@@ -62,6 +65,16 @@ bool ModuleScene::Start()
 
 	//rightside
 	App->collisions->AddCollider({ 216, 24, 8, 256 }, Collider::Type::WALL);
+
+
+
+	
+
+
+
+
+
+
 
 
 	// Enemies ---
@@ -87,6 +100,7 @@ update_status ModuleScene::Update()
 // Update: draw background
 update_status ModuleScene::PostUpdate()
 {
+
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 24, NULL);
 
@@ -115,8 +129,20 @@ update_status ModuleScene::PostUpdate()
 	App->render->Blit(scTexture, 80, 0, &Hblue); 
 	App->render->Blit(scTexture, 88, 0, &Iblue);
 	
+	App->render->Blit(scTexture, 88, 0, &Iblue);
 
-
+	if (state == NOBLOCKS) {
+		App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
+	}
+	if (state == BLOCKS) {
+		App->render->Blit(scTexture, pmatriux, pmatriuy, &blocks);
+	}
+	if (state == PENGO) {
+		App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
+	}
+	if (state == SNOBEES) {
+		App->render->Blit(chTexture, pmatriux, pmatriuy, &snobees);
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

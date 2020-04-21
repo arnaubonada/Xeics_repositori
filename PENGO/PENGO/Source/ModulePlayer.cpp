@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleScene.h"
 
 
 
@@ -25,8 +26,7 @@
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 
-	position.x = 150;
-	position.y = 120;
+	
 	
 	
 	/*
@@ -38,47 +38,47 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	*/
 
 	// move up
-	upAnim2.PushBack({ 64, 0, 16, 16 });
-	upAnim2.PushBack({ 80, 0, 16, 16 });
-	upAnim2.speed = 0.1f;
+	//upAnim2.PushBack({ 64, 0, 16, 16 });
+	//upAnim2.PushBack({ 80, 0, 16, 16 });
+	//upAnim2.speed = 0.1f;
 
-	// Move down
-	downAnim2.PushBack({ 0, 0, 16, 16 });
-	downAnim2.PushBack({ 16, 0, 16, 16 });
-	downAnim2.speed = 0.1f;
+	//// Move down
+	//downAnim2.PushBack({ 0, 0, 16, 16 });
+	//downAnim2.PushBack({ 16, 0, 16, 16 });
+	//downAnim2.speed = 0.1f;
 
-	// move left
-	leftAnim2.PushBack({ 32, 0, 16, 16 });
-	leftAnim2.PushBack({ 48, 0, 16, 16 });
-	leftAnim2.speed = 0.1f;
+	//// move left
+	//leftAnim2.PushBack({ 32, 0, 16, 16 });
+	//leftAnim2.PushBack({ 48, 0, 16, 16 });
+	//leftAnim2.speed = 0.1f;
 
-	// Move right
-	rightAnim2.PushBack({ 96, 0, 16, 16 });
-	rightAnim2.PushBack({ 112, 0, 16, 16 });
-	rightAnim2.speed = 0.1f;
-
-
+	//// Move right
+	//rightAnim2.PushBack({ 96, 0, 16, 16 });
+	//rightAnim2.PushBack({ 112, 0, 16, 16 });
+	//rightAnim2.speed = 0.1f;
 
 
-	// move up
-	upAnim.PushBack({ 64, 0, 16, 16 });
-	upAnim.PushBack({ 80, 0, 16, 16 });
-	upAnim.speed = 0.1f;
 
-	// Move down
-	downAnim.PushBack({ 0, 0, 16, 16 });
-	downAnim.PushBack({ 16, 0, 16, 16 });
-	downAnim.speed = 0.1f;
 
-	// move left
-	leftAnim.PushBack({ 32, 0, 16, 16 });
-	leftAnim.PushBack({ 48, 0, 16, 16 });
-	leftAnim.speed = 0.1f;
+	//// move up
+	//upAnim.PushBack({ 64, 0, 16, 16 });
+	//upAnim.PushBack({ 80, 0, 16, 16 });
+	//upAnim.speed = 0.1f;
 
-	// Move right
-	rightAnim.PushBack({ 96, 0, 16, 16 });
-	rightAnim.PushBack({ 112, 0, 16, 16 });
-	rightAnim.speed = 0.1f;
+	//// Move down
+	//downAnim.PushBack({ 0, 0, 16, 16 });
+	//downAnim.PushBack({ 16, 0, 16, 16 });
+	//downAnim.speed = 0.1f;
+
+	//// move left
+	//leftAnim.PushBack({ 32, 0, 16, 16 });
+	//leftAnim.PushBack({ 48, 0, 16, 16 });
+	//leftAnim.speed = 0.1f;
+
+	//// Move right
+	//rightAnim.PushBack({ 96, 0, 16, 16 });
+	//rightAnim.PushBack({ 112, 0, 16, 16 });
+	//rightAnim.speed = 0.1f;
 }
 
 
@@ -98,8 +98,9 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Characters.png");
 	currentAnimation = &downAnim;
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 8;
+	position.y = 32;
+	
 
 	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
@@ -123,6 +124,11 @@ update_status ModulePlayer::Update()
 
 	//currentAnimation = &leftAnim;
 	
+	if (App->scene->matriu[position.x][position.y] == PENGO) {
+		currentAnimation = &downAnim;
+	}
+
+
 	switch (opcio)
 	{
 
@@ -157,10 +163,15 @@ update_status ModulePlayer::Update()
 		{
 			if (currentAnimation != &leftAnim)
 			{
-
-				position.x -= speed;
+				
+				App->scene->matriu[position.x][position.y] = NOBLOCKS;
+				App->scene->matriu[position.x - 16][position.y] = PENGO;
 				currentAnimation = &leftAnim;
 				opcio = 'l';
+
+				App->scene->pmatriux = position.x;
+				App->scene->pmatriuy = position.y;
+
 				//collidatoL = false;
 				//collider->SetPos(position.x, position.y);
 			
@@ -172,7 +183,7 @@ update_status ModulePlayer::Update()
 			{
 				if (currentAnimation != &rightAnim)
 				{
-					position.x += speed;
+					position.x += move;
 					currentAnimation = &rightAnim;
 					opcio = 'r';
 					//collidatoR = false;
@@ -189,7 +200,7 @@ update_status ModulePlayer::Update()
 					if (currentAnimation != &downAnim)
 					{
 
-						position.y += speed;
+						position.y += move;
 						currentAnimation = &downAnim;
 						opcio = 'd';
 						//collidatoD = false;
@@ -205,7 +216,7 @@ update_status ModulePlayer::Update()
 						if (currentAnimation != &upAnim)
 						{
 
-							position.y -= speed;
+							position.y -= move;
 							currentAnimation = &upAnim;
 							opcio = 'u';
 							//collidatoU = false;
@@ -303,7 +314,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c1 == collider && opcio == 'l')
 		{
 		
-			position.x += speed;
+			position.x += move;
 			//collidatoL = true;
 
 		}
@@ -312,7 +323,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c1 == collider && opcio == 'r')
 		{
 
-			position.x -= speed;
+			position.x -= move;
 			//collidatoR = true;
 		}
 
@@ -320,7 +331,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c1 == collider && opcio == 'd')
 		{
 
-			position.y -= speed;
+			position.y -= move;
 			//collidatoD = true;
 
 		}
@@ -328,7 +339,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1 == collider && opcio == 'u')
 		{
-			position.y += speed;
+			position.y += move;
 			//collidatoU = true;
 
 		}
