@@ -33,6 +33,7 @@ bool ModuleScene::Start()
 
 	chTexture = App->textures->Load("Assets/Characters.png");
 	bgTexture = App->textures->Load("Assets/background.png");
+	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	segaTexture = App->textures->Load("Assets/SEGA1982.png");
 	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
@@ -43,8 +44,8 @@ bool ModuleScene::Start()
 	
 	
 
-	for (pmatriux = 0; pmatriux < 224; pmatriux+16) {
-		for (pmatriuy = 0; pmatriuy < 256; pmatriuy+16) {
+	for (pmatriux = 0; pmatriux < 16; pmatriux++) {
+		for (pmatriuy = 0; pmatriuy < 16; pmatriuy++) {
 
 			matriu[pmatriux][pmatriuy] = BLOCKS;
 
@@ -97,6 +98,26 @@ update_status ModuleScene::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
+int ModuleScene::borrar(int state)
+{
+	if (state == PENGO) {
+		App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
+	}
+	state = 0;
+	return state;
+}
+
+int ModuleScene::pintar(int state)
+{
+	if (state == NOBLOCKS) {
+		App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
+		state = 0;
+	}
+	return state;
+}
+
+
+
 // Update: draw background
 update_status ModuleScene::PostUpdate()
 {
@@ -131,21 +152,24 @@ update_status ModuleScene::PostUpdate()
 	
 	App->render->Blit(scTexture, 88, 0, &Iblue);
 
+	//App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
 	if (state == NOBLOCKS) {
 		App->render->Blit(bgTexture, pmatriux, pmatriuy, &noBlocks);
 	}
-	if (state == BLOCKS) {
+	else if (state == BLOCKS) {
 		App->render->Blit(scTexture, pmatriux, pmatriuy, &blocks);
 	}
-	if (state == PENGO) {
+	else if (state == PENGO) {
 		App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
 	}
-	if (state == SNOBEES) {
+	else if (state == SNOBEES) {
 		App->render->Blit(chTexture, pmatriux, pmatriuy, &snobees);
 	}
 
 	return update_status::UPDATE_CONTINUE;
 }
+
+
 
 bool ModuleScene::CleanUp()
 {
@@ -157,3 +181,4 @@ bool ModuleScene::CleanUp()
 
 	return true;
 }
+

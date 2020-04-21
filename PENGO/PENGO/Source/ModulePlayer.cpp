@@ -128,6 +128,8 @@ update_status ModulePlayer::Update()
 		currentAnimation = &downAnim;
 	}
 
+	//App->scene->state = 1;
+	//App->scene->matriu[25][25] = BLOCKS;
 
 	switch (opcio)
 	{
@@ -163,10 +165,22 @@ update_status ModulePlayer::Update()
 		{
 			if (currentAnimation != &leftAnim)
 			{
-				
-				App->scene->matriu[position.x][position.y] = NOBLOCKS;
-				App->scene->matriu[position.x - 16][position.y] = PENGO;
-				currentAnimation = &leftAnim;
+				for (int i = 0; i < 16; i++) {
+					position.x -= 1;
+					Sleep(8);
+				}
+				//App->scene->state = 0;
+
+				if (App->scene->matriu[position.x - 16][position.y] == NOBLOCKS) {
+					App->scene->borrar(App->scene->state);
+					App->scene->state = 2;
+					App->scene->pintar(App->scene->state);
+
+				}
+				//App->scene->state = 2;
+				//App->scene->matriu[position.x - 16][position.y] = PENGO;
+				//currentAnimation = &leftAnim;
+
 				opcio = 'l';
 
 				App->scene->pmatriux = position.x;
@@ -183,13 +197,26 @@ update_status ModulePlayer::Update()
 			{
 				if (currentAnimation != &rightAnim)
 				{
-					position.x += move;
-					currentAnimation = &rightAnim;
+					for (int i = 0; i < 16; i++) {
+						position.x += 1;
+						Sleep(8);
+					}
+					//App->scene->state = 0;
+
+					if (App->scene->matriu[position.x + 16][position.y] == NOBLOCKS) {
+						App->scene->borrar(App->scene->state);
+						App->scene->state = 2;
+						App->scene->pintar(App->scene->state);
+
+					}
+					//App->scene->state = 2;
+					//App->scene->matriu[position.x - 16][position.y] = PENGO;
+					//currentAnimation = &leftAnim;
+
 					opcio = 'r';
-					//collidatoR = false;
 
-					//collider->SetPos(position.x, position.y);
-
+					App->scene->pmatriux = position.x;
+					App->scene->pmatriuy = position.y;
 				}
 			}
 			else {
@@ -199,14 +226,26 @@ update_status ModulePlayer::Update()
 
 					if (currentAnimation != &downAnim)
 					{
+						for (int i = 0; i < 16; i++) {
+							position.y += 1;
+							Sleep(8);
+						}
+						//App->scene->state = 0;
 
-						position.y += move;
-						currentAnimation = &downAnim;
+						if (App->scene->matriu[position.x][position.y+16] == NOBLOCKS) {
+							App->scene->borrar(App->scene->state);
+							App->scene->state = 2;
+							App->scene->pintar(App->scene->state);
+
+						}
+						//App->scene->state = 2;
+						//App->scene->matriu[position.x - 16][position.y] = PENGO;
+						//currentAnimation = &leftAnim;
+
 						opcio = 'd';
-						//collidatoD = false;
-						//collider->SetPos(position.x, position.y);
 
-
+						App->scene->pmatriux = position.x;
+						App->scene->pmatriuy = position.y;
 					}
 				}
 
@@ -215,13 +254,26 @@ update_status ModulePlayer::Update()
 					{
 						if (currentAnimation != &upAnim)
 						{
+							for (int i = 0; i < 16; i++) {
+								position.y -= 1;
+								Sleep(8);
+							}
+							//App->scene->state = 0;
 
-							position.y -= move;
-							currentAnimation = &upAnim;
+							if (App->scene->matriu[position.x][position.y - 16] == NOBLOCKS) {
+								App->scene->borrar(App->scene->state);
+								App->scene->state = 2;
+								App->scene->pintar(App->scene->state);
+
+							}
+							//App->scene->state = 2;
+							//App->scene->matriu[position.x - 16][position.y] = PENGO;
+							//currentAnimation = &leftAnim;
+
 							opcio = 'u';
-							//collidatoU = false;
-							//collider->SetPos(position.x, position.y);
 
+							App->scene->pmatriux = position.x;
+							App->scene->pmatriuy = position.y;
 
 						}
 					}
