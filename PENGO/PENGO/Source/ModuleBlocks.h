@@ -67,7 +67,7 @@ public:
 	void HandleBlockDespawn();
 
 	//positions
-	iPoint position;
+	iPoint positionBlock;
 
 	Animation* currentAnimation = nullptr;
 

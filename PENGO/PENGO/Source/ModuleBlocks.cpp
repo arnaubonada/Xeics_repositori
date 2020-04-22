@@ -33,7 +33,7 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 	//position.x = 70;
 	//position.y = 70;
 
-	blockAnim.PushBack({ 708, 0, 16, 16 });
+	//blockAnim.PushBack({ 708, 0, 16, 16 });
 
 }
 
@@ -44,25 +44,32 @@ ModuleBlocks::~ModuleBlocks()
 
 bool ModuleBlocks::Start()
 {
+	LOG("Loading player textures");
 
+	bool ret = true;
 
 	texture = App->textures->Load("Assets/Blocks.png");
 	currentAnimation = &blockAnim;
 	//blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
-	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+
+	positionBlock.x = 72;
+	positionBlock.y = 32;
+
+	collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+	
+	
+	App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
+	//destroyed = false;
 
 	
 	
-	/*
-	position.x = 70;
-	position.y = 70;
-	*/
+	
 
-	return true;
+	return ret;
 }
 
 update_status ModuleBlocks::PreUpdate()
-{
+{/*
 	// Remove all enemies scheduled for deletion
 	for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
@@ -71,7 +78,7 @@ update_status ModuleBlocks::PreUpdate()
 			delete blocks[i];
 			blocks[i] = nullptr;
 		}
-	}
+	}*/
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -79,6 +86,7 @@ update_status ModuleBlocks::PreUpdate()
 update_status ModuleBlocks::Update()
 {
 	//HandleBlockSpawn();
+	App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
 
 	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
@@ -88,7 +96,7 @@ update_status ModuleBlocks::Update()
 
 
 
-	for (int i = 0; i < 13; i++) {
+	/* (int i = 0; i < 13; i++) {
 		for (int j = 0; j < 15; j++) {
 			if (App->scene->matriu[i][j] != BLOCKS) {
 				//App->scene->borrar(App->scene->getState(i, j));
@@ -96,10 +104,10 @@ update_status ModuleBlocks::Update()
 
 			}
 		}
-	}
+	}*/
 
 
-
+	/*
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) {
 		opcio = 'l';
 	}
@@ -122,14 +130,14 @@ update_status ModuleBlocks::Update()
 				}
 			}
 		}
-	}
+	}*/
 
 
 
 	//HandleBlockDespawn();
 
 
-	collider->SetPos(position.x, position.y);
+	//collider->SetPos(positionBlock.x, positionBlock.y);
 
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
@@ -137,11 +145,11 @@ update_status ModuleBlocks::Update()
 
 update_status ModuleBlocks::PostUpdate()
 {
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
+	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
 		if (blocks[i] != nullptr)
 			blocks[i]->Draw();
-	}
+	}*/
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -149,7 +157,7 @@ update_status ModuleBlocks::PostUpdate()
 // Called before quitting
 bool ModuleBlocks::CleanUp()
 {
-	LOG("Freeing all blocks");
+	/*LOG("Freeing all blocks");
 
 	for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
@@ -158,7 +166,7 @@ bool ModuleBlocks::CleanUp()
 			delete blocks[i];
 			blocks[i] = nullptr;
 		}
-	}
+	}*/
 
 	return true;
 }
@@ -167,7 +175,7 @@ bool ModuleBlocks::AddBlock(BLOCK_TYPE type, int x, int y)
 {
 	bool ret = false;
 
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
+	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
 		if (spawnQueue[i].type == BLOCK_TYPE::NO_TYPE)
 		{
@@ -177,13 +185,14 @@ bool ModuleBlocks::AddBlock(BLOCK_TYPE type, int x, int y)
 			ret = true;
 			break;
 		}
-	}
+	}*/
 
 	return ret;
 }
 
 void ModuleBlocks::HandleBlockSpawn()
 {
+	/*
 	// Iterate all the enemies queue
 	for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
@@ -198,13 +207,13 @@ void ModuleBlocks::HandleBlockSpawn()
 				spawnQueue[i].type = BLOCK_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
 			}
 		}
-	}
+	}*/
 }
 
 void ModuleBlocks::HandleBlockDespawn()
 {
 	// Iterate existing enemies
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
+	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
 		if (blocks[i] != nullptr)
 		{
@@ -217,13 +226,13 @@ void ModuleBlocks::HandleBlockDespawn()
 				blocks[i] = nullptr;
 			}
 		}
-	}
+	}*/
 }
 
 void ModuleBlocks::SpawnBlock(const BlockSpawnpoint& info)
 {
 	// Find an empty slot in the enemies array
-	for (uint i = 0; i < MAX_BLOCKS; ++i)
+	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{
 		if (blocks[i] == nullptr)
 		{
@@ -238,19 +247,19 @@ void ModuleBlocks::SpawnBlock(const BlockSpawnpoint& info)
 			blocks[i]->destroyedFx = blockDestroyedFx;
 			break;
 		}
-	}
+	}*/
 }
 
 void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 {
 
 
-
+	/*
 
 	if (c1 == collider && opcio == 'l')
 	{
 
-		position.x -= 1;
+		positionBlock.x -= 1;
 		currentAnimation = &blockAnim;
 
 	}
@@ -259,7 +268,7 @@ void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && opcio == 'r')
 	{
 
-		position.x += 1;
+		positionBlock.x += 1;
 		currentAnimation = &blockAnim;
 	}
 
@@ -267,20 +276,20 @@ void ModuleBlocks::OnCollision(Collider* c1, Collider* c2)
 	if (c1 == collider && opcio == 'd')
 	{
 
-		position.y += 1;
+		positionBlock.y += 1;
 		currentAnimation = &blockAnim;
 	}
 
 
 	if (c1 == collider && opcio == 'u')
 	{
-		position.y -= 1;
+		positionBlock.y -= 1;
 		currentAnimation = &blockAnim;
 	}
 
 
 
-
+	*/
 
 
 

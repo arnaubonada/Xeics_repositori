@@ -15,8 +15,8 @@ char opcio = 'a';
 
 Block::Block(int x, int y) : position(x, y)
 {
-	position.x = 70;
-	position.y = 70;
+	/*position.x = 70;
+	position.y = 70;*/
 
 	//bnormal.PushBack({ 708, 0, 16, 16 });
 	//currentAnim = &bnormal;
@@ -36,17 +36,17 @@ const Collider* Block::GetCollider() const
 
 void Block::Update()
 {
-	if (currentAnim != nullptr)
+	/*if (currentAnim != nullptr)
 		currentAnim->Update();
 
 	if (collider != nullptr)
-		collider->SetPos(position.x, position.y);
+		collider->SetPos(position.x, position.y);*/
 }
 
 void Block::Draw()
 {
-	if (currentAnim != nullptr)
-		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+	/*if (currentAnim != nullptr)
+		App->render->Blit(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));*/
 }
 
 void Block::OnCollision(Collider* c1)

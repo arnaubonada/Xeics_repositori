@@ -47,21 +47,20 @@ bool ModuleScene::Start()
 	//MATRIU
 	
 	map.x = 8;
-	map.y = 8;
+	map.y = 32;
 	
 	for (pmatriux = 0; pmatriux < 13; pmatriux++) {
-		map.y = 8;
+		map.y = 32;
 		for (pmatriuy = 0; pmatriuy < 15; pmatriuy++) {
 
-			matriu[pmatriux][pmatriuy] = NOBLOCKS;
+			matriu[map.x][map.y] = BLOCKS;
+			
 			map.y += 16;
 
 		}
 		map.x += 16;
-	}
-
-
-
+	}	
+	
 
 
 	//Bottomside
@@ -75,10 +74,6 @@ bool ModuleScene::Start()
 
 	//rightside
 	App->collisions->AddCollider({ 216, 24, 8, 256 }, Collider::Type::WALL);
-
-
-
-	
 
 
 
@@ -109,6 +104,7 @@ update_status ModuleScene::Update()
 
 int ModuleScene::getState(int x, int y)
 {
+	_state = matriu[x][y];
 	return _state;
 }
 
@@ -117,7 +113,7 @@ int ModuleScene::borrar(int state)
 
 	App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
 	matriu[map.x][map.y] = NOBLOCKS;
-	_state = NOBLOCKS;
+	//_state = NOBLOCKS;
 	return _state;
 }
 
@@ -126,7 +122,7 @@ int ModuleScene::pintarBlock(int state)
 	App->render->Blit(blTexture, map.x, map.y, &blocks);
 	matriu[map.x][map.y] = BLOCKS;
 
-	_state = BLOCKS;
+	//_state = BLOCKS;
 	return _state;
 }
 
@@ -135,7 +131,7 @@ int ModuleScene::pintarPengo(int state)
 	App->render->Blit(chTexture, map.x, map.y, &pengo);
 	matriu[map.x][map.y] = PENGO;
 
-	_state = PENGO;
+	//_state = PENGO;
 	return _state;
 }
 
@@ -148,7 +144,7 @@ update_status ModuleScene::PostUpdate()
 {
 
 	// Draw everything --------------------------------------
-	//App->render->Blit(bgTexture, 0, 24, NULL);
+	App->render->Blit(bgTexture, 0, 24, NULL);
 
 	App->render->Blit(segaTexture, 136, 280, NULL);
 
@@ -182,19 +178,19 @@ update_status ModuleScene::PostUpdate()
 
 	
 	//App->render->Blit(chTexture, pmatriux, pmatriuy, &pengo);
-	if (_state == NOBLOCKS) {
+	/*if (_state == NOBLOCKS) {
 		App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
 	}
 	else if (_state == BLOCKS) {
-		App->render->Blit(scTexture, map.x, map.y, &blocks);
+		App->render->Blit(blTexture, map.x, map.y, &blocks);
 	}
 	else if (_state == PENGO) {
 		App->render->Blit(chTexture, map.x, map.y, &pengo);
 	}
-	else if (_state == SNOBEES){
+	else if (_state == SNOBEES) {
 		App->render->Blit(chTexture, map.x, map.y, &snobees);
 	}
-
+	*/
 	return update_status::UPDATE_CONTINUE;
 }
 

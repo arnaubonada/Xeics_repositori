@@ -36,7 +36,7 @@ public:
 
 
 	iPoint map;
-	int matriu[13][15];
+	int matriu[500][500];
 
 	//iPoint pMat;
 

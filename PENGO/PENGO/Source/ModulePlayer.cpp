@@ -175,7 +175,7 @@ update_status ModulePlayer::Update()
 				if (App->scene->matriu[position.x - 16][position.y] == NOBLOCKS) {
 					App->scene->borrar(App->scene->getState(position.x, position.y));
 					//App->scene->state = 2;
-					App->scene->pintarPengo(App->scene->getState(position.x-16, position.y));
+					//App->scene->pintarPengo(App->scene->getState(position.x-16, position.y));
 
 				}
 				//App->scene->state = 2;
@@ -205,7 +205,7 @@ update_status ModulePlayer::Update()
 					if (App->scene->matriu[position.x + 16][position.y] == NOBLOCKS) {
 						App->scene->borrar(App->scene->getState(position.x, position.y));
 						//App->scene->state = 2;
-						App->scene->pintarPengo(App->scene->getState(position.x+16, position.y));
+						//App->scene->pintarPengo(App->scene->getState(position.x+16, position.y));
 
 					}
 					//App->scene->state = 2;
@@ -231,9 +231,10 @@ update_status ModulePlayer::Update()
 						//App->scene->state = 0;
 
 						if (App->scene->matriu[position.x][position.y+16] == NOBLOCKS) {
+							//->scene->pintarPengo(App->scene->getState(position.x, position.y + 16));
 							App->scene->borrar(App->scene->getState(position.x, position.y));
 							//App->scene->state = 2;
-							App->scene->pintarPengo(App->scene->getState(position.x, position.y+16));
+							//App->scene->pintarPengo(App->scene->getState(position.x, position.y+16));
 
 						}
 						//App->scene->state = 2;
@@ -260,8 +261,8 @@ update_status ModulePlayer::Update()
 							if (App->scene->matriu[position.x][position.y - 16] == NOBLOCKS) {
 								App->scene->borrar(App->scene->getState(position.x, position.y));
 								//	App->scene->state = 2;
-								App->scene->pintarPengo(App->scene->getState(position.x, position.y-16));
-
+								//App->scene->pintarPengo(App->scene->getState(position.x, position.y-16));
+								
 								
 
 							}
@@ -280,10 +281,11 @@ update_status ModulePlayer::Update()
 
 		
 		}
+		
+		collider->SetPos(position.x, position.y);
 		App->scene->map.x = position.x;
 		App->scene->map.y = position.y;
-		collider->SetPos(position.x, position.y);
-
+		//App->scene->pintarPengo(App->scene->getState(position.x, position.y));
 
 /*
 switch (App->input->keys[SDL_Scancode])
