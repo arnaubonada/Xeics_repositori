@@ -11,15 +11,15 @@
 
 ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 {
-	noBlocks = SDL_Rect{ 50,50,16,16 }; blocks = SDL_Rect{ 708,0,16,16 }; pengo = SDL_Rect{ 0,0,16,16 }; snobees = SDL_Rect{ 0,160,16,16 };
+	//noBlocks = SDL_Rect{ 50,50,16,16 }; blocks = SDL_Rect{ 708,0,16,16 }; pengo = SDL_Rect{ 0,0,16,16 }; snobees = SDL_Rect{ 0,160,16,16 };
 
 	A = SDL_Rect{ 9,184,8,8 }; C = SDL_Rect{ 27,184,8,8 }; T = SDL_Rect{ 36,193,8,8 }; 
 	oneblue= SDL_Rect{ 9,202,8,8 }; P = SDL_Rect{ 0,220,8,8 }; twoblue = SDL_Rect{ 18,202,8,8 };
 	one= SDL_Rect{ 9,175,8,8 }; pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
 	zero = SDL_Rect{ 0,175,8,8 }; Hblue = SDL_Rect{ 72,211,8,8 }; Iblue = SDL_Rect{ 81,211,8,8 };
 
-	pmatriux = 0;
-	pmatriuy = 0;
+	//pmatriux = 0;
+	//pmatriuy = 0;
 
 }
 
@@ -40,26 +40,26 @@ bool ModuleScene::Start()
 	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	segaTexture = App->textures->Load("Assets/SEGA1982.png");
-	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
 	
 
 
 	//MATRIU
 	
-	map.x = 8;
-	map.y = 32;
-	
-	for (pmatriux = 0; pmatriux < 13; pmatriux++) {
-		map.y = 32;
-		for (pmatriuy = 0; pmatriuy < 15; pmatriuy++) {
+	//map.x = 8;
+	//map.y = 32;
+	//
+	//for (pmatriux = 0; pmatriux < 13; pmatriux++) {
+	//	map.y = 32;
+	//	for (pmatriuy = 0; pmatriuy < 15; pmatriuy++) {
 
-			matriu[map.x][map.y] = BLOCKS;
-			
-			map.y += 16;
+	//		matriu[map.x][map.y] = BLOCKS;
+	//		
+	//		map.y += 16;
 
-		}
-		map.x += 16;
-	}	
+	//	}
+	//	map.x += 16;
+	//}	
 	
 
 
@@ -102,38 +102,38 @@ update_status ModuleScene::Update()
 
 
 
-int ModuleScene::getState(int x, int y)
-{
-	_state = matriu[x][y];
-	return _state;
-}
-
-int ModuleScene::borrar(int state)
-{
-
-	App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
-	matriu[map.x][map.y] = NOBLOCKS;
-	//_state = NOBLOCKS;
-	return _state;
-}
-
-int ModuleScene::pintarBlock(int state)
-{
-	App->render->Blit(blTexture, map.x, map.y, &blocks);
-	matriu[map.x][map.y] = BLOCKS;
-
-	//_state = BLOCKS;
-	return _state;
-}
-
-int ModuleScene::pintarPengo(int state)
-{
-	App->render->Blit(chTexture, map.x, map.y, &pengo);
-	matriu[map.x][map.y] = PENGO;
-
-	//_state = PENGO;
-	return _state;
-}
+//int ModuleScene::getState(int x, int y)
+//{
+//	_state = matriu[x][y];
+//	return _state;
+//}
+//
+//int ModuleScene::borrar(int state)
+//{
+//
+//	App->render->Blit(bgTexture, map.x, map.y, &noBlocks);
+//	matriu[map.x][map.y] = NOBLOCKS;
+//	//_state = NOBLOCKS;
+//	return _state;
+//}
+//
+//int ModuleScene::pintarBlock(int state)
+//{
+//	App->render->Blit(blTexture, map.x, map.y, &blocks);
+//	matriu[map.x][map.y] = BLOCKS;
+//
+//	//_state = BLOCKS;
+//	return _state;
+//}
+//
+//int ModuleScene::pintarPengo(int state)
+//{
+//	App->render->Blit(chTexture, map.x, map.y, &pengo);
+//	matriu[map.x][map.y] = PENGO;
+//
+//	//_state = PENGO;
+//	return _state;
+//}
 
 
 

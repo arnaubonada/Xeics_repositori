@@ -38,47 +38,47 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	*/
 
 	// move up
-	//upAnim2.PushBack({ 64, 0, 16, 16 });
-	//upAnim2.PushBack({ 80, 0, 16, 16 });
-	//upAnim2.speed = 0.1f;
+	upAnim2.PushBack({ 64, 0, 16, 16 });
+	upAnim2.PushBack({ 80, 0, 16, 16 });
+	upAnim2.speed = 0.1f;
 
-	//// Move down
-	//downAnim2.PushBack({ 0, 0, 16, 16 });
-	//downAnim2.PushBack({ 16, 0, 16, 16 });
-	//downAnim2.speed = 0.1f;
+	// Move down
+	downAnim2.PushBack({ 0, 0, 16, 16 });
+	downAnim2.PushBack({ 16, 0, 16, 16 });
+	downAnim2.speed = 0.1f;
 
-	//// move left
-	//leftAnim2.PushBack({ 32, 0, 16, 16 });
-	//leftAnim2.PushBack({ 48, 0, 16, 16 });
-	//leftAnim2.speed = 0.1f;
+	// move left
+	leftAnim2.PushBack({ 32, 0, 16, 16 });
+	leftAnim2.PushBack({ 48, 0, 16, 16 });
+	leftAnim2.speed = 0.1f;
 
-	//// Move right
-	//rightAnim2.PushBack({ 96, 0, 16, 16 });
-	//rightAnim2.PushBack({ 112, 0, 16, 16 });
-	//rightAnim2.speed = 0.1f;
-
-
+	// Move right
+	rightAnim2.PushBack({ 96, 0, 16, 16 });
+	rightAnim2.PushBack({ 112, 0, 16, 16 });
+	rightAnim2.speed = 0.1f;
 
 
-	//// move up
-	//upAnim.PushBack({ 64, 0, 16, 16 });
-	//upAnim.PushBack({ 80, 0, 16, 16 });
-	//upAnim.speed = 0.1f;
 
-	//// Move down
-	//downAnim.PushBack({ 0, 0, 16, 16 });
-	//downAnim.PushBack({ 16, 0, 16, 16 });
-	//downAnim.speed = 0.1f;
 
-	//// move left
-	//leftAnim.PushBack({ 32, 0, 16, 16 });
-	//leftAnim.PushBack({ 48, 0, 16, 16 });
-	//leftAnim.speed = 0.1f;
+	// move up
+	upAnim.PushBack({ 64, 0, 16, 16 });
+	upAnim.PushBack({ 80, 0, 16, 16 });
+	upAnim.speed = 0.1f;
 
-	//// Move right
-	//rightAnim.PushBack({ 96, 0, 16, 16 });
-	//rightAnim.PushBack({ 112, 0, 16, 16 });
-	//rightAnim.speed = 0.1f;
+	// Move down
+	downAnim.PushBack({ 0, 0, 16, 16 });
+	downAnim.PushBack({ 16, 0, 16, 16 });
+	downAnim.speed = 0.1f;
+
+	// move left
+	leftAnim.PushBack({ 32, 0, 16, 16 });
+	leftAnim.PushBack({ 48, 0, 16, 16 });
+	leftAnim.speed = 0.1f;
+
+	// Move right
+	rightAnim.PushBack({ 96, 0, 16, 16 });
+	rightAnim.PushBack({ 112, 0, 16, 16 });
+	rightAnim.speed = 0.1f;
 }
 
 
@@ -122,11 +122,11 @@ update_status ModulePlayer::Update()
 	currentAnimation = current;
 	*/
 
-	//currentAnimation = &leftAnim;
+	currentAnimation = &leftAnim;
 	
-	if (App->scene->matriu[position.x][position.y] == PENGO) {
+	//if (App->scene->matriu[position.x][position.y] == PENGO) {
 		//currentAnimation = &downAnim;
-	}
+	//}
 
 	//App->scene->state = 1;
 	//App->scene->matriu[25][25] = BLOCKS;
@@ -159,25 +159,25 @@ update_status ModulePlayer::Update()
 	}
 
 	
-	App->scene->pintarPengo(App->scene->getState(position.x, position.y));
+	//App->scene->pintarPengo(App->scene->getState(position.x, position.y));
 
 
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			if (currentAnimation != &leftAnim)
 			{
-				for (int i = 0; i < 16; i++) {
-					position.x -= 1;
-					Sleep(8);
-				}
+				//for (int i = 0; i < 16; i++) {
+					position.x -= move;
+					//Sleep(8);
+				//}
 				//App->scene->state = 0;
 
-				if (App->scene->matriu[position.x - 16][position.y] == NOBLOCKS) {
-					App->scene->borrar(App->scene->getState(position.x, position.y));
+				//if (App->scene->matriu[position.x - 16][position.y] == NOBLOCKS) {
+					//App->scene->borrar(App->scene->getState(position.x, position.y));
 					//App->scene->state = 2;
 					//App->scene->pintarPengo(App->scene->getState(position.x-16, position.y));
 
-				}
+				///}
 				//App->scene->state = 2;
 				//App->scene->matriu[position.x - 16][position.y] = PENGO;
 				//currentAnimation = &leftAnim;
@@ -196,18 +196,18 @@ update_status ModulePlayer::Update()
 			{
 				if (currentAnimation != &rightAnim)
 				{
-					for (int i = 0; i < 16; i++) {
-						position.x += 1;
-						Sleep(8);
-					}
-					//App->scene->state = 0;
+					//for (int i = 0; i < 16; i++) {
+					position.x += move;
+					//	Sleep(8);
+					//}
+					////App->scene->state = 0;
 
-					if (App->scene->matriu[position.x + 16][position.y] == NOBLOCKS) {
-						App->scene->borrar(App->scene->getState(position.x, position.y));
-						//App->scene->state = 2;
-						//App->scene->pintarPengo(App->scene->getState(position.x+16, position.y));
+					//if (App->scene->matriu[position.x + 16][position.y] == NOBLOCKS) {
+					//	App->scene->borrar(App->scene->getState(position.x, position.y));
+					//	//App->scene->state = 2;
+					//	//App->scene->pintarPengo(App->scene->getState(position.x+16, position.y));
 
-					}
+					//}
 					//App->scene->state = 2;
 					//App->scene->matriu[position.x - 16][position.y] = PENGO;
 					//currentAnimation = &leftAnim;
@@ -224,19 +224,19 @@ update_status ModulePlayer::Update()
 
 					if (currentAnimation != &downAnim)
 					{
-						for (int i = 0; i < 16; i++) {
-							position.y += 1;
-							Sleep(8);
-						}
-						//App->scene->state = 0;
+						//for (int i = 0; i < 16; i++) {
+						position.y += move;
+						//	Sleep(8);
+						//}
+						////App->scene->state = 0;
 
-						if (App->scene->matriu[position.x][position.y+16] == NOBLOCKS) {
-							//->scene->pintarPengo(App->scene->getState(position.x, position.y + 16));
-							App->scene->borrar(App->scene->getState(position.x, position.y));
-							//App->scene->state = 2;
-							//App->scene->pintarPengo(App->scene->getState(position.x, position.y+16));
+						//if (App->scene->matriu[position.x][position.y+16] == NOBLOCKS) {
+						//	//->scene->pintarPengo(App->scene->getState(position.x, position.y + 16));
+						//	App->scene->borrar(App->scene->getState(position.x, position.y));
+						//	//App->scene->state = 2;
+						//	//App->scene->pintarPengo(App->scene->getState(position.x, position.y+16));
 
-						}
+						//}
 						//App->scene->state = 2;
 						//App->scene->matriu[position.x - 16][position.y] = PENGO;
 						//currentAnimation = &leftAnim;
@@ -252,20 +252,20 @@ update_status ModulePlayer::Update()
 					{
 						if (currentAnimation != &upAnim)
 						{
-							for (int i = 0; i < 16; i++) {
-								position.y -= 1;
-								Sleep(8);
-							}
-							//App->scene->state = 0;
+							//for (int i = 0; i < 16; i++) {
+							position.y -= move;
+							//	Sleep(8);
+							//}
+							////App->scene->state = 0;
 
-							if (App->scene->matriu[position.x][position.y - 16] == NOBLOCKS) {
-								App->scene->borrar(App->scene->getState(position.x, position.y));
-								//	App->scene->state = 2;
-								//App->scene->pintarPengo(App->scene->getState(position.x, position.y-16));
-								
-								
+							//if (App->scene->matriu[position.x][position.y - 16] == NOBLOCKS) {
+							//	App->scene->borrar(App->scene->getState(position.x, position.y));
+							//	//	App->scene->state = 2;
+							//	//App->scene->pintarPengo(App->scene->getState(position.x, position.y-16));
+							//	
+							//	
 
-							}
+							//}
 							//App->scene->state = 2;
 							//App->scene->matriu[position.x - 16][position.y] = PENGO;
 							//currentAnimation = &leftAnim;
@@ -283,8 +283,8 @@ update_status ModulePlayer::Update()
 		}
 		
 		collider->SetPos(position.x, position.y);
-		App->scene->map.x = position.x;
-		App->scene->map.y = position.y;
+		//App->scene->map.x = position.x;
+		//App->scene->map.y = position.y;
 		//App->scene->pintarPengo(App->scene->getState(position.x, position.y));
 
 /*

@@ -33,7 +33,7 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 	//position.x = 70;
 	//position.y = 70;
 
-	//blockAnim.PushBack({ 708, 0, 16, 16 });
+	blockAnim.PushBack({ 708, 0, 16, 16 });
 
 }
 
@@ -58,7 +58,7 @@ bool ModuleBlocks::Start()
 	collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 	
 	
-	App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
+	//App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
 	//destroyed = false;
 
 	
@@ -86,7 +86,7 @@ update_status ModuleBlocks::PreUpdate()
 update_status ModuleBlocks::Update()
 {
 	//HandleBlockSpawn();
-	App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
+	//App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
 
 	/*for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{

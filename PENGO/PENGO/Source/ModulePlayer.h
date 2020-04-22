@@ -38,7 +38,7 @@ public:
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
-	int move = 16;
+	int move = 1;
 
 	//Where the player goes
 	char opcio = 'a';
