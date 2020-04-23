@@ -46,6 +46,7 @@ update_status SceneWin::Update()
 	{
 		App->sceneIntro->contador = 3;
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 90);
+		App->player->lifes = 3;
 	}
 
 	return update_status::UPDATE_CONTINUE;

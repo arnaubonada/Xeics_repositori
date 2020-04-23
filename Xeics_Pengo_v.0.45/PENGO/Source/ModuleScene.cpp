@@ -12,6 +12,8 @@
 #include "ModuleBlocks.h"
 #include "ModuleFadeToBlack.h"
 
+#include"SceneIntro.h" 
+
 #include "SDL/include/SDL_scancode.h"
 
 ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
@@ -62,20 +64,22 @@ bool ModuleScene::Start()
 	//	map.x += 16;
 	//}	
 	
+	if (rep)
+	{
 
+		//Bottomside
+		bottomWall = App->collisions->AddCollider({ 0, 272, 224, 8 }, Collider::Type::WALL);
 
-	//Bottomside
-	bottomWall = App->collisions->AddCollider({ 0, 272, 224, 8 }, Collider::Type::WALL);
+		//leftside
+		leftWall = App->collisions->AddCollider({ 0, 24, 8, 256 }, Collider::Type::WALL);
 
-	//leftside
-	leftWall = App->collisions->AddCollider({ 0, 24, 8, 256 }, Collider::Type::WALL);
+		//topside
+		topWall = App->collisions->AddCollider({ 0, 24, 224, 8 }, Collider::Type::WALL);
 
-	//topside
-	topWall = App->collisions->AddCollider({ 0, 24, 224, 8 }, Collider::Type::WALL);
+		//rightside
+		rightWall = App->collisions->AddCollider({ 216, 24, 8, 256 }, Collider::Type::WALL);
 
-	//rightside
-	rightWall = App->collisions->AddCollider({ 216, 24, 8, 256 }, Collider::Type::WALL);
-
+	}
 
 
 
@@ -150,7 +154,8 @@ update_status ModuleScene::PostUpdate()
 	}
 	else if (App->player->lifes == 0 && App->player->destroyed)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
+		App->sceneIntro->contador = 3;
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);		
 	}
 
 

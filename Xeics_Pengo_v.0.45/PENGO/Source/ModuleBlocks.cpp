@@ -53,47 +53,49 @@ bool ModuleBlocks::Start()
 	//blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 
 	
+	if (App->scene->rep) {
 
-	for (int i = 32; i < 272; i+=16)
-	{
-		if(i==64){}
-		else {
-			collider = App->collisions->AddCollider({ 24, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 256) {}
-		else {
-			collider = App->collisions->AddCollider({ 56, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 80 || i == 208) {
-			collider = App->collisions->AddCollider({ 72, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 32 || i == 64 || i == 96 || i == 192 || i == 224 || i == 256) {}
-		else {
-			collider = App->collisions->AddCollider({ 88, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 48 || i == 80 || i == 112 || i == 240) {
-			collider = App->collisions->AddCollider({ 104, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 64 || i == 96 || i == 256) {}
-		else {
-			collider = App->collisions->AddCollider({ 120, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 80 || i == 112 || i == 240) {
-			collider = App->collisions->AddCollider({ 136, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 32 || i == 96 || i == 192 || i == 224 || i == 256) {}
-		else {
-			collider = App->collisions->AddCollider({ 152, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 48 || i == 112 || i == 208) {
-			collider = App->collisions->AddCollider({ 168, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 32 || i == 64 || i == 160) {}
-		else {
-			collider = App->collisions->AddCollider({ 184, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}
-		if (i == 80) {
-			collider = App->collisions->AddCollider({ 200, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		for (int i = 32; i < 272; i += 16)
+		{
+			if (i == 64) {}
+			else {
+				collider = App->collisions->AddCollider({ 24, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 256) {}
+			else {
+				collider = App->collisions->AddCollider({ 56, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 80 || i == 208) {
+				collider = App->collisions->AddCollider({ 72, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 32 || i == 64 || i == 96 || i == 192 || i == 224 || i == 256) {}
+			else {
+				collider = App->collisions->AddCollider({ 88, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 48 || i == 80 || i == 112 || i == 240) {
+				collider = App->collisions->AddCollider({ 104, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 64 || i == 96 || i == 256) {}
+			else {
+				collider = App->collisions->AddCollider({ 120, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 80 || i == 112 || i == 240) {
+				collider = App->collisions->AddCollider({ 136, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 32 || i == 96 || i == 192 || i == 224 || i == 256) {}
+			else {
+				collider = App->collisions->AddCollider({ 152, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 48 || i == 112 || i == 208) {
+				collider = App->collisions->AddCollider({ 168, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 32 || i == 64 || i == 160) {}
+			else {
+				collider = App->collisions->AddCollider({ 184, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
+			if (i == 80) {
+				collider = App->collisions->AddCollider({ 200, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+			}
 		}
 	}
 	
@@ -110,7 +112,11 @@ bool ModuleBlocks::Start()
 }
 
 update_status ModuleBlocks::PreUpdate()
-{/*
+{
+
+	App->scene->rep = false;
+	
+	/*
 	// Remove all enemies scheduled for deletion
 	for (uint i = 0; i < MAX_BLOCKS; ++i)
 	{

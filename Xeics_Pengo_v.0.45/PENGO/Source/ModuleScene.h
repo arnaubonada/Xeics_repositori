@@ -74,6 +74,7 @@ public:
 	uint enemiesAlive;
 	// The sprite rectangle for the ground
 	//SDL_Texture* starsTexture = nullptr;
+	bool rep = true;
 };
 
 #endif
