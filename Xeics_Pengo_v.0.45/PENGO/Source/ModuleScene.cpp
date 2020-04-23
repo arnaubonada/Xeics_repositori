@@ -5,7 +5,6 @@
 #include "ModuleRender.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
-#include "SceneIntro.h"
  
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
@@ -111,11 +110,7 @@ update_status ModuleScene::Update()
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneWin, 60);
 	}
 	
-	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
-	{
-		App->sceneIntro->contador = 0;
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
-	}
+
 
 	return update_status::UPDATE_CONTINUE;
 }
