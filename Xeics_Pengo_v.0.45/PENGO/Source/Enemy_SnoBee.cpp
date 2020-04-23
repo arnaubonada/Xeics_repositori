@@ -54,15 +54,19 @@ void Enemy_SnoBee::Update()
 	{
 	case 0:
 		position.x += 1;
+		currentAnim = &snoRightAnim;
 		break;
 	case 1:
 		position.x -= 1;
+		currentAnim = &snoLeftAnim;
 		break;
 	case 2:
 		position.y += 1;
+		currentAnim = &snoDownAnim;
 		break;
 	case 3:
 		position.y -= 1;
+		currentAnim = &snoUpAnim;
 		break;
 	case 4:
 		position.x = position.x;

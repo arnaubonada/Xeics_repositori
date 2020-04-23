@@ -29,7 +29,7 @@ bool ModuleEnemies::Start()
 	texture = App->textures->Load("Assets/Characters.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 
-
+	srand(time(NULL));
 	return true;
 }
 
@@ -93,7 +93,7 @@ bool ModuleEnemies::CleanUp()
 
 int ModuleEnemies::RandomDirection(){
 
-	srand(time(NULL));
+	
 	direction = rand() % 4;
 	
 	return direction;
