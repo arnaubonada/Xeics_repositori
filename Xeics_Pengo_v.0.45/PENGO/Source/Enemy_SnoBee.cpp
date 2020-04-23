@@ -11,7 +11,7 @@
 
 Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 {
-	
+
 
 	//// idle animation (arcade sprite sheet)
 	//idleAnim.PushBack({ 0, 0, 16, 16 });
@@ -49,8 +49,8 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 
 void Enemy_SnoBee::Update()
 {
-	
-	switch (App->enemies->RandomDirection())
+
+	/*switch (App->enemies->RandomDirection())
 	{
 	case 0:
 		position.x += 1;
@@ -80,53 +80,53 @@ void Enemy_SnoBee::Update()
 	{
 
 		collider->pendingToDelete = true;
-	}
+	}*/
 
 	Enemy::Update();
 }
 
 void Enemy_SnoBee::OnCollision(Collider* c2) {
 
-		SDL_Rect r = this->collider->rect;
+	/*SDL_Rect r = this->collider->rect;
 
-		if (c2 == App->scene->leftWall) {
-			position.x = 8;
-		}
-		if (c2 == App->scene->rightWall) {
-			position.x = 200;
-		}
-		if (c2 == App->scene->bottomWall) {
-			position.y = 256;
-		}
-		if (c2 == App->scene->topWall) {
-			position.y = 32;
-		}
-		if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 0)
-		{
-			if (c2->Intersects(r) == true) {
-				position.x -= moveE;
-			}
-
-		}
-		if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 1)
-		{
-			if (c2->Intersects(r) == true) {
-				position.x += moveE;
-			}
-
-		}
-		if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 2)
-		{
-			if (c2->Intersects(r) == true) {
-				position.y -= moveE;
-			}
-
-		}
-		if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 3)
-		{
-			if (c2->Intersects(r) == true) {
-				position.y += moveE;
-			}
-
-		}
+	if (c2 == App->scene->leftWall) {
+		position.x = 8;
 	}
+	if (c2 == App->scene->rightWall) {
+		position.x = 200;
+	}
+	if (c2 == App->scene->bottomWall) {
+		position.y = 256;
+	}
+	if (c2 == App->scene->topWall) {
+		position.y = 32;
+	}
+	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 0)
+	{
+		if (c2->Intersects(r) == true) {
+			position.x -= moveE;
+		}
+
+	}
+	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 1)
+	{
+		if (c2->Intersects(r) == true) {
+			position.x += moveE;
+		}
+
+	}
+	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 2)
+	{
+		if (c2->Intersects(r) == true) {
+			position.y -= moveE;
+		}
+
+	}
+	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 3)
+	{
+		if (c2->Intersects(r) == true) {
+			position.y += moveE;
+		}
+
+	}*/
+}

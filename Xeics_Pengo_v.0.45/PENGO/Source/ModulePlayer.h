@@ -83,6 +83,8 @@ public:
 	uint laserFx = 0;
 	uint explosionFx = 0;
 
+	int k = 0;
+
 	int lifes = 3;
 
 };

@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "ModuleScene.h"
+#include "SceneWin.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -15,6 +16,7 @@
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 #include "ModuleBlocks.h"
+
 
 Application::Application()
 {
@@ -27,16 +29,18 @@ Application::Application()
 	modules[3] =	audio =			new ModuleAudio(true);
 
 	modules[4] =	sceneIntro =	new SceneIntro(true);
-	modules[5] =	scene =			new ModuleScene(false);		//Gameplay scene starts disabled
-	modules[6] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[7] =	particles =		new ModuleParticles(true);
-	modules[8] =	enemies =		new ModuleEnemies(false);	//Enemies start disabled
-	modules[9] =	blocks =		new ModuleBlocks(false);	//Enemies start disabled
+	
+	modules[5] =	scene =			new ModuleScene(false);		
+	modules[6] =	sceneWin =		new SceneWin(false);
+	modules[7] =	player =		new ModulePlayer(false);	
+	modules[8] =	particles =		new ModuleParticles(true);
+	modules[9] =	enemies =		new ModuleEnemies(false);	
+	modules[10] =	blocks =		new ModuleBlocks(false);	
 
-	modules[10] =	collisions =	new ModuleCollisions(true);
-	modules[11] =	fade =			new ModuleFadeToBlack(true);
-	modules[12] =	fonts =			new ModuleFonts(true);
-	modules[13] =	render =		new ModuleRender(true);
+	modules[11] =	collisions =	new ModuleCollisions(true);
+	modules[12] =	fade =			new ModuleFadeToBlack(true);
+	modules[13] =	fonts =			new ModuleFonts(true);
+	modules[14] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()

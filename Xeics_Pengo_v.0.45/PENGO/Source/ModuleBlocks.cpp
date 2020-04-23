@@ -56,7 +56,7 @@ bool ModuleBlocks::Start()
 
 	for (int i = 32; i < 272; i+=16)
 	{
-		/*if(i==64){}
+		if(i==64){}
 		else {
 			collider = App->collisions->AddCollider({ 24, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 		}
@@ -91,7 +91,7 @@ bool ModuleBlocks::Start()
 		if (i == 32 || i == 64 || i == 160) {}
 		else {
 			collider = App->collisions->AddCollider({ 184, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-		}*/
+		}
 		if (i == 80) {
 			collider = App->collisions->AddCollider({ 200, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 		}
@@ -195,7 +195,7 @@ update_status ModuleBlocks::PostUpdate()
 	
 	for (int i = 32; i < 272; i+=16)
 	{
-		/*if(i==64){}
+		if(i==64){}
 		else {
 			App->render->Blit(texture, 24, i, &rect);
 		}
@@ -230,7 +230,7 @@ update_status ModuleBlocks::PostUpdate()
 		if (i == 32 || i == 64 || i == 160) {}
 		else {
 			App->render->Blit(texture, 184, i, &rect);
-		}*/
+		}
 		if (i == 80) {
 			App->render->Blit(texture, 200, i, &rect);
 		}

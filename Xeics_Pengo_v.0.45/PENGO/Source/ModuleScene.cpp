@@ -80,7 +80,7 @@ bool ModuleScene::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 24, 64);
+	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 24, 64);
 
 	//blocks 
 	//App->blocks->AddBlock(BLOCK_TYPE::NORMAL, 200, 200);
@@ -89,13 +89,26 @@ bool ModuleScene::Start()
 	App->enemies->Enable();
 	App->blocks->Enable();
 
+
+	enemiesAlive = 1;
+
+
 	return ret;
 }
 
 update_status ModuleScene::Update()
 {
-	//App->render->camera.x += 3;
 	
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		enemiesAlive = 0;
+	}
+
+
+	if (enemiesAlive == 0)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneWin, 60);
+	}
 	
 
 

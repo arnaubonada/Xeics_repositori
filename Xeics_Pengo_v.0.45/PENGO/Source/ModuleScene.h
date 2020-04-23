@@ -71,7 +71,7 @@ public:
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
 	SDL_Rect pYellow, pRed;
 
-	int lifecount;
+	uint enemiesAlive;
 	// The sprite rectangle for the ground
 	//SDL_Texture* starsTexture = nullptr;
 };

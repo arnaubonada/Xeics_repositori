@@ -20,7 +20,7 @@
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 
-	
+
 
 	// move up
 	upAnim2.PushBack({ 64, 0, 16, 16 });
@@ -90,7 +90,7 @@ bool ModulePlayer::Start()
 
 	position.x = 104;
 	position.y = 128;
-	
+
 
 	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
@@ -98,7 +98,7 @@ bool ModulePlayer::Start()
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
 	destroyed = false;
 
-	
+
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
@@ -108,6 +108,10 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+
+	if (k == 16) {
+		k = 0;
+	}
 
 	switch (opcio)
 	{
@@ -122,7 +126,7 @@ update_status ModulePlayer::Update()
 
 	case 'r':
 		currentAnimation = &rightAnim2;
-		break;	
+		break;
 	case 'd':
 		currentAnimation = &downAnim2;
 		break;
@@ -136,60 +140,123 @@ update_status ModulePlayer::Update()
 		break;
 	}
 
-	
-	if (!destroyed) {
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		{
-			if (currentAnimation != &leftAnim)
+	if (k == 0) {
+		if (!destroyed) {
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
-				position.x -= move;
-				opcio = 'l';
-
-			}
-		}
-		else {
-
-			if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-			{
-				if (currentAnimation != &rightAnim)
+				if (currentAnimation != &leftAnim)
 				{
-					position.x += move;
-					opcio = 'r';
-
-
+					position.x -= move;
+					opcio = 'l';
+					k++;
 				}
 			}
 			else {
-				if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
-					if (currentAnimation != &downAnim)
+					if (currentAnimation != &rightAnim)
 					{
-						position.y += move;
-						opcio = 'd';
+						position.x += move;
+						opcio = 'r';
+						k++;
 
 
 					}
 				}
-
 				else {
-					if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 					{
-						if (currentAnimation != &upAnim)
+						if (currentAnimation != &downAnim)
 						{
-							position.y -= move;
-							opcio = 'u';
+							position.y += move;
+							opcio = 'd';
+							k++;
 
 
 						}
 					}
+
+					else {
+						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+						{
+							if (currentAnimation != &upAnim)
+							{
+								position.y -= move;
+								opcio = 'u';
+
+								k++;
+
+							}
+						}
+					}
+
 				}
 
+
 			}
+		}
+	}
+	else {
+
+
+		if (!destroyed) {
+
+			if (opcio == 'l')
+			{
+				position.x -= move;
+				opcio = 'l';
+				k++;
+
+			}
+
+			else {
+
+				{
+					if (opcio == 'r')
+					{
+						position.x += move;
+						opcio = 'r';
+						k++;
+
+
+					}
+
+					else {
+
+						if (opcio == 'd')
+						{
+							position.y += move;
+							opcio = 'd';
+							k++;
+
+
+						}
+
+
+						else {
+
+							if (opcio == 'u')
+							{
+								position.y -= move;
+								opcio = 'u';
+
+								k++;
+
+							}
+						}
+
+
+					}
+
+
+				}
+			}
+
 
 
 		}
 	}
-	
 	collider->SetPos(position.x, position.y);
 
 	currentAnimation->Update();
@@ -219,7 +286,7 @@ update_status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(104, 0, whiteFont, "20000");
 	App->fonts->BlitText(152, 0, blueFont, "2p");
 	App->fonts->BlitText(208, 0, whiteFont, "0");
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -281,50 +348,50 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 
 
-		//if (c1 == collider && opcio == 'l')
-		//{
-		//
-		//	position.x += move;
-		//	//collidatoL = true;
+	//if (c1 == collider && opcio == 'l')
+	//{
+	//
+	//	position.x += move;
+	//	//collidatoL = true;
 
-		//}
-
-
-		//if (c1 == collider && opcio == 'r')
-		//{
-
-		//	position.x -= move;
-		//	//collidatoR = true;
-		//}
+	//}
 
 
-		//if (c1 == collider && opcio == 'd')
-		//{
+	//if (c1 == collider && opcio == 'r')
+	//{
 
-		//	position.y -= move;
-		//	//collidatoD = true;
-
-		//}
-
-
-		//if (c1 == collider && opcio == 'u')
-		//{
-		//	position.y += move;
-		//	//collidatoU = true;
-
-		//}
-
-	
-		//collider->SetPos(position.x, position.y);
+	//	position.x -= move;
+	//	//collidatoR = true;
+	//}
 
 
-		
-	
-		//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
+	//if (c1 == collider && opcio == 'd')
+	//{
 
-		//App->audio->PlayFx(explosionFx);
-		//destroyed = true;
-	
+	//	position.y -= move;
+	//	//collidatoD = true;
+
+	//}
+
+
+	//if (c1 == collider && opcio == 'u')
+	//{
+	//	position.y += move;
+	//	//collidatoU = true;
+
+	//}
+
+
+	//collider->SetPos(position.x, position.y);
+
+
+
+
+	//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
+
+	//App->audio->PlayFx(explosionFx);
+	//destroyed = true;
+
 }
 
 //void ModulePlayer::OnCollision2(Collider* c1, Collider* c2)
