@@ -57,6 +57,8 @@ update_status SceneIntro::Update()
 // Update: draw background
 update_status SceneIntro::PostUpdate()
 {
+	
+
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		contador++;
