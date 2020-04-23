@@ -69,12 +69,14 @@ public:
 	SDL_Texture* blTexture = nullptr;
 
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
-	SDL_Rect pYellow, pRed;
+	SDL_Rect pYellow, pRed, rosita;
 
 	uint enemiesAlive;
 	// The sprite rectangle for the ground
 	//SDL_Texture* starsTexture = nullptr;
 	bool rep = true;
+
+	uint miss = 0;
 };
 
 #endif

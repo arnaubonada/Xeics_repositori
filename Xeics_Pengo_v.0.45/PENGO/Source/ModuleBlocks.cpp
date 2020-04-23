@@ -93,9 +93,7 @@ bool ModuleBlocks::Start()
 			else {
 				collider = App->collisions->AddCollider({ 184, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 			}
-			if (i == 80) {
-				collider = App->collisions->AddCollider({ 200, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
-			}
+			
 		}
 	}
 	
@@ -237,9 +235,7 @@ update_status ModuleBlocks::PostUpdate()
 		else {
 			App->render->Blit(texture, 184, i, &rect);
 		}
-		if (i == 80) {
-			App->render->Blit(texture, 200, i, &rect);
-		}
+		
 	}
 	
 	

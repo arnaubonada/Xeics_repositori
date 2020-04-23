@@ -9,6 +9,7 @@
 #include "SceneIntro.h"
 #include "ModuleScene.h"
 #include "SceneWin.h"
+#include "SceneLose.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
@@ -32,15 +33,16 @@ Application::Application()
 	
 	modules[5] =	scene =			new ModuleScene(false);		
 	modules[6] =	sceneWin =		new SceneWin(false);
-	modules[7] =	player =		new ModulePlayer(false);	
-	modules[8] =	particles =		new ModuleParticles(true);
-	modules[9] =	enemies =		new ModuleEnemies(false);	
-	modules[10] =	blocks =		new ModuleBlocks(false);	
+	modules[7] =	sceneLose =		new SceneLose(false);
+	modules[8] =	player =		new ModulePlayer(false);	
+	modules[9] =	particles =		new ModuleParticles(true);
+	modules[10] =	enemies =		new ModuleEnemies(false);	
+	modules[11] =	blocks =		new ModuleBlocks(false);	
 
-	modules[11] =	collisions =	new ModuleCollisions(true);
-	modules[12] =	fade =			new ModuleFadeToBlack(true);
-	modules[13] =	fonts =			new ModuleFonts(true);
-	modules[14] =	render =		new ModuleRender(true);
+	modules[12] =	collisions =	new ModuleCollisions(true);
+	modules[13] =	fade =			new ModuleFadeToBlack(true);
+	modules[14] =	fonts =			new ModuleFonts(true);
+	modules[15] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()

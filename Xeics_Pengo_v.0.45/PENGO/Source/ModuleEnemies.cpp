@@ -88,10 +88,11 @@ bool ModuleEnemies::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Characters.png");
+	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
 	currentAnim = &snoDownAnim;
 
-	position.x = 8;
-	position.y = 32;
+	position.x = 168;
+	position.y = 64;
 
 
 	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
@@ -272,6 +273,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 		if (c2->type == Collider::Type::PLAYER)
 		{
+			App->audio->PlayFx(snobeeFx);
 			destroyedEnemy = true;
 
 

@@ -20,6 +20,11 @@ as a game which it’s playing field is a maze, where the player has to act quic
 to escape and defeat monsters (Sno-Bees), solve the level within a time limit and 
 with the highest score possible.
 
+-Objective:
+In this level, the player has to break the Snobee egg which is located in a position of the map. 
+There is a Snobee watching over his egg. The player must avoid the enemy choosing the best way.
+
+
 -Game Controls:
 A(move left)
 D(move right)
@@ -28,5 +33,12 @@ S(move down)
 
 Space(Jump to first level)
 Esc(close application)
+
+God Mode:
+F1(display collisions)
+F2(instant win)
+F3(instant lose)
+
+
 
 

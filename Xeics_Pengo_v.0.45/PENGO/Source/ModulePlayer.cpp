@@ -258,7 +258,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 	collider->SetPos(position.x, position.y);
+	if (position.x == 104 && position.y == 32) {
 
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneWin, 60);
+	}
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
 }

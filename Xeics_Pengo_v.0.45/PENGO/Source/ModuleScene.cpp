@@ -21,7 +21,7 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 	//noBlocks = SDL_Rect{ 50,50,16,16 }; blocks = SDL_Rect{ 708,0,16,16 }; pengo = SDL_Rect{ 0,0,16,16 }; snobees = SDL_Rect{ 0,160,16,16 };
 
 	pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
-
+	rosita = SDL_Rect{ 90,82,8,8 };
 	//pmatriux = 0;
 	//pmatriuy = 0;
 
@@ -108,6 +108,12 @@ update_status ModuleScene::Update()
 		enemiesAlive = 0;
 	}
 
+	if (App->input->keys[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->lifes = 0;
+		App->player->destroyed = true;
+
+	}
 
 	if (enemiesAlive == 0)
 	{
@@ -154,13 +160,17 @@ update_status ModuleScene::PostUpdate()
 	}
 	else if (App->player->lifes == 0 && App->player->destroyed)
 	{
-		App->sceneIntro->contador = 3;
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);		
+		
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);	
+		
 	}
 
 
 
 	App->render->Blit(scTexture, 56, 280, &pYellow);
+
+
+	App->render->Blit(scTexture, 108, 36, &rosita);
 
 	
 

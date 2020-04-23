@@ -78,8 +78,7 @@ public:
 
 
 	// Sound effects indices
-	uint laserFx = 0;
-	uint explosionFx = 0;
+	uint snobeeFx = 0;
 
 	int j = 0;
 
