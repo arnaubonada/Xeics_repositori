@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
+
 #include "SDL/include/SDL_scancode.h"
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
@@ -41,7 +42,7 @@ update_status SceneIntro::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 	}
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 

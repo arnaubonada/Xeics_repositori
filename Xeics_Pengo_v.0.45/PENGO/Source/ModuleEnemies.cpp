@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleCollisions.h"
 
 #include "Enemy.h"
 #include "Enemy_SnoBee.h"
@@ -20,13 +21,14 @@ ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 
 ModuleEnemies::~ModuleEnemies()
 {
-
+	
 }
 
 bool ModuleEnemies::Start()
 {
 	texture = App->textures->Load("Assets/Characters.png");
 	enemyDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
+
 
 	return true;
 }
@@ -87,6 +89,14 @@ bool ModuleEnemies::CleanUp()
 	}
 
 	return true;
+}
+
+int ModuleEnemies::RandomDirection(){
+
+	srand(time(NULL));
+	direction = rand() % 4;
+	
+	return direction;
 }
 
 bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
@@ -174,25 +184,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
+			
+			if (c2->type == Collider::Type::PLAYER) {
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
 		}
 	}
 }
 
-void ModuleEnemies::OnCollision2(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
-		{
-			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
-
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
-		}
-	}
-}

@@ -40,10 +40,6 @@ void Module::OnCollision(Collider* c1, Collider* c2)
 
 }
 
-void Module::OnCollision2(Collider* c1, Collider* c2)
-{
-
-}
 
 void Module::Enable()
 {

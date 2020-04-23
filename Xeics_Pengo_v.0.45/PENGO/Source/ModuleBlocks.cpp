@@ -34,7 +34,7 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 	//position.y = 70;
 
 	blockAnim.PushBack({ 708, 0, 16, 16 });
-
+	blockAnim.speed = 0.1f;
 }
 
 ModuleBlocks::~ModuleBlocks()
@@ -52,10 +52,51 @@ bool ModuleBlocks::Start()
 	currentAnimation = &blockAnim;
 	//blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 
-	positionBlock.x = 72;
-	positionBlock.y = 32;
+	
 
-	collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+	for (int i = 32; i < 272; i+=16)
+	{
+		if(i==64){}
+		else {
+			collider = App->collisions->AddCollider({ 24, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 256) {}
+		else {
+			collider = App->collisions->AddCollider({ 56, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 80 || i == 208) {
+			collider = App->collisions->AddCollider({ 72, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 32 || i == 64 || i == 96 || i == 192 || i == 224 || i == 256) {}
+		else {
+			collider = App->collisions->AddCollider({ 88, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 48 || i == 80 || i == 112 || i == 240) {
+			collider = App->collisions->AddCollider({ 104, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 64 || i == 96 || i == 256) {}
+		else {
+			collider = App->collisions->AddCollider({ 120, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 80 || i == 112 || i == 240) {
+			collider = App->collisions->AddCollider({ 136, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 32 || i == 96 || i == 192 || i == 224 || i == 256) {}
+		else {
+			collider = App->collisions->AddCollider({ 152, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 48 || i == 112 || i == 208) {
+			collider = App->collisions->AddCollider({ 168, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 32 || i == 64 || i == 160) {}
+		else {
+			collider = App->collisions->AddCollider({ 184, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+		if (i == 80) {
+			collider = App->collisions->AddCollider({ 200, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+		}
+	}
+	
 	
 	
 	//App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
@@ -136,8 +177,8 @@ update_status ModuleBlocks::Update()
 
 	//HandleBlockDespawn();
 
-
-	//collider->SetPos(positionBlock.x, positionBlock.y);
+	currentAnimation = &blockAnim;
+	
 
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
@@ -150,7 +191,52 @@ update_status ModuleBlocks::PostUpdate()
 		if (blocks[i] != nullptr)
 			blocks[i]->Draw();
 	}*/
-
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	
+	for (int i = 32; i < 272; i+=16)
+	{
+		if(i==64){}
+		else {
+			App->render->Blit(texture, 24, i, &rect);
+		}
+		if (i == 256) {}
+		else {
+			App->render->Blit(texture, 56, i, &rect);
+		}
+		if (i == 80 || i == 208) {
+			App->render->Blit(texture, 72, i, &rect);
+		}
+		if (i == 32 || i == 64 || i == 96 || i == 192 || i == 224 || i == 256) {}
+		else {
+			App->render->Blit(texture, 88, i, &rect);
+		}
+		if (i == 48 || i == 80 || i == 112 || i == 240) {
+			App->render->Blit(texture, 104, i, &rect);
+		}
+		if (i == 64 || i == 96 || i == 256) {}
+		else {
+			App->render->Blit(texture, 120, i, &rect);
+		}
+		if (i == 80 || i == 112 || i == 240) {
+			App->render->Blit(texture, 136, i, &rect);
+		}
+		if (i == 32 || i == 96 || i == 192 || i == 224 || i == 256) {}
+		else {
+			App->render->Blit(texture, 152, i, &rect);
+		}
+		if (i == 48 || i == 112 || i == 208) {
+			App->render->Blit(texture, 168, i, &rect);
+		}
+		if (i == 32 || i == 64 || i == 160) {}
+		else {
+			App->render->Blit(texture, 184, i, &rect);
+		}
+		if (i == 80) {
+			App->render->Blit(texture, 200, i, &rect);
+		}
+	}
+	
+	
 	return update_status::UPDATE_CONTINUE;
 }
 

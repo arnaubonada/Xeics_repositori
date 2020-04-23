@@ -60,7 +60,7 @@ protected:
 	iPoint spawnPos;
 
 
-	//Animation bnormal;
+	Animation bnormal;
 
 
 };

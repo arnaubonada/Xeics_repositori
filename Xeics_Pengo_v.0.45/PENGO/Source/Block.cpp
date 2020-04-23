@@ -18,8 +18,11 @@ Block::Block(int x, int y) : position(x, y)
 	/*position.x = 70;
 	position.y = 70;*/
 
-	//bnormal.PushBack({ 708, 0, 16, 16 });
-	//currentAnim = &bnormal;
+	bnormal.PushBack({ 708, 0, 16, 16 });
+	bnormal.speed = 0.1f;
+	currentAnim = &bnormal;
+
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 
 }
 

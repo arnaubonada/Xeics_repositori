@@ -57,17 +57,21 @@ public:
 
 public:
 
+	Collider* rightWall = nullptr;
+	Collider* leftWall = nullptr;
+	Collider* topWall = nullptr;
+	Collider* bottomWall = nullptr;
+
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* scTexture = nullptr;
 	SDL_Texture* chTexture = nullptr;
-	SDL_Texture* segaTexture = nullptr;
 	SDL_Texture* blTexture = nullptr;
 
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
-	SDL_Rect A, C, T, P, one, oneblue,twoblue, pYellow, pRed, zero, Hblue, Iblue;
+	SDL_Rect pYellow, pRed;
 
-
+	int lifecount;
 	// The sprite rectangle for the ground
 	//SDL_Texture* starsTexture = nullptr;
 };

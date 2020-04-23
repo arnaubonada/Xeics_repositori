@@ -89,8 +89,6 @@ update_status ModuleCollisions::PreUpdate()
 				for (uint i = 0; i < MAX_LISTENERS; ++i)
 					if (c2->listeners[i] != nullptr) c2->listeners[i]->OnCollision(c2, c1);
 
-				for (uint i = 0; i < MAX_LISTENERS; ++i)
-					if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision2(c1, c2);
 			}
 		}
 	}

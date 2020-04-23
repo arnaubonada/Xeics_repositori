@@ -62,6 +62,8 @@ public:
 	Animation downAnim2;
 	Animation leftAnim2;
 	Animation rightAnim2;
+
+	Animation deadAnim;
 	
 	// The player's collider
 	Collider* collider = nullptr;
@@ -72,9 +74,16 @@ public:
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	//uint destroyedCountdown = 120;
 
+	uint score = 000;
+	int whiteFont=-1;
+	int blueFont=-1;
+	char scoreText[10] = { "\0" };
+
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;
+
+	int lifes = 3;
 
 };
 

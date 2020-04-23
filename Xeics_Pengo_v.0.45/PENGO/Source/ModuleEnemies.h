@@ -55,7 +55,6 @@ public:
 	// Called when an enemi collider hits another collider
 	// The enemy is destroyed and an explosion particle is fired
 	void OnCollision(Collider* c1, Collider* c2) override;
-	void OnCollision2(Collider* c1, Collider* c2) override;
 
 	// Add an enemy into the queue to be spawned later
 	bool AddEnemy(ENEMY_TYPE type, int x, int y);
@@ -65,6 +64,8 @@ public:
 
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
+
+	int RandomDirection();
 
 private:
 	// Spawns a new enemy using the data from the queue
@@ -81,6 +82,8 @@ private:
 
 	// The audio fx for destroying an enemy
 	int enemyDestroyedFx = 0;
+
+	int direction;
 };
 
 #endif // __MODULE_ENEMIES_H__

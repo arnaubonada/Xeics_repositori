@@ -54,10 +54,17 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	// TODO 1: Finish storing font data
 
 	// totalLength ---	length of the lookup table
+	App->textures->GetTextureSize(font.texture, font.char_w, font.char_h);
+	// totalLength ---	length of the lookup table
+	font.totalLength = strlen(characters);
 	// table ---------  All characters displayed in the same order as the texture
+	strcpy_s(fonts[id].table, characters);
 	// columns -------  Amount of chars per row of the texture
+	font.columns = fonts[id].totalLength / rows;
 	// char_w --------	Width of each character
+	font.char_w /= fonts[id].totalLength / rows;
 	// char_h --------	Height of each character
+	font.char_h /= rows;
 
 	LOG("Successfully loaded BMP font from %s", texture_path);
 
@@ -92,13 +99,24 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 	for(uint i = 0; i < len; ++i)
 	{
 		// TODO 2: Find the character in the table, its position in the texture and then Blit
+		uint charIndex = 0;
+		// TODO 2: Find the character in the table, its position in the texture and then Blit
+		for (uint j = 0; j < font->totalLength; ++j)
+		{
+			if (font->table[j] == text[i])
+			{
+				charIndex = j;
+				break;
+			}
+		}
 
-		// 1 - Find the location of the current character in the lookup table
+		// Retrieve the position of the current character in the sprite
+		spriteRect.x = spriteRect.w * (charIndex % font->columns);
+		spriteRect.y = spriteRect.h * (charIndex / font->columns);
 
-		// 2 - Retrieve the position of the current character in the sprite
+		App->render->Blit(font->texture, x, y, &spriteRect, 0.0f, false);
 
-		// 3 - Blit the character at its proper position
-
-		// 4 - Advance the position where we blit the next character
+		// Advance the position where we blit the next character
+		x += spriteRect.w;
 	}
 }

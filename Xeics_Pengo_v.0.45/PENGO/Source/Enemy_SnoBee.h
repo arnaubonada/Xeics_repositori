@@ -26,9 +26,11 @@ private:
 	// The original spawning position. The wave will be calculated from that
 	int spawn_y = 0;
 
-	int direction;
 	
 
+	int moveE = 1;
+	
+	void OnCollision(Collider* c2) override;
 	// The total height of the wave
 	int waveHeight = 15;
 
