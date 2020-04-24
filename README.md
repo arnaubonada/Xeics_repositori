@@ -26,17 +26,25 @@ There is a Snobee watching over his egg. The player must avoid the enemy choosin
 
 
 -Game Controls:
+
 A(move left)
+
 D(move right)
+
 W(move up)
+
 S(move down)
 
 Space(Jump to first level)
+
 Esc(close application)
 
 God Mode:
+
 F1(display collisions)
+
 F2(instant win)
+
 F3(instant lose)
 
 
