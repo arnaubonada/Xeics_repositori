@@ -1,4 +1,4 @@
-PENGO (by Xeics)
+PENGO (by *Xeics*)
 
 Github link: https://github.com/arnaubonada/Xeics_repositori
 
@@ -39,7 +39,7 @@ Space(Jump to first level)
 
 Esc(close application)
 
-God Mode:
+*God Mode*:
 
 F1(display collisions)
 
