@@ -1,3 +1,6 @@
+#ifndef __TILES_H__
+#define __TILES_H__
+
 
 #include "Application.h"
 #include "ModuleAudio.h"
@@ -5,13 +8,13 @@
 
 #include "Globals.h"
 
-const int LEVEL_WIDTH = 1280;
-const int LEVEL_HEIGHT = 960;
+const int LEVEL_WIDTH = 1280;     //Mirar si son les mides correctes
+const int LEVEL_HEIGHT = 960;	  //Mirar si son les mides correctes
 
 const int TILE_WIDTH = 8;
 const int TILE_HEIGHT = 8;
 const int TOTAL_TILES = 195;
-const int TOTAL_TILE_SPRITES = 12;
+const int TOTAL_TILE_SPRITES = 14;
 
 const int TILE_NOBLOCK = 0;
 const int TILE_BLOCK = 1;
@@ -36,7 +39,7 @@ public:
 	Tile(int x, int y, int tileType);
 
 	//Shows the tile
-	void render(SDL_Rect& camera);
+	//void render(SDL_Rect& camera);
 
 	//Get the tile type
 	int getType();
@@ -68,7 +71,7 @@ public:
 	Dot();
 
 	//Takes key presses and adjusts the dot's velocity
-	//void handleEvent(SDL_Event& e);				//S'ha d'incluir #include <SDL_events.h>
+	void handleEvent(SDL_Event& e);
 
 
 	//Moves the dot and check collision against tiles
@@ -103,3 +106,16 @@ bool touchesWall(SDL_Rect box, Tile* tiles[]);
 
 //Sets tiles from tile map
 bool setTiles(Tile* tiles[]);
+
+
+
+
+
+
+
+
+
+
+
+
+#endif // __TILES_H__
