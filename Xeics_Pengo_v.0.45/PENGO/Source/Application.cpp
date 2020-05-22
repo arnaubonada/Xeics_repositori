@@ -14,6 +14,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleDebugInfo.h"
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 #include "ModuleBlocks.h"
@@ -42,7 +43,8 @@ Application::Application()
 	modules[12] =	collisions =	new ModuleCollisions(true);
 	modules[13] =	fade =			new ModuleFadeToBlack(true);
 	modules[14] =	fonts =			new ModuleFonts(true);
-	modules[15] =	render =		new ModuleRender(true);
+	modules[15] =	debugInfo =		new ModuleDebugInfo(true);
+	modules[16] =	render =		new ModuleRender(true);
 }
 
 Application::~Application()

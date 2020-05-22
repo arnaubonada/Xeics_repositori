@@ -4,10 +4,14 @@
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput(bool startEnabled) : Module(startEnabled)
-{}
+{
+	name = "input";
+}
 
 ModuleInput::~ModuleInput()
-{}
+{
+
+}
 
 bool ModuleInput::Init()
 {

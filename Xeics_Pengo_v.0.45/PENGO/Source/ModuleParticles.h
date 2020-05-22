@@ -48,12 +48,16 @@ public:
 	// Param delay		- Delay time from the moment the function is called until the particle is displayed in screen
 	void AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType = Collider::Type::NONE, uint delay = 0);
 
+	inline uint GetParticlesCount() const { return particlesCount; };
+
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };
+
+	uint particlesCount = 0;
 
 public:
 	//Template particle for an explosion

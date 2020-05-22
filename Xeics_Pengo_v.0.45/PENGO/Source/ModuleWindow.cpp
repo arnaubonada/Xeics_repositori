@@ -7,10 +7,14 @@
 
 
 ModuleWindow::ModuleWindow(bool startEnabled) : Module(startEnabled)
-{}
+{
+	name = "window";
+}
 
 ModuleWindow::~ModuleWindow()
-{}
+{
+
+}
 
 bool ModuleWindow::Init()
 {

@@ -18,6 +18,8 @@
 
 ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 {
+	name = "level 1";
+
 	//noBlocks = SDL_Rect{ 50,50,16,16 }; blocks = SDL_Rect{ 708,0,16,16 }; pengo = SDL_Rect{ 0,0,16,16 }; snobees = SDL_Rect{ 0,160,16,16 };
 
 	pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };

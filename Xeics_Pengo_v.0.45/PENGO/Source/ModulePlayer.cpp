@@ -19,8 +19,7 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-
-
+	name = "player";
 
 	// move up
 	upAnim2.PushBack({ 64, 0, 16, 16 });
@@ -291,6 +290,34 @@ update_status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(208, 0, whiteFont, "0");
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+
+bool ModulePlayer::CleanUp()
+{
+	activeTextures = activeColliders = activeFonts = activeFx = 0;
+
+	// TODO 1: Remove ALL remaining resources. Update resource count properly
+
+	App->textures->Unload(texture);
+	--totalTextures;
+
+	App->audio->UnloadFx(laserFx);
+	--totalFx;
+
+	App->audio->UnloadFx(explosionFx);
+	--totalFx;
+
+	App->collisions->RemoveCollider(collider);
+	--totalColliders;
+
+	App->fonts->UnLoad(whiteFont);
+	--totalFonts;
+	
+	App->fonts->UnLoad(blueFont);
+	--totalFonts;
+
+	return true;
 }
 
 

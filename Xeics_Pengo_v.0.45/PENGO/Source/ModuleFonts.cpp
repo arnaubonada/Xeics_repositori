@@ -8,7 +8,7 @@
 
 ModuleFonts::ModuleFonts(bool isEnabled) : Module(isEnabled)
 {
-
+	name = "fonts";
 }
 
 ModuleFonts::~ModuleFonts()
@@ -66,6 +66,8 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 	// char_h --------	Height of each character
 	font.char_h /= rows;
 
+	++fontsCount;
+
 	LOG("Successfully loaded BMP font from %s", texture_path);
 
 	return id;
@@ -77,6 +79,8 @@ void ModuleFonts::UnLoad(int font_id)
 	{
 		App->textures->Unload(fonts[font_id].texture);
 		fonts[font_id].texture = nullptr;
+		--fontsCount;
+
 		LOG("Successfully Unloaded BMP font_id %d", font_id);
 	}
 }

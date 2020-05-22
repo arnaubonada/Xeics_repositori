@@ -22,7 +22,7 @@
 
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
-
+	name = "enemies";
 
 	// move up
 	snoUpAnim.PushBack({ 64, 160, 16, 16 });

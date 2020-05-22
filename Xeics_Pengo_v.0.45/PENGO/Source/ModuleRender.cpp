@@ -11,7 +11,7 @@
 
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
-
+	name = "render";
 }
 
 ModuleRender::~ModuleRender()

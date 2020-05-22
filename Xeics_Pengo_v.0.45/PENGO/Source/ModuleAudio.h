@@ -43,6 +43,10 @@ public:
 	// Receives an index from the sound fx array
 	bool PlayFx(uint index, int repeat = 0);
 
+	bool UnloadFx(uint index);
+
+	inline uint GetFxCount() const { return fxCount; };
+
 private:
 	// The current playing music
 	Mix_Music*	music = nullptr;
@@ -50,6 +54,8 @@ private:
 	// An array of all the loaded sound effects
 	// Allows us to keep track of all sound fx and handle them through indices
 	Mix_Chunk* soundFx[MAX_FX] = { nullptr };
+
+	uint fxCount = 0;
 };
 
 #endif // __MODULE_AUDIO_H__
