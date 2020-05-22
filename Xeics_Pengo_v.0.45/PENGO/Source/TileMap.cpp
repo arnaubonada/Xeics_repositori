@@ -34,7 +34,9 @@ void TileMap::level1() {
 
 	
 }
-void TileMap::LoadMap()
+void TileMap::LoadMap() {
+	//Carregar el nivell que toqui
+}
 
 void TileMap::DrawMap() {
 	int type = 0;
@@ -45,7 +47,14 @@ void TileMap::DrawMap() {
 	}
 	switch (type)
 	{
-
+	case NONE:
+		//Despintar
+	case BLOCK:
+		//Pintar block
+	case WALL:
+		//Pintar wall
+	case DIAMOND:
+		//Pintar diamond
 	default:
 		break;
 	}
