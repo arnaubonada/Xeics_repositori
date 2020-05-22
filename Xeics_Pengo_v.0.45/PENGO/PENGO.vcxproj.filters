@@ -117,6 +117,9 @@
     <ClCompile Include="Source\SceneLose.cpp">
       <Filter>Archivos de recursos\Modules\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="Source\TileMap.cpp">
+      <Filter>Archivos de recursos\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Source\SceneLose.h">
       <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TileMap.h">
+      <Filter>Archivos de recursos\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
