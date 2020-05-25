@@ -85,6 +85,19 @@ void ModuleTileMap::DrawMap()
 	
 }
 
+bool ModuleTileMap::isWalkable(int arr[17][15])
+{
+	bool valid = false;
+	for (int i = 0; i < 17; i++) {
+		for (int j = 0; j < 15; j++) {
+
+		}
+	}
+
+	return valid;
+}
+
+
 //update_status ModuleTileMap::Update()
 //{
 //	DrawMap();

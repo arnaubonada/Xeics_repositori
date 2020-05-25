@@ -40,9 +40,8 @@ public:
 
 	void DrawMap();
 
-	
-	void drawBrick(int h, int w);
-	void drawDiamond(int h, int w);
+	bool isWalkable(int arr[17][15]);
+
 
 	//// Called at the middle of the application loop
 	//// Updates the scene's background animations
