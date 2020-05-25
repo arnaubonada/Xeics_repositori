@@ -11,6 +11,8 @@
 #include "ModuleInput.h"
 #include "ModuleBlocks.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleTileMap.h"
+
 
 #include"SceneIntro.h" 
 
@@ -141,6 +143,9 @@ update_status ModuleScene::PostUpdate()
 
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 24, NULL);
+
+	App->tilemap->DrawMap();
+
 
 	if (App->player->lifes == 3) {
 		App->render->Blit(scTexture, 0, 8, &pRed);

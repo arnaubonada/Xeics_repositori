@@ -24,12 +24,9 @@ public:
 	void DrawMap();
 	
 public:
+
 	int _map[15][13];
 	
-
-
-
-
 };
 
 #endif // __TILEMAP_H__

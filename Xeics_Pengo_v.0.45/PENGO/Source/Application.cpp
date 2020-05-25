@@ -45,8 +45,9 @@ Application::Application()
 	modules[13] =	fade =			new ModuleFadeToBlack(true);
 	modules[14] =	fonts =			new ModuleFonts(true);
 	modules[15] =	debugInfo =		new ModuleDebugInfo(true);
-	modules[16] =	render =		new ModuleRender(true);
-	modules[17] =	tilemap =		new ModuleTileMap(false);
+	modules[16] =	tilemap =		new ModuleTileMap(true);
+	modules[17] =	render =		new ModuleRender(true);
+
 }
 
 Application::~Application()

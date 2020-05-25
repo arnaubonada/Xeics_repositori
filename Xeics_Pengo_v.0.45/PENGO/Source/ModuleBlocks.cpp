@@ -55,7 +55,7 @@ bool ModuleBlocks::Start()
 	
 	if (App->scene->rep) {
 
-		for (int i = 32; i < 272; i += 16)
+		/*for (int i = 32; i < 272; i += 16)
 		{
 			if (i == 64) {}
 			else {
@@ -94,7 +94,7 @@ bool ModuleBlocks::Start()
 				collider = App->collisions->AddCollider({ 184, i, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 			}
 			
-		}
+		}*/
 	}
 	
 	
@@ -197,7 +197,7 @@ update_status ModuleBlocks::PostUpdate()
 	}*/
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	
-	for (int i = 32; i < 272; i+=16)
+	/*for (int i = 32; i < 272; i+=16)
 	{
 		if(i==64){}
 		else {
@@ -236,7 +236,7 @@ update_status ModuleBlocks::PostUpdate()
 			App->render->Blit(texture, 184, i, &rect);
 		}
 		
-	}
+	}*/
 	
 	
 	return update_status::UPDATE_CONTINUE;
