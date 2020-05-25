@@ -123,6 +123,9 @@
     <ClCompile Include="Source\ModuleDebugInfo.cpp">
       <Filter>Archivos de recursos\Modules\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ModuleTileMap.cpp">
+      <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -213,6 +216,9 @@
       <Filter>Archivos de recursos\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModuleDebugInfo.h">
+      <Filter>Archivos de recursos\Modules\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleTileMap.h">
       <Filter>Archivos de recursos\Modules\Core</Filter>
     </ClInclude>
   </ItemGroup>

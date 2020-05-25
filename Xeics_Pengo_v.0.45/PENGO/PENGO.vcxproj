@@ -40,6 +40,7 @@
     <ClCompile Include="Source\ModuleRender.cpp" />
     <ClCompile Include="Source\ModuleScene.cpp" />
     <ClCompile Include="Source\ModuleTextures.cpp" />
+    <ClCompile Include="Source\ModuleTileMap.cpp" />
     <ClCompile Include="Source\ModuleWindow.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
     <ClCompile Include="Source\Path.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="Source\ModuleRender.h" />
     <ClInclude Include="Source\ModuleScene.h" />
     <ClInclude Include="Source\ModuleTextures.h" />
+    <ClInclude Include="Source\ModuleTileMap.h" />
     <ClInclude Include="Source\ModuleWindow.h" />
     <ClInclude Include="Source\p2Point.h" />
     <ClInclude Include="Source\Particle.h" />

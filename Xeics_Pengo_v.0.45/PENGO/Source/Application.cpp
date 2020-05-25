@@ -18,6 +18,7 @@
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 #include "ModuleBlocks.h"
+#include "ModuleTilemap.h"
 
 
 Application::Application()
@@ -45,6 +46,7 @@ Application::Application()
 	modules[14] =	fonts =			new ModuleFonts(true);
 	modules[15] =	debugInfo =		new ModuleDebugInfo(true);
 	modules[16] =	render =		new ModuleRender(true);
+	modules[17] =	tilemap =		new ModuleTileMap(false);
 }
 
 Application::~Application()

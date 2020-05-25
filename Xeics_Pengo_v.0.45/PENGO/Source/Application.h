@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 17
+#define NUM_MODULES 18
 
 class Module;
 class ModuleWindow;
@@ -25,6 +25,8 @@ class ModuleFonts;
 class ModuleRender;
 
 class ModuleBlocks;
+
+class ModuleTileMap;
 
 class Application
 {
@@ -73,6 +75,8 @@ public:
 	ModuleDebugInfo* debugInfo = nullptr;
 
 	ModuleRender* render = nullptr;
+
+	ModuleTileMap* tilemap = nullptr;
 };
 
 // Global var made extern for Application ---
