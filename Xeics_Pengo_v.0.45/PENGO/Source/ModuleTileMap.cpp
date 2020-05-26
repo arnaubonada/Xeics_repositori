@@ -90,10 +90,10 @@ bool ModuleTileMap::isWalkable(int x, int y)
 {
 	bool valid = false;
 	
-	x = x / 16;
-	y = (y + 24) / 16;
+	x = (x-16)/16;
+	y = (y-32)/16;
 
-	if (tilemap[x][y] == 0)
+	if (lvl1[x][y] == 0)
 	{
 		valid = true;
 	}
