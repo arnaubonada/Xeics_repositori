@@ -3,6 +3,7 @@
 #include "ModuleTileMap.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleCollisions.h"
 
 ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 {
@@ -85,15 +86,18 @@ void ModuleTileMap::DrawMap()
 	
 }
 
-bool ModuleTileMap::isWalkable(int arr[17][15])
+bool ModuleTileMap::isWalkable(int x, int y)
 {
 	bool valid = false;
-	for (int i = 0; i < 17; i++) {
-		for (int j = 0; j < 15; j++) {
+	
+	x = x / 16;
+	y = (y + 24) / 16;
 
-		}
+	if (tilemap[x][y] == 0)
+	{
+		valid = true;
 	}
-
+	
 	return valid;
 }
 

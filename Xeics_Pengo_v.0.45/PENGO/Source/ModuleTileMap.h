@@ -40,7 +40,7 @@ public:
 
 	void DrawMap();
 
-	bool isWalkable(int arr[17][15]);
+	bool isWalkable(int x, int y);
 
 
 	//// Called at the middle of the application loop

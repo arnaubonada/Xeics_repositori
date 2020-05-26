@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleScene.h"
+#include "ModuleTileMap.h"
 
 #include <stdio.h>
 
@@ -141,7 +142,7 @@ update_status ModulePlayer::Update()
 
 	if (k == 0) {
 		if (!destroyed) {
-			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x-16,position.y))
 			{
 				if (currentAnimation != &leftAnim)
 				{
@@ -152,7 +153,7 @@ update_status ModulePlayer::Update()
 			}
 			else {
 
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x + 16, position.y))
 				{
 					if (currentAnimation != &rightAnim)
 					{
@@ -164,7 +165,7 @@ update_status ModulePlayer::Update()
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y + 16))
 					{
 						if (currentAnimation != &downAnim)
 						{
@@ -177,7 +178,7 @@ update_status ModulePlayer::Update()
 					}
 
 					else {
-						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y - 16))
 						{
 							if (currentAnimation != &upAnim)
 							{
