@@ -60,25 +60,31 @@ void ModuleTileMap::DrawMap()
 			//App->render->Blit(Block, destination.x, destination.y, &source);
 			switch (type)
 			{
-			case 0:
+			case TILE_NOBLOCK:
 				App->render->Blit(noBlock, destination.x, destination.y, &source);
 				break;
-			case 1:
+			
+			case TILE_BLOCK:
 				App->render->Blit(Block, destination.x, destination.y, &source);
 				break;
-			case 2:
+			
+			case TILE_BOT_TOP:
 				break;
-			case 3:
+			
+			case TILE_DIAMOND:
 				App->render->Blit(Diamond, destination.x, destination.y, &source);
 				break;
-			case 4:
+			
+			case TILE_CORNER:
 				
 				break;
-			case 5:
+			
+			case TILE_SIDES:
 		
 				break;
+			
 			default:
-				break;
+				break;              //si treiem el break no compila
 			}
 
 		}
@@ -90,8 +96,8 @@ bool ModuleTileMap::isWalkable(int x, int y)
 {
 	bool valid = false;
 	
-	x = (x-16)/16;
-	y = (y-32)/16;
+	x = (x+16)/16;
+	y = (y+24)/16;
 
 	if (lvl1[x][y] == 0)
 	{

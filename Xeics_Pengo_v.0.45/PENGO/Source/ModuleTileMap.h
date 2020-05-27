@@ -11,12 +11,12 @@ struct SDL_Texture;
 
 enum TileType
 {
-	NONE = 0,
-	BLOCK = 1,
-	BOT_TOP = 2,
-	DIAMOND = 3,
-	CORNER=4,
-	SIDES = 5,
+	TILE_NOBLOCK = 0,
+	TILE_BLOCK = 1,
+	TILE_BOT_TOP = 2,
+	TILE_DIAMOND = 3,
+	TILE_CORNER = 4,
+	TILE_SIDES = 5,
 
 	MAX
 };
@@ -35,8 +35,8 @@ public:
 
 	void LoadMap(int arr[17][15]); //inicialitzem el mapa
 	bool Start()override;
-	update_status update();
-	bool cleanUp();
+	//update_status update();
+	//bool cleanUp();
 
 	void DrawMap();
 
@@ -53,8 +53,8 @@ public:
 
 
 
-	char* getLevel(int level);
-	int timer;
+	//char* getLevel(int level);
+	//int timer;
 
 public:
 
