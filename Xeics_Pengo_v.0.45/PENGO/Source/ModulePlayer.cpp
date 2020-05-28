@@ -153,7 +153,7 @@ update_status ModulePlayer::Update()
 			}
 			else {
 
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x + 16, position.y))
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x + 32, position.y))
 				{
 					if (currentAnimation != &rightAnim)
 					{
@@ -165,7 +165,7 @@ update_status ModulePlayer::Update()
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y + 16))
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y + 32))
 					{
 						if (currentAnimation != &downAnim)
 						{
