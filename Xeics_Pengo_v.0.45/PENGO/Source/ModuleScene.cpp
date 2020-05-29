@@ -109,7 +109,7 @@ bool ModuleScene::Start()
 update_status ModuleScene::Update()
 {
 	
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	/*if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		enemiesAlive = 0;
 	}
@@ -119,7 +119,7 @@ update_status ModuleScene::Update()
 		App->player->lifes = 0;
 		App->player->destroyed = true;
 
-	}
+	}*/
 
 	if (enemiesAlive == 0)
 	{

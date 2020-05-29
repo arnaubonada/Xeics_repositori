@@ -26,7 +26,7 @@ ModuleDebugInfo::~ModuleDebugInfo()
 bool ModuleDebugInfo::Start()
 {
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	debugFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
+	debugFont = App->fonts->Load("Assets/rtype_font3.png", lookupTable, 2);
 
 	return true;
 }
@@ -60,9 +60,7 @@ update_status ModuleDebugInfo::Update()
 update_status ModuleDebugInfo::PostUpdate()
 {
 	if (!debugMemLeaks)
-	{
-		App->fonts->BlitText(10, 1, debugFont, "press f2 to open mem leaks debug info");
-	}
+	{}
 	else
 	{
 		App->fonts->BlitText(10, 1, debugFont, "press f2 to close mem leaks debug info");

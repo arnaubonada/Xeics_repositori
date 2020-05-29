@@ -86,6 +86,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Characters.png");
+	++activeTextures; ++totalTextures;
 	currentAnimation = &downAnim;
 
 	position.x = 112;
@@ -97,13 +98,18 @@ bool ModulePlayer::Start()
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
+	++activeColliders; ++totalColliders;
 	destroyed = false;
 
 
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
+	++activeFonts; ++totalFonts;
+
 	blueFont = App->fonts->Load("Assets/blueFont.png", lookupTable, 3);
+	++activeFonts; ++totalFonts;
+
 	return ret;
 }
 
