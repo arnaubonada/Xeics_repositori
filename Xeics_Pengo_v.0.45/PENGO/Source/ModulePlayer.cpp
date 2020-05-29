@@ -142,51 +142,60 @@ update_status ModulePlayer::Update()
 
 	if (rep == 0) {
 		if (!destroyed) {
-			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x-16,position.y))
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
-				if (currentAnimation != &leftAnim)
-				{
-					position.x -= move;
-					opcio = 'l';
-					rep++;
+				opcio = 'l';
+				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
+					
+					if (currentAnimation != &leftAnim)
+					{
+
+						position.x -= move;
+						//opcio = 'l';
+						rep++;
+					}
 				}
 			}
 			else {
 
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x + 16, position.y))
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
-					if (currentAnimation != &rightAnim)
-					{
-						position.x += move;
-						opcio = 'r';
-						rep++;
-
-
+					opcio = 'r';
+					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+						if (currentAnimation != &rightAnim)
+						{
+							position.x += move;
+							rep++;
+						}
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y + 16))
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 					{
-						if (currentAnimation != &downAnim)
-						{
-							position.y += move;
-							opcio = 'd';
-							rep++;
+						opcio = 'd';
 
+						if(App->tilemap->isWalkable(position.x, position.y + 16)){
+							if (currentAnimation != &downAnim)
+							{
+								position.y += move;
+								rep++;
 
+							}
 						}
 					}
 
 					else {
-						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y - 16))
+						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 						{
-							if (currentAnimation != &upAnim)
-							{
-								position.y -= move;
-								opcio = 'u';
+							opcio = 'u';
 
-								rep++;
+							if(App->tilemap->isWalkable(position.x, position.y - 16)){
+								if (currentAnimation != &upAnim)
+								{
+									position.y -= move;
 
+									rep++;
+								}
 							}
 						}
 					}
