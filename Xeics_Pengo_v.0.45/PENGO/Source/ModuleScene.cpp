@@ -142,22 +142,22 @@ update_status ModuleScene::PostUpdate()
 {
 
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 24, NULL);
+	App->render->Blit(bgTexture, 8, 24, NULL);
 
 	App->tilemap->DrawMap();
 
 
 	if (App->player->lifes == 3) {
-		App->render->Blit(scTexture, 0, 8, &pRed);
-		App->render->Blit(scTexture, 16, 8, &pRed);
-		App->render->Blit(scTexture, 32, 8, &pRed);
+		App->render->Blit(scTexture, 8, 8, &pRed);
+		App->render->Blit(scTexture, 24, 8, &pRed);
+		App->render->Blit(scTexture, 40, 8, &pRed);
 	}
 	if (App->player->lifes == 2) {
-		App->render->Blit(scTexture, 0, 8, &pRed);
-		App->render->Blit(scTexture, 16, 8, &pRed);
+		App->render->Blit(scTexture, 8, 8, &pRed);
+		App->render->Blit(scTexture, 24, 8, &pRed);
 	}
 	if (App->player->lifes == 1) {
-		App->render->Blit(scTexture, 0, 8, &pRed);
+		App->render->Blit(scTexture, 8, 8, &pRed);
 	}
 	
 	if (App->player->lifes > 0 && App->player->destroyed)
@@ -174,10 +174,10 @@ update_status ModuleScene::PostUpdate()
 
 
 
-	App->render->Blit(scTexture, 56, 280, &pYellow);
+	App->render->Blit(scTexture, 64, 280, &pYellow);
 
 
-	App->render->Blit(scTexture, 108, 36, &rosita);
+	App->render->Blit(scTexture, 116, 36, &rosita);
 
 	
 

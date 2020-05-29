@@ -91,7 +91,7 @@ bool ModuleEnemies::Start()
 	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
 	currentAnim = &snoDownAnim;
 
-	position.x = 168;
+	position.x = 176;
 	position.y = 64;
 
 

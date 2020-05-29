@@ -55,7 +55,7 @@ void ModuleTileMap::DrawMap()
 		for (int j = 0; j < 15; j++) {
 			type = tilemap[i][j];
 
-			destination.x = -8+j * 16;
+			destination.x = j * 16;
 			destination.y = 16+i * 16;
 			//App->render->Blit(Block, destination.x, destination.y, &source);
 			switch (type)
@@ -95,11 +95,12 @@ void ModuleTileMap::DrawMap()
 bool ModuleTileMap::isWalkable(int x, int y)
 {
 	bool valid = false;
-	
-	x = x/16;
-	y = y/16;
+	int posX;
+	int posY;
+	posX = x/16;
+	posY = (y-16)/16;
 
-	if (lvl1[x][y] == 0)
+	if (lvl1[posY][posX] == 0)
 	{
 		valid = true;
 	}

@@ -88,7 +88,7 @@ bool ModulePlayer::Start()
 	texture = App->textures->Load("Assets/Characters.png");
 	currentAnimation = &downAnim;
 
-	position.x = 104;
+	position.x = 112;
 	position.y = 128;
 
 
@@ -109,8 +109,8 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 
-	if (k == 16) {
-		k = 0;
+	if (rep == 16) {
+		rep = 0;
 	}
 
 	switch (opcio)
@@ -140,7 +140,7 @@ update_status ModulePlayer::Update()
 		break;
 	}
 
-	if (k == 0) {
+	if (rep == 0) {
 		if (!destroyed) {
 			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x-16,position.y))
 			{
@@ -148,30 +148,30 @@ update_status ModulePlayer::Update()
 				{
 					position.x -= move;
 					opcio = 'l';
-					k++;
+					rep++;
 				}
 			}
 			else {
 
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x + 32, position.y))
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x + 16, position.y))
 				{
 					if (currentAnimation != &rightAnim)
 					{
 						position.x += move;
 						opcio = 'r';
-						k++;
+						rep++;
 
 
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y + 32))
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && App->tilemap->isWalkable(position.x, position.y + 16))
 					{
 						if (currentAnimation != &downAnim)
 						{
 							position.y += move;
 							opcio = 'd';
-							k++;
+							rep++;
 
 
 						}
@@ -185,7 +185,7 @@ update_status ModulePlayer::Update()
 								position.y -= move;
 								opcio = 'u';
 
-								k++;
+								rep++;
 
 							}
 						}
@@ -206,7 +206,7 @@ update_status ModulePlayer::Update()
 			{
 				position.x -= move;
 				opcio = 'l';
-				k++;
+				rep++;
 
 			}
 
@@ -217,7 +217,7 @@ update_status ModulePlayer::Update()
 					{
 						position.x += move;
 						opcio = 'r';
-						k++;
+						rep++;
 
 
 					}
@@ -228,7 +228,7 @@ update_status ModulePlayer::Update()
 						{
 							position.y += move;
 							opcio = 'd';
-							k++;
+							rep++;
 
 
 						}
@@ -241,7 +241,7 @@ update_status ModulePlayer::Update()
 								position.y -= move;
 								opcio = 'u';
 
-								k++;
+								rep++;
 
 							}
 						}
@@ -281,14 +281,14 @@ update_status ModulePlayer::PostUpdate()
 	}
 	sprintf_s(scoreText, 10, "%d", score);
 
-	App->fonts->BlitText(64, 0, whiteFont, scoreText);
-	App->fonts->BlitText(136, 280, whiteFont, "© sega 1982");
-	App->fonts->BlitText(8, 280, whiteFont, "act 1");
-	App->fonts->BlitText(8, 0, blueFont, "1p");
-	App->fonts->BlitText(80, 0, blueFont, "hi");
-	App->fonts->BlitText(104, 0, whiteFont, "20000");
-	App->fonts->BlitText(152, 0, blueFont, "2p");
-	App->fonts->BlitText(208, 0, whiteFont, "0");
+	App->fonts->BlitText(72, 0, whiteFont, scoreText);
+	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
+	App->fonts->BlitText(16, 280, whiteFont, "act 1");
+	App->fonts->BlitText(16, 0, blueFont, "1p");
+	App->fonts->BlitText(88, 0, blueFont, "hi");
+	App->fonts->BlitText(112, 0, whiteFont, "20000");
+	App->fonts->BlitText(160, 0, blueFont, "2p");
+	App->fonts->BlitText(216, 0, whiteFont, "0");
 
 	return update_status::UPDATE_CONTINUE;
 }
