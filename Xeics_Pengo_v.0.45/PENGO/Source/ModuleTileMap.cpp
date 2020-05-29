@@ -100,7 +100,7 @@ bool ModuleTileMap::isWalkable(int x, int y)
 	posX = x/16;
 	posY = (y-16)/16;
 
-	if (lvl1[posY][posX] == 0)
+	if (tilemap[posY][posX] == 0)
 	{
 		valid = true;
 	}

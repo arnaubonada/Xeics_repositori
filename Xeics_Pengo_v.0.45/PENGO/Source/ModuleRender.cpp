@@ -45,7 +45,7 @@ bool ModuleRender::Init()
 update_status ModuleRender::PreUpdate()
 {
 
-	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//Set the color used for drawing operations
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
