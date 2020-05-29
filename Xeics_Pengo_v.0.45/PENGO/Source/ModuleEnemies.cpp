@@ -11,6 +11,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleScene.h"
+#include "ModuleTileMap.h"
 
 #include <stdio.h>
 
@@ -93,7 +94,8 @@ bool ModuleEnemies::Start()
 
 	position.x = 176;
 	position.y = 64;
-
+	//position.x = 112;
+	//position.y = 128;
 
 	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
@@ -110,15 +112,24 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::Update()
 {
+
+	longer = rand() % 2;
+
+
 	if (j == 0) {
 		opcio = rand() % 5;
 		j++;
 	}
-	if (j < 17) {
-		j++;
-	}
-	if (j == 17) {
-		j = 0;
+		if (j < 17) {
+			j++;
+		}
+		if (j == 17) {
+			j = 0;
+		}
+
+	if (rep == 16) {
+		rep = 0;
+
 	}
 
 	switch (opcio)
@@ -148,67 +159,134 @@ update_status ModuleEnemies::Update()
 		break;
 	}
 
-
-	if (!destroyedEnemy) {
-		if (opcio == 1)
-		{
-			if (currentAnim != &snoLeftAnim)
+	if (rep == 0) {
+		if (!destroyedEnemy) {
+			if (opcio == 1)
 			{
-				position.x -= move;
-
-				opcio = 1;
-
-			}
-		}
-		else {
-
-			if (opcio == 2)
-			{
-				if (currentAnim != &snoRightAnim)
-				{
-
-					position.x += move;
-
-
-					opcio = 2;
-
-
+				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
+					if (currentAnim != &snoLeftAnim)
+					{
+						position.x -= move;
+						opcio = 1;
+						rep++;
+					}
 				}
 			}
 			else {
-				if (opcio == 3)
+
+				if (opcio == 2)
 				{
-					if (currentAnim != &snoDownAnim)
-					{
-						position.y += move;
-
-
-						opcio = 3;
-
-
-					}
-				}
-
-				else {
-					if (opcio == 4)
-					{
-						if (currentAnim != &snoUpAnim)
+					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+						if (currentAnim != &snoRightAnim)
 						{
-							position.y -= move;
 
-							opcio = 4;
+							position.x += move;
 
 
+							opcio = 2;
+							rep++;
 						}
 					}
 				}
+				else {
+					if (opcio == 3)
+					{
+						if (App->tilemap->isWalkable(position.x, position.y + 16)) {
+							if (currentAnim != &snoDownAnim)
+							{
+								position.y += move;
+
+
+								opcio = 3;
+								rep++;
+							}
+						}
+					}
+
+					else {
+						if (opcio == 4)
+						{
+							if (App->tilemap->isWalkable(position.x, position.y - 16)) {
+								if (currentAnim != &snoUpAnim)
+								{
+									position.y -= move;
+
+									opcio = 4;
+									rep++;
+
+								}
+
+							}
+						}
+					}
+
+				}
+
 
 			}
+		}
+	}
+	else {
+
+
+		if (!destroyedEnemy) {
+
+			if (opcio == 1)
+			{
+				position.x -= move;
+				opcio = 1;
+				rep++;
+
+			}
+
+			else {
+
+				{
+					if (opcio == 2)
+					{
+						position.x += move;
+						opcio = 2;
+						rep++;
+
+
+					}
+
+					else {
+
+						if (opcio == 3)
+						{
+							position.y += move;
+							opcio = 3;
+							rep++;
+
+
+						}
+
+
+						else {
+
+							if (opcio == 4)
+							{
+								position.y -= move;
+								opcio = 4;
+
+								rep++;
+
+							}
+						}
+
+
+					}
+
+
+				}
+			}
+
 
 
 		}
 	}
-
+	
 	collider->SetPos(position.x, position.y);
 
 	currentAnim->Update();
@@ -250,7 +328,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (c2 == App->scene->topWall) {
 			position.y = 32;
 		}
-
+		/*
 		if (c2->type == Collider::Type::BLOCK && opcio == 1)
 		{
 			position.x += move;
@@ -281,7 +359,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 
 		}
 
-
+		*/
 	}
 }
 

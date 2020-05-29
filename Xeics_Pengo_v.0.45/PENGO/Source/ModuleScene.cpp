@@ -67,8 +67,10 @@ bool ModuleScene::Start()
 	//	}
 	//	map.x += 16;
 	//}	
-	
-	if (rep)
+
+
+	/*
+	if (rep)			//COLLIDERS PARETS
 	{
 
 		//Bottomside
@@ -84,7 +86,7 @@ bool ModuleScene::Start()
 		rightWall = App->collisions->AddCollider({ 216, 24, 8, 256 }, Collider::Type::WALL);
 
 	}
-
+	*/
 
 
 	// Enemies ---

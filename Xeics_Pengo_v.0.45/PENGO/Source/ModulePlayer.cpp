@@ -90,7 +90,8 @@ bool ModulePlayer::Start()
 
 	position.x = 112;
 	position.y = 128;
-
+	//position.x = 176;
+	//position.y = 64;
 
 	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
@@ -149,9 +150,7 @@ update_status ModulePlayer::Update()
 					
 					if (currentAnimation != &leftAnim)
 					{
-
 						position.x -= move;
-						//opcio = 'l';
 						rep++;
 					}
 				}
@@ -179,7 +178,6 @@ update_status ModulePlayer::Update()
 							{
 								position.y += move;
 								rep++;
-
 							}
 						}
 					}

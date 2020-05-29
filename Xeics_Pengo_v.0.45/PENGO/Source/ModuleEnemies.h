@@ -42,7 +42,8 @@ public:
 
 	//Where the player goes
 	int opcio;
-
+	int rep = 0;
+	int longer;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
