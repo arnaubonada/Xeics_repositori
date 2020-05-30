@@ -89,8 +89,8 @@ bool ModulePlayer::Start()
 	++activeTextures; ++totalTextures;
 	currentAnimation = &downAnim;
 
-	position.x = 112;
-	position.y = 128;
+	setPosition();
+
 	//position.x = 176;
 	//position.y = 64;
 
@@ -281,6 +281,7 @@ update_status ModulePlayer::Update()
 
 update_status ModulePlayer::PostUpdate()
 {
+
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	if (!destroyed)
 	{
@@ -357,7 +358,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			c1->pendingToDelete = true;
 			c2->pendingToDelete = true;
 			lifes--;
-
+			
+			
 		}
 	/*	if (c2->type == Collider::Type::BLOCK && opcio == 'l')
 		{

@@ -12,7 +12,7 @@
 #include "ModuleBlocks.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleTileMap.h"
-
+#include "ModuleFonts.h"
 
 #include"SceneIntro.h" 
 
@@ -49,7 +49,8 @@ bool ModuleScene::Start()
 	scTexture = App->textures->Load("Assets/Score.png");
 	App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
 	
-
+	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
+	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 
 	//MATRIU
 	
@@ -149,18 +150,22 @@ update_status ModuleScene::PostUpdate()
 	App->tilemap->DrawMap();
 
 
-	if (App->player->lifes == 3) {
+	if (App->player->lifes == 4) {
 		App->render->Blit(scTexture, 8, 8, &pRed);
 		App->render->Blit(scTexture, 24, 8, &pRed);
 		App->render->Blit(scTexture, 40, 8, &pRed);
 	}
-	if (App->player->lifes == 2) {
+	if (App->player->lifes == 3) {
 		App->render->Blit(scTexture, 8, 8, &pRed);
 		App->render->Blit(scTexture, 24, 8, &pRed);
 	}
-	if (App->player->lifes == 1) {
+	if (App->player->lifes == 2) {
 		App->render->Blit(scTexture, 8, 8, &pRed);
 	}
+	if (App->player->lifes == 1) {
+
+	}
+
 	
 	if (App->player->lifes > 0 && App->player->destroyed)
 	{
@@ -169,9 +174,7 @@ update_status ModuleScene::PostUpdate()
 	}
 	else if (App->player->lifes == 0 && App->player->destroyed)
 	{
-		
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);	
-		
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);		
 	}
 
 

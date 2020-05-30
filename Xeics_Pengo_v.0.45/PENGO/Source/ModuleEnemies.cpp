@@ -113,6 +113,7 @@ bool ModuleEnemies::Start()
 update_status ModuleEnemies::Update()
 {
 
+
 	longer = rand() % 2;
 
 
@@ -169,6 +170,7 @@ update_status ModuleEnemies::Update()
 						position.x -= move;
 						opcio = 1;
 						rep++;
+
 					}
 				}
 			}
@@ -179,12 +181,10 @@ update_status ModuleEnemies::Update()
 					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
 						if (currentAnim != &snoRightAnim)
 						{
-
 							position.x += move;
-
-
 							opcio = 2;
 							rep++;
+
 						}
 					}
 				}
@@ -195,10 +195,9 @@ update_status ModuleEnemies::Update()
 							if (currentAnim != &snoDownAnim)
 							{
 								position.y += move;
-
-
 								opcio = 3;
 								rep++;
+
 							}
 						}
 					}
@@ -210,9 +209,9 @@ update_status ModuleEnemies::Update()
 								if (currentAnim != &snoUpAnim)
 								{
 									position.y -= move;
-
 									opcio = 4;
 									rep++;
+
 
 								}
 

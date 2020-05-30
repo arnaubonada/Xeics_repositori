@@ -76,6 +76,8 @@ public:
 	//SDL_Texture* starsTexture = nullptr;
 	bool rep = true;
 
+	int whiteFont = -1;
+
 	uint miss = 0;
 };
 
