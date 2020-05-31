@@ -30,10 +30,7 @@ public:
 	update_status PostUpdate() override;
 
 	bool CleanUp() override;
-	void setPosition(){
-		position.x = 112;
-		position.y = 128;
-	}
+
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 	//void OnCollision2(Collider* c1, Collider* c2) override;

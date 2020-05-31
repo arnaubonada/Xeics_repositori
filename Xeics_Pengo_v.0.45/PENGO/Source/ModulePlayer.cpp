@@ -89,7 +89,8 @@ bool ModulePlayer::Start()
 	++activeTextures; ++totalTextures;
 	currentAnimation = &downAnim;
 
-	setPosition();
+	position.x = 112;
+	position.y = 128;
 
 	//position.x = 176;
 	//position.y = 64;
