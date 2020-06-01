@@ -47,6 +47,8 @@ public:
 
 	void MoveBlock(int x, int y);
 
+	void MoveDiamond(int x, int y);
+
 	bool isWalkable(int x, int y);
 
 	bool thereIsABlock(int x, int y);
@@ -71,9 +73,9 @@ public:
 	//int timer;
 
 public:
-	//Animation* currentAnimation = nullptr;
+	Animation* currentAnimation = nullptr;
 
-	//Animation blockDestrAnim;
+	Animation blockDestrAnim;
 	bool destroyedBlock = false;
 	SDL_Texture* texture;
 

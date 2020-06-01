@@ -288,6 +288,13 @@ update_status ModulePlayer::Update()
 						App->tilemap->MoveBlock(position.x - 16, position.y);
 					}
 				}
+				else if (App->tilemap->thereIsADiamond(position.x - 16, position.y)) 
+				{
+					if (!App->tilemap->thereIsABlock(position.x - 32, position.y) || !App->tilemap->thereIsAWall(position.x - 32, position.y) || !App->tilemap->thereIsADiamond(position.x - 32, position.y))
+					{
+						App->tilemap->MoveDiamond(position.x - 16, position.y);
+					}
+				}
 			}
 			if (opcio == 'r') 
 			{
@@ -301,6 +308,13 @@ update_status ModulePlayer::Update()
 						App->tilemap->MoveBlock(position.x + 16, position.y);
 					}
 				}
+				else if (App->tilemap->thereIsADiamond(position.x + 16, position.y))
+				{
+					if (!App->tilemap->thereIsABlock(position.x + 32, position.y) || !App->tilemap->thereIsAWall(position.x + 32, position.y) || !App->tilemap->thereIsADiamond(position.x + 32, position.y))
+					{
+						App->tilemap->MoveDiamond(position.x + 16, position.y);
+					}
+				}
 			}
 			if (opcio == 'u') 
 			{
@@ -312,6 +326,13 @@ update_status ModulePlayer::Update()
 					}
 					else {
 						App->tilemap->MoveBlock(position.x, position.y - 16);
+					}
+				}
+				else if (App->tilemap->thereIsADiamond(position.x, position.y - 16))
+				{
+					if (!App->tilemap->thereIsABlock(position.x, position.y - 32) || !App->tilemap->thereIsAWall(position.x, position.y - 32) || !App->tilemap->thereIsADiamond(position.x, position.y - 32))
+					{
+						App->tilemap->MoveDiamond(position.x, position.y - 16);
 					}
 				}
 			}
@@ -328,7 +349,15 @@ update_status ModulePlayer::Update()
 						App->tilemap->MoveBlock(position.x, position.y + 16);
 					}
 				}
+				else if (App->tilemap->thereIsADiamond(position.x, position.y + 16))
+				{
+					if (!App->tilemap->thereIsABlock(position.x, position.y + 32) || !App->tilemap->thereIsAWall(position.x, position.y + 32) || !App->tilemap->thereIsADiamond(position.x, position.y + 32))
+					{
+						App->tilemap->MoveDiamond(position.x, position.y + 16);
+					}
+				}
 			}
+
 			
 		}
 	}
@@ -402,6 +431,7 @@ bool ModulePlayer::CleanUp()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	
 	if (c1->type == Collider::Type::PLAYER) {
 
 		//if (c2 == App->scene->leftWall) {

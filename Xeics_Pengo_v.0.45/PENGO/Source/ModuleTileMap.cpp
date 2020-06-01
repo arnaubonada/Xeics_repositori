@@ -4,11 +4,12 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 
 ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 {
-	/*blockDestrAnim.PushBack({ 708, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 708, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 724, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 740, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 756, 48, 16, 16 });
@@ -17,8 +18,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	blockDestrAnim.PushBack({ 804, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 820, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 836, 48, 16, 16 });
-	blockDestrAnim.loop = false;
-	blockDestrAnim.speed = 0.2f;*/
+	blockDestrAnim.speed = 0.2f;
 
 
 	source.x = source.y = 0;
@@ -167,7 +167,8 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 	posY = (y - 16) / 16;
 
 	destroyedBlock = true;
-	//App->render->Blit(texture, x, y, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
+	currentAnimation = &blockDestrAnim;
+	App->render->Blit(texture, 112, 128, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
 	
 
 	tilemap[posY][posX] = TILE_NOBLOCK;
@@ -180,22 +181,76 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 
 void ModuleTileMap::MoveBlock(int x, int y)
 {
+	int posX;
+	int posY;
+	posX = x / 16;
+	posY = (y - 16) / 16;
 
-
+	tilemap[posY][posX] = TILE_NOBLOCK;
+	if (App->player->opcio == 'l') {
+		while (tilemap[posY][posX-1] == TILE_NOBLOCK) {
+			posX--;
+		}
+		tilemap[posY][posX] = TILE_BLOCK;
+	}
+	else if (App->player->opcio == 'r') {
+		while (tilemap[posY][posX+1] == TILE_NOBLOCK) {
+			posX++;
+		}
+		tilemap[posY][posX] = TILE_BLOCK;
+	}
+	else if (App->player->opcio == 'u') {
+		while (tilemap[posY-1][posX] == TILE_NOBLOCK) {
+			posY--;
+		}
+		tilemap[posY][posX] = TILE_BLOCK;
+	}
+	else if (App->player->opcio == 'd') {
+		while (tilemap[posY+1][posX] == TILE_NOBLOCK) {
+			posY++;
+		}
+		tilemap[posY][posX] = TILE_BLOCK;
+	}
 
 
 
 }
 
 
+void ModuleTileMap::MoveDiamond(int x, int y)
+{
+	int posX;
+	int posY;
+	posX = x / 16;
+	posY = (y - 16) / 16;
 
-//update_status ModuleTileMap::PostUpdate()
-//{
-//	if (fluxer == 3) {
-//		App->render->Blit(texture, 112, 128, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
-//	}
-//
-//	return update_status::UPDATE_CONTINUE;
-//}
-//
-//
+	tilemap[posY][posX] = TILE_NOBLOCK;
+	if (App->player->opcio == 'l') {
+		while (tilemap[posY][posX-1] == TILE_NOBLOCK) {
+			posX--;
+		}
+		tilemap[posY][posX] = TILE_DIAMOND;
+	}
+	else if (App->player->opcio == 'r') {
+		while (tilemap[posY][posX+1] == TILE_NOBLOCK) {
+			posX++;
+		}
+		tilemap[posY][posX] = TILE_DIAMOND;
+	}
+	else if (App->player->opcio == 'u') {
+		while (tilemap[posY-1][posX] == TILE_NOBLOCK) {
+			posY--;
+		}
+		tilemap[posY][posX] = TILE_DIAMOND;
+	}
+	else if (App->player->opcio == 'd') {
+		while (tilemap[posY+1][posX] == TILE_NOBLOCK) {
+			posY++;
+		}
+		tilemap[posY][posX] = TILE_DIAMOND;
+	}
+
+
+
+}
+

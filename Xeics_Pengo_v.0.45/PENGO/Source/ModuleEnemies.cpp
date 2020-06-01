@@ -285,7 +285,13 @@ update_status ModuleEnemies::Update()
 
 		}
 	}
-	
+	if (!destroyedEnemy) {
+		if (App->tilemap->thereIsABlock(position.x, position.y)) {
+			destroyedEnemy = true;
+
+		}
+	}
+
 	collider->SetPos(position.x, position.y);
 
 	currentAnim->Update();
