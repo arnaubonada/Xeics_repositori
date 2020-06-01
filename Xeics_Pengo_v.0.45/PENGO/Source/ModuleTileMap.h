@@ -18,7 +18,8 @@ enum TileType
 	TILE_WALL = 2,
 	TILE_DIAMOND = 3,
 	TILE_CORNER = 4,
-	//TILE_SIDES = 5,
+	TILE_PLAYER = 5,
+	TILE_ENEMY = 6,
 
 	MAX
 };
@@ -57,11 +58,13 @@ public:
 
 	bool thereIsADiamond(int x, int y);
 
+	bool thereIsEnemy(int x, int y);
 
+	void updatePlayer(int x, int y);
 
 	//// Called at the middle of the application loop
 	//// Updates the scene's background animations
-	//update_status Update() override;
+	update_status Update() override;
 
 	//// Called at the end of the application loop.
 	//// Performs the render call of all the parts of the scene's background

@@ -99,7 +99,7 @@ bool ModuleScene::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->blocks->Enable();
-
+	App->tilemap->Enable();
 
 	enemiesAlive = 1;
 
@@ -204,7 +204,7 @@ bool ModuleScene::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->blocks->Disable();
-
+	App->tilemap->Disable();
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
 	return true;

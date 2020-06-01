@@ -159,6 +159,30 @@ bool ModuleTileMap::thereIsADiamond(int x, int y)
 	return valid;
 }
 
+bool ModuleTileMap::thereIsEnemy(int x, int y)
+{
+	bool valid = false;
+	int posX;
+	int posY;
+	posX = x / 16;
+	posY = (y - 16) / 16;
+
+	if (tilemap[posY][posX] == TILE_ENEMY)
+	{
+		valid = true;
+	}
+	return valid;
+}
+
+void ModuleTileMap::updatePlayer(int x, int y)
+{
+	int posX;
+	int posY;
+	posX = x / 16;
+	posY = (y - 16) / 16;
+
+}
+
 void ModuleTileMap::DestroyBlock(int x, int y)
 {
 	int posX;
@@ -173,8 +197,6 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 
 	tilemap[posY][posX] = TILE_NOBLOCK;
 	
-	
-
 	//App->render->Blit(noBlock, destination.x, destination.y, &source);
 
 }
@@ -212,9 +234,8 @@ void ModuleTileMap::MoveBlock(int x, int y)
 		tilemap[posY][posX] = TILE_BLOCK;
 	}
 
-
-
 }
+
 
 
 void ModuleTileMap::MoveDiamond(int x, int y)
@@ -250,7 +271,23 @@ void ModuleTileMap::MoveDiamond(int x, int y)
 		tilemap[posY][posX] = TILE_DIAMOND;
 	}
 
-
-
 }
 
+update_status ModuleTileMap::Update()
+{
+	int posXplayer;
+	int posYplayer;
+	posXplayer = (App->player->position.x) / 16;
+	posYplayer = ((App->player->position.y) - 16) / 16;
+
+	tilemap[posYplayer][posXplayer] = TILE_PLAYER;
+
+	return update_status::UPDATE_CONTINUE;
+}
+
+
+//update_status ModuleTileMap::PostUpdate()
+//{
+//
+//	return update_status::UPDATE_CONTINUE;
+//}

@@ -154,11 +154,13 @@ update_status ModulePlayer::Update()
 			{
 				opcio = 'l';
 				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
-					
+
 					if (currentAnimation != &leftAnim)
 					{
+						
 						position.x -= move;
 						rep++;
+						//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16)+1] = TILE_NOBLOCK;
 					}
 				}
 			}
@@ -172,6 +174,7 @@ update_status ModulePlayer::Update()
 						{
 							position.x += move;
 							rep++;
+							//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16) - 1] = TILE_NOBLOCK;
 						}
 					}
 				}
@@ -181,10 +184,13 @@ update_status ModulePlayer::Update()
 						opcio = 'd';
 
 						if(App->tilemap->isWalkable(position.x, position.y + 16)){
+
 							if (currentAnimation != &downAnim)
 							{
+								
 								position.y += move;
 								rep++;
+								//App->tilemap->tilemap[((position.y - 16) / 16)-1][position.x / 16] = TILE_NOBLOCK;
 							}
 						}
 					}
@@ -195,11 +201,12 @@ update_status ModulePlayer::Update()
 							opcio = 'u';
 
 							if(App->tilemap->isWalkable(position.x, position.y - 16)){
+								
 								if (currentAnimation != &upAnim)
-								{
+								{									
 									position.y -= move;
-
 									rep++;
+									//App->tilemap->tilemap[((position.y - 16) / 16) + 1][position.x / 16] = TILE_NOBLOCK;
 								}
 							}
 						}
