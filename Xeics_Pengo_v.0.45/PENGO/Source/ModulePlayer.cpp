@@ -23,6 +23,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	name = "player";
 
 	// move up
+
 	upAnim2.PushBack({ 64, 0, 16, 16 });
 	upAnim2.PushBack({ 80, 0, 16, 16 });
 	upAnim2.speed = 0.1f;
