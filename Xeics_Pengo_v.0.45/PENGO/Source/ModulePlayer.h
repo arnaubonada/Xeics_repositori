@@ -68,6 +68,7 @@ public:
 	Animation deadAnim;
 	
 	// The player's collider
+	bool Collide = true;
 	Collider* collider = nullptr;
 
 	// A flag to detect when the player has been destroyed

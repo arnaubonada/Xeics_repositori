@@ -316,6 +316,13 @@ update_status ModuleEnemies::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
+bool ModuleEnemies::CleanUp()
+{
+	App->collisions->RemoveCollider(collider);
+	--totalColliders;
+
+	return true;
+}
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {

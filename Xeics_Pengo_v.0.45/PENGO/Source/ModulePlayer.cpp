@@ -116,6 +116,10 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+	if (!Collide) {
+		App->collisions->RemoveCollider(collider);
+		--totalColliders;
+	}
 
 	if (rep == 16) {
 		rep = 0;

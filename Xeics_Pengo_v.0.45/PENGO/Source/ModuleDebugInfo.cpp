@@ -9,6 +9,7 @@
 #include "ModuleTextures.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL.h"
 #include <stdio.h>
@@ -52,7 +53,14 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_DOWN)
 		inspectedModule = nullptr;
+	if (App->input->keys[SDL_SCANCODE_F8] == KEY_DOWN)
+		App->player->Collide = false;
 
+	if (App->input->keys[SDL_SCANCODE_F9] == KEY_DOWN)
+	{
+		App->player->Collide = true;
+		App->player->destroyed = true;
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
