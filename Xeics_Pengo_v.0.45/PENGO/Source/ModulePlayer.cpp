@@ -272,6 +272,69 @@ update_status ModulePlayer::Update()
 		}
 	}
 	collider->SetPos(position.x, position.y);
+
+	if (!destroyed) {
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) 
+		{
+			if (opcio == 'l') 
+			{
+				if (App->tilemap->thereIsABlock(position.x - 16, position.y)) 
+				{
+					if (App->tilemap->thereIsABlock(position.x - 32, position.y) || App->tilemap->thereIsAWall(position.x - 32, position.y) || App->tilemap->thereIsADiamond(position.x - 32, position.y))
+					{
+						App->tilemap->DestroyBlock(position.x - 16, position.y);
+					}
+					else {
+						App->tilemap->MoveBlock(position.x - 16, position.y);
+					}
+				}
+			}
+			if (opcio == 'r') 
+			{
+				if (App->tilemap->thereIsABlock(position.x + 16, position.y)) 
+				{
+					if (App->tilemap->thereIsABlock(position.x + 32, position.y) || App->tilemap->thereIsAWall(position.x + 32, position.y) || App->tilemap->thereIsADiamond(position.x + 32, position.y))
+					{
+						App->tilemap->DestroyBlock(position.x + 16, position.y);
+					}
+					else {
+						App->tilemap->MoveBlock(position.x + 16, position.y);
+					}
+				}
+			}
+			if (opcio == 'u') 
+			{
+				if (App->tilemap->thereIsABlock(position.x, position.y - 16)) 
+				{
+					if (App->tilemap->thereIsABlock(position.x, position.y - 32) || App->tilemap->thereIsAWall(position.x, position.y - 32) || App->tilemap->thereIsADiamond(position.x, position.y - 32))
+					{
+						App->tilemap->DestroyBlock(position.x, position.y - 16);
+					}
+					else {
+						App->tilemap->MoveBlock(position.x, position.y - 16);
+					}
+				}
+			}
+			
+			if (opcio == 'd') 
+			{
+				if (App->tilemap->thereIsABlock(position.x, position.y + 16)) 
+				{
+					if (App->tilemap->thereIsABlock(position.x, position.y + 32) || App->tilemap->thereIsAWall(position.x, position.y + 32) || App->tilemap->thereIsADiamond(position.x, position.y + 32))
+					{
+						App->tilemap->DestroyBlock(position.x, position.y + 16);
+					}
+					else {
+						App->tilemap->MoveBlock(position.x, position.y + 16);
+					}
+				}
+			}
+			
+		}
+	}
+			
+
+
 	if (position.x == 104 && position.y == 32) {
 		score = 1;
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneWin, 60);

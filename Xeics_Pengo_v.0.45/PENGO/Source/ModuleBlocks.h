@@ -73,6 +73,7 @@ public:
 
 	Animation blockAnim;
 
+	Animation blockDestrAnim;
 
 	//collider
 	Collider* collider = nullptr;

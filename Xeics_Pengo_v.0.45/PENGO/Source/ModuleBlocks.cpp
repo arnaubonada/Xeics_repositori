@@ -9,6 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleTileMap.h"
 
 #include "ModuleScene.h"
 
@@ -35,6 +36,17 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 
 	blockAnim.PushBack({ 708, 0, 16, 16 });
 	blockAnim.speed = 0.1f;
+
+	blockDestrAnim.PushBack({ 708, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 724, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 740, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 756, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 772, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 788, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 804, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 820, 48, 16, 16 });
+	blockDestrAnim.PushBack({ 836, 48, 16, 16 });
+	blockDestrAnim.speed = 0.5f;
 }
 
 ModuleBlocks::~ModuleBlocks()
@@ -195,8 +207,14 @@ update_status ModuleBlocks::PostUpdate()
 		if (blocks[i] != nullptr)
 			blocks[i]->Draw();
 	}*/
-	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	
+	//SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	/*if (App->tilemap->destroyedBlock==true) {
+		currentAnimation = &blockDestrAnim;
+		App->render->Blit(texture, 112, 128, &(blockDestrAnim.GetCurrentFrame()), 0.1f);*/
+		//rect = currentAnimation->GetCurrentFrame();
+		//App->render->Blit(texture, 112, 128, &rect);
+	//}
+
 	/*for (int i = 32; i < 272; i+=16)
 	{
 		if(i==64){}
