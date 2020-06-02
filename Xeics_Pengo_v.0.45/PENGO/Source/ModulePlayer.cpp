@@ -163,9 +163,9 @@ update_status ModulePlayer::Update()
 					if (currentAnimation != &leftAnim)
 					{
 						
+						//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16)] = TILE_NOBLOCK;
 						position.x -= move;
 						rep++;
-						//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16)+1] = TILE_NOBLOCK;
 					}
 				}
 			}
@@ -177,9 +177,10 @@ update_status ModulePlayer::Update()
 					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
 						if (currentAnimation != &rightAnim)
 						{
+							//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16)]  = TILE_NOBLOCK;
 							position.x += move;
 							rep++;
-							//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16) - 1] = TILE_NOBLOCK;
+							
 						}
 					}
 				}
@@ -192,10 +193,10 @@ update_status ModulePlayer::Update()
 
 							if (currentAnimation != &downAnim)
 							{
-								
+								//App->tilemap->tilemap[((position.y - 16) / 16)][position.x / 16] = TILE_NOBLOCK;
 								position.y += move;
 								rep++;
-								//App->tilemap->tilemap[((position.y - 16) / 16)-1][position.x / 16] = TILE_NOBLOCK;
+								
 							}
 						}
 					}
@@ -208,10 +209,11 @@ update_status ModulePlayer::Update()
 							if(App->tilemap->isWalkable(position.x, position.y - 16)){
 								
 								if (currentAnimation != &upAnim)
-								{									
+								{	
+									//App->tilemap->tilemap[((position.y - 16) / 16)][position.x / 16] = TILE_NOBLOCK;								
 									position.y -= move;
 									rep++;
-									//App->tilemap->tilemap[((position.y - 16) / 16) + 1][position.x / 16] = TILE_NOBLOCK;
+									
 								}
 							}
 						}
@@ -461,6 +463,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (c2->type == Collider::Type::ENEMY)
 		{
 			destroyed = true;
+			rep = 0;
 			c1->pendingToDelete = true;
 			c2->pendingToDelete = true;
 			lifes--;

@@ -18,6 +18,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	blockDestrAnim.PushBack({ 804, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 820, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 836, 48, 16, 16 });
+	blockDestrAnim.loop = false;
 	blockDestrAnim.speed = 0.2f;
 
 
@@ -185,17 +186,16 @@ void ModuleTileMap::updatePlayer(int x, int y)
 
 void ModuleTileMap::DestroyBlock(int x, int y)
 {
-	int posX;
-	int posY;
-	posX = x / 16;
-	posY = (y - 16) / 16;
+	
+	blockX = x / 16;
+	blockY = (y - 16) / 16;
 
 	destroyedBlock = true;
 	currentAnimation = &blockDestrAnim;
-	App->render->Blit(texture, 112, 128, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
 	
-
-	tilemap[posY][posX] = TILE_NOBLOCK;
+	
+	
+	
 	
 	//App->render->Blit(noBlock, destination.x, destination.y, &source);
 
@@ -275,19 +275,31 @@ void ModuleTileMap::MoveDiamond(int x, int y)
 
 update_status ModuleTileMap::Update()
 {
-	int posXplayer;
+	/*int posXplayer;
 	int posYplayer;
 	posXplayer = (App->player->position.x) / 16;
 	posYplayer = ((App->player->position.y) - 16) / 16;
 
-	tilemap[posYplayer][posXplayer] = TILE_PLAYER;
-
+	tilemap[posYplayer][posXplayer] = TILE_PLAYER;*/
+	if (destroyedBlock) {
+		blockDestrAnim.Update();
+		if (blockDestrAnim.HasFinished()) {
+			destroyedBlock = false;
+			blockDestrAnim.Reset();
+			tilemap[blockY][blockX] = TILE_NOBLOCK;
+		}
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 
 
-//update_status ModuleTileMap::PostUpdate()
-//{
-//
-//	return update_status::UPDATE_CONTINUE;
-//}
+update_status ModuleTileMap::PostUpdate()
+{
+	if (destroyedBlock) {
+		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
+		
+		
+	}
+	
+	return update_status::UPDATE_CONTINUE;
+}

@@ -40,7 +40,7 @@ public:
 
 	bool Start() override;
 	
-	//update_status PostUpdate() override;
+	update_status PostUpdate() override;
 
 	void DrawMap();
 
@@ -61,6 +61,7 @@ public:
 	bool thereIsEnemy(int x, int y);
 
 	void updatePlayer(int x, int y);
+
 
 	//// Called at the middle of the application loop
 	//// Updates the scene's background animations
@@ -89,6 +90,8 @@ public:
 
 	SDL_Rect source;
 	SDL_Rect destination;
+
+	int blockX, blockY;
 
 	int lvl1[17][15] = {
 		{ 4,2,2,2,2,2,2,2,2,2,2,2,2,2,4 },
