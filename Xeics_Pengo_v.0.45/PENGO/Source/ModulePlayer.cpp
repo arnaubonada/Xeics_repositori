@@ -317,7 +317,7 @@ update_status ModulePlayer::Update()
 		{
 			if (opcio == 'l') 
 			{
-				if (App->tilemap->thereIsABlock(position.x - 16, position.y)) 
+				if (App->tilemap->thereIsABlock(position.x - 1, position.y)) 
 				{
 					currentAnimation = &leftPushAnim;
 					
@@ -373,7 +373,7 @@ update_status ModulePlayer::Update()
 			}
 			if (opcio == 'u') 
 			{
-				if (App->tilemap->thereIsABlock(position.x, position.y - 16)) 
+				if (App->tilemap->thereIsABlock(position.x, position.y - 1)) 
 				{
 					currentAnimation = &upPushAnim;
 					if (App->tilemap->thereIsABlock(position.x, position.y - 32) || App->tilemap->thereIsAWall(position.x, position.y - 32) || App->tilemap->thereIsADiamond(position.x, position.y - 32))
