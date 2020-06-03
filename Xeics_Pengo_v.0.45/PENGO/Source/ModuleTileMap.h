@@ -60,7 +60,7 @@ public:
 
 	bool thereIsEnemy(int x, int y);
 
-
+	int spaceToBlock(int x, int y);
 
 
 	//// Called at the middle of the application loop

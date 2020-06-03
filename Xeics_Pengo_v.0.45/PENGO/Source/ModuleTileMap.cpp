@@ -196,6 +196,39 @@ bool ModuleTileMap::thereIsEnemy(int x, int y)
 	return valid;
 }
 
+int ModuleTileMap::spaceToBlock(int x, int y) {
+	int space = 0;
+	int posX;
+	int posY;
+	posX = x / 16;
+	posY = (y - 16) / 16;
+
+	if (App->player->opcio == 'l') {
+		while (tilemap[movedBlockY][movedBlockX - 1] == TILE_NOBLOCK) {
+		space++;
+		}
+	}
+	else if (App->player->opcio == 'r') {
+		while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
+			space++;
+		}
+	}
+	else if (App->player->opcio == 'u') {
+		while (tilemap[movedBlockY - 1][movedBlockX] == TILE_NOBLOCK) {
+			space++;
+		}
+	}
+	else if (App->player->opcio == 'd') {
+		while (tilemap[movedBlockY + 1][movedBlockX] == TILE_NOBLOCK) {
+			space++;
+		}
+	}
+
+	return space;
+
+}
+
+
 void ModuleTileMap::DestroyBlock(int x, int y)
 {	
 	blockX = x / 16;
