@@ -112,10 +112,7 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::Update()
 {
-
-
 	longer = rand() % 2;
-
 
 	if (j == 0) {
 		opcio = rand() % 5;

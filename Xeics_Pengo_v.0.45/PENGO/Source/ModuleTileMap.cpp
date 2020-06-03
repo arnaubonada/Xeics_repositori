@@ -196,63 +196,49 @@ bool ModuleTileMap::thereIsEnemy(int x, int y)
 	return valid;
 }
 
-void ModuleTileMap::updatePlayer(int x, int y)
-{
-	int posX;
-	int posY;
-	posX = x / 16;
-	posY = (y - 16) / 16;
-
-}
-
 void ModuleTileMap::DestroyBlock(int x, int y)
-{
-	
+{	
 	blockX = x / 16;
 	blockY = (y - 16) / 16;
 
 	destroyedBlock = true;
 	currentAnimation = &blockDestrAnim;
 	
-	
-	
-	
-	
 	//App->render->Blit(noBlock, destination.x, destination.y, &source);
-
 }
 
 void ModuleTileMap::MoveBlock(int x, int y)
 {
-	int posX;
-	int posY;
-	posX = x / 16;
-	posY = (y - 16) / 16;
 
-	tilemap[posY][posX] = TILE_NOBLOCK;
+	movedBlockX = x / 16;
+	movedBlockY = (y - 16) / 16;
+
+	//movedBlock = true;
+
+	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
 	if (App->player->opcio == 'l') {
-		while (tilemap[posY][posX-1] == TILE_NOBLOCK) {
-			posX--;
-		}
-		tilemap[posY][posX] = TILE_BLOCK;
+		//while (tilemap[movedBlockY][movedBlockX - 1] == TILE_NOBLOCK) {
+			movedBlockX--;
+		//}
+		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 	}
 	else if (App->player->opcio == 'r') {
-		while (tilemap[posY][posX+1] == TILE_NOBLOCK) {
-			posX++;
+		while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
+			movedBlockX++;
 		}
-		tilemap[posY][posX] = TILE_BLOCK;
+		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 	}
 	else if (App->player->opcio == 'u') {
-		while (tilemap[posY-1][posX] == TILE_NOBLOCK) {
-			posY--;
+		while (tilemap[movedBlockY - 1][movedBlockX] == TILE_NOBLOCK) {
+			movedBlockY--;
 		}
-		tilemap[posY][posX] = TILE_BLOCK;
+		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 	}
 	else if (App->player->opcio == 'd') {
-		while (tilemap[posY+1][posX] == TILE_NOBLOCK) {
-			posY++;
+		while (tilemap[movedBlockY + 1][movedBlockX] == TILE_NOBLOCK) {
+			movedBlockY++;
 		}
-		tilemap[posY][posX] = TILE_BLOCK;
+		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 	}
 
 }
@@ -302,17 +288,26 @@ update_status ModuleTileMap::Update()
 	posYplayer = ((App->player->position.y) - 16) / 16;
 
 	tilemap[posYplayer][posXplayer] = TILE_PLAYER;*/
+
 	if (destroyedBlock) {
 		blockDestrAnim.Update();
-		if (blockDestrAnim.HasFinished()) {
+		if (blockDestrAnim.HasFinished()) {	
 			destroyedBlock = false;
 			destroyedAnimBlock = true;
 			blockDestrAnim.Reset();
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
 	}
+
+
+
+
+
+
 	oneAnim.Update();
 	miniEnemyEggAnim.Update();
+
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -322,12 +317,19 @@ update_status ModuleTileMap::PostUpdate()
 	if (destroyedBlock) {
 		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
 	}
+
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
+
 	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+
+
+
+
+
 	return update_status::UPDATE_CONTINUE;
 }

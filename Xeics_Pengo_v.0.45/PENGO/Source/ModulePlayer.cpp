@@ -312,6 +312,9 @@ update_status ModulePlayer::Update()
 	}
 	collider->SetPos(position.x, position.y);
 
+
+	int posBlock = 1;
+
 	if (!destroyed) {
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) 
 		{
@@ -331,7 +334,10 @@ update_status ModulePlayer::Update()
 						}
 					}
 						else {
-							App->tilemap->MoveBlock(position.x - 16, position.y);
+							while (App->tilemap->tilemap[(position.y - 16) / 16 ][(position.x / 16)-posBlock ] == TILE_NOBLOCK) {
+								App->tilemap->MoveBlock((position.x - 16)+posBlock, position.y);
+								posBlock++;
+							}
 						}
 						
 					
