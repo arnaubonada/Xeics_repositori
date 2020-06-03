@@ -112,6 +112,10 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::Update()
 {
+	/*if(App->tilemap->spaceToBlock(position.x, position.y)!=0){
+	
+		longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);
+	}*/
 	//longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);
 
 	//opcio = rand() % 5;
@@ -127,6 +131,7 @@ update_status ModuleEnemies::Update()
 		if (j == 17) {
 			j = 0;
 		}
+
 
 	if (rep == 16) {
 		rep = 0;

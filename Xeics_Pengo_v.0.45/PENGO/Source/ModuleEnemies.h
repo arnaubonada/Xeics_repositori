@@ -43,7 +43,7 @@ public:
 	int move = 1;
 
 	//Where the player goes
-	int opcio;
+	int opcio = 1;
 	int rep = 0;
 	int longer;
 

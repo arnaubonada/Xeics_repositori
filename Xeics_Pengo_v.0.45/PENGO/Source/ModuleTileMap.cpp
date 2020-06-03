@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
+#include "ModuleEnemies.h"
 
 ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 {
@@ -203,23 +204,23 @@ int ModuleTileMap::spaceToBlock(int x, int y) {
 	posX = x / 16;
 	posY = (y - 16) / 16;
 
-	if (App->player->opcio == 'l') {
-		while (tilemap[movedBlockY][movedBlockX - 1] == TILE_NOBLOCK) {
+	if (App->enemies->opcio == 1) {
+		while (tilemap[posY][posX - 1] == TILE_NOBLOCK) {
 		space++;
 		}
 	}
-	else if (App->player->opcio == 'r') {
-		while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
+	else if (App->enemies->opcio == 2) {
+		while (tilemap[posY][posX + 1] == TILE_NOBLOCK) {
 			space++;
 		}
 	}
-	else if (App->player->opcio == 'u') {
-		while (tilemap[movedBlockY - 1][movedBlockX] == TILE_NOBLOCK) {
+	else if (App->enemies->opcio == 3) {
+		while (tilemap[posY - 1][posX] == TILE_NOBLOCK) {
 			space++;
 		}
 	}
-	else if (App->player->opcio == 'd') {
-		while (tilemap[movedBlockY + 1][movedBlockX] == TILE_NOBLOCK) {
+	else if (App->enemies->opcio == 4) {
+		while (tilemap[posY + 1][posX] == TILE_NOBLOCK) {
 			space++;
 		}
 	}
