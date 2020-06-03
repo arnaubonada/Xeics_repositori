@@ -70,6 +70,27 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	deadAnim.PushBack({ 16, 32, 16, 16 });
 	deadAnim.speed = 0.1f;
 
+	upPushAnim.PushBack({ 64, 16, 16, 16 });
+	upPushAnim.PushBack({ 80, 16, 16, 16 });
+	upPushAnim.loop = false;
+	upPushAnim.speed = 0.1f;
+
+	downPushAnim.PushBack({ 0, 16, 16, 16 });
+	downPushAnim.PushBack({ 16, 16, 16, 16 });
+	downPushAnim.loop = false;
+	downPushAnim.speed = 0.1f;
+
+	leftPushAnim.PushBack({ 32, 16, 16, 16 });
+	leftPushAnim.PushBack({ 48, 16, 16, 16 });
+	leftPushAnim.loop = false;
+	leftPushAnim.speed = 0.1f;
+
+	rightPushAnim.PushBack({ 96, 16, 16, 16 });
+	rightPushAnim.PushBack({ 112, 16, 16, 16 });
+	rightPushAnim.loop = false;
+	rightPushAnim.speed = 0.1f;
+
+
 }
 
 
@@ -126,37 +147,38 @@ update_status ModulePlayer::Update()
 		rep = 0;
 	}
 
-	switch (opcio)
-	{
+	//switch (opcio)
+	//{
 
-	case 'a':
-		currentAnimation = &downAnim2;
-		break;
+	//case 'a':
+	//	currentAnimation = &downAnim2;
+	//	break;
 
-	case 'l':
-		currentAnimation = &leftAnim2;
-		break;
+	//case 'l':
+	//	currentAnimation = &leftAnim2;
+	//	break;
 
-	case 'r':
-		currentAnimation = &rightAnim2;
-		break;
-	case 'd':
-		currentAnimation = &downAnim2;
-		break;
+	//case 'r':
+	//	currentAnimation = &rightAnim2;
+	//	break;
+	//case 'd':
+	//	currentAnimation = &downAnim2;
+	//	break;
 
-	case 'u':
-		currentAnimation = &upAnim2;
-		break;
+	//case 'u':
+	//	currentAnimation = &upAnim2;
+	//	break;
 
 
-	default:
-		break;
-	}
+	//default:
+	//	break;
+	//}
 
 	if (rep == 0) {
 		if (!destroyed) {
 			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 			{
+				currentAnimation = &leftAnim2;
 				opcio = 'l';
 				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
 
@@ -173,6 +195,7 @@ update_status ModulePlayer::Update()
 
 				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 				{
+					currentAnimation = &rightAnim2;
 					opcio = 'r';
 					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
 						if (currentAnimation != &rightAnim)
@@ -187,6 +210,7 @@ update_status ModulePlayer::Update()
 				else {
 					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 					{
+						currentAnimation = &downAnim2;
 						opcio = 'd';
 
 						if(App->tilemap->isWalkable(position.x, position.y + 16)){
@@ -204,6 +228,7 @@ update_status ModulePlayer::Update()
 					else {
 						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 						{
+							currentAnimation = &upAnim2;
 							opcio = 'u';
 
 							if(App->tilemap->isWalkable(position.x, position.y - 16)){
@@ -294,26 +319,40 @@ update_status ModulePlayer::Update()
 			{
 				if (App->tilemap->thereIsABlock(position.x - 16, position.y)) 
 				{
+					currentAnimation = &leftPushAnim;
+					
 					if (App->tilemap->thereIsABlock(position.x - 32, position.y) || App->tilemap->thereIsAWall(position.x - 32, position.y) || App->tilemap->thereIsADiamond(position.x - 32, position.y))
 					{
+						
 						App->tilemap->DestroyBlock(position.x - 16, position.y);
+						if (App->tilemap->destroyedAnimBlock) {
+							currentAnimation = &leftAnim2;
+						
+						}
 					}
-					else {
-						App->tilemap->MoveBlock(position.x - 16, position.y);
-					}
+						else {
+							App->tilemap->MoveBlock(position.x - 16, position.y);
+						}
+						
+					
 				}
 				else if (App->tilemap->thereIsADiamond(position.x - 16, position.y)) 
 				{
-					if (!App->tilemap->thereIsABlock(position.x - 32, position.y) || !App->tilemap->thereIsAWall(position.x - 32, position.y) || !App->tilemap->thereIsADiamond(position.x - 32, position.y))
-					{
-						App->tilemap->MoveDiamond(position.x - 16, position.y);
-					}
+					currentAnimation = &leftPushAnim;
+					//if (leftPushAnim.HasFinished()) {
+						if (!App->tilemap->thereIsABlock(position.x - 32, position.y) || !App->tilemap->thereIsAWall(position.x - 32, position.y) || !App->tilemap->thereIsADiamond(position.x - 32, position.y))
+						{
+							App->tilemap->MoveDiamond(position.x - 16, position.y);
+						}
+						//currentAnimation = &leftAnim2;
+					//}
 				}
 			}
 			if (opcio == 'r') 
 			{
 				if (App->tilemap->thereIsABlock(position.x + 16, position.y)) 
 				{
+					currentAnimation = &rightPushAnim;
 					if (App->tilemap->thereIsABlock(position.x + 32, position.y) || App->tilemap->thereIsAWall(position.x + 32, position.y) || App->tilemap->thereIsADiamond(position.x + 32, position.y))
 					{
 						App->tilemap->DestroyBlock(position.x + 16, position.y);
@@ -321,9 +360,11 @@ update_status ModulePlayer::Update()
 					else {
 						App->tilemap->MoveBlock(position.x + 16, position.y);
 					}
+
 				}
 				else if (App->tilemap->thereIsADiamond(position.x + 16, position.y))
 				{
+					currentAnimation = &rightPushAnim;
 					if (!App->tilemap->thereIsABlock(position.x + 32, position.y) || !App->tilemap->thereIsAWall(position.x + 32, position.y) || !App->tilemap->thereIsADiamond(position.x + 32, position.y))
 					{
 						App->tilemap->MoveDiamond(position.x + 16, position.y);
@@ -334,6 +375,7 @@ update_status ModulePlayer::Update()
 			{
 				if (App->tilemap->thereIsABlock(position.x, position.y - 16)) 
 				{
+					currentAnimation = &upPushAnim;
 					if (App->tilemap->thereIsABlock(position.x, position.y - 32) || App->tilemap->thereIsAWall(position.x, position.y - 32) || App->tilemap->thereIsADiamond(position.x, position.y - 32))
 					{
 						App->tilemap->DestroyBlock(position.x, position.y - 16);
@@ -342,8 +384,10 @@ update_status ModulePlayer::Update()
 						App->tilemap->MoveBlock(position.x, position.y - 16);
 					}
 				}
+				
 				else if (App->tilemap->thereIsADiamond(position.x, position.y - 16))
 				{
+					currentAnimation = &upPushAnim;
 					if (!App->tilemap->thereIsABlock(position.x, position.y - 32) || !App->tilemap->thereIsAWall(position.x, position.y - 32) || !App->tilemap->thereIsADiamond(position.x, position.y - 32))
 					{
 						App->tilemap->MoveDiamond(position.x, position.y - 16);
@@ -353,8 +397,10 @@ update_status ModulePlayer::Update()
 			
 			if (opcio == 'd') 
 			{
+				
 				if (App->tilemap->thereIsABlock(position.x, position.y + 16)) 
 				{
+					currentAnimation = &downPushAnim;
 					if (App->tilemap->thereIsABlock(position.x, position.y + 32) || App->tilemap->thereIsAWall(position.x, position.y + 32) || App->tilemap->thereIsADiamond(position.x, position.y + 32))
 					{
 						App->tilemap->DestroyBlock(position.x, position.y + 16);
@@ -365,6 +411,7 @@ update_status ModulePlayer::Update()
 				}
 				else if (App->tilemap->thereIsADiamond(position.x, position.y + 16))
 				{
+					currentAnimation = &downPushAnim;
 					if (!App->tilemap->thereIsABlock(position.x, position.y + 32) || !App->tilemap->thereIsAWall(position.x, position.y + 32) || !App->tilemap->thereIsADiamond(position.x, position.y + 32))
 					{
 						App->tilemap->MoveDiamond(position.x, position.y + 16);
@@ -405,7 +452,7 @@ update_status ModulePlayer::PostUpdate()
 	App->fonts->BlitText(72, 0, whiteFont, scoreText);
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
 	App->fonts->BlitText(16, 280, whiteFont, "act 1");
-	App->fonts->BlitText(16, 0, blueFont, "1p");
+	//App->fonts->BlitText(16, 0, blueFont, "1p");
 	App->fonts->BlitText(88, 0, blueFont, "hi");
 	App->fonts->BlitText(112, 0, whiteFont, "20000");
 	App->fonts->BlitText(160, 0, blueFont, "2p");

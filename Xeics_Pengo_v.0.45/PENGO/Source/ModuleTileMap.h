@@ -80,8 +80,15 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	Animation blockDestrAnim;
+	Animation oneAnim;
+	Animation miniEnemyEggAnim;
+
 	bool destroyedBlock = false;
+	bool destroyedAnimBlock = false;
+
 	SDL_Texture* texture;
+	SDL_Texture* oneTexture;
+	SDL_Texture* scTexture;
 
 	SDL_Texture* noBlock;
 	SDL_Texture* Block;

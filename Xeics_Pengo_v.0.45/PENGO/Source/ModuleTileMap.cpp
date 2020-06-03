@@ -21,6 +21,25 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	blockDestrAnim.loop = false;
 	blockDestrAnim.speed = 0.2f;
 
+	oneAnim.PushBack({ 0, 0, 16, 8 });
+	oneAnim.PushBack({ 0, 0, 16, 8 });
+	oneAnim.PushBack({ 0, 0, 16, 8 });
+	oneAnim.PushBack({ 0, 0, 16, 8 });
+	oneAnim.PushBack({ 0, 8, 16, 8 });
+	oneAnim.PushBack({ 0, 8, 16, 8 });
+	oneAnim.PushBack({ 0, 8, 16, 8 });
+	oneAnim.PushBack({ 0, 8, 16, 8 });
+	oneAnim.speed = 0.1f;
+
+	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
+	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
+	miniEnemyEggAnim.speed = 0.1f;
 
 	source.x = source.y = 0;
 	source.w = source.h = 16;
@@ -36,6 +55,8 @@ ModuleTileMap::~ModuleTileMap()
 bool ModuleTileMap::Start()
 {
 	texture = App->textures->Load("Assets/Blocks.png");
+	oneTexture = App->textures->Load("Assets/1p.png");
+	scTexture = App->textures->Load("Assets/Score.png");
 
 	noBlock = App->textures->Load("Assets/noBlock.png");
 	Block = App->textures->Load("Assets/Block.png");
@@ -285,10 +306,13 @@ update_status ModuleTileMap::Update()
 		blockDestrAnim.Update();
 		if (blockDestrAnim.HasFinished()) {
 			destroyedBlock = false;
+			destroyedAnimBlock = true;
 			blockDestrAnim.Reset();
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
 	}
+	oneAnim.Update();
+	miniEnemyEggAnim.Update();
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -296,10 +320,14 @@ update_status ModuleTileMap::Update()
 update_status ModuleTileMap::PostUpdate()
 {
 	if (destroyedBlock) {
-		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
-		
-		
+		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
 	}
-	
+	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
+	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	return update_status::UPDATE_CONTINUE;
 }

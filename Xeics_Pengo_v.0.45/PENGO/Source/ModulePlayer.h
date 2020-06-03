@@ -66,6 +66,11 @@ public:
 	Animation rightAnim2;
 
 	Animation deadAnim;
+
+	Animation upPushAnim;
+	Animation leftPushAnim;
+	Animation downPushAnim;
+	Animation rightPushAnim;
 	
 	// The player's collider
 	bool Collide = true;
