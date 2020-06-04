@@ -10,6 +10,9 @@
 
 ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 {
+	blockAnim.PushBack({ 708, 0, 16, 16 });
+	blockAnim.speed = 0.1f;
+
 	blockDestrAnim.PushBack({ 708, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 724, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 740, 48, 16, 16 });
@@ -247,6 +250,8 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 
 void ModuleTileMap::MoveBlock(int x, int y)
 {
+	positionBlock.x = x;
+	positionBlock.y = y;
 
 	movedBlockX = x / 16;
 	movedBlockY = (y - 16) / 16;
@@ -254,32 +259,9 @@ void ModuleTileMap::MoveBlock(int x, int y)
 	//movedBlock = true;
 
 	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
-	if (App->player->opcio == 'l') {
-		//while (tilemap[movedBlockY][movedBlockX - 1] == TILE_NOBLOCK) {
-			movedBlockX--;
-		//}
-		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-	}
-	else if (App->player->opcio == 'r') {
-		while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
-			movedBlockX++;
-			
+	movedBlock = true;
 
-		}
-		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-	}
-	else if (App->player->opcio == 'u') {
-		while (tilemap[movedBlockY - 1][movedBlockX] == TILE_NOBLOCK) {
-			movedBlockY--;
-		}
-		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-	}
-	else if (App->player->opcio == 'd') {
-		while (tilemap[movedBlockY + 1][movedBlockX] == TILE_NOBLOCK) {
-			movedBlockY++;
-		}
-		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-	}
+
 
 }
 
@@ -322,6 +304,14 @@ void ModuleTileMap::MoveDiamond(int x, int y)
 
 update_status ModuleTileMap::Update()
 {
+	/*if(counter % 10==0) {
+		tilemap[counter/10][1] = 1;
+	}
+	counter++;*/
+
+	//tilemap[1][1]=1;
+
+
 	/*int posXplayer;
 	int posYplayer;
 	posXplayer = (App->player->position.x) / 16;
@@ -331,7 +321,7 @@ update_status ModuleTileMap::Update()
 
 	if (destroyedBlock) {
 		blockDestrAnim.Update();
-		if (blockDestrAnim.HasFinished()) {	
+		if (blockDestrAnim.HasFinished()) {
 			destroyedBlock = false;
 			destroyedAnimBlock = true;
 			blockDestrAnim.Reset();
@@ -339,16 +329,97 @@ update_status ModuleTileMap::Update()
 		}
 	}
 
-	if(counter % 10==0) {
-		tilemap[counter/10][1] = 1;
+
+
+	if (rep == 16 * spaces) {
+		rep = 0;
+		spaces = 0;
+		movedBlockfinish = true;
+
 	}
-	counter++;
+	if (rep == 0) {
+		if (movedBlock) {
+			//currentAnimation = &blockAnim;
+			if (App->player->opcio == 'l') {
+				while (tilemap[movedBlockY][movedBlockX - 1] == TILE_NOBLOCK) {
+					positionBlock.x--;
+					movedBlockX--;
+					spaces++;
+					App->player->opcio == 'l';
+					rep++;
+				}
+			}
 
-	//tilemap[1][1]=1;
+			else if (App->player->opcio == 'r') {
+				while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
+					positionBlock.x++;
+					movedBlockX++;
+					spaces++;
+					App->player->opcio == 'r';
+					rep++;
+				}
+			}
+			else if (App->player->opcio == 'u') {
+				while (tilemap[movedBlockY - 1][movedBlockX] == TILE_NOBLOCK) {
+					positionBlock.y--;
+					movedBlockY--;
+					spaces++;
+					App->player->opcio == 'u';
+					rep++;
+				}
+			}
+			else if (App->player->opcio == 'd') {
+				while (tilemap[movedBlockY + 1][movedBlockX] == TILE_NOBLOCK) {
+					positionBlock.y++;
+					movedBlockY++;
+					spaces++;
+					App->player->opcio == 'd';
+					rep++;
+				}
+			}
+
+		}
+	}
+	else {
+
+
+		//if (movedBlock) {
+
+		if (App->player->opcio == 'l')
+		{
+			positionBlock.x--;
+			App->player->opcio == 'l';
+			rep++;
+		}
+		else if (App->player->opcio == 'r')
+		{
+			positionBlock.x++;
+			App->player->opcio == 'r';
+			rep++;
+		}
+		else if (App->player->opcio == 'u')
+		{
+			positionBlock.y--;
+			App->player->opcio == 'u';
+			rep++;
+		}
+		else if (App->player->opcio == 'd')
+		{
+			positionBlock.y++;
+			App->player->opcio == 'd';
+			rep++;
+			//}
+		}
+
+	}
+	if (movedBlockfinish) {
+		movedBlock = false;
+		tilemap[movedBlockY][movedBlockX] == TILE_BLOCK;
+	}
 
 
 
-
+	blockAnim.Update();
 	oneAnim.Update();
 	miniEnemyEggAnim.Update();
 
@@ -362,6 +433,7 @@ update_status ModuleTileMap::PostUpdate()
 	if (destroyedBlock) {
 		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
 	}
+	App->render->Blit(texture, positionBlock.x, positionBlock.y, &(blockAnim.GetCurrentFrame()), 0.1f);
 
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
 

@@ -328,16 +328,14 @@ update_status ModulePlayer::Update()
 					{
 						
 						App->tilemap->DestroyBlock(position.x - 16, position.y);
+						score += 30;
 						if (App->tilemap->destroyedAnimBlock) {
 							currentAnimation = &leftAnim2;
 						
 						}
 					}
 						else {
-							while (App->tilemap->tilemap[(position.y - 16) / 16 ][(position.x / 16)-posBlock ] == TILE_NOBLOCK) {								
-								App->tilemap->MoveBlock((position.x - 16)+posBlock, position.y);
-								posBlock++;
-							}
+							App->tilemap->MoveBlock(position.x - 16, position.y);
 						}
 						
 					
@@ -362,6 +360,7 @@ update_status ModulePlayer::Update()
 					if (App->tilemap->thereIsABlock(position.x + 32, position.y) || App->tilemap->thereIsAWall(position.x + 32, position.y) || App->tilemap->thereIsADiamond(position.x + 32, position.y))
 					{
 						App->tilemap->DestroyBlock(position.x + 16, position.y);
+						score += 30;
 					}
 					else {
 						App->tilemap->MoveBlock(position.x + 16, position.y);
@@ -385,6 +384,7 @@ update_status ModulePlayer::Update()
 					if (App->tilemap->thereIsABlock(position.x, position.y - 32) || App->tilemap->thereIsAWall(position.x, position.y - 32) || App->tilemap->thereIsADiamond(position.x, position.y - 32))
 					{
 						App->tilemap->DestroyBlock(position.x, position.y - 16);
+						score += 30;
 					}
 					else {
 						App->tilemap->MoveBlock(position.x, position.y - 16);
@@ -410,6 +410,7 @@ update_status ModulePlayer::Update()
 					if (App->tilemap->thereIsABlock(position.x, position.y + 32) || App->tilemap->thereIsAWall(position.x, position.y + 32) || App->tilemap->thereIsADiamond(position.x, position.y + 32))
 					{
 						App->tilemap->DestroyBlock(position.x, position.y + 16);
+						score += 30;
 					}
 					else {
 						App->tilemap->MoveBlock(position.x, position.y + 16);
@@ -455,7 +456,7 @@ update_status ModulePlayer::PostUpdate()
 	}
 	sprintf_s(scoreText, 10, "%d", score);
 
-	App->fonts->BlitText(72, 0, whiteFont, scoreText);
+	App->fonts->BlitText(56, 0, whiteFont, scoreText);
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
 	App->fonts->BlitText(16, 280, whiteFont, "act 1");
 	//App->fonts->BlitText(16, 0, blueFont, "1p");

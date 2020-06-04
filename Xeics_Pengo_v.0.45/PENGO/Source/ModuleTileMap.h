@@ -80,10 +80,15 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	Animation blockDestrAnim;
+	Animation blockAnim;
 	Animation oneAnim;
 	Animation miniEnemyEggAnim;
 
+	iPoint positionBlock;
+
 	bool destroyedBlock = false;
+	bool movedBlock = false;
+	bool movedBlockfinish = false;
 	bool destroyedAnimBlock = false;
 
 	SDL_Texture* texture;
@@ -100,11 +105,11 @@ public:
 
 	int rep = 0;
 
+	int spaces = 0;
+
 	int blockX, blockY;
 
 	int movedBlockX, movedBlockY;
-
-	int movedBlock;
 
 	int counter = 0;
 
