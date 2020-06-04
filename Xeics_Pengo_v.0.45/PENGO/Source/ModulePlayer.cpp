@@ -334,7 +334,7 @@ update_status ModulePlayer::Update()
 						}
 					}
 						else {
-							while (App->tilemap->tilemap[(position.y - 16) / 16 ][(position.x / 16)-posBlock ] == TILE_NOBLOCK) {
+							while (App->tilemap->tilemap[(position.y - 16) / 16 ][(position.x / 16)-posBlock ] == TILE_NOBLOCK) {								
 								App->tilemap->MoveBlock((position.x - 16)+posBlock, position.y);
 								posBlock++;
 							}

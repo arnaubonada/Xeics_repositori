@@ -207,21 +207,25 @@ int ModuleTileMap::spaceToBlock(int x, int y) {
 	if (App->enemies->opcio == 1) {
 		while (tilemap[posY][posX - 1] == TILE_NOBLOCK) {
 		space++;
+		posX--;
 		}
 	}
 	else if (App->enemies->opcio == 2) {
 		while (tilemap[posY][posX + 1] == TILE_NOBLOCK) {
 			space++;
+			posX++;
 		}
 	}
 	else if (App->enemies->opcio == 3) {
-		while (tilemap[posY - 1][posX] == TILE_NOBLOCK) {
+		while (tilemap[posY + 1][posX] == TILE_NOBLOCK) {
 			space++;
+			posY++;
 		}
 	}
 	else if (App->enemies->opcio == 4) {
-		while (tilemap[posY + 1][posX] == TILE_NOBLOCK) {
+		while (tilemap[posY - 1][posX] == TILE_NOBLOCK) {
 			space++;
+			posY--;
 		}
 	}
 
@@ -259,6 +263,8 @@ void ModuleTileMap::MoveBlock(int x, int y)
 	else if (App->player->opcio == 'r') {
 		while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
 			movedBlockX++;
+			
+
 		}
 		tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 	}

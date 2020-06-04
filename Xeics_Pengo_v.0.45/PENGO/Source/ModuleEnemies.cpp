@@ -112,25 +112,29 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::Update()
 {
-	/*if(App->tilemap->spaceToBlock(position.x, position.y)!=0){
+	if(App->tilemap->spaceToBlock(position.x, position.y)!=0){
 	
 		longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);
-	}*/
-	//longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);
+	}
+
+	/*longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);*/
+
+	//longer = App->tilemap->spaceToBlock(position.x, position.y);
 
 	//opcio = rand() % 5;
 
-	
-	if (j == 0) {
-		opcio = rand() % 5;
-		j++;
-	}
-		if (j < 17) {
+		if (j == 0) {
+			opcio = rand() % 4 + 1;
 			j++;
 		}
-		if (j == 17) {
-			j = 0;
-		}
+			if (j < 17 * longer) {
+				j++;
+			}
+			if (j == 17 * longer) {
+				j = 0;
+			}
+
+	
 
 
 	if (rep == 16) {
@@ -141,9 +145,9 @@ update_status ModuleEnemies::Update()
 	switch (opcio)
 	{
 
-	case 0:
+	/*case 0:
 		currentAnim = &snoDownAnim2;
-		break;
+		break;*/
 
 	case 1:
 		currentAnim = &snoLeftAnim2;
@@ -292,7 +296,7 @@ update_status ModuleEnemies::Update()
 	}
 	if (!destroyedEnemy) {
 		if (App->tilemap->thereIsABlock(position.x, position.y)) {
-			destroyedEnemy = true;
+			//destroyedEnemy = true;
 
 		}
 	}
