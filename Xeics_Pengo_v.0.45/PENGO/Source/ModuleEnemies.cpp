@@ -320,6 +320,7 @@ update_status ModuleEnemies::PostUpdate()
 		currentAnim = &deadAnim;
 		rect = currentAnim->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
+		
 	}
 
 

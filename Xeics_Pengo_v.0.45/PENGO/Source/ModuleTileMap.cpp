@@ -45,6 +45,20 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
 	miniEnemyEggAnim.speed = 0.1f;
 
+	sidesWallAnim.PushBack({ 684, 0, 8, 256 });
+	sidesWallAnim.PushBack({ 696, 0, 8, 256 });
+	sidesWallAnim.PushBack({ 684, 0, 8, 256 });	
+	sidesWallAnim.PushBack({ 696, 0, 8, 256 });
+	sidesWallAnim.loop = false;
+	sidesWallAnim.speed = 0.1f;
+
+	topbotWallAnim.PushBack({ 456, 260, 224, 8 });
+	topbotWallAnim.PushBack({ 456, 272, 224, 8 });
+	topbotWallAnim.PushBack({ 456, 260, 224, 8 });
+	topbotWallAnim.PushBack({ 456, 272, 224, 8 });
+	topbotWallAnim.loop = false;
+	topbotWallAnim.speed = 0.1f;
+
 	source.x = source.y = 0;
 	source.w = source.h = 16;
 	destination.w = destination.h = 16;
@@ -250,8 +264,8 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 
 void ModuleTileMap::MoveBlock(int x, int y)
 {
-	positionBlock.x = x;
-	positionBlock.y = y;
+	positionBlockx = x;
+	positionBlocky = y;
 
 	movedBlockX = x / 16;
 	movedBlockY = (y - 16) / 16;
@@ -260,10 +274,55 @@ void ModuleTileMap::MoveBlock(int x, int y)
 
 	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
 	movedBlock = true;
-
-
-
 }
+
+//void ModuleTileMap::MoveBlockLeft(int x, int y)
+//{
+//	positionBlock.x = x;
+//	positionBlock.y = y;
+//
+//	movedBlockX = x / 16;
+//	movedBlockY = (y - 16) / 16;
+//
+//	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
+//	movedBlockLeft = true;
+//}
+//
+//void ModuleTileMap::MoveBlockRight(int x, int y)
+//{
+//	positionBlock.x = x;
+//	positionBlock.y = y;
+//
+//	movedBlockX = x / 16;
+//	movedBlockY = (y - 16) / 16;
+//
+//	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
+//	movedBlockRight = true;
+//}
+//
+//void ModuleTileMap::MoveBlockUp(int x, int y)
+//{
+//	positionBlock.x = x;
+//	positionBlock.y = y;
+//
+//	movedBlockX = x / 16;
+//	movedBlockY = (y - 16) / 16;
+//
+//	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
+//	movedBlockUp = true;
+//}
+//
+//void ModuleTileMap::MoveBlockDown(int x, int y)
+//{
+//	positionBlock.x = x;
+//	positionBlock.y = y;
+//
+//	movedBlockX = x / 16;
+//	movedBlockY = (y - 16) / 16;
+//
+//	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
+//	movedBlockDown = true;
+//}
 
 
 
@@ -302,6 +361,23 @@ void ModuleTileMap::MoveDiamond(int x, int y)
 
 }
 
+void ModuleTileMap::PushLeftWall()
+{
+	pushLeft = true;
+}
+void ModuleTileMap::PushRightWall()
+{
+	pushRight = true;
+}
+void ModuleTileMap::PushUpWall()
+{
+	pushUp = true;
+}
+void ModuleTileMap::PushDownWall()
+{
+	pushDown = true;
+}
+
 update_status ModuleTileMap::Update()
 {
 	/*if(counter % 10==0) {
@@ -329,6 +405,34 @@ update_status ModuleTileMap::Update()
 		}
 	}
 
+	if (pushLeft) {
+		sidesWallAnim.Update();
+		if (sidesWallAnim.HasFinished()) {
+			pushLeft = false;
+			sidesWallAnim.Reset();
+		}
+	}	
+	if (pushRight) {
+		sidesWallAnim.Update();
+		if (sidesWallAnim.HasFinished()) {
+			pushRight = false;
+			sidesWallAnim.Reset();
+		}
+	}	
+	if (pushUp) {
+		topbotWallAnim.Update();
+		if (topbotWallAnim.HasFinished()) {
+			pushUp = false;
+			topbotWallAnim.Reset();
+		}
+	}	
+	if (pushDown) {
+		topbotWallAnim.Update();
+		if (topbotWallAnim.HasFinished()) {
+			pushDown = false;
+			topbotWallAnim.Reset();
+		}
+	}
 
 
 	if (rep == 16 * spaces) {
@@ -337,40 +441,51 @@ update_status ModuleTileMap::Update()
 		movedBlockfinish = true;
 
 	}
+
+
 	if (rep == 0) {
 		if (movedBlock) {
-			//currentAnimation = &blockAnim;
+			//if (movedBlockLeft) {
+				//currentAnimation = &blockAnim;
 			if (App->player->opcio == 'l') {
 				while (tilemap[movedBlockY][movedBlockX - 1] == TILE_NOBLOCK) {
-					positionBlock.x--;
+					positionBlockx--;
 					movedBlockX--;
 					spaces++;
 					App->player->opcio == 'l';
 					rep++;
+					//tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK;
+					//tilemap[movedBlockY][movedBlockX] == TILE_BLOCK;
 				}
 			}
 
+
+			//if (movedBlockRight) {
 			else if (App->player->opcio == 'r') {
 				while (tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK) {
-					positionBlock.x++;
+					positionBlockx++;
 					movedBlockX++;
 					spaces++;
 					App->player->opcio == 'r';
 					rep++;
 				}
 			}
+
+			//if (movedBlockUp) {
 			else if (App->player->opcio == 'u') {
 				while (tilemap[movedBlockY - 1][movedBlockX] == TILE_NOBLOCK) {
-					positionBlock.y--;
+					positionBlocky--;
 					movedBlockY--;
 					spaces++;
 					App->player->opcio == 'u';
 					rep++;
 				}
 			}
+
+			//if (movedBlockDown) {
 			else if (App->player->opcio == 'd') {
 				while (tilemap[movedBlockY + 1][movedBlockX] == TILE_NOBLOCK) {
-					positionBlock.y++;
+					positionBlocky++;
 					movedBlockY++;
 					spaces++;
 					App->player->opcio == 'd';
@@ -380,36 +495,44 @@ update_status ModuleTileMap::Update()
 
 		}
 	}
+
 	else {
 
 
-		//if (movedBlock) {
+		//if (movedBlockLeft) {
 
 		if (App->player->opcio == 'l')
 		{
-			positionBlock.x--;
+			positionBlockx--;
 			App->player->opcio == 'l';
 			rep++;
+  			//if (positionBlockx / 16 == movedBlockX) {
+				//tilemap[movedBlockY][movedBlockX + 1] == TILE_NOBLOCK;
+				//tilemap[movedBlockY][movedBlockX] == TILE_BLOCK;
+			//}
 		}
 		else if (App->player->opcio == 'r')
 		{
-			positionBlock.x++;
+		//else if (movedBlockRight) {
+			positionBlockx++;
 			App->player->opcio == 'r';
 			rep++;
 		}
 		else if (App->player->opcio == 'u')
 		{
-			positionBlock.y--;
+		//else if (movedBlockUp) {
+			positionBlocky--;
 			App->player->opcio == 'u';
 			rep++;
 		}
 		else if (App->player->opcio == 'd')
 		{
-			positionBlock.y++;
+		//else if (movedBlockDown) {
+			positionBlocky++;
 			App->player->opcio == 'd';
 			rep++;
-			//}
-		}
+			}
+		//}
 
 	}
 	if (movedBlockfinish) {
@@ -433,7 +556,20 @@ update_status ModuleTileMap::PostUpdate()
 	if (destroyedBlock) {
 		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
 	}
-	App->render->Blit(texture, positionBlock.x, positionBlock.y, &(blockAnim.GetCurrentFrame()), 0.1f);
+	if (pushLeft) {
+		App->render->Blit(texture, 8, 24, &(sidesWallAnim.GetCurrentFrame()), 0.1f);
+	}
+	if (pushRight) {
+		App->render->Blit(texture, 224, 24, &(sidesWallAnim.GetCurrentFrame()), 0.1f);
+	}
+	if (pushUp) {
+		App->render->Blit(texture, 8, 24, &(topbotWallAnim.GetCurrentFrame()), 0.1f);
+	}
+	if (pushDown) {
+		App->render->Blit(texture, 8, 272, &(topbotWallAnim.GetCurrentFrame()), 0.1f);
+	}
+
+	App->render->Blit(texture, positionBlockx, positionBlocky, &(blockAnim.GetCurrentFrame()), 0.2f);
 
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
 

@@ -48,7 +48,23 @@ public:
 
 	void MoveBlock(int x, int y);
 
+	/*void MoveBlockLeft(int x, int y);
+
+	void MoveBlockRight(int x, int y);
+
+	void MoveBlockUp(int x, int y);
+
+	void MoveBlockDown(int x, int y);*/
+
 	void MoveDiamond(int x, int y);
+
+	void PushLeftWall();
+
+	void PushRightWall();
+
+	void PushUpWall();
+
+	void PushDownWall();
 
 	bool isWalkable(int x, int y);
 
@@ -81,15 +97,30 @@ public:
 
 	Animation blockDestrAnim;
 	Animation blockAnim;
+	Animation sidesWallAnim;
+	Animation topbotWallAnim;
 	Animation oneAnim;
 	Animation miniEnemyEggAnim;
 
-	iPoint positionBlock;
+
+	//iPoint positionBlock;
+	int positionBlockx=32;
+	int positionBlocky=32;
+
 
 	bool destroyedBlock = false;
 	bool movedBlock = false;
+	/*bool movedBlockLeft = false;
+	bool movedBlockRight = false;
+	bool movedBlockUp = false;
+	bool movedBlockDown = false;*/
 	bool movedBlockfinish = false;
 	bool destroyedAnimBlock = false;
+	bool pushLeft = false;
+	bool pushRight = false;
+	bool pushUp = false;
+	bool pushDown = false;
+
 
 	SDL_Texture* texture;
 	SDL_Texture* oneTexture;

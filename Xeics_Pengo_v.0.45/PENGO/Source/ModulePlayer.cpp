@@ -351,6 +351,11 @@ update_status ModulePlayer::Update()
 						//currentAnimation = &leftAnim2;
 					//}
 				}
+				else if (App->tilemap->thereIsAWall(position.x - 1, position.y)) 
+				{
+					currentAnimation = &leftPushAnim;
+					App->tilemap->PushLeftWall();
+				}
 			}
 			if (opcio == 'r') 
 			{
@@ -374,6 +379,11 @@ update_status ModulePlayer::Update()
 					{
 						App->tilemap->MoveDiamond(position.x + 16, position.y);
 					}
+				}
+				else if (App->tilemap->thereIsAWall(position.x + 16, position.y))
+				{
+					currentAnimation = &rightPushAnim;
+					App->tilemap->PushRightWall();
 				}
 			}
 			if (opcio == 'u') 
@@ -399,6 +409,12 @@ update_status ModulePlayer::Update()
 						App->tilemap->MoveDiamond(position.x, position.y - 16);
 					}
 				}
+				else if (App->tilemap->thereIsAWall(position.x, position.y - 1))
+				{
+					currentAnimation = &upPushAnim;
+					App->tilemap->PushUpWall();
+				}
+
 			}
 			
 			if (opcio == 'd') 
@@ -423,6 +439,11 @@ update_status ModulePlayer::Update()
 					{
 						App->tilemap->MoveDiamond(position.x, position.y + 16);
 					}
+				}
+				else if (App->tilemap->thereIsAWall(position.x, position.y + 16))
+				{
+					currentAnimation = &downPushAnim;
+					App->tilemap->PushDownWall();
 				}
 			}
 
