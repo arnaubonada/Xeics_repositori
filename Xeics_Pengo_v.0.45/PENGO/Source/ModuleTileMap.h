@@ -24,6 +24,15 @@ enum TileType
 	MAX
 };
 
+enum Direction
+{
+	NOMOVE = 0,
+	DOWN = 1,
+	LEFT = 2,
+	RIGHT = 3,
+	UP = 4,
+};
+
 
 class ModuleTileMap : public Module
 {
@@ -46,7 +55,7 @@ public:
 
 	void DestroyBlock(int x, int y);
 
-	void MoveBlock(int x, int y);
+	void MoveBlock(int x, int y, Direction d);
 
 	/*void MoveBlockLeft(int x, int y);
 
@@ -76,7 +85,7 @@ public:
 
 	bool thereIsEnemy(int x, int y);
 
-	int spaceToBlock(int x, int y);
+	int spaceToBlock(int x, int y, Direction d);
 
 
 	//// Called at the middle of the application loop
@@ -102,18 +111,19 @@ public:
 	Animation oneAnim;
 	Animation miniEnemyEggAnim;
 
+	Direction dirBlock;
 
 	//iPoint positionBlock;
 	int positionBlockx=32;
 	int positionBlocky=32;
 
+	int spacestoblock;
+
+	int finalpositionX;
+	int finalpositionY;
 
 	bool destroyedBlock = false;
-	bool movedBlock = false;
-	/*bool movedBlockLeft = false;
-	bool movedBlockRight = false;
-	bool movedBlockUp = false;
-	bool movedBlockDown = false;*/
+
 	bool movedBlockfinish = false;
 	bool destroyedAnimBlock = false;
 	bool pushLeft = false;
@@ -134,9 +144,6 @@ public:
 	SDL_Rect source;
 	SDL_Rect destination;
 
-	int rep = 0;
-
-	int spaces = 0;
 
 	int blockX, blockY;
 

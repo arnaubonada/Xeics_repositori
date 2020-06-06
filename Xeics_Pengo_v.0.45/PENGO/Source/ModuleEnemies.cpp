@@ -112,10 +112,10 @@ bool ModuleEnemies::Start()
 
 update_status ModuleEnemies::Update()
 {
-	if(App->tilemap->spaceToBlock(position.x, position.y)!=0){
+	/*if(App->tilemap->spaceToBlock(position.x, position.y, )!=0){
 	
 		longer = rand() % App->tilemap->spaceToBlock(position.x, position.y) + 1;
-	}
+	}*/
 
 	/*longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);*/
 

@@ -335,7 +335,7 @@ update_status ModulePlayer::Update()
 						}
 					}
 						else {
-							App->tilemap->MoveBlock(position.x - 16, position.y);
+							App->tilemap->MoveBlock(position.x - 16, position.y, LEFT);
 						}
 						
 					
@@ -368,7 +368,7 @@ update_status ModulePlayer::Update()
 						score += 30;
 					}
 					else {
-						App->tilemap->MoveBlock(position.x + 16, position.y);
+						App->tilemap->MoveBlock(position.x + 16, position.y, RIGHT);
 					}
 
 				}
@@ -397,7 +397,7 @@ update_status ModulePlayer::Update()
 						score += 30;
 					}
 					else {
-						App->tilemap->MoveBlock(position.x, position.y - 16);
+						App->tilemap->MoveBlock(position.x, position.y - 16, UP);
 					}
 				}
 				
@@ -429,7 +429,7 @@ update_status ModulePlayer::Update()
 						score += 30;
 					}
 					else {
-						App->tilemap->MoveBlock(position.x, position.y + 16);
+						App->tilemap->MoveBlock(position.x, position.y + 16, DOWN);
 					}
 				}
 				else if (App->tilemap->thereIsADiamond(position.x, position.y + 16))
