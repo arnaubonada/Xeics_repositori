@@ -31,6 +31,8 @@ enum Direction
 	LEFT = 2,
 	RIGHT = 3,
 	UP = 4,
+
+	last
 };
 
 

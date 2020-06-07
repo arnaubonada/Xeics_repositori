@@ -95,37 +95,39 @@ void Enemy_SnoBee::enemyMovement(int x, int y)
 {
 	//movement nou
 
-	/*
+	
 
 	positionEnemyX = x;
 	positionEnemyY = y;
 
-	dirEnemy = rand() % 5;
 
-	if (App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, direct) != 0) {
-		EnemyToBlock = rand() % App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, direct);
+	//dirEnemy = rand() % RIGHT + 1; //enemy direction
+	dirEnemy = static_cast<Direction>(rand() % last);
+
+	if (App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, dirEnemy) != 0) {
+		EnemyToBlock = rand() % App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, dirEnemy);
 	}
 
 
 
 	if (dirEnemy == LEFT) {
-		direct = LEFT;
-		currentAnim = &snoLeftAnim2;
+		//dirEnemy = LEFT;
+		//currentAnim = &snoLeftAnim2;
 		finalEnemyPositionX = x - (EnemyToBlock * 16);
 	}
 	else if (dirEnemy == RIGHT) {
-		direct = RIGHT;
-		currentAnim = &snoRightAnim2;
+		//dirEnemy = RIGHT;
+		//currentAnim = &snoRightAnim2;
 		finalEnemyPositionX = x + (EnemyToBlock * 16);
 	}
 	else if (dirEnemy == UP) {
-		direct = UP;
-		currentAnim = &snoUpAnim2;
+		//dirEnemy = UP;
+		//currentAnim = &snoUpAnim2;
 		finalEnemyPositionY = y - (EnemyToBlock * 16);
 	}
 	else if (dirEnemy == DOWN) {
-		direct = DOWN;
-		currentAnim = &snoDownAnim2;
+		//dirEnemy = DOWN;
+		//currentAnim = &snoDownAnim2;
 		finalEnemyPositionY = y + (EnemyToBlock * 16);
 	}
 
@@ -139,8 +141,8 @@ void Enemy_SnoBee::enemyMovement(int x, int y)
 			if (positionEnemyX == finalEnemyPositionX) {
 				dirEnemy = NOMOVE;
 			}
-			positionEnemyX--;
-			position.x--;
+			positionEnemyX-=16;
+			position.x-=16;
 		}
 
 		else if (dirEnemy == RIGHT) {
@@ -148,8 +150,8 @@ void Enemy_SnoBee::enemyMovement(int x, int y)
 			if (positionEnemyX == finalEnemyPositionX) {
 				dirEnemy = NOMOVE;
 			}
-			positionEnemyX++;
-			position.x++;
+			positionEnemyX+=16;
+			position.x+=16;
 
 		}
 		else if (dirEnemy == UP) {
@@ -157,8 +159,8 @@ void Enemy_SnoBee::enemyMovement(int x, int y)
 			if (positionEnemyY == finalEnemyPositionY) {
 				dirEnemy = NOMOVE;
 			}
-			positionEnemyY--;
-			position.y--;
+			positionEnemyY-=16;
+			position.y-=16;
 
 		}
 		else if (dirEnemy == DOWN) {
@@ -166,191 +168,190 @@ void Enemy_SnoBee::enemyMovement(int x, int y)
 			if (positionEnemyY == finalEnemyPositionY) {
 				dirEnemy = NOMOVE;
 			}
-			positionEnemyY++;
-			position.y++;
+			positionEnemyY+=16;
+			position.y+=16;
 		}
 
 
-
-	}*/
+	}
 
 
 	// movement antic
 
 
 
-	if (j == 0) {
-		opcio = rand() % 4 + 1;
-		j++;
-	}
-	//while (longer != 0) {
-	if (j < 17) {
-		j++;
-	}
-	if (j == 17) {
-		j = 0;
-	}
-	//longer--;
+	//if (j == 0) {
+	//	opcio = rand() % 4 + 1;
+	//	j++;
+	//}
+	////while (longer != 0) {
+	//if (j < 17) {
+	//	j++;
+	//}
+	//if (j == 17) {
+	//	j = 0;
+	//}
+	////longer--;
+	////}
+
+
+	//if (rep == 16) {
+	//	rep = 0;
+
 	//}
 
+	//switch (opcio)
+	//{
 
-	if (rep == 16) {
-		rep = 0;
+	//	//case 0:
+	//	//	currentAnim = &snoDownAnim2;
+	//	//	break;
 
-	}
+	//case 1:
+	//	currentAnim = &snoLeftAnim2;
+	//	break;
 
-	switch (opcio)
-	{
+	//case 2:
+	//	currentAnim = &snoRightAnim2;
+	//	break;
+	//case 3:
+	//	currentAnim = &snoDownAnim2;
+	//	break;
 
-		//case 0:
-		//	currentAnim = &snoDownAnim2;
-		//	break;
-
-	case 1:
-		currentAnim = &snoLeftAnim2;
-		break;
-
-	case 2:
-		currentAnim = &snoRightAnim2;
-		break;
-	case 3:
-		currentAnim = &snoDownAnim2;
-		break;
-
-	case 4:
-		currentAnim = &snoUpAnim2;
-		break;
+	//case 4:
+	//	currentAnim = &snoUpAnim2;
+	//	break;
 
 
-	default:
-		break;
-	}
+	//default:
+	//	break;
+	//}
 
-	if (rep == 0) {
-		if (!destroyedEnemy) {
-			if (opcio == 1)
-			{
-				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
-					if (currentAnim != &snoLeftAnim)
-					{
-						position.x -= move;
-						opcio = 1;
-						rep++;
+	//if (rep == 0) {
+	//	if (!destroyedEnemy) {
+	//		if (opcio == 1)
+	//		{
+	//			if (App->tilemap->isWalkable(position.x - 16, position.y)) {
+	//				if (currentAnim != &snoLeftAnim)
+	//				{
+	//					position.x -= move;
+	//					opcio = 1;
+	//					rep++;
 
-					}
-				}
-			}
-			else {
+	//				}
+	//			}
+	//		}
+	//		else {
 
-				if (opcio == 2)
-				{
-					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
-						if (currentAnim != &snoRightAnim)
-						{
-							position.x += move;
-							opcio = 2;
-							rep++;
+	//			if (opcio == 2)
+	//			{
+	//				if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+	//					if (currentAnim != &snoRightAnim)
+	//					{
+	//						position.x += move;
+	//						opcio = 2;
+	//						rep++;
 
-						}
-					}
-				}
-				else {
-					if (opcio == 3)
-					{
-						if (App->tilemap->isWalkable(position.x, position.y + 16)) {
-							if (currentAnim != &snoDownAnim)
-							{
-								position.y += move;
-								opcio = 3;
-								rep++;
+	//					}
+	//				}
+	//			}
+	//			else {
+	//				if (opcio == 3)
+	//				{
+	//					if (App->tilemap->isWalkable(position.x, position.y + 16)) {
+	//						if (currentAnim != &snoDownAnim)
+	//						{
+	//							position.y += move;
+	//							opcio = 3;
+	//							rep++;
 
-							}
-						}
-					}
+	//						}
+	//					}
+	//				}
 
-					else {
-						if (opcio == 4)
-						{
-							if (App->tilemap->isWalkable(position.x, position.y - 16)) {
-								if (currentAnim != &snoUpAnim)
-								{
-									position.y -= move;
-									opcio = 4;
-									rep++;
-
-
-								}
-
-							}
-						}
-					}
-
-				}
+	//				else {
+	//					if (opcio == 4)
+	//					{
+	//						if (App->tilemap->isWalkable(position.x, position.y - 16)) {
+	//							if (currentAnim != &snoUpAnim)
+	//							{
+	//								position.y -= move;
+	//								opcio = 4;
+	//								rep++;
 
 
-			}
-		}
-	}
-	else {
+	//							}
+
+	//						}
+	//					}
+	//				}
+
+	//			}
 
 
-		if (!destroyedEnemy) {
-
-			if (opcio == 1)
-			{
-				position.x -= move;
-				opcio = 1;
-				rep++;
-
-			}
-
-			else {
-
-				{
-					if (opcio == 2)
-					{
-						position.x += move;
-						opcio = 2;
-						rep++;
+	//		}
+	//	}
+	//}
+	//else {
 
 
-					}
+	//	if (!destroyedEnemy) {
 
-					else {
+	//		if (opcio == 1)
+	//		{
+	//			position.x -= move;
+	//			opcio = 1;
+	//			rep++;
 
-						if (opcio == 3)
-						{
-							position.y += move;
-							opcio = 3;
-							rep++;
+	//		}
 
+	//		else {
 
-						}
-
-
-						else {
-
-							if (opcio == 4)
-							{
-								position.y -= move;
-								opcio = 4;
-
-								rep++;
-
-							}
-						}
+	//			{
+	//				if (opcio == 2)
+	//				{
+	//					position.x += move;
+	//					opcio = 2;
+	//					rep++;
 
 
-					}
+	//				}
+
+	//				else {
+
+	//					if (opcio == 3)
+	//					{
+	//						position.y += move;
+	//						opcio = 3;
+	//						rep++;
 
 
-				}
-			}
+	//					}
+
+
+	//					else {
+
+	//						if (opcio == 4)
+	//						{
+	//							position.y -= move;
+	//							opcio = 4;
+
+	//							rep++;
+
+	//						}
+	//					}
+
+
+	//				}
+
+
+	//			}
+	//		}
 
 
 
-		}
-	}
+	//	}
+	//}
 	/*if (!destroyedEnemy) {
 		if (App->tilemap->thereIsABlock(position.x, position.y)) {
 			destroyedEnemy = true;

@@ -48,7 +48,7 @@ public:
 
 	Direction direct = NOMOVE;
 
-	int dirEnemy;
+	Direction dirEnemy;
 	// The speed in which we move the player (pixels per frame)
 	int move = 1;
 
