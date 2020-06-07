@@ -1,6 +1,8 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 
+#include "Enemy.h"
+#include "Enemy_SnoBee.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
@@ -15,63 +17,19 @@
 
 #include <stdio.h>
 
+#include "SDL/include/SDL.h"
 #include "SDL/include/SDL_scancode.h"
 
 #include "time.h"
 
-
+#define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies(bool startEnabled) : Module(startEnabled)
 {
 	name = "enemies";
 
-	// move up
-	snoUpAnim.PushBack({ 64, 160, 16, 16 });
-	snoUpAnim.PushBack({ 80, 160, 16, 16 });
-	snoUpAnim.speed = 0.1f;
-	//currentAnim = &snoUpAnim;
-
-	// Move down
-	snoDownAnim.PushBack({ 0, 160, 16, 16 });
-	snoDownAnim.PushBack({ 16, 160, 16, 16 });
-	snoDownAnim.speed = 0.1f;
-
-	// move left
-	snoLeftAnim.PushBack({ 32, 160, 16, 16 });
-	snoLeftAnim.PushBack({ 48, 160, 16, 16 });
-	snoLeftAnim.speed = 0.1f;
-
-	// Move right
-	snoRightAnim.PushBack({ 96, 160, 16, 16 });
-	snoRightAnim.PushBack({ 112, 160, 16, 16 });
-	snoRightAnim.speed = 0.1f;
-
-
-	// move up
-	snoUpAnim2.PushBack({ 64, 160, 16, 16 });
-	snoUpAnim2.PushBack({ 80, 160, 16, 16 });
-	snoUpAnim2.speed = 0.1f;
-	//currentAnim = &snoUpAnim;
-
-	// Move down
-	snoDownAnim2.PushBack({ 0, 160, 16, 16 });
-	snoDownAnim2.PushBack({ 16, 160, 16, 16 });
-	snoDownAnim2.speed = 0.1f;
-
-	// move left
-	snoLeftAnim2.PushBack({ 32, 160, 16, 16 });
-	snoLeftAnim2.PushBack({ 48, 160, 16, 16 });
-	snoLeftAnim2.speed = 0.1f;
-
-	// Move right
-	snoRightAnim2.PushBack({ 96, 160, 16, 16 });
-	snoRightAnim2.PushBack({ 112, 160, 16, 16 });
-	snoRightAnim2.speed = 0.1f;
-
-
-	//currentAnim = &flyAnim;
-
-	//collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		enemies[i] = nullptr;
 }
 
 
@@ -89,389 +47,167 @@ bool ModuleEnemies::Start()
 	bool ret = true;
 
 	texture = App->textures->Load("Assets/Characters.png");
-	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
-	currentAnim = &snoDownAnim;
-
-	position.x = 176;
-	position.y = 64;
-	//position.x = 112;
-	//position.y = 128;
-
-	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
-
-	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, this);
-	destroyedEnemy = false;
-
+	
+	//position.x = 176;
+	//position.y = 64;
 
 	srand(time(NULL));
 
-	
 	return ret;
 }
 
-void ModuleEnemies::MoveEnemy(int x, int y, Direction d) {
-
-	positionEnemyX = x;
-	positionEnemyY = y;
-
-	movedEnemyX = x / 16;
-	movedEnemyY = (y - 16) / 16;
-
-	dirEnemy = d;
-
-	EnemyToBlock = rand() % App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, dirEnemy) + 1;
-
-	
-
-	if (dirEnemy == LEFT) {
-		currentAnim = &snoLeftAnim2;
-		finalEnemyPositionX = x - (EnemyToBlock * 16);
-	}
-	else if (dirEnemy == RIGHT) {
-		currentAnim = &snoRightAnim2;
-		finalEnemyPositionX = x + (EnemyToBlock * 16);
-	}
-	else if (dirEnemy == UP) {
-		currentAnim = &snoUpAnim2;
-		finalEnemyPositionY = y - (EnemyToBlock * 16);
-	}
-	else if (dirEnemy == DOWN) {
-		currentAnim = &snoDownAnim2;
-		finalEnemyPositionY = y + (EnemyToBlock * 16);
-	}
-
-}
-
-
-
 update_status ModuleEnemies::Update()
 {
+	HandleEnemiesSpawn();
 
-
-	if (dirEnemy != NOMOVE) {
-
-
-		if (dirEnemy == LEFT) {
-
-			if (positionEnemyX == finalEnemyPositionX) {
-				dirEnemy = NOMOVE;
-			}
-			positionEnemyX--;
-			position.x--;
-		}
-
-		else if (dirEnemy == RIGHT) {
-
-			if (positionEnemyX == finalEnemyPositionX) {
-				dirEnemy = NOMOVE;
-			}
-			positionEnemyX++;
-			position.x++;
-
-		}
-		else if (dirEnemy == UP) {
-
-			if (positionEnemyY == finalEnemyPositionY) {
-				dirEnemy = NOMOVE;
-			}
-			positionEnemyY--;
-			position.y--;
-
-		}
-		else if (dirEnemy == DOWN) {
-
-			if (positionEnemyY == finalEnemyPositionY) {
-				dirEnemy = NOMOVE;
-			}
-			positionEnemyY++;
-			position.y++;
-		}
-
-
-
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+			enemies[i]->Update();
 	}
 
+	HandleEnemiesDespawn();
 
-
-
-
-	//MOV ENEMY ANTIC
-
-	///*if(App->tilemap->spaceToBlock(position.x, position.y, )!=0){
-	//
-	//	longer = rand() % App->tilemap->spaceToBlock(position.x, position.y) + 1;
-	//}*/
-
-	///*longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);*/
-
-	////longer = App->tilemap->spaceToBlock(position.x, position.y);
-
-	////opcio = rand() % 5;
-
-	////	if (j == 0) {
-	////		opcio = rand() % 4 + 1;
-	////		j++;
-	////	}
-	////	//while (longer != 0) {
-	////		if (j < 17) {
-	////			j++;
-	////		}
-	////		if (j == 17) {
-	////			j = 0;
-	////		}
-	////		//longer--;
-	////	//}
-	////
-
-	////if (rep == 16) {
-	////	rep = 0;
-
-	////}
-
-	////switch (opcio)
-	////{
-
-	//////case 0:
-	//////	currentAnim = &snoDownAnim2;
-	//////	break;
-
-	////case 1:
-	////	currentAnim = &snoLeftAnim2;
-	////	break;
-
-	////case 2:
-	////	currentAnim = &snoRightAnim2;
-	////	break;
-	////case 3:
-	////	currentAnim = &snoDownAnim2;
-	////	break;
-
-	////case 4:
-	////	currentAnim = &snoUpAnim2;
-	////	break;
-
-
-	////default:
-	////	break;
-	////}
-
-	//if (rep == 0) {
-	//	if (!destroyedEnemy) {
-	//		if (opcio == 1)
-	//		{
-	//			if (App->tilemap->isWalkable(position.x - 16, position.y)) {
-	//				if (currentAnim != &snoLeftAnim)
-	//				{
-	//					position.x -= move;
-	//					opcio = 1;
-	//					rep++;
-
-	//				}
-	//			}
-	//		}
-	//		else {
-
-	//			if (opcio == 2)
-	//			{
-	//				if (App->tilemap->isWalkable(position.x + 16, position.y)) {
-	//					if (currentAnim != &snoRightAnim)
-	//					{
-	//						position.x += move;
-	//						opcio = 2;
-	//						rep++;
-
-	//					}
-	//				}
-	//			}
-	//			else {
-	//				if (opcio == 3)
-	//				{
-	//					if (App->tilemap->isWalkable(position.x, position.y + 16)) {
-	//						if (currentAnim != &snoDownAnim)
-	//						{
-	//							position.y += move;
-	//							opcio = 3;
-	//							rep++;
-
-	//						}
-	//					}
-	//				}
-
-	//				else {
-	//					if (opcio == 4)
-	//					{
-	//						if (App->tilemap->isWalkable(position.x, position.y - 16)) {
-	//							if (currentAnim != &snoUpAnim)
-	//							{
-	//								position.y -= move;
-	//								opcio = 4;
-	//								rep++;
-
-
-	//							}
-
-	//						}
-	//					}
-	//				}
-
-	//			}
-
-
-	//		}
-	//	}
-	//}
-	//else {
-
-
-	//	if (!destroyedEnemy) {
-
-	//		if (opcio == 1)
-	//		{
-	//			position.x -= move;
-	//			opcio = 1;
-	//			rep++;
-
-	//		}
-
-	//		else {
-
-	//			{
-	//				if (opcio == 2)
-	//				{
-	//					position.x += move;
-	//					opcio = 2;
-	//					rep++;
-
-
-	//				}
-
-	//				else {
-
-	//					if (opcio == 3)
-	//					{
-	//						position.y += move;
-	//						opcio = 3;
-	//						rep++;
-
-
-	//					}
-
-
-	//					else {
-
-	//						if (opcio == 4)
-	//						{
-	//							position.y -= move;
-	//							opcio = 4;
-
-	//							rep++;
-
-	//						}
-	//					}
-
-
-	//				}
-
-
-	//			}
-	//		}
-
-
-
-	//	}
-	//}
-	if (!destroyedEnemy) {
-		if (App->tilemap->thereIsABlock(position.x, position.y)) {
-			destroyedEnemy = true;
-
-		}
-	}
-
-	collider->SetPos(position.x, position.y);
-
-	currentAnim->Update();
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleEnemies::PostUpdate()
 {
-	SDL_Rect rect = currentAnim->GetCurrentFrame();
-	if (!destroyedEnemy)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		App->render->Blit(texture, position.x, position.y, &rect);
+		if (enemies[i] != nullptr)
+			enemies[i]->Draw();
 	}
 
-	if (destroyedEnemy) {
-		currentAnim = &deadAnim;
-		rect = currentAnim->GetCurrentFrame();
-		App->render->Blit(texture, position.x, position.y, &rect);
-		
-	}
-
-	//if (dirEnemy != NOMOVE) {
-	//	App->render->Blit(texture, positionEnemyX, positionEnemyY, &(rect.GetCurrentFrame()), 0.2f);
-	//}
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 bool ModuleEnemies::CleanUp()
 {
-	App->collisions->RemoveCollider(collider);
-	--totalColliders;
+	LOG("Freeing all enemies");
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
+	SDL_DestroyTexture(texture);
+
+	/*App->collisions->RemoveCollider(collider);
+	--totalColliders;*/
 
 	return true;
 }
 
+
+bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
+{
+	bool ret = false;
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		//App->enemies[i].touchWall = false;
+
+		if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
+		{
+			
+			snobee.enemiesAlive++;
+
+			spawnQueue[i].type = type;
+			spawnQueue[i].x = x;
+			spawnQueue[i].y = y;
+			ret = true;
+			break;
+		}
+	}
+
+	return ret;
+}
+
+void ModuleEnemies::HandleEnemiesSpawn()
+{
+	// Iterate all the enemies queue
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (spawnQueue[i].type != ENEMY_TYPE::NO_TYPE)
+		{
+			// Spawn a new enemy if the screen has reached a spawn position
+			if (spawnQueue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			{
+				LOG("Spawning enemy at %d", spawnQueue[i].x * SCREEN_SIZE);
+
+				SpawnEnemy(spawnQueue[i]);
+				spawnQueue[i].type = ENEMY_TYPE::NO_TYPE; // Removing the newly spawned enemy from the queue
+			}
+		}
+	}
+}
+
+void ModuleEnemies::HandleEnemiesDespawn()
+{
+	// Iterate existing enemies
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			// Delete the enemy when it has reached the end of the screen
+			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			{
+				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
+		}
+	}
+}
+
+void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
+{
+	// Find an empty slot in the enemies array
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] == nullptr)
+		{
+			switch (info.type)
+			{
+
+			case ENEMY_TYPE::SNOBEE_NORMAL:
+				enemies[i] = new Enemy_SnoBee(info.x, info.y, ENEMY_TYPE::SNOBEE_NORMAL);
+				break;
+			case ENEMY_TYPE::SNOBEE_DESTROYER:
+				enemies[i] = new Enemy_SnoBee(info.x, info.y, ENEMY_TYPE::SNOBEE_DESTROYER);
+				break;
+			}
+			enemies[i]->texture = texture;
+			enemies[i]->destroyedFx = enemyDestroyedFx;
+			break;
+		}
+	}
+}
+
+
+
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == Collider::Type::ENEMY) {
-
-		if (c2 == App->scene->leftWall) {
-			position.x = 8;
-		}
-		if (c2 == App->scene->rightWall) {
-			position.x = 200;
-		}
-		if (c2 == App->scene->bottomWall) {
-			position.y = 256;
-		}
-		if (c2 == App->scene->topWall) {
-			position.y = 32;
-		}
-		/*
-		if (c2->type == Collider::Type::BLOCK && opcio == 1)
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			position.x += move;
+			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 
+			if (c2->type == Collider::Type::PLAYER) {
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
 		}
-		if (c2->type == Collider::Type::BLOCK && opcio == 2)
-		{
-			position.x -= move;
-
-		}if (c2->type == Collider::Type::BLOCK && opcio == 3)
-		{
-			position.y -= move;
-
-		}
-		if (c2->type == Collider::Type::BLOCK && opcio == 4)
-		{
-			position.y += move;
-
-		}
-
-		if (c2->type == Collider::Type::PLAYER)
-		{
-			App->audio->PlayFx(snobeeFx);
-			destroyedEnemy = true;
-
-
-			//c2->pendingToDelete = true;
-
-		}
-
-		*/
 	}
 }
 

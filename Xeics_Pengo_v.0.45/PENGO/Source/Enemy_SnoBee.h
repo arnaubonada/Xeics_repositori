@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Path.h"
 #include "time.h"
+#include "ModuleTileMap.h"
 
 class Enemy_SnoBee : public Enemy
 {
@@ -11,36 +12,66 @@ public:
 	
 	// Constructor (x y coordinates in the world)
 	// Creates animation data and the collider
-	Enemy_SnoBee(int x, int y);
+	Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type);
+	Enemy_SnoBee() {};
 
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
 
-private:
-	// The position (as ratio) in the wave at a specific moment
-	float waveRatio = 0.0f;
 
-	// The speed at which the wave ratio is increased
-	float waveRatioSpeed = 0.05f;
+	uint snobeeFx = 0;
 
-	// The original spawning position. The wave will be calculated from that
-	int spawn_y = 0;
+	uint enemiesAlive = 0;
 
-	
-
-	int moveE = 1;
-	
-	void OnCollision(Collider* c2) override;
-	// The total height of the wave
-	int waveHeight = 15;
+public:
 
 	Path path;
+
+	void enemyMovement(int x, int y);
+
+	
+	void OnCollision(Collider* c1) override;
+
+	enum class ENEMY_TYPE typeEnemy;
 
 	// The enemy animation
 	Animation snoUpAnim;
 	Animation snoDownAnim;
 	Animation snoLeftAnim;
 	Animation snoRightAnim;
+
+	Animation snoUpAnim2;
+	Animation snoDownAnim2;
+	Animation snoLeftAnim2;
+	Animation snoRightAnim2;
+
+
+	Direction direct = NOMOVE;
+
+	int dirEnemy;
+	// The speed in which we move the player (pixels per frame)
+	int move = 1;
+
+	//Where the player goes
+	int opcio = 1;
+
+	int rep = 0;
+	int longer;
+
+	// A flag to detect when the enemy has been destroyed
+	bool destroyedEnemy = false;
+
+	int j = 0;
+
+	int positionEnemyX;
+	int positionEnemyY;
+	int movedEnemyX;
+	int movedEnemyY;
+
+	int EnemyToBlock;
+
+	int finalEnemyPositionX;
+	int finalEnemyPositionY;
 };
 
 #endif // __ENEMY_SNOBEE_H__

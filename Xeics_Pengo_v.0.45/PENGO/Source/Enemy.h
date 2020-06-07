@@ -13,6 +13,7 @@ public:
 	// Constructor
 	// Saves the spawn position for later movement calculations
 	Enemy(int x, int y);
+	Enemy() {};
 
 	// Destructor
 	virtual ~Enemy();
@@ -31,9 +32,6 @@ public:
 	// Triggers an animation and a sound fx
 	virtual void OnCollision(Collider* collider);
 
-	// Sets flag for deletion and for the collider aswell
-	virtual void SetToDelete();
-
 public:
 	// The current position in the world
 	iPoint position;
@@ -44,17 +42,13 @@ public:
 	// Sound fx when destroyed
 	int destroyedFx = 0;
 
-	// A flag for the enemy removal. Important! We do not delete objects instantly
-	bool pendingToDelete = false;
-
+	// The enemy's collider
+	Collider* collider = nullptr;
 
 
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;
-
-	// The enemy's collider
-	Collider* collider = nullptr;
 
 	// Original spawn position. Stored for movement calculations
 	iPoint spawnPos;

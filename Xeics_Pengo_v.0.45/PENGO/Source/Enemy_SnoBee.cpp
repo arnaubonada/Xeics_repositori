@@ -1,30 +1,29 @@
 #include "Enemy_SnoBee.h"
 
 #include "Application.h"
+#include "ModuleAudio.h"
 #include "ModuleScene.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "ModuleTileMap.h"
+
 #include "time.h"
 
+#include "SDL/include/SDL.h"
 
 
-Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
+Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, y)
 {
+	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
 
-
-	//// idle animation (arcade sprite sheet)
-	//idleAnim.PushBack({ 0, 0, 16, 16 });
-	//idleAnim.PushBack({ 16, 0, 16, 16 });
-	////upAnim.loop = false;
-	//idleAnim.speed = 0.1f;
-
+	typeEnemy = type;
 
 	// move up
 	snoUpAnim.PushBack({ 64, 160, 16, 16 });
 	snoUpAnim.PushBack({ 80, 160, 16, 16 });
 	snoUpAnim.speed = 0.1f;
-	currentAnim = &snoUpAnim;
+	//currentAnim = &snoUpAnim;
 
 	// Move down
 	snoDownAnim.PushBack({ 0, 160, 16, 16 });
@@ -42,50 +41,326 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y) : Enemy(x, y)
 	snoRightAnim.speed = 0.1f;
 
 
-	//currentAnim = &flyAnim;
+	// move up
+	snoUpAnim2.PushBack({ 64, 160, 16, 16 });
+	snoUpAnim2.PushBack({ 80, 160, 16, 16 });
+	snoUpAnim2.speed = 0.1f;
+	//currentAnim = &snoUpAnim;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	// Move down
+	snoDownAnim2.PushBack({ 0, 160, 16, 16 });
+	snoDownAnim2.PushBack({ 16, 160, 16, 16 });
+	snoDownAnim2.speed = 0.1f;
+
+	// move left
+	snoLeftAnim2.PushBack({ 32, 160, 16, 16 });
+	snoLeftAnim2.PushBack({ 48, 160, 16, 16 });
+	snoLeftAnim2.speed = 0.1f;
+
+	// Move right
+	snoRightAnim2.PushBack({ 96, 160, 16, 16 });
+	snoRightAnim2.PushBack({ 112, 160, 16, 16 });
+	snoRightAnim2.speed = 0.1f;
+
+	currentAnim = &snoDownAnim;
+
+	if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER)
+	{
+		collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
+		currentAnim = &snoDownAnim;
+	}
+	else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL)
+	{
+		collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
+		currentAnim = &snoDownAnim;
+	}
 }
 
 void Enemy_SnoBee::Update()
 {
-
-	/*switch (App->enemies->RandomDirection())
-	{
-	case 0:
-		position.x += 1;
-		currentAnim = &snoRightAnim;
-		break;
-	case 1:
-		position.x -= 1;
-		currentAnim = &snoLeftAnim;
-		break;
-	case 2:
-		position.y += 1;
-		currentAnim = &snoDownAnim;
-		break;
-	case 3:
-		position.y -= 1;
-		currentAnim = &snoUpAnim;
-		break;
-	case 4:
-		position.x = position.x;
-		position.y = position.y;
-		break;
-	default:
-		break;
+	if (!App->player->destroyed) {
+		enemyMovement(position.x, position.y);
 	}
-
-	if (App->player->destroyed)
+	else if (App->player->destroyed)
 	{
-
 		collider->pendingToDelete = true;
-	}*/
+
+	}
 
 	Enemy::Update();
 }
 
-void Enemy_SnoBee::OnCollision(Collider* c2) {
+
+void Enemy_SnoBee::enemyMovement(int x, int y)
+{
+	//movement nou
+
+	/*
+
+	positionEnemyX = x;
+	positionEnemyY = y;
+
+	dirEnemy = rand() % 5;
+
+	if (App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, direct) != 0) {
+		EnemyToBlock = rand() % App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, direct);
+	}
+
+
+
+	if (dirEnemy == LEFT) {
+		direct = LEFT;
+		currentAnim = &snoLeftAnim2;
+		finalEnemyPositionX = x - (EnemyToBlock * 16);
+	}
+	else if (dirEnemy == RIGHT) {
+		direct = RIGHT;
+		currentAnim = &snoRightAnim2;
+		finalEnemyPositionX = x + (EnemyToBlock * 16);
+	}
+	else if (dirEnemy == UP) {
+		direct = UP;
+		currentAnim = &snoUpAnim2;
+		finalEnemyPositionY = y - (EnemyToBlock * 16);
+	}
+	else if (dirEnemy == DOWN) {
+		direct = DOWN;
+		currentAnim = &snoDownAnim2;
+		finalEnemyPositionY = y + (EnemyToBlock * 16);
+	}
+
+
+
+	if (dirEnemy != NOMOVE) {
+
+
+		if (dirEnemy == LEFT) {
+
+			if (positionEnemyX == finalEnemyPositionX) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyX--;
+			position.x--;
+		}
+
+		else if (dirEnemy == RIGHT) {
+
+			if (positionEnemyX == finalEnemyPositionX) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyX++;
+			position.x++;
+
+		}
+		else if (dirEnemy == UP) {
+
+			if (positionEnemyY == finalEnemyPositionY) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyY--;
+			position.y--;
+
+		}
+		else if (dirEnemy == DOWN) {
+
+			if (positionEnemyY == finalEnemyPositionY) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyY++;
+			position.y++;
+		}
+
+
+
+	}*/
+
+
+	// movement antic
+
+
+
+	if (j == 0) {
+		opcio = rand() % 4 + 1;
+		j++;
+	}
+	//while (longer != 0) {
+	if (j < 17) {
+		j++;
+	}
+	if (j == 17) {
+		j = 0;
+	}
+	//longer--;
+	//}
+
+
+	if (rep == 16) {
+		rep = 0;
+
+	}
+
+	switch (opcio)
+	{
+
+		//case 0:
+		//	currentAnim = &snoDownAnim2;
+		//	break;
+
+	case 1:
+		currentAnim = &snoLeftAnim2;
+		break;
+
+	case 2:
+		currentAnim = &snoRightAnim2;
+		break;
+	case 3:
+		currentAnim = &snoDownAnim2;
+		break;
+
+	case 4:
+		currentAnim = &snoUpAnim2;
+		break;
+
+
+	default:
+		break;
+	}
+
+	if (rep == 0) {
+		if (!destroyedEnemy) {
+			if (opcio == 1)
+			{
+				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
+					if (currentAnim != &snoLeftAnim)
+					{
+						position.x -= move;
+						opcio = 1;
+						rep++;
+
+					}
+				}
+			}
+			else {
+
+				if (opcio == 2)
+				{
+					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+						if (currentAnim != &snoRightAnim)
+						{
+							position.x += move;
+							opcio = 2;
+							rep++;
+
+						}
+					}
+				}
+				else {
+					if (opcio == 3)
+					{
+						if (App->tilemap->isWalkable(position.x, position.y + 16)) {
+							if (currentAnim != &snoDownAnim)
+							{
+								position.y += move;
+								opcio = 3;
+								rep++;
+
+							}
+						}
+					}
+
+					else {
+						if (opcio == 4)
+						{
+							if (App->tilemap->isWalkable(position.x, position.y - 16)) {
+								if (currentAnim != &snoUpAnim)
+								{
+									position.y -= move;
+									opcio = 4;
+									rep++;
+
+
+								}
+
+							}
+						}
+					}
+
+				}
+
+
+			}
+		}
+	}
+	else {
+
+
+		if (!destroyedEnemy) {
+
+			if (opcio == 1)
+			{
+				position.x -= move;
+				opcio = 1;
+				rep++;
+
+			}
+
+			else {
+
+				{
+					if (opcio == 2)
+					{
+						position.x += move;
+						opcio = 2;
+						rep++;
+
+
+					}
+
+					else {
+
+						if (opcio == 3)
+						{
+							position.y += move;
+							opcio = 3;
+							rep++;
+
+
+						}
+
+
+						else {
+
+							if (opcio == 4)
+							{
+								position.y -= move;
+								opcio = 4;
+
+								rep++;
+
+							}
+						}
+
+
+					}
+
+
+				}
+			}
+
+
+
+		}
+	}
+	/*if (!destroyedEnemy) {
+		if (App->tilemap->thereIsABlock(position.x, position.y)) {
+			destroyedEnemy = true;
+
+		}
+	}*/
+}
+
+
+void Enemy_SnoBee::OnCollision(Collider* c1) {
 
 	/*SDL_Rect r = this->collider->rect;
 

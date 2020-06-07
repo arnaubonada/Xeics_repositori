@@ -52,46 +52,14 @@ bool ModuleScene::Start()
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 
-	//MATRIU
 	
-	//map.x = 8;
-	//map.y = 32;
-	//
-	//for (pmatriux = 0; pmatriux < 13; pmatriux++) {
-	//	map.y = 32;
-	//	for (pmatriuy = 0; pmatriuy < 15; pmatriuy++) {
 
-	//		matriu[map.x][map.y] = BLOCKS;
-	//		
-	//		map.y += 16;
+	
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
-	//	}
-	//	map.x += 16;
-	//}	
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 32);
 
-
-	/*
-	if (rep)			//COLLIDERS PARETS
-	{
-
-		//Bottomside
-		bottomWall = App->collisions->AddCollider({ 0, 272, 224, 8 }, Collider::Type::WALL);
-
-		//leftside
-		leftWall = App->collisions->AddCollider({ 0, 24, 8, 256 }, Collider::Type::WALL);
-
-		//topside
-		topWall = App->collisions->AddCollider({ 0, 24, 224, 8 }, Collider::Type::WALL);
-
-		//rightside
-		rightWall = App->collisions->AddCollider({ 216, 24, 8, 256 }, Collider::Type::WALL);
-
-	}
-	*/
-
-
-	// Enemies ---
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE, 24, 64);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
 
 	//blocks 
 	//App->blocks->AddBlock(BLOCK_TYPE::NORMAL, 200, 200);
@@ -182,7 +150,6 @@ update_status ModuleScene::PostUpdate()
 	App->render->Blit(scTexture, 64, 280, &pYellow);
 
 
-	App->render->Blit(scTexture, 116, 36, &rosita);
 
 	
 

@@ -142,7 +142,7 @@ update_status ModulePlayer::Update()
 		App->collisions->RemoveCollider(collider);
 		--totalColliders;
 	}
-
+	
 	if (rep == 16) {
 		rep = 0;
 	}
@@ -452,11 +452,7 @@ update_status ModulePlayer::Update()
 	}
 			
 
-
-	if (position.x == 104 && position.y == 32) {
-		score = 1;
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneWin, 60);
-	}
+	
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
 }
