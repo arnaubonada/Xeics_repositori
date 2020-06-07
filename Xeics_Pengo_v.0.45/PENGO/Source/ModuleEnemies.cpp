@@ -110,191 +110,277 @@ bool ModuleEnemies::Start()
 	return ret;
 }
 
+void ModuleEnemies::MoveEnemy(int x, int y, Direction d) {
+
+	positionEnemyX = x;
+	positionEnemyY = y;
+
+	movedEnemyX = x / 16;
+	movedEnemyY = (y - 16) / 16;
+
+	dirEnemy = d;
+
+	EnemyToBlock = rand() % App->tilemap->spaceToBlock(positionEnemyX, positionEnemyY, dirEnemy) + 1;
+
+	
+
+	if (dirEnemy == LEFT) {
+		currentAnim = &snoLeftAnim2;
+		finalEnemyPositionX = x - (EnemyToBlock * 16);
+	}
+	else if (dirEnemy == RIGHT) {
+		currentAnim = &snoRightAnim2;
+		finalEnemyPositionX = x + (EnemyToBlock * 16);
+	}
+	else if (dirEnemy == UP) {
+		currentAnim = &snoUpAnim2;
+		finalEnemyPositionY = y - (EnemyToBlock * 16);
+	}
+	else if (dirEnemy == DOWN) {
+		currentAnim = &snoDownAnim2;
+		finalEnemyPositionY = y + (EnemyToBlock * 16);
+	}
+
+}
+
+
+
 update_status ModuleEnemies::Update()
 {
-	/*if(App->tilemap->spaceToBlock(position.x, position.y, )!=0){
-	
-		longer = rand() % App->tilemap->spaceToBlock(position.x, position.y) + 1;
-	}*/
 
-	/*longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);*/
 
-	//longer = App->tilemap->spaceToBlock(position.x, position.y);
+	if (dirEnemy != NOMOVE) {
 
-	//opcio = rand() % 5;
 
-		if (j == 0) {
-			opcio = rand() % 4 + 1;
-			j++;
+		if (dirEnemy == LEFT) {
+
+			if (positionEnemyX == finalEnemyPositionX) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyX--;
+			position.x--;
 		}
-		//while (longer != 0) {
-			if (j < 17) {
-				j++;
+
+		else if (dirEnemy == RIGHT) {
+
+			if (positionEnemyX == finalEnemyPositionX) {
+				dirEnemy = NOMOVE;
 			}
-			if (j == 17) {
-				j = 0;
-			}
-			//longer--;
-		//}
-	
-
-	if (rep == 16) {
-		rep = 0;
-
-	}
-
-	switch (opcio)
-	{
-
-	//case 0:
-	//	currentAnim = &snoDownAnim2;
-	//	break;
-
-	case 1:
-		currentAnim = &snoLeftAnim2;
-		break;
-
-	case 2:
-		currentAnim = &snoRightAnim2;
-		break;
-	case 3:
-		currentAnim = &snoDownAnim2;
-		break;
-
-	case 4:
-		currentAnim = &snoUpAnim2;
-		break;
-
-
-	default:
-		break;
-	}
-
-	if (rep == 0) {
-		if (!destroyedEnemy) {
-			if (opcio == 1)
-			{
-				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
-					if (currentAnim != &snoLeftAnim)
-					{
-						position.x -= move;
-						opcio = 1;
-						rep++;
-
-					}
-				}
-			}
-			else {
-
-				if (opcio == 2)
-				{
-					if (App->tilemap->isWalkable(position.x + 16, position.y)) {
-						if (currentAnim != &snoRightAnim)
-						{
-							position.x += move;
-							opcio = 2;
-							rep++;
-
-						}
-					}
-				}
-				else {
-					if (opcio == 3)
-					{
-						if (App->tilemap->isWalkable(position.x, position.y + 16)) {
-							if (currentAnim != &snoDownAnim)
-							{
-								position.y += move;
-								opcio = 3;
-								rep++;
-
-							}
-						}
-					}
-
-					else {
-						if (opcio == 4)
-						{
-							if (App->tilemap->isWalkable(position.x, position.y - 16)) {
-								if (currentAnim != &snoUpAnim)
-								{
-									position.y -= move;
-									opcio = 4;
-									rep++;
-
-
-								}
-
-							}
-						}
-					}
-
-				}
-
-
-			}
-		}
-	}
-	else {
-
-
-		if (!destroyedEnemy) {
-
-			if (opcio == 1)
-			{
-				position.x -= move;
-				opcio = 1;
-				rep++;
-
-			}
-
-			else {
-
-				{
-					if (opcio == 2)
-					{
-						position.x += move;
-						opcio = 2;
-						rep++;
-
-
-					}
-
-					else {
-
-						if (opcio == 3)
-						{
-							position.y += move;
-							opcio = 3;
-							rep++;
-
-
-						}
-
-
-						else {
-
-							if (opcio == 4)
-							{
-								position.y -= move;
-								opcio = 4;
-
-								rep++;
-
-							}
-						}
-
-
-					}
-
-
-				}
-			}
-
-
+			positionEnemyX++;
+			position.x++;
 
 		}
+		else if (dirEnemy == UP) {
+
+			if (positionEnemyY == finalEnemyPositionY) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyY--;
+			position.y--;
+
+		}
+		else if (dirEnemy == DOWN) {
+
+			if (positionEnemyY == finalEnemyPositionY) {
+				dirEnemy = NOMOVE;
+			}
+			positionEnemyY++;
+			position.y++;
+		}
+
+
+
 	}
+
+
+
+
+
+	//MOV ENEMY ANTIC
+
+	///*if(App->tilemap->spaceToBlock(position.x, position.y, )!=0){
+	//
+	//	longer = rand() % App->tilemap->spaceToBlock(position.x, position.y) + 1;
+	//}*/
+
+	///*longer = rand() % App->tilemap->spaceToBlock(position.x, position.y);*/
+
+	////longer = App->tilemap->spaceToBlock(position.x, position.y);
+
+	////opcio = rand() % 5;
+
+	////	if (j == 0) {
+	////		opcio = rand() % 4 + 1;
+	////		j++;
+	////	}
+	////	//while (longer != 0) {
+	////		if (j < 17) {
+	////			j++;
+	////		}
+	////		if (j == 17) {
+	////			j = 0;
+	////		}
+	////		//longer--;
+	////	//}
+	////
+
+	////if (rep == 16) {
+	////	rep = 0;
+
+	////}
+
+	////switch (opcio)
+	////{
+
+	//////case 0:
+	//////	currentAnim = &snoDownAnim2;
+	//////	break;
+
+	////case 1:
+	////	currentAnim = &snoLeftAnim2;
+	////	break;
+
+	////case 2:
+	////	currentAnim = &snoRightAnim2;
+	////	break;
+	////case 3:
+	////	currentAnim = &snoDownAnim2;
+	////	break;
+
+	////case 4:
+	////	currentAnim = &snoUpAnim2;
+	////	break;
+
+
+	////default:
+	////	break;
+	////}
+
+	//if (rep == 0) {
+	//	if (!destroyedEnemy) {
+	//		if (opcio == 1)
+	//		{
+	//			if (App->tilemap->isWalkable(position.x - 16, position.y)) {
+	//				if (currentAnim != &snoLeftAnim)
+	//				{
+	//					position.x -= move;
+	//					opcio = 1;
+	//					rep++;
+
+	//				}
+	//			}
+	//		}
+	//		else {
+
+	//			if (opcio == 2)
+	//			{
+	//				if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+	//					if (currentAnim != &snoRightAnim)
+	//					{
+	//						position.x += move;
+	//						opcio = 2;
+	//						rep++;
+
+	//					}
+	//				}
+	//			}
+	//			else {
+	//				if (opcio == 3)
+	//				{
+	//					if (App->tilemap->isWalkable(position.x, position.y + 16)) {
+	//						if (currentAnim != &snoDownAnim)
+	//						{
+	//							position.y += move;
+	//							opcio = 3;
+	//							rep++;
+
+	//						}
+	//					}
+	//				}
+
+	//				else {
+	//					if (opcio == 4)
+	//					{
+	//						if (App->tilemap->isWalkable(position.x, position.y - 16)) {
+	//							if (currentAnim != &snoUpAnim)
+	//							{
+	//								position.y -= move;
+	//								opcio = 4;
+	//								rep++;
+
+
+	//							}
+
+	//						}
+	//					}
+	//				}
+
+	//			}
+
+
+	//		}
+	//	}
+	//}
+	//else {
+
+
+	//	if (!destroyedEnemy) {
+
+	//		if (opcio == 1)
+	//		{
+	//			position.x -= move;
+	//			opcio = 1;
+	//			rep++;
+
+	//		}
+
+	//		else {
+
+	//			{
+	//				if (opcio == 2)
+	//				{
+	//					position.x += move;
+	//					opcio = 2;
+	//					rep++;
+
+
+	//				}
+
+	//				else {
+
+	//					if (opcio == 3)
+	//					{
+	//						position.y += move;
+	//						opcio = 3;
+	//						rep++;
+
+
+	//					}
+
+
+	//					else {
+
+	//						if (opcio == 4)
+	//						{
+	//							position.y -= move;
+	//							opcio = 4;
+
+	//							rep++;
+
+	//						}
+	//					}
+
+
+	//				}
+
+
+	//			}
+	//		}
+
+
+
+	//	}
+	//}
 	if (!destroyedEnemy) {
 		if (App->tilemap->thereIsABlock(position.x, position.y)) {
 			destroyedEnemy = true;
@@ -323,6 +409,9 @@ update_status ModuleEnemies::PostUpdate()
 		
 	}
 
+	//if (dirEnemy != NOMOVE) {
+	//	App->render->Blit(texture, positionEnemyX, positionEnemyY, &(rect.GetCurrentFrame()), 0.2f);
+	//}
 
 	return update_status::UPDATE_CONTINUE;
 }

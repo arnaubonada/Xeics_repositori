@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "ModuleTileMap.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -35,6 +36,8 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 	//void OnCollision2(Collider* c1, Collider* c2) override;
 
+	void MoveEnemy(int x, int y, Direction d);
+
 public:
 	// Position of the player in the map
 	iPoint position;
@@ -46,6 +49,19 @@ public:
 	int opcio = 1;
 	int rep = 0;
 	int longer;
+	
+
+	int positionEnemyX;
+	int positionEnemyY;
+	int movedEnemyX;
+	int movedEnemyY;
+
+	int EnemyToBlock;
+
+	int finalEnemyPositionX;
+	int finalEnemyPositionY;
+
+	Direction dirEnemy;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
