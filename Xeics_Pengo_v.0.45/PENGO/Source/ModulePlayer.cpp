@@ -368,7 +368,7 @@ update_status ModulePlayer::Update()
 					//if (leftPushAnim.HasFinished()) {
 						if (!App->tilemap->thereIsABlock(position.x - 32, position.y) || !App->tilemap->thereIsAWall(position.x - 32, position.y) || !App->tilemap->thereIsADiamond(position.x - 32, position.y))
 						{
-							App->tilemap->MoveDiamond(position.x - 16, position.y);
+							App->tilemap->MoveDiamond(position.x - 16, position.y, LEFT);
 						}
 						//currentAnimation = &leftAnim2;
 					//}
@@ -399,7 +399,7 @@ update_status ModulePlayer::Update()
 					currentAnimation = &rightPushAnim;
 					if (!App->tilemap->thereIsABlock(position.x + 32, position.y) || !App->tilemap->thereIsAWall(position.x + 32, position.y) || !App->tilemap->thereIsADiamond(position.x + 32, position.y))
 					{
-						App->tilemap->MoveDiamond(position.x + 16, position.y);
+						App->tilemap->MoveDiamond(position.x + 16, position.y, RIGHT);
 					}
 				}
 				else if (App->tilemap->thereIsAWall(position.x + 16, position.y))
@@ -428,7 +428,7 @@ update_status ModulePlayer::Update()
 					currentAnimation = &upPushAnim;
 					if (!App->tilemap->thereIsABlock(position.x, position.y - 32) || !App->tilemap->thereIsAWall(position.x, position.y - 32) || !App->tilemap->thereIsADiamond(position.x, position.y - 32))
 					{
-						App->tilemap->MoveDiamond(position.x, position.y - 16);
+						App->tilemap->MoveDiamond(position.x, position.y - 16, UP);
 					}
 				}
 				else if (App->tilemap->thereIsAWall(position.x, position.y - 1))
@@ -459,7 +459,7 @@ update_status ModulePlayer::Update()
 					currentAnimation = &downPushAnim;
 					if (!App->tilemap->thereIsABlock(position.x, position.y + 32) || !App->tilemap->thereIsAWall(position.x, position.y + 32) || !App->tilemap->thereIsADiamond(position.x, position.y + 32))
 					{
-						App->tilemap->MoveDiamond(position.x, position.y + 16);
+						App->tilemap->MoveDiamond(position.x, position.y + 16, DOWN);
 					}
 				}
 				else if (App->tilemap->thereIsAWall(position.x, position.y + 16))

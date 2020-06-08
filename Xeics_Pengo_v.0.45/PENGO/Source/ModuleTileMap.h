@@ -59,15 +59,7 @@ public:
 
 	void MoveBlock(int x, int y, Direction d);
 
-	/*void MoveBlockLeft(int x, int y);
-
-	void MoveBlockRight(int x, int y);
-
-	void MoveBlockUp(int x, int y);
-
-	void MoveBlockDown(int x, int y);*/
-
-	void MoveDiamond(int x, int y);
+	void MoveDiamond(int x, int y, Direction d);
 
 	void PushLeftWall();
 
@@ -86,6 +78,8 @@ public:
 	bool thereIsADiamond(int x, int y);
 
 	bool thereIsEnemy(int x, int y);
+
+	void checkDiamonds();
 
 	int spaceToBlock(int x, int y, Direction d);
 
@@ -108,6 +102,30 @@ public:
 
 	Animation blockDestrAnim;
 	Animation blockAnim;
+	Animation blockColoredAnim;
+	Animation diamondAnim;
+	Animation twodiamondsAnim;
+	Animation threediamondsAnim;
+
+	Animation starsHorizontalRedAnim;
+	Animation starsHorizontalBlueAnim;
+	Animation starsHorizontalPurpleAnim;
+	Animation starsHorizontalYellowAnim;
+	Animation starsHorizontalOrangeAnim;
+	Animation starsHorizontalPinkAnim;
+	Animation starsHorizontalSoftYellowAnim;
+	Animation starsHorizontalGreenAnim;
+
+	Animation starsVerticalRedAnim;
+	Animation starsVerticalBlueAnim;
+	Animation starsVerticalPurpleAnim;
+	Animation starsVerticalYellowAnim;
+	Animation starsVerticalOrangeAnim;
+	Animation starsVerticalPinkAnim;
+	Animation starsVerticalSoftYellowAnim;
+	Animation starsVerticalGreenAnim;
+
+
 	Animation sidesWallAnim;
 	Animation topbotWallAnim;
 	Animation oneAnim;
@@ -115,14 +133,20 @@ public:
 
 	Direction dirBlock;
 
-	//iPoint positionBlock;
-	int positionBlockx=32;
-	int positionBlocky=32;
+	Direction dirDiamond;
+
+	iPoint positionBlock;
+
+	iPoint positionDiamond;
 
 	int spacestoblock;
+	int spacestoblock_diamond;
 
 	int finalpositionX;
 	int finalpositionY;
+
+	int finalpositionX_diamond;
+	int finalpositionY_diamond;
 
 	bool destroyedBlock = false;
 
@@ -133,6 +157,8 @@ public:
 	bool pushUp = false;
 	bool pushDown = false;
 
+	bool twoDiamonds = false;
+	bool threeDiamonds = false;
 
 	SDL_Texture* texture;
 	SDL_Texture* oneTexture;
@@ -150,6 +176,8 @@ public:
 	int blockX, blockY;
 
 	int movedBlockX, movedBlockY;
+
+	int movedDiamondX, movedDiamondY;
 
 	int counter = 0;
 
