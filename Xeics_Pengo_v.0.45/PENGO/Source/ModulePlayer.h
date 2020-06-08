@@ -80,6 +80,7 @@ public:
 	bool destroyed = false;
 	bool snobeeStunned = false;
 
+	bool scoreOneHundred = false;
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	//uint destroyedCountdown = 120;
 

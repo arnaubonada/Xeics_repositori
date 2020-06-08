@@ -7,12 +7,15 @@
 #include "ModuleCollisions.h"
  
 #include "ModuleEnemies.h"
+
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "ModuleBlocks.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleTileMap.h"
 #include "ModuleFonts.h"
+#include "Enemy.h"
+#include "Enemy_SnoBee.h"
 
 #include"SceneIntro.h" 
 
@@ -24,7 +27,7 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 
 
 	pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
-
+	
 
 	oneAnim.PushBack({ 0, 0, 16, 8 });
 	oneAnim.PushBack({ 0, 0, 16, 8 });
@@ -36,6 +39,10 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 	oneAnim.PushBack({ 0, 8, 16, 8 });
 	oneAnim.speed = 0.1f;
 
+	oneHundred.PushBack({ 0, 0, 16, 16 });
+	oneHundred.speed = 0.1f;
+	oneHundred.loop = false;
+
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
@@ -45,6 +52,8 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
 	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
 	miniEnemyEggAnim.speed = 0.1f;
+
+	
 
 }
 
@@ -65,6 +74,7 @@ bool ModuleScene::Start()
 	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	oneTexture = App->textures->Load("Assets/1p.png");
+	onehundredPoints= App->textures->Load("Assets/100points.png");
 
 	App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
 	
@@ -75,7 +85,7 @@ bool ModuleScene::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 32);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 32);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
 
@@ -157,6 +167,23 @@ update_status ModuleScene::PostUpdate()
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);		
 	}
 
+	if (App->player->scoreOneHundred)
+	{
+		
+		if (timescore != 0) {
+			timescore++;
+			App->render->Blit(onehundredPoints, posEnemyX, posEnemyY, &(oneHundred.GetCurrentFrame()), 0.1f);
+			if (timescore > 100 ) {
+				App->player->scoreOneHundred = false;
+				
+				timescore = false;
+				timescore = 0;
+				timescore = true;
+				App->player->snobeeStunned = false;
+			}
+		}
+
+	}
 
 
 	App->render->Blit(scTexture, 64, 280, &pYellow);

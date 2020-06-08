@@ -87,6 +87,9 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	}
 }
 
+
+
+
 void Enemy_SnoBee::Update()
 {
 	if (!App->player->destroyed) {
@@ -168,6 +171,10 @@ void Enemy_SnoBee::Update()
 				stunnedEnemy = true;
 				App->player->snobeeStunned = true;
 				timeStunned = 1;
+				App->scene->timescore = 1;
+
+				App->scene->posEnemyX = position.x;
+				App->scene->posEnemyY = position.y;
 			}
 		}
 		if (App->tilemap->pushRight) {
@@ -176,6 +183,10 @@ void Enemy_SnoBee::Update()
 				stunnedEnemy = true;
 				App->player->snobeeStunned = true;
 				timeStunned = 1;
+				App->scene->timescore = 1;
+
+				App->scene->posEnemyX = position.x;
+				App->scene->posEnemyY = position.y;
 			}
 		}
 		if (App->tilemap->pushUp) {
@@ -184,6 +195,10 @@ void Enemy_SnoBee::Update()
 				stunnedEnemy = true;
 				App->player->snobeeStunned = true;
 				timeStunned = 1;
+				App->scene->timescore = 1;
+
+				App->scene->posEnemyX = position.x;
+				App->scene->posEnemyY = position.y;
 			}
 		}
 		if (App->tilemap->pushDown) {
@@ -192,6 +207,10 @@ void Enemy_SnoBee::Update()
 				stunnedEnemy = true;
 				App->player->snobeeStunned = true;
 				timeStunned = 1;
+				App->scene->timescore = 1;
+
+				App->scene->posEnemyX = position.x;
+				App->scene->posEnemyY = position.y;
 			}
 		}
 		if (timeStunned != 0) {
@@ -207,14 +226,21 @@ void Enemy_SnoBee::Update()
 				timeStunned = 0;
 			}
 		}
-	}
-	else if (App->player->destroyed)
-	{
-		collider->pendingToDelete = true;
-
+		Enemy::Update();
 	}
 
-	Enemy::Update();
+	
+
+
+
+	
+	//else if (App->player->destroyed)
+	//{
+	//	collider->pendingToDelete = true;
+
+	//}
+
+	//Enemy::Update();
 }
 
 

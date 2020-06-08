@@ -553,6 +553,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				c2->pendingToDelete = true;
 				lifes--;
 			}
+			else{
+				scoreOneHundred = true;
+				score += 100;
+			}
+
 			
 		}
 	/*	if (c2->type == Collider::Type::BLOCK && opcio == 'l')
