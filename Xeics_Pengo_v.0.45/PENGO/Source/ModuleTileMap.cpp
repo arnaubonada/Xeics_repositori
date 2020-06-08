@@ -766,6 +766,7 @@ update_status ModuleTileMap::Update()
 	}
 	
 	
+	
 	checkDiamonds();
 
 
@@ -793,7 +794,6 @@ update_status ModuleTileMap::Update()
 
 	oneAnim.Update();
 	miniEnemyEggAnim.Update();
-
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -908,8 +908,9 @@ update_status ModuleTileMap::PostUpdate()
 		App->render->Blit(texture, 8, 224, &(starsVerticalSoftYellowAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 8, 240, &(starsVerticalOrangeAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 8, 256, &(starsVerticalPinkAnim.GetCurrentFrame()), 0.4f);
-
+	
 	}
+	
 
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
 

@@ -275,7 +275,7 @@ update_status ModulePlayer::Update()
 	else {
 
 
-		if (!destroyed) {
+		if (!destroyed && !App->tilemap->threeDiamonds) {
 
 			if (opcio == 'l')
 			{
@@ -337,7 +337,7 @@ update_status ModulePlayer::Update()
 
 	int posBlock = 1;
 
-	if (!destroyed) {
+	if (!destroyed && !App->tilemap->threeDiamonds) {
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true) 
 		{
 			if (opcio == 'l') 

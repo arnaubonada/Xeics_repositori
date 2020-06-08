@@ -180,7 +180,7 @@ void Enemy_SnoBee::enemyMovement(int x, int y)
 
 
 
-	if (j == 0) {
+	if (j == 0 && !App->tilemap->threeDiamonds) {
 		opcio = rand() % 4 + 1;
 		j++;
 	}

@@ -172,6 +172,7 @@ public:
 	SDL_Rect source;
 	SDL_Rect destination;
 
+	int cont = 0;
 
 	int blockX, blockY;
 
