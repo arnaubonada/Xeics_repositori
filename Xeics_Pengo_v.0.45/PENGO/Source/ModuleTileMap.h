@@ -128,8 +128,7 @@ public:
 
 	Animation sidesWallAnim;
 	Animation topbotWallAnim;
-	Animation oneAnim;
-	Animation miniEnemyEggAnim;
+	
 
 	Direction dirBlock;
 
@@ -161,7 +160,6 @@ public:
 	bool threeDiamonds = false;
 
 	SDL_Texture* texture;
-	SDL_Texture* oneTexture;
 	SDL_Texture* scTexture;
 
 	SDL_Texture* noBlock;
@@ -172,7 +170,7 @@ public:
 	SDL_Rect source;
 	SDL_Rect destination;
 
-	int cont = 0;
+	int timeDiamond = 0;
 
 	int blockX, blockY;
 

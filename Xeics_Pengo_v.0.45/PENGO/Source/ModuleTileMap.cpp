@@ -3,10 +3,14 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
+#include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+
+
+#include "SDL/include/SDL_scancode.h"
 
 ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 {
@@ -245,25 +249,6 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalBlueAnim.speed = 0.2f;
 
 
-	oneAnim.PushBack({ 0, 0, 16, 8 });
-	oneAnim.PushBack({ 0, 0, 16, 8 });
-	oneAnim.PushBack({ 0, 0, 16, 8 });
-	oneAnim.PushBack({ 0, 0, 16, 8 });
-	oneAnim.PushBack({ 0, 8, 16, 8 });
-	oneAnim.PushBack({ 0, 8, 16, 8 });
-	oneAnim.PushBack({ 0, 8, 16, 8 });
-	oneAnim.PushBack({ 0, 8, 16, 8 });
-	oneAnim.speed = 0.1f;
-
-	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
-	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
-	miniEnemyEggAnim.speed = 0.1f;
 
 	sidesWallAnim.PushBack({ 684, 0, 8, 256 });
 	sidesWallAnim.PushBack({ 696, 0, 8, 256 });
@@ -293,7 +278,6 @@ ModuleTileMap::~ModuleTileMap()
 bool ModuleTileMap::Start()
 {
 	texture = App->textures->Load("Assets/Blocks.png");
-	oneTexture = App->textures->Load("Assets/1p.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 
 	noBlock = App->textures->Load("Assets/noBlock.png");
@@ -563,6 +547,10 @@ void ModuleTileMap::PushDownWall()
 
 void ModuleTileMap::checkDiamonds() {
 	twoDiamonds = false;
+	//threeDiamonds = false;
+
+	
+
 	for (int i = 0; i < 17; i++) {
 		for (int j = 0; j < 15; j++) {
 			if (tilemap[i][j] == TILE_DIAMOND) {
@@ -571,6 +559,12 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i + 2][j] == TILE_DIAMOND || tilemap[i - 1][j] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						timeDiamond = 1;
+					}
+					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+						twoDiamonds = false;
+						threeDiamonds = true;
+						timeDiamond = 1;
 					}
 				}
 				else if (tilemap[i - 1][j] == TILE_DIAMOND) {
@@ -578,6 +572,12 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i - 2][j] == TILE_DIAMOND || tilemap[i + 1][j] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						timeDiamond = 1;
+					}
+					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+						twoDiamonds = false;
+						threeDiamonds = true;
+						timeDiamond = 1;
 					}
 				}
 				else if (tilemap[i][j + 1] == TILE_DIAMOND) {
@@ -585,6 +585,12 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i][j + 2] == TILE_DIAMOND || tilemap[i][j - 1] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						timeDiamond = 1;
+					}
+					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+						twoDiamonds = false;
+						threeDiamonds = true;
+						timeDiamond = 1;
 					}
 				}
 				else if (tilemap[i][j - 1] == TILE_DIAMOND) {
@@ -592,6 +598,12 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i][j - 2] == TILE_DIAMOND || tilemap[i][j + 1] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						timeDiamond = 1;
+					}
+					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+						twoDiamonds = false;
+						threeDiamonds = true;
+						timeDiamond = 1;
 					}
 				}
 			}
@@ -765,10 +777,17 @@ update_status ModuleTileMap::Update()
 		}
 	}
 	
-	
-	
+
 	checkDiamonds();
 
+	if (timeDiamond != 0) {
+		timeDiamond++;
+		if (timeDiamond > 100) {
+			threeDiamonds = false;
+			timeDiamond = 0;
+		}
+	}
+	
 
 	twodiamondsAnim.Update();
 	threediamondsAnim.Update();
@@ -792,8 +811,6 @@ update_status ModuleTileMap::Update()
 	starsVerticalSoftYellowAnim.Update();
 	starsVerticalGreenAnim.Update();
 
-	oneAnim.Update();
-	miniEnemyEggAnim.Update();
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -912,14 +929,9 @@ update_status ModuleTileMap::PostUpdate()
 	}
 	
 
-	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
+	
 
-	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	
 
 
 
