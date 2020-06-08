@@ -78,6 +78,7 @@ public:
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
+	bool snobeeStunned = false;
 
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	//uint destroyedCountdown = 120;

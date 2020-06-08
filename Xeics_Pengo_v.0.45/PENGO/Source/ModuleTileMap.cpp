@@ -549,61 +549,50 @@ void ModuleTileMap::checkDiamonds() {
 	twoDiamonds = false;
 	//threeDiamonds = false;
 
+	if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+		twoDiamonds = false;
+		threeDiamonds = true;
+		timeDiamond = 1;
+	}
 	
 
 	for (int i = 0; i < 17; i++) {
 		for (int j = 0; j < 15; j++) {
 			if (tilemap[i][j] == TILE_DIAMOND) {
-				if (tilemap[i + 1][j] == TILE_DIAMOND) {
+				if (tilemap[i + 1][j] == TILE_DIAMOND && !threeDiamondsDone) {
 					twoDiamonds = true;
 					if (tilemap[i + 2][j] == TILE_DIAMOND || tilemap[i - 1][j] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
 						timeDiamond = 1;
-					}
-					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
-						twoDiamonds = false;
-						threeDiamonds = true;
-						timeDiamond = 1;
+						threeDiamondsDone = true;
 					}
 				}
-				else if (tilemap[i - 1][j] == TILE_DIAMOND) {
+				else if (tilemap[i - 1][j] == TILE_DIAMOND && !threeDiamondsDone) {
 					twoDiamonds = true;
 					if (tilemap[i - 2][j] == TILE_DIAMOND || tilemap[i + 1][j] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
 						timeDiamond = 1;
-					}
-					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
-						twoDiamonds = false;
-						threeDiamonds = true;
-						timeDiamond = 1;
+						threeDiamondsDone = true;
 					}
 				}
-				else if (tilemap[i][j + 1] == TILE_DIAMOND) {
+				else if (tilemap[i][j + 1] == TILE_DIAMOND && !threeDiamondsDone) {
 					twoDiamonds = true;
 					if (tilemap[i][j + 2] == TILE_DIAMOND || tilemap[i][j - 1] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
 						timeDiamond = 1;
-					}
-					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
-						twoDiamonds = false;
-						threeDiamonds = true;
-						timeDiamond = 1;
+						threeDiamondsDone = true;
 					}
 				}
-				else if (tilemap[i][j - 1] == TILE_DIAMOND) {
+				else if (tilemap[i][j - 1] == TILE_DIAMOND && !threeDiamondsDone) {
 					twoDiamonds = true;
 					if (tilemap[i][j - 2] == TILE_DIAMOND || tilemap[i][j + 1] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
 						timeDiamond = 1;
-					}
-					else if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
-						twoDiamonds = false;
-						threeDiamonds = true;
-						timeDiamond = 1;
+						threeDiamondsDone = true;
 					}
 				}
 			}
@@ -782,9 +771,10 @@ update_status ModuleTileMap::Update()
 
 	if (timeDiamond != 0) {
 		timeDiamond++;
-		if (timeDiamond > 100) {
+		if (timeDiamond > 300) {
 			threeDiamonds = false;
 			timeDiamond = 0;
+			threeDiamondsDone = true;
 		}
 	}
 	

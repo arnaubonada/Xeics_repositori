@@ -10,6 +10,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleScene.h"
+#include "ModuleEnemies.h"
+#include "Enemy_SnoBee.h"
 #include "ModuleTileMap.h"
 
 #include <stdio.h>
@@ -541,26 +543,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	
 	if (c1->type == Collider::Type::PLAYER) {
 
-		//if (c2 == App->scene->leftWall) {
-		//	position.x = 8;
-		//}
-		//if (c2 == App->scene->rightWall) {
-		//	position.x = 200;
-		//}
-		//if (c2 == App->scene->bottomWall) {
-		//	position.y = 256;
-		//}
-		//if (c2 == App->scene->topWall) {
-		//	position.y = 32;
-		//}
+		
 		if (c2->type == Collider::Type::ENEMY)
 		{
-			destroyed = true;
-			rep = 0;
-			c1->pendingToDelete = true;
-			c2->pendingToDelete = true;
-			lifes--;
-			
+			if (!snobeeStunned) {
+				destroyed = true;
+				rep = 0;
+				c1->pendingToDelete = true;
+				c2->pendingToDelete = true;
+				lifes--;
+			}
 			
 		}
 	/*	if (c2->type == Collider::Type::BLOCK && opcio == 'l')

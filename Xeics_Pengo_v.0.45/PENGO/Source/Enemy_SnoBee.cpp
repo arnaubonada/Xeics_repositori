@@ -62,6 +62,17 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	snoRightAnim2.PushBack({ 112, 160, 16, 16 });
 	snoRightAnim2.speed = 0.1f;
 
+	stunnedAnim.PushBack({ 96, 128, 16, 16 });
+	stunnedAnim.PushBack({ 112, 128, 16, 16 });
+	stunnedAnim.speed = 0.1f;
+	
+	stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+	stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+	stunnedBlueAnim.PushBack({ 96, 128, 16, 16 });
+	stunnedBlueAnim.PushBack({ 112, 128, 16, 16 });
+	stunnedBlueAnim.speed = 0.1f;
+
+
 	currentAnim = &snoDownAnim;
 
 	if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER)
@@ -79,13 +90,17 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 void Enemy_SnoBee::Update()
 {
 	if (!App->player->destroyed) {
-		
+		if (!App->tilemap->threeDiamonds) {
+			if (stunnedEnemy) {
+				dirEnemy = NOMOVE;
+			}
+
 		if (dirEnemy == NOMOVE) {
 			enemyMovement();
 		}
 
 		if (dirEnemy != NOMOVE) {
-			
+
 
 			if (dirEnemy == LEFT) {
 				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
@@ -94,8 +109,8 @@ void Enemy_SnoBee::Update()
 						dirEnemy = NOMOVE;
 					}
 					//positionEnemyX--;
-					
-					
+
+
 				}
 				else {
 					dirEnemy = NOMOVE;
@@ -109,7 +124,7 @@ void Enemy_SnoBee::Update()
 					if (position.x == finalEnemyPositionX) {
 						dirEnemy = NOMOVE;
 					}
-				//	positionEnemyX++;
+					//	positionEnemyX++;
 				}
 				else {
 					dirEnemy = NOMOVE;
@@ -123,7 +138,7 @@ void Enemy_SnoBee::Update()
 						dirEnemy = NOMOVE;
 					}
 					//positionEnemyY--;
-			
+
 				}
 				else {
 					dirEnemy = NOMOVE;
@@ -136,11 +151,60 @@ void Enemy_SnoBee::Update()
 						dirEnemy = NOMOVE;
 					}
 					//positionEnemyY++;
-				
-				}else {
-					dirEnemy = NOMOVE;
-				}
 
+				}
+				else {
+					dirEnemy = NOMOVE;
+					}
+
+				}
+			}
+		}
+
+
+		if (App->tilemap->pushLeft) {
+			if (position.x == 16) {
+				currentAnim = &stunnedAnim;
+				stunnedEnemy = true;
+				App->player->snobeeStunned = true;
+				timeStunned = 1;
+			}
+		}
+		if (App->tilemap->pushRight) {
+			if (position.x == 208) {
+				currentAnim = &stunnedAnim;
+				stunnedEnemy = true;
+				App->player->snobeeStunned = true;
+				timeStunned = 1;
+			}
+		}
+		if (App->tilemap->pushUp) {
+			if (position.y == 32) {
+				currentAnim = &stunnedAnim;
+				stunnedEnemy = true;
+				App->player->snobeeStunned = true;
+				timeStunned = 1;
+			}
+		}
+		if (App->tilemap->pushDown) {
+			if (position.y == 256) {
+				currentAnim = &stunnedAnim;
+				stunnedEnemy = true;
+				App->player->snobeeStunned = true;
+				timeStunned = 1;
+			}
+		}
+		if (timeStunned != 0) {
+			stunnedEnemy = true;
+			App->player->snobeeStunned = true;
+			timeStunned++;
+			if (timeStunned < 300 && timeStunned>120) {
+				currentAnim = &stunnedBlueAnim;
+			}
+			if (timeStunned > 300) {
+				stunnedEnemy = false;
+				App->player->snobeeStunned = false;
+				timeStunned = 0;
 			}
 		}
 	}
@@ -163,9 +227,13 @@ void Enemy_SnoBee::enemyMovement()
 	//positionEnemyX = x;
 	//positionEnemyY = y;
 
-
+	if (stunnedEnemy) {
+		EnemyToBlock = 0;
+	}
 	//dirEnemy = rand() % RIGHT + 1; //enemy direction
-	dirEnemy = static_cast<Direction>(rand() % UP+1);
+	if (!App->tilemap->threeDiamonds && !stunnedEnemy) {
+		dirEnemy = static_cast<Direction>(rand() % UP + 1);
+	}
 
 	if (App->tilemap->spaceToBlock(position.x, position.y, dirEnemy) != 0) {
 		EnemyToBlock = rand() % App->tilemap->spaceToBlock(position.x, position.y, dirEnemy)+1;
@@ -444,47 +512,16 @@ void Enemy_SnoBee::enemyMovement()
 }
 
 
-void Enemy_SnoBee::OnCollision(Collider* c1) {
+void Enemy_SnoBee::OnCollision(Collider* c2) {
 
 	/*SDL_Rect r = this->collider->rect;
 
-	if (c2 == App->scene->leftWall) {
-		position.x = 8;
-	}
-	if (c2 == App->scene->rightWall) {
-		position.x = 200;
-	}
-	if (c2 == App->scene->bottomWall) {
-		position.y = 256;
-	}
-	if (c2 == App->scene->topWall) {
-		position.y = 32;
-	}
-	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 0)
-	{
-		if (c2->Intersects(r) == true) {
-			position.x -= moveE;
-		}
 
-	}
-	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 1)
+	if (c2->type == Collider::Type::PLAYER)
 	{
 		if (c2->Intersects(r) == true) {
-			position.x += moveE;
-		}
+			collider->pendingToDelete = true;
 
-	}
-	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 2)
-	{
-		if (c2->Intersects(r) == true) {
-			position.y -= moveE;
-		}
-
-	}
-	if (c2->type == Collider::Type::BLOCK && App->enemies->RandomDirection() == 3)
-	{
-		if (c2->Intersects(r) == true) {
-			position.y += moveE;
 		}
 
 	}*/

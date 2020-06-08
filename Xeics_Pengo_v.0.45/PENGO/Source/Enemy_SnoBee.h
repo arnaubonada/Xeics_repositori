@@ -30,7 +30,7 @@ public:
 	void enemyMovement();
 
 	
-	void OnCollision(Collider* c1) override;
+	void OnCollision(Collider* c2) override;
 
 	enum class ENEMY_TYPE typeEnemy;
 
@@ -44,6 +44,9 @@ public:
 	Animation snoDownAnim2;
 	Animation snoLeftAnim2;
 	Animation snoRightAnim2;
+
+	Animation stunnedAnim;
+	Animation stunnedBlueAnim;
 
 
 	//Direction direct = NOMOVE;
@@ -61,7 +64,12 @@ public:
 	// A flag to detect when the enemy has been destroyed
 	bool destroyedEnemy = false;
 
+	bool stunnedEnemy = false;
+
+	int timeStunned = 0;
+
 	int j = 0;
+
 
 	int positionEnemyX;
 	int positionEnemyY;

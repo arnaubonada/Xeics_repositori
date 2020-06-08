@@ -73,7 +73,7 @@ bool ModuleScene::Start()
 
 	
 	
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
 	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 32);
 

@@ -158,6 +158,7 @@ public:
 
 	bool twoDiamonds = false;
 	bool threeDiamonds = false;
+	bool threeDiamondsDone = false;
 
 	SDL_Texture* texture;
 	SDL_Texture* scTexture;
