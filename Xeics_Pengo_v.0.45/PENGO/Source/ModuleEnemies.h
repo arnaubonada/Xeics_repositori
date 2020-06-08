@@ -7,7 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_SnoBee.h"
 
-#define MAX_ENEMIES 100
+#define MAX_ENEMIES 10
 
 
 

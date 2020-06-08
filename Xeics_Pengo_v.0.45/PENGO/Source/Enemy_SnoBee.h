@@ -27,7 +27,7 @@ public:
 
 	Path path;
 
-	void enemyMovement(int x, int y);
+	void enemyMovement();
 
 	
 	void OnCollision(Collider* c1) override;
@@ -46,17 +46,17 @@ public:
 	Animation snoRightAnim2;
 
 
-	Direction direct = NOMOVE;
+	//Direction direct = NOMOVE;
 
 	Direction dirEnemy;
 	// The speed in which we move the player (pixels per frame)
 	int move = 1;
 
 	//Where the player goes
-	int opcio = 1;
+	//int opcio = 1;
 
-	int rep = 0;
-	int longer;
+	//int rep = 0;
+	//int longer;
 
 	// A flag to detect when the enemy has been destroyed
 	bool destroyedEnemy = false;
