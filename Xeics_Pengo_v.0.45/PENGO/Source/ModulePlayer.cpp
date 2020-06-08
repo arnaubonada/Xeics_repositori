@@ -138,6 +138,9 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
+
+	GamePad& pad = App->input->pads[0];
+
 	if (!Collide) {
 		App->collisions->RemoveCollider(collider);
 		--totalColliders;
@@ -174,9 +177,28 @@ update_status ModulePlayer::Update()
 	//	break;
 	//}
 
+
+	//Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	{
+		App->input->ShakeController(0, 12, 0.33f);
+	}
+
+	//Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	{
+		App->input->ShakeController(0, 36, 0.66f);
+	}
+
+	//Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
+	{
+		App->input->ShakeController(0, 60, 1.0f);
+	}
+
 	if (rep == 0) {
 		if (!destroyed) {
-			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.l_x < 0.0f)
 			{
 				currentAnimation = &leftAnim2;
 				opcio = 'l';
@@ -193,7 +215,7 @@ update_status ModulePlayer::Update()
 			}
 			else {
 
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.l_x > 0.0f)
 				{
 					currentAnimation = &rightAnim2;
 					opcio = 'r';
@@ -208,7 +230,7 @@ update_status ModulePlayer::Update()
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y > 0.0f)
 					{
 						currentAnimation = &downAnim2;
 						opcio = 'd';
@@ -226,7 +248,7 @@ update_status ModulePlayer::Update()
 					}
 
 					else {
-						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y < 0.0f)
 						{
 							currentAnimation = &upAnim2;
 							opcio = 'u';
@@ -316,7 +338,7 @@ update_status ModulePlayer::Update()
 	int posBlock = 1;
 
 	if (!destroyed) {
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) 
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true) 
 		{
 			if (opcio == 'l') 
 			{
