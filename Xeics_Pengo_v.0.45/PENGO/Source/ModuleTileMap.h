@@ -171,6 +171,8 @@ public:
 	SDL_Rect source;
 	SDL_Rect destination;
 
+	Collider* collider = nullptr;
+
 	int timeDiamond = 0;
 
 	int blockX, blockY;

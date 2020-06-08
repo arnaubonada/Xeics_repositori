@@ -666,11 +666,14 @@ update_status ModuleTileMap::Update()
 			if (dirBlock == LEFT) {
 				if (positionBlock.x % 16 == 0) {
 					movedBlockX--;
+
 				}
 				positionBlock.x-=4;
+				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.x == finalpositionX) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+					App->collisions->RemoveCollider(collider);
 				}
 			}
 
@@ -679,9 +682,11 @@ update_status ModuleTileMap::Update()
 					movedBlockX++;
 				}
 				positionBlock.x+=4;
+				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.x == finalpositionX) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+					App->collisions->RemoveCollider(collider);
 				}
 			}
 
@@ -690,9 +695,11 @@ update_status ModuleTileMap::Update()
 					movedBlockY--;
 				}
 				positionBlock.y-=4;
+				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.y == finalpositionY) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+					App->collisions->RemoveCollider(collider);
 				}
 			}
 
@@ -701,9 +708,11 @@ update_status ModuleTileMap::Update()
 					movedBlockY++;
 				}
 				positionBlock.y+=4;
+				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.y == finalpositionY) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+					App->collisions->RemoveCollider(collider);
 				}
 			}
 	}

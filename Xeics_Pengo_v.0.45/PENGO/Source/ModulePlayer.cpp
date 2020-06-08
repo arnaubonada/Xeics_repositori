@@ -556,6 +556,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			else{
 				scoreOneHundred = true;
 				score += 100;
+				App->scene->enemiesAlive--;
 			}
 
 			

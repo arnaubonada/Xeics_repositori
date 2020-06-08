@@ -85,7 +85,7 @@ bool ModuleScene::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 32);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 32);
 
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
 
@@ -95,7 +95,7 @@ bool ModuleScene::Start()
 	App->blocks->Enable();
 	App->tilemap->Enable();
 
-	enemiesAlive = 1;
+	enemiesAlive = 3;
 
 
 	return ret;
@@ -188,14 +188,13 @@ update_status ModuleScene::PostUpdate()
 
 	App->render->Blit(scTexture, 64, 280, &pYellow);
 
-
 	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-
+	
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
 
 

@@ -45,6 +45,26 @@ public:
 	Animation snoLeftAnim2;
 	Animation snoRightAnim2;
 
+	Animation normalSnoUpAnim;
+	Animation normalSnoDownAnim;
+	Animation normalSnoLeftAnim;
+	Animation normalSnoRightAnim;
+
+	Animation dragEnemyLeftAnim;
+	Animation dragEnemyRightAnim;
+	Animation dragEnemyUpAnim;
+	Animation dragEnemyDownAnim;
+
+	Animation firstSmashLeftAnim;
+	Animation firstSmashRightAnim;
+	Animation firstSmashUpAnim;
+	Animation firstSmashDownAnim;
+
+	Animation secondSmashLeftAnim;
+	Animation secondSmashRightAnim;
+	Animation secondSmashUpAnim;
+	Animation secondSmashDownAnim;
+		
 	Animation stunnedAnim;
 	Animation stunnedBlueAnim;
 
@@ -65,6 +85,8 @@ public:
 	bool destroyedEnemy = false;
 
 	bool stunnedEnemy = false;
+
+	bool smashedEnemy = false;
 
 	int timeStunned = 0;
 

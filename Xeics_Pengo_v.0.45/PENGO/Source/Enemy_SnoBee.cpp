@@ -62,6 +62,22 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	snoRightAnim2.PushBack({ 112, 160, 16, 16 });
 	snoRightAnim2.speed = 0.1f;
 
+	normalSnoUpAnim.PushBack({ 64, 144, 16, 16 });
+	normalSnoUpAnim.PushBack({ 80, 144, 16, 16 });
+	normalSnoUpAnim.speed = 0.1f;
+
+	normalSnoDownAnim.PushBack({ 0, 144, 16, 16 });
+	normalSnoDownAnim.PushBack({ 16, 144, 16, 16 });
+	normalSnoDownAnim.speed = 0.1f;
+
+	normalSnoLeftAnim.PushBack({ 32, 144, 16, 16 });
+	normalSnoLeftAnim.PushBack({ 48, 144, 16, 16 });
+	normalSnoLeftAnim.speed = 0.1f;
+
+	normalSnoRightAnim.PushBack({ 96, 144, 16, 16 });
+	normalSnoRightAnim.PushBack({ 112, 144, 16, 16 });
+	normalSnoRightAnim.speed = 0.1f;
+
 	stunnedAnim.PushBack({ 96, 128, 16, 16 });
 	stunnedAnim.PushBack({ 112, 128, 16, 16 });
 	stunnedAnim.speed = 0.1f;
@@ -73,6 +89,42 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	stunnedBlueAnim.speed = 0.1f;
 
 
+	dragEnemyLeftAnim.PushBack({ 96, 144, 16, 16 });
+	dragEnemyLeftAnim.speed = 0.1f;
+
+	dragEnemyRightAnim.PushBack({ 32, 144, 16, 16 });
+	dragEnemyRightAnim.speed = 0.1f;
+
+	dragEnemyUpAnim.PushBack({ 0, 144, 16, 16 });
+	dragEnemyUpAnim.speed = 0.1f;
+
+	dragEnemyDownAnim.PushBack({ 64, 144, 16, 16 });
+	dragEnemyDownAnim.speed = 0.1f;
+
+	firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+	firstSmashLeftAnim.speed = 0.1f;
+	
+	firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+	firstSmashRightAnim.speed = 0.1f;
+	
+	firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+	firstSmashUpAnim.speed = 0.1f;
+	
+	firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+	firstSmashDownAnim.speed = 0.1f;
+	
+	secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+	secondSmashLeftAnim.speed = 0.1f;
+
+	secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+	secondSmashRightAnim.speed = 0.1f;
+	
+	secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+	secondSmashUpAnim.speed = 0.1f;
+	
+	secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+	secondSmashDownAnim.speed = 0.1f;
+
 	currentAnim = &snoDownAnim;
 
 	if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER)
@@ -83,7 +135,7 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL)
 	{
 		collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
-		currentAnim = &snoDownAnim;
+		currentAnim = &normalSnoDownAnim;
 	}
 }
 
@@ -257,7 +309,7 @@ void Enemy_SnoBee::enemyMovement()
 		EnemyToBlock = 0;
 	}
 	//dirEnemy = rand() % RIGHT + 1; //enemy direction
-	if (!App->tilemap->threeDiamonds && !stunnedEnemy) {
+	if (!App->tilemap->threeDiamonds && !stunnedEnemy ) {
 		dirEnemy = static_cast<Direction>(rand() % UP + 1);
 	}
 
@@ -275,7 +327,12 @@ void Enemy_SnoBee::enemyMovement()
 
 		//dirEnemy = LEFT;
 		if (App->tilemap->isWalkable(position.x - 16, position.y)) {
-			currentAnim = &snoLeftAnim2;
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoLeftAnim2;
+			}
+			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+				currentAnim = &normalSnoLeftAnim;
+			}
 			finalEnemyPositionX = position.x - (EnemyToBlock * 16);
 			dirEnemy = LEFT;
 
@@ -284,7 +341,12 @@ void Enemy_SnoBee::enemyMovement()
 	else if (dirEnemy == RIGHT) {
 		//dirEnemy = RIGHT;
 		if (App->tilemap->isWalkable(position.x + 16, position.y)) {
-			currentAnim = &snoRightAnim2;
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoRightAnim2;
+			}
+			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+				currentAnim = &normalSnoRightAnim;
+			}
 			finalEnemyPositionX = position.x + (EnemyToBlock * 16);
 			dirEnemy = RIGHT;
 		}
@@ -292,7 +354,12 @@ void Enemy_SnoBee::enemyMovement()
 	else if (dirEnemy == UP) {
 		//dirEnemy = UP;
 		if (App->tilemap->isWalkable(position.x, position.y-16)) {
-			currentAnim = &snoUpAnim2;
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoUpAnim2;
+			}
+			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+				currentAnim = &normalSnoUpAnim;
+			}
 			finalEnemyPositionY = position.y - (EnemyToBlock * 16);
 			dirEnemy = UP;
 		}
@@ -300,7 +367,12 @@ void Enemy_SnoBee::enemyMovement()
 	else if (dirEnemy == DOWN) {
 		//dirEnemy = DOWN;
 		if (App->tilemap->isWalkable(position.x, position.y + 16)) {
-			currentAnim = &snoDownAnim2;
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoDownAnim2;
+			}
+			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+				currentAnim = &normalSnoDownAnim;
+			}
 			finalEnemyPositionY = position.y + (EnemyToBlock * 16);
 			dirEnemy = DOWN;
 		}
@@ -540,15 +612,61 @@ void Enemy_SnoBee::enemyMovement()
 
 void Enemy_SnoBee::OnCollision(Collider* c2) {
 
-	/*SDL_Rect r = this->collider->rect;
+	SDL_Rect r = this->collider->rect;
 
 
-	if (c2->type == Collider::Type::PLAYER)
+	if (c2->type == Collider::Type::BLOCK)
 	{
 		if (c2->Intersects(r) == true) {
-			collider->pendingToDelete = true;
-
+			App->tilemap->collider->pendingToDelete = true;
+			if (App->tilemap->dirBlock == LEFT) {
+				smashedEnemy = true;
+				position.x = App->tilemap->positionBlock.x - 16;
+				currentAnim = &dragEnemyLeftAnim;
+				if (App->tilemap->positionBlock.x <= (App->tilemap->finalpositionX + 16) && App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
+					currentAnim = &firstSmashLeftAnim;
+				}
+				if (App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
+					currentAnim = &secondSmashLeftAnim;
+				}
+			}
+			else if (App->tilemap->dirBlock == RIGHT) {
+				smashedEnemy = true;
+				position.x = App->tilemap->positionBlock.x + 16;
+				currentAnim = &dragEnemyRightAnim;
+				if (App->tilemap->positionBlock.x <= (App->tilemap->finalpositionX - 16) && App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
+					currentAnim = &firstSmashRightAnim;
+				}
+				if (App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
+					currentAnim = &secondSmashRightAnim;
+				}
+				
+			}
+			else if (App->tilemap->dirBlock == UP) {
+				smashedEnemy = true;
+				position.y = App->tilemap->positionBlock.y - 16;
+				currentAnim = &dragEnemyUpAnim;
+				if (App->tilemap->positionBlock.y <= (App->tilemap->finalpositionY + 16) && App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
+					currentAnim = &firstSmashUpAnim;
+				}
+				if (App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
+					currentAnim = &secondSmashUpAnim;
+				}
+				
+			}
+			else if (App->tilemap->dirBlock == DOWN) {
+				smashedEnemy = true;
+				position.y = App->tilemap->positionBlock.y + 16;
+				currentAnim = &dragEnemyDownAnim;
+				if (App->tilemap->positionBlock.y <= (App->tilemap->finalpositionY - 16) && App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
+					currentAnim = &firstSmashDownAnim;
+				}
+				if (App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
+					currentAnim = &secondSmashDownAnim;
+				}
+				
+			}
 		}
 
-	}*/
+	}
 }
