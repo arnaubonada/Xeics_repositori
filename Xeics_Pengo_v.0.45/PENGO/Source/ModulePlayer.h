@@ -95,6 +95,8 @@ public:
 
 	int rep = 0;
 
+	
+
 	int lifes = 4;
 
 };

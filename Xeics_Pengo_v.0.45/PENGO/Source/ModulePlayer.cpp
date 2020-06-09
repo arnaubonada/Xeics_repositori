@@ -499,13 +499,27 @@ update_status ModulePlayer::PostUpdate()
 
 	App->fonts->BlitText(56, 0, whiteFont, scoreText);
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
-	App->fonts->BlitText(16, 280, whiteFont, "act 1");
-	//App->fonts->BlitText(16, 0, blueFont, "1p");
 	App->fonts->BlitText(88, 0, blueFont, "hi");
 	App->fonts->BlitText(112, 0, whiteFont, "20000");
 	App->fonts->BlitText(160, 0, blueFont, "2p");
 	App->fonts->BlitText(216, 0, whiteFont, "0");
 
+	if (App->tilemap->scenelvl1 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 1");
+	}
+	else if (App->tilemap->scenelvl2 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 2");
+	}
+	else if (App->tilemap->scenelvl3 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 3");
+	}
+	else if (App->tilemap->scenelvl4 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 4");
+	}
 	return update_status::UPDATE_CONTINUE;
 }
 

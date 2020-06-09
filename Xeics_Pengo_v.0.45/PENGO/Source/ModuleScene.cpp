@@ -97,6 +97,10 @@ bool ModuleScene::Start()
 
 	enemiesAlive = 3;
 
+	App->tilemap->scenelvl1 = true;
+	App->tilemap->scenelvl2 = false;
+	App->tilemap->scenelvl3 = false;
+	App->tilemap->scenelvl4 = false;
 
 	return ret;
 }
@@ -118,7 +122,7 @@ update_status ModuleScene::Update()
 
 	if (enemiesAlive == 0)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneWin, 60);
+		App->fade->FadeToBlack(this, (Module*)App->sceneWin, 30);
 	}
 	
 
@@ -166,6 +170,12 @@ update_status ModuleScene::PostUpdate()
 	{
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);		
 	}
+	
+	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);		
+	}
+
 
 	if (App->player->scoreOneHundred)
 	{

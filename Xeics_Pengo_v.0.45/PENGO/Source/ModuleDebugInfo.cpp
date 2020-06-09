@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleCollisions.h"
 #include "ModuleTextures.h"
+#include "ModuleScene.h"
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
@@ -60,6 +61,12 @@ update_status ModuleDebugInfo::Update()
 	{
 		App->player->Collide = true;
 		App->player->destroyed = true;
+		App->player->lifes--;
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F10] == KEY_DOWN)
+	{
+		App->scene->enemiesAlive = 0;
 	}
 
 	return update_status::UPDATE_CONTINUE;

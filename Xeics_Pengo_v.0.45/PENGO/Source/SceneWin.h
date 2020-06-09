@@ -30,8 +30,19 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* scTexture = nullptr;
+
+	SDL_Texture* oneTexture;
+
+	Animation oneAnim;
+
+	SDL_Rect pYellow, pRed;
 
 	char bonusText[5] = { "\0" };
+
+	int whiteFont = -1;
+	int blueFont = -1;
+	int yellowFont = -1;
 };
 
 #endif

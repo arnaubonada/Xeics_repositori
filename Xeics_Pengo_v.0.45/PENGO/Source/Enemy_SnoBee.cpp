@@ -265,43 +265,73 @@ void Enemy_SnoBee::Update()
 				App->scene->posEnemyY = position.y;
 			}
 		}
-		if (timeStunned != 0) {
-			stunnedEnemy = true;
-			App->player->snobeeStunned = true;
-			timeStunned++;
-			if (timeStunned < 300 && timeStunned>120) {
-				currentAnim = &stunnedBlueAnim;
-			}
-			if (timeStunned > 300) {
-				stunnedEnemy = false;
-				App->player->snobeeStunned = false;
-				timeStunned = 0;
+		if (!App->tilemap->threeDiamondsDone) {
+			if (timeStunned != 0) {
+				stunnedEnemy = true;
+				App->player->snobeeStunned = true;
+				timeStunned++;
+				if (timeStunned < 300 && timeStunned>120) {
+					currentAnim = &stunnedBlueAnim;
+				}
+				if (timeStunned > 300) {
+					stunnedEnemy = false;
+					App->player->snobeeStunned = false;
+					timeStunned = 0;
+					//App->tilemap->threeDiamondsFinish = true;
+					//	}
+				}
 			}
 		}
 
-		if (App->tilemap->threeDiamonds)
+
+
+		if (App->tilemap->threeDiamondsDone && !DiamondFinished)
 		{
-			currentAnim = &stunnedAnim;
-			stunnedEnemy = true;
-			App->player->snobeeStunned = true;
-			timeStunned = 1;
-			App->scene->timescore = 1;
+			if (App->tilemap->timeDiamondStunned != 0) {
+				//currentAnim = &stunnedAnim;
+				stunnedEnemy = true;
+				App->tilemap->timeDiamondStunned++;
+				App->player->snobeeStunned = true;
+				/*if (App->tilemap->timeDiamondStunned < 300 && App->tilemap->timeDiamondStunned>120) {
+					currentAnim = &stunnedBlueAnim;
+				}*/
+				if (App->tilemap->timeDiamondStunned > 900 && App->tilemap->timeDiamondStunned < 1200) {
+					currentAnim = &stunnedAnim;
+					stunnedEnemy = false;
+					App->player->snobeeStunned = false;
+					//App->tilemap->timeDiamondStunned = 1;
+					if (lastTimeStunned == 0) {
+						lastTimeStunned = 1;
+					}
+					App->tilemap->threeDiamondsFinish = true;
+					//	}
+				}
 
-			App->scene->posEnemyX = position.x;
-			App->scene->posEnemyY = position.y;
+			}
 		}
 
-		if (timeStunned != 0) {
-			stunnedEnemy = true;
-			App->player->snobeeStunned = true;
-			timeStunned++;
-			if (timeStunned < 300 && timeStunned>120) {
-				currentAnim = &stunnedBlueAnim;
-			}
-			if (timeStunned > 300) {
-				stunnedEnemy = false;
-				App->player->snobeeStunned = false;
-				timeStunned = 0;
+
+
+
+		if (App->tilemap->threeDiamondsFinish) {
+			if (lastTimeStunned != 0) {
+				App->scene->timescore = 1;
+				App->scene->posEnemyX = position.x;
+				App->scene->posEnemyY = position.y;
+
+				stunnedEnemy = true;
+				App->player->snobeeStunned = true;
+				lastTimeStunned++;
+				if (lastTimeStunned < 300 && lastTimeStunned>120) {
+					currentAnim = &stunnedBlueAnim;
+				}
+				if (lastTimeStunned > 300) {
+					stunnedEnemy = false;
+					App->player->snobeeStunned = false;
+					lastTimeStunned = 0;
+					DiamondFinished = true;
+					//	}
+				}
 			}
 		}
 
@@ -695,5 +725,12 @@ void Enemy_SnoBee::OnCollision(Collider* c2) {
 			}
 		}
 
+	}
+
+	if (c2->type == Collider::Type::PLAYER)
+	{
+		if (c2->Intersects(r) == true && stunnedEnemy == true) {
+			App->player->scoreOneHundred = true;
+		}
 	}
 }

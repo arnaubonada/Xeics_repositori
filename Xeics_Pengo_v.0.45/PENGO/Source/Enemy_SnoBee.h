@@ -89,6 +89,9 @@ public:
 	bool smashedEnemy = false;
 
 	int timeStunned = 0;
+	int lastTimeStunned = 0;
+
+	bool DiamondFinished = false;
 
 	int j = 0;
 

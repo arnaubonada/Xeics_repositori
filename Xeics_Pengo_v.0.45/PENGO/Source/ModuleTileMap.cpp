@@ -284,10 +284,16 @@ bool ModuleTileMap::Start()
 	Block = App->textures->Load("Assets/Block.png");
 	Diamond = App->textures->Load("Assets/Diamond.png");
 
-	if (App->player->lifes == 4) {
+	if (scenelvl1) {
 		LoadMap(lvl1);
 	}
-
+	else if (scenelvl2) {
+		LoadMap(lvl2);
+	}
+	else if (scenelvl3) {
+		LoadMap(lvl3);
+	}
+	
 	if (App->player->lifes < 4){
 		LoadMap(tilemap);
 	}
@@ -572,6 +578,7 @@ void ModuleTileMap::checkDiamonds() {
 						threeDiamonds = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
+						timeDiamondStunned = 1;
 					}
 				}
 				else if (tilemap[i - 1][j] == TILE_DIAMOND && !threeDiamondsDone) {
@@ -581,6 +588,7 @@ void ModuleTileMap::checkDiamonds() {
 						threeDiamonds = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
+						timeDiamondStunned = 1;
 					}
 				}
 				else if (tilemap[i][j + 1] == TILE_DIAMOND && !threeDiamondsDone) {
@@ -590,6 +598,7 @@ void ModuleTileMap::checkDiamonds() {
 						threeDiamonds = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
+						timeDiamondStunned = 1;
 					}
 				}
 				else if (tilemap[i][j - 1] == TILE_DIAMOND && !threeDiamondsDone) {
@@ -599,6 +608,7 @@ void ModuleTileMap::checkDiamonds() {
 						threeDiamonds = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
+						timeDiamondStunned = 1;
 					}
 				}
 			}
@@ -675,7 +685,7 @@ update_status ModuleTileMap::Update()
 
 				}
 				positionBlock.x-=4;
-				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.x == finalpositionX) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
@@ -688,7 +698,7 @@ update_status ModuleTileMap::Update()
 					movedBlockX++;
 				}
 				positionBlock.x+=4;
-				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.x == finalpositionX) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
@@ -701,7 +711,7 @@ update_status ModuleTileMap::Update()
 					movedBlockY--;
 				}
 				positionBlock.y-=4;
-				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.y == finalpositionY) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
@@ -714,7 +724,7 @@ update_status ModuleTileMap::Update()
 					movedBlockY++;
 				}
 				positionBlock.y+=4;
-				//collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.y == finalpositionY) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;

@@ -36,11 +36,10 @@ Application::Application()
 	modules[5] =	scene =			new ModuleScene(false);		
 	modules[6] =	sceneWin =		new SceneWin(false);
 	modules[7] =	sceneLose =		new SceneLose(false);
-	modules[8] =	player =		new ModulePlayer(false);	
+	modules[8] =	player =		new ModulePlayer(false);
 	modules[9] =	particles =		new ModuleParticles(true);
-	modules[10] =	enemies =		new ModuleEnemies(false);	
-	modules[11] =	blocks =		new ModuleBlocks(false);	
-
+	modules[10] =	enemies =		new ModuleEnemies(false);
+	modules[11] =	blocks =		new ModuleBlocks(false);
 	modules[12] =	collisions =	new ModuleCollisions(true);
 	modules[13] =	fade =			new ModuleFadeToBlack(true);
 	modules[14] =	fonts =			new ModuleFonts(true);

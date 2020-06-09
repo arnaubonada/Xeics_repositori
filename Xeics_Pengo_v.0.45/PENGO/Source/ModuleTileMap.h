@@ -160,6 +160,9 @@ public:
 	bool threeDiamonds = false;
 	bool threeDiamondsDone = false;
 
+	bool threeDiamondsFinish = false;
+	int timeDiamondStunned = 0;
+
 	SDL_Texture* texture;
 	SDL_Texture* scTexture;
 
@@ -182,6 +185,11 @@ public:
 	int movedDiamondX, movedDiamondY;
 
 	int counter = 0;
+
+	bool scenelvl1 = true;
+	bool scenelvl2 = false;
+	bool scenelvl3 = false;
+	bool scenelvl4 = false;
 
 	int BlockMap[17][15] = {
 		{ 4,2,2,2,2,2,2,2,2,2,2,2,2,2,4 },

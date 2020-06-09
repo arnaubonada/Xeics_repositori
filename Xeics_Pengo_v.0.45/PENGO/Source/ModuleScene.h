@@ -79,7 +79,7 @@ public:
 	int posEnemyY;
 
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
-	SDL_Rect pYellow, pRed, rosita;
+	SDL_Rect pYellow, pRed;
 
 	uint enemiesAlive;
 	// The sprite rectangle for the ground
