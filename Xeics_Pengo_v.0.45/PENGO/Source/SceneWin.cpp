@@ -75,6 +75,90 @@ update_status SceneWin::Update()
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = true;
 	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl2 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl3 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl4 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl5 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl6 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl7 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl8 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl9 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl10 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl11 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl12 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl13 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl14 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = true;
+	}
+	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl15 == true)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		App->tilemap->scenelvl15 = false;
+		App->tilemap->scenelvl1 = true;
+	}
 	oneAnim.Update();
 	return update_status::UPDATE_CONTINUE;
 }
@@ -119,6 +203,50 @@ update_status SceneWin::PostUpdate()
 	else if (App->tilemap->scenelvl4 == true)
 	{
 		App->fonts->BlitText(16, 280, whiteFont, "act 4");
+	}
+	else if (App->tilemap->scenelvl5 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 5");
+	}
+	else if (App->tilemap->scenelvl6 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 6");
+	}
+	else if (App->tilemap->scenelvl7 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 7");
+	}
+	else if (App->tilemap->scenelvl8 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 8");
+	}
+	else if (App->tilemap->scenelvl9 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 9");
+	}
+	else if (App->tilemap->scenelvl10 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 10");
+	}
+	else if (App->tilemap->scenelvl11 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 11");
+	}
+	else if (App->tilemap->scenelvl12 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 12");
+	}
+	else if (App->tilemap->scenelvl13 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 13");
+	}
+	else if (App->tilemap->scenelvl14 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 14");
+	}
+	else if (App->tilemap->scenelvl15 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 15");
 	}
 
 	if (App->player->lifes == 4) {

@@ -293,6 +293,42 @@ bool ModuleTileMap::Start()
 	else if (scenelvl3) {
 		LoadMap(lvl3);
 	}
+	else if (scenelvl4) {
+		LoadMap(lvl4);
+	}
+	else if (scenelvl5) {
+		LoadMap(lvl5);
+	}
+	else if (scenelvl6) {
+		LoadMap(lvl6);
+	}
+	else if (scenelvl7) {
+		LoadMap(lvl7);
+	}
+	else if (scenelvl8) {
+		LoadMap(lvl8);
+	}
+	else if (scenelvl9) {
+		LoadMap(lvl9);
+	}
+	else if (scenelvl10) {
+		LoadMap(lvl10);
+	}
+	else if (scenelvl11) {
+		LoadMap(lvl11);
+	}
+	else if (scenelvl12) {
+		LoadMap(lvl2);
+	}
+	else if (scenelvl13) {
+		LoadMap(lvl13);
+	}
+	else if (scenelvl14) {
+		LoadMap(lvl14);
+	}
+	else if (scenelvl15) {
+		LoadMap(lvl15);
+	}
 	
 	if (App->player->lifes < 4){
 		LoadMap(tilemap);
