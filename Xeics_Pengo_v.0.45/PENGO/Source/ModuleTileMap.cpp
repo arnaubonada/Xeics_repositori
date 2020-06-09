@@ -657,6 +657,12 @@ void ModuleTileMap::checkDiamonds() {
 
 update_status ModuleTileMap::Update()
 {
+
+
+
+
+
+
 	/*if(counter % 10==0) {
 		tilemap[counter/10][1] = 1;
 	}

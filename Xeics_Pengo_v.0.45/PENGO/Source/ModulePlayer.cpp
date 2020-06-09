@@ -148,6 +148,7 @@ update_status ModulePlayer::Update()
 		--totalColliders;
 	}
 	
+
 	if (rep == 16) {
 		rep = 0;
 	}
@@ -494,6 +495,8 @@ update_status ModulePlayer::PostUpdate()
 		currentAnimation = &deadAnim;
 		rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
+
+
 	}
 	sprintf_s(scoreText, 10, "%d", score);
 

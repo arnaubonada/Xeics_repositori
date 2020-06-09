@@ -11,6 +11,8 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleTileMap.h"
+#include "ModuleFadeToBlack.h"
 
 #include "SDL/include/SDL.h"
 #include <stdio.h>
@@ -68,6 +70,368 @@ update_status ModuleDebugInfo::Update()
 	{
 		App->scene->enemiesAlive = 0;
 	}
+
+
+	if (App->input->keys[SDL_SCANCODE_M] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = true;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl1);
+	}	
+	
+	if (App->input->keys[SDL_SCANCODE_N] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = true;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl2);
+
+	}
+	if (App->input->keys[SDL_SCANCODE_B] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = true;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl3);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_4] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = true;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl4);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_5] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = true;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl5);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_6] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = true;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl6);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_7] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = true;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl7);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_8] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = true;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl8);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_9] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = true;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl9);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_P] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = true;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl10);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_O] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = true;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl11);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_I] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = true;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl12);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_U] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = true;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl13);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_Y] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = true;
+		App->tilemap->scenelvl15 = false;
+
+		App->tilemap->LoadMap(App->tilemap->lvl14);
+
+	}
+
+	if (App->input->keys[SDL_SCANCODE_T] == KEY_DOWN)
+	{
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+
+		App->tilemap->scenelvl1 = false;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = true;
+
+		App->tilemap->LoadMap(App->tilemap->lvl15);
+
+	}
+
+
 
 	return update_status::UPDATE_CONTINUE;
 }
