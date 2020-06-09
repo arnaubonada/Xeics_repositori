@@ -284,7 +284,13 @@ bool ModuleTileMap::Start()
 	Block = App->textures->Load("Assets/Block.png");
 	Diamond = App->textures->Load("Assets/Diamond.png");
 
-	LoadMap(lvl1);
+	if (App->player->lifes == 4) {
+		LoadMap(lvl1);
+	}
+
+	if (App->player->lifes < 4){
+		LoadMap(tilemap);
+	}
 
 	return true;
 }
