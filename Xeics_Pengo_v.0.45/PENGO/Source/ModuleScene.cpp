@@ -101,17 +101,17 @@ bool ModuleScene::Start()
 	App->tilemap->scenelvl2 = false;
 	App->tilemap->scenelvl3 = false;
 	App->tilemap->scenelvl4 = false;
-	App->tilemap->scenelvl5 = true;
-	App->tilemap->scenelvl6 = true;
-	App->tilemap->scenelvl7 = true;
-	App->tilemap->scenelvl8 = true;
-	App->tilemap->scenelvl9 = true;
-	App->tilemap->scenelvl10 = true;
-	App->tilemap->scenelvl11 = true;
-	App->tilemap->scenelvl12 = true;
-	App->tilemap->scenelvl13 = true;
-	App->tilemap->scenelvl14 = true;
-	App->tilemap->scenelvl15 = true;
+	App->tilemap->scenelvl5 = false;
+	App->tilemap->scenelvl6 = false;
+	App->tilemap->scenelvl7 = false;
+	App->tilemap->scenelvl8 = false;
+	App->tilemap->scenelvl9 = false;
+	App->tilemap->scenelvl10 = false;
+	App->tilemap->scenelvl11 = false;
+	App->tilemap->scenelvl12 = false;
+	App->tilemap->scenelvl13 = false;
+	App->tilemap->scenelvl14 = false;
+	App->tilemap->scenelvl15 = false;
 
 	return ret;
 }
@@ -130,6 +130,10 @@ update_status ModuleScene::Update()
 		App->player->destroyed = true;
 
 	}*/
+
+
+
+
 
 	if (enemiesAlive == 0)
 	{

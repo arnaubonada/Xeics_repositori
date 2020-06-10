@@ -74,7 +74,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_M] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = true;
 		App->tilemap->scenelvl2 = false;
@@ -97,7 +97,7 @@ update_status ModuleDebugInfo::Update()
 	
 	if (App->input->keys[SDL_SCANCODE_N] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = true;
@@ -120,7 +120,7 @@ update_status ModuleDebugInfo::Update()
 	}
 	if (App->input->keys[SDL_SCANCODE_B] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 
 		App->tilemap->scenelvl1 = false;
@@ -145,7 +145,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_4] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -169,7 +169,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_5] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -193,7 +193,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_6] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -217,7 +217,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_7] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -241,7 +241,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_8] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -265,7 +265,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_9] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -289,7 +289,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_P] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -313,7 +313,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_O] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -337,7 +337,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_I] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -361,7 +361,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_U] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -385,7 +385,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_Y] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
@@ -409,7 +409,7 @@ update_status ModuleDebugInfo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_T] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
 
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = false;
