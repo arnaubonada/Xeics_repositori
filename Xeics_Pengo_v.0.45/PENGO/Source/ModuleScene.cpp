@@ -85,15 +85,16 @@ bool ModuleScene::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 32);
+	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 32);
 
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
+	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
 
 
+	App->tilemap->Enable();
 	App->player->Enable();
 	App->enemies->Enable();
 	App->blocks->Enable();
-	App->tilemap->Enable();
+	
 
 	enemiesAlive = 3;
 
@@ -235,7 +236,13 @@ bool ModuleScene::CleanUp()
 	App->enemies->Disable();
 	App->blocks->Disable();
 	App->tilemap->Disable();
+	
 	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+
+
+	//borrar tot aqui
+
+
 
 	return true;
 }

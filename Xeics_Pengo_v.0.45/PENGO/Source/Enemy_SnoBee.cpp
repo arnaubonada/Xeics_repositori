@@ -312,7 +312,6 @@ void Enemy_SnoBee::Update()
 
 
 
-
 		if (App->tilemap->threeDiamondsFinish) {
 			if (lastTimeStunned != 0) {
 				App->scene->timescore = 1;
@@ -376,7 +375,10 @@ void Enemy_SnoBee::enemyMovement()
 	else {
 		EnemyToBlock = 0;
 	}
-
+	LOG("dirEnemy: %d", dirEnemy);
+	
+	
+	LOG("Enemy to block: %d", EnemyToBlock);
 
 
 	if (dirEnemy == LEFT) {

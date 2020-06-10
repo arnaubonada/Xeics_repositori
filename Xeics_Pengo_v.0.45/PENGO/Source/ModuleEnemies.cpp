@@ -117,7 +117,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
 		if (spawnQueue[i].type == ENEMY_TYPE::NO_TYPE)
 		{
 			
-			snobee.enemiesAlive++;
+			//snobee.enemiesAlive++;
 
 			spawnQueue[i].type = type;
 			spawnQueue[i].x = x;
@@ -167,6 +167,8 @@ void ModuleEnemies::HandleEnemiesDespawn()
 		}
 	}
 }
+
+
 
 void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 {

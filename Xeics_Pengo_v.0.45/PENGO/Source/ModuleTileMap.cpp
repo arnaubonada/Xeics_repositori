@@ -284,53 +284,55 @@ bool ModuleTileMap::Start()
 	Block = App->textures->Load("Assets/Block.png");
 	Diamond = App->textures->Load("Assets/Diamond.png");
 
-	if (scenelvl1) {
-		LoadMap(lvl1);
-	}
-	else if (scenelvl2) {
-		LoadMap(lvl2);
-	}
-	else if (scenelvl3) {
-		LoadMap(lvl3);
-	}
-	else if (scenelvl4) {
-		LoadMap(lvl4);
-	}
-	else if (scenelvl5) {
-		LoadMap(lvl5);
-	}
-	else if (scenelvl6) {
-		LoadMap(lvl6);
-	}
-	else if (scenelvl7) {
-		LoadMap(lvl7);
-	}
-	else if (scenelvl8) {
-		LoadMap(lvl8);
-	}
-	else if (scenelvl9) {
-		LoadMap(lvl9);
-	}
-	else if (scenelvl10) {
-		LoadMap(lvl10);
-	}
-	else if (scenelvl11) {
-		LoadMap(lvl11);
-	}
-	else if (scenelvl12) {
-		LoadMap(lvl2);
-	}
-	else if (scenelvl13) {
-		LoadMap(lvl13);
-	}
-	else if (scenelvl14) {
-		LoadMap(lvl14);
-	}
-	else if (scenelvl15) {
-		LoadMap(lvl15);
+	if (!App->player->destroyed) {
+		if (scenelvl1) {
+			LoadMap(lvl1);
+		}
+		else if (scenelvl2) {
+			LoadMap(lvl2);
+		}
+		else if (scenelvl3) {
+			LoadMap(lvl3);
+		}
+		else if (scenelvl4) {
+			LoadMap(lvl4);
+		}
+		else if (scenelvl5) {
+			LoadMap(lvl5);
+		}
+		else if (scenelvl6) {
+			LoadMap(lvl6);
+		}
+		else if (scenelvl7) {
+			LoadMap(lvl7);
+		}
+		else if (scenelvl8) {
+			LoadMap(lvl8);
+		}
+		else if (scenelvl9) {
+			LoadMap(lvl9);
+		}
+		else if (scenelvl10) {
+			LoadMap(lvl10);
+		}
+		else if (scenelvl11) {
+			LoadMap(lvl11);
+		}
+		else if (scenelvl12) {
+			LoadMap(lvl2);
+		}
+		else if (scenelvl13) {
+			LoadMap(lvl13);
+		}
+		else if (scenelvl14) {
+			LoadMap(lvl14);
+		}
+		else if (scenelvl15) {
+			LoadMap(lvl15);
+		}
 	}
 	
-	if (App->player->lifes < 4){
+	else{
 		LoadMap(tilemap);
 	}
 
@@ -539,6 +541,7 @@ void ModuleTileMap::MoveBlock(int x, int y, Direction d)
 	else if (dirBlock == DOWN) {
 		finalpositionY = y + (spacestoblock*16);
 	}
+	collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 
 	tilemap[movedBlockY][movedBlockX] = TILE_NOBLOCK;
 }
@@ -727,7 +730,7 @@ update_status ModuleTileMap::Update()
 
 				}
 				positionBlock.x-=4;
-				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
+
 				if (positionBlock.x == finalpositionX) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
@@ -740,7 +743,6 @@ update_status ModuleTileMap::Update()
 					movedBlockX++;
 				}
 				positionBlock.x+=4;
-				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.x == finalpositionX) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
@@ -753,7 +755,6 @@ update_status ModuleTileMap::Update()
 					movedBlockY--;
 				}
 				positionBlock.y-=4;
-				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.y == finalpositionY) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
@@ -766,15 +767,15 @@ update_status ModuleTileMap::Update()
 					movedBlockY++;
 				}
 				positionBlock.y+=4;
-				collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 				if (positionBlock.y == finalpositionY) {
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 					App->collisions->RemoveCollider(collider);
 				}
 			}
-	}
+			collider->SetPos(positionBlock.x, positionBlock.y);
 
+	}
 
 	if (dirDiamond != NOMOVE)
 	{
