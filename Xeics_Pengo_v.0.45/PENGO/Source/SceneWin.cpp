@@ -74,90 +74,105 @@ update_status SceneWin::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl2 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl2 = false;
 		App->tilemap->scenelvl3 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl3 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl3 = false;
 		App->tilemap->scenelvl4 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl4 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl4 = false;
 		App->tilemap->scenelvl5 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl5 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl5 = false;
 		App->tilemap->scenelvl6 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl6 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl6 = false;
 		App->tilemap->scenelvl7 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl7 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl7 = false;
 		App->tilemap->scenelvl8 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl8 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl8 = false;
 		App->tilemap->scenelvl9 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl9 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl9 = false;
 		App->tilemap->scenelvl10 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl10 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl10 = false;
 		App->tilemap->scenelvl11 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl11 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl11 = false;
 		App->tilemap->scenelvl12 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl12 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl12 = false;
 		App->tilemap->scenelvl13 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl13 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl14 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = true;
+		App->player->lifes = 4;
 	}
 	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl15 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl15 = false;
 		App->tilemap->scenelvl1 = true;
+		App->player->lifes = 4;
 	}
 	oneAnim.Update();
 	return update_status::UPDATE_CONTINUE;
