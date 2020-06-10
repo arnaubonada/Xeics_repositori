@@ -99,6 +99,8 @@ bool ModuleEnemies::CleanUp()
 
 	SDL_DestroyTexture(texture);
 
+
+
 	/*App->collisions->RemoveCollider(collider);
 	--totalColliders;*/
 

@@ -103,3 +103,14 @@ update_status SceneIntro::PostUpdate()
 
 	return update_status::UPDATE_CONTINUE;
 }
+
+bool SceneIntro::CleanUp()
+{
+
+	App->textures->Unload(bgTexture);
+	App->textures->Unload(logo);
+	App->fonts->UnLoad(whiteFont);
+	App->fonts->UnLoad(blueFont);
+	
+	return true;
+}

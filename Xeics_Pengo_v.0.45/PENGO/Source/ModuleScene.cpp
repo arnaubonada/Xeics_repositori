@@ -81,7 +81,13 @@ bool ModuleScene::Start()
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 
+
+
+
+	blueFont = App->fonts->Load("Assets/blueFont.png", lookupTable, 3);
 	
+
+
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
@@ -96,7 +102,7 @@ bool ModuleScene::Start()
 	App->blocks->Enable();
 	
 
-	enemiesAlive = 3;
+	enemiesAlive = 1;
 
 	App->tilemap->scenelvl1 = true;
 	App->tilemap->scenelvl2 = false;
@@ -159,6 +165,12 @@ update_status ModuleScene::PostUpdate()
 
 	App->tilemap->DrawMap();
 
+
+	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
+	App->fonts->BlitText(88, 0, blueFont, "hi");
+	App->fonts->BlitText(112, 0, whiteFont, "20000");
+	App->fonts->BlitText(160, 0, blueFont, "2p");
+	App->fonts->BlitText(216, 0, whiteFont, "0");
 
 	if (App->player->lifes == 4) {
 		App->render->Blit(scTexture, 8, 8, &pRed);
@@ -237,10 +249,16 @@ bool ModuleScene::CleanUp()
 	App->blocks->Disable();
 	App->tilemap->Disable();
 	
-	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
+	App->fonts->UnLoad(whiteFont);
+	App->fonts->UnLoad(blueFont);
 
+	App->textures->Unload(bgTexture);
+	App->textures->Unload(chTexture);
+	App->textures->Unload(blTexture);
+	App->textures->Unload(scTexture);
+	App->textures->Unload(oneTexture);
+	App->textures->Unload(onehundredPoints);
 
-	//borrar tot aqui
 
 
 

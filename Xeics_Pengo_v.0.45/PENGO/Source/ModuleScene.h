@@ -87,7 +87,7 @@ public:
 	bool rep = true;
 
 	int whiteFont = -1;
-
+	int blueFont = -1;
 	uint miss = 0;
 };
 

@@ -37,6 +37,8 @@ bool ModuleDebugInfo::Start()
 
 bool ModuleDebugInfo::CleanUp()
 {
+
+	App->fonts->UnLoad(debugFont);
 	return true;
 }
 

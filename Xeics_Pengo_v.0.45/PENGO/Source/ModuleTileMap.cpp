@@ -985,15 +985,20 @@ update_status ModuleTileMap::PostUpdate()
 		App->render->Blit(texture, 8, 256, &(starsVerticalPinkAnim.GetCurrentFrame()), 0.4f);
 	
 	}
-	
-
-	
-
-	
-
-
-
-
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+bool ModuleTileMap::CleanUp()
+{
+
+	App->textures->Unload(texture);
+	App->textures->Unload(scTexture);
+	App->textures->Unload(noBlock);
+	App->textures->Unload(Block);
+	App->textures->Unload(Diamond);
+
+
+
+	return true;
 }

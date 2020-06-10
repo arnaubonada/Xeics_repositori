@@ -132,8 +132,7 @@ bool ModulePlayer::Start()
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 	++activeFonts; ++totalFonts;
 
-	blueFont = App->fonts->Load("Assets/blueFont.png", lookupTable, 3);
-	++activeFonts; ++totalFonts;
+
 
 	return ret;
 }
@@ -499,13 +498,8 @@ update_status ModulePlayer::PostUpdate()
 
 	}
 	sprintf_s(scoreText, 10, "%d", score);
-
 	App->fonts->BlitText(56, 0, whiteFont, scoreText);
-	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
-	App->fonts->BlitText(88, 0, blueFont, "hi");
-	App->fonts->BlitText(112, 0, whiteFont, "20000");
-	App->fonts->BlitText(160, 0, blueFont, "2p");
-	App->fonts->BlitText(216, 0, whiteFont, "0");
+
 
 	if (App->tilemap->scenelvl1 == true)
 	{

@@ -275,7 +275,7 @@ bool ModuleBlocks::CleanUp()
 			blocks[i] = nullptr;
 		}
 	}*/
-
+	App->textures->Unload(texture);
 	return true;
 }
 
