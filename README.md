@@ -26,8 +26,8 @@ Player controls:
 - MOVE BLOCK/PUSH WALL: Space key
 
 General controls:
--JUMP INITIAL AND INTERMEDIATE SCREENS: Space key
--EXIT GAME: esc key
+- JUMP INITIAL AND INTERMEDIATE SCREENS: Space key
+- EXIT GAME: esc key
 
 # We are Xeics Games - Team photo
 
