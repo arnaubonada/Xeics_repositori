@@ -27,7 +27,7 @@ Player controls:
 
 General controls:
 -JUMP INITIAL AND INTERMEDIATE SCREENS: Space key
-EXIT GAME: esc key
+-EXIT GAME: esc key
 
 # We are Xeics Games - Team photo
 
