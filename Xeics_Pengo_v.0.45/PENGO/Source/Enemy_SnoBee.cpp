@@ -385,6 +385,8 @@ void Enemy_SnoBee::enemyMovement()
 
 	if (stunnedEnemy) {
 		EnemyToBlock = 0;
+		EnemyToWall = 0;
+
 	}
 	//dirEnemy = rand() % RIGHT + 1; //enemy direction
 	if (!App->tilemap->threeDiamonds && !stunnedEnemy ) {
@@ -397,6 +399,10 @@ void Enemy_SnoBee::enemyMovement()
 	else {
 		EnemyToBlock = 0;
 	}
+	if (App->tilemap->spaceToWall(position.x, position.y, dirEnemy) != 0) {
+		EnemyToWall = rand() % App->tilemap->spaceToWall(position.x, position.y, dirEnemy);
+	}
+
 	LOG("dirEnemy: %d", dirEnemy);
 	
 	
@@ -404,14 +410,11 @@ void Enemy_SnoBee::enemyMovement()
 
 
 	if (dirEnemy == LEFT) {
-		
+
 		if (App->tilemap->isWalkable(position.x - 1, position.y)) {
 			//dirEnemy = LEFT;
 
-			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-				currentAnim = &snoLeftAnim2;
-			}
-			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoLeftAnim;
 			}
 			if (position.x % 16 == 0) {
@@ -419,16 +422,31 @@ void Enemy_SnoBee::enemyMovement()
 				dirEnemy = LEFT;
 			}
 		}
+		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+			currentAnim = &snoLeftAnim2;
 
-		
+			if (App->tilemap->thereIsABlock(position.x - 1, position.y))
+			{
+
+				App->tilemap->DestroyBlock(position.x - 16, position.y);
+				if (App->tilemap->destroyedAnimBlock) {
+					currentAnim = &snoLeftAnim2;
+
+				}
+			}
+
+			/*if (position.x % 16 == 0) {
+			finalEnemyPositionX = position.x - (EnemyToWall * 16);
+			dirEnemy = LEFT;
+			}*/
+
+		}
+
 	}
 	else if (dirEnemy == RIGHT) {
 		//dirEnemy = RIGHT;
-		if (App->tilemap->isWalkable(position.x +16, position.y)) {
-			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-				currentAnim = &snoRightAnim2;
-			}
-			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+		if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoRightAnim;
 			}
 			if (position.x % 16 == 0) {
@@ -436,20 +454,53 @@ void Enemy_SnoBee::enemyMovement()
 				dirEnemy = RIGHT;
 			}
 		}
-		
+		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+			currentAnim = &snoRightAnim2;
+
+			if (App->tilemap->thereIsABlock(position.x + 16, position.y))
+			{
+				App->tilemap->DestroyBlock(position.x + 16, position.y);
+				if (App->tilemap->destroyedAnimBlock) {
+					currentAnim = &snoRightAnim2;
+
+				}
+			}
+
+			/*if (position.x % 16 == 0) {
+				finalEnemyPositionX = position.x - (EnemyToWall * 16);
+				dirEnemy = RIGHT;
+			}*/
+
+		}
 	}
 	else if (dirEnemy == UP) {
 		//dirEnemy = UP;
 		if (App->tilemap->isWalkable(position.x, position.y - 1)) {
-			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-				currentAnim = &snoUpAnim2;
-			}
-			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoUpAnim;
 			}
 			if (position.y % 16 == 0) {
 				finalEnemyPositionY = position.y - (EnemyToBlock * 16);
 				dirEnemy = UP;
+			}
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoUpAnim2;
+
+				if (App->tilemap->thereIsABlock(position.x, position.y - 1))
+				{
+					App->tilemap->DestroyBlock(position.x, position.y - 16);
+					if (App->tilemap->destroyedAnimBlock) {
+						currentAnim = &snoUpAnim2;
+
+					}
+				}
+
+				/*if (position.x % 16 == 0) {
+					finalEnemyPositionX = position.x - (EnemyToWall * 16);
+					dirEnemy = UP;
+				}*/
+
 			}
 
 		}
@@ -457,10 +508,8 @@ void Enemy_SnoBee::enemyMovement()
 	else if (dirEnemy == DOWN) {
 		//dirEnemy = DOWN;
 		if (App->tilemap->isWalkable(position.x, position.y + 16)) {
-			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-				currentAnim = &snoDownAnim2;
-			}
-			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
+
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoDownAnim;
 			}
 			if (position.y % 16 == 0) {
@@ -468,9 +517,27 @@ void Enemy_SnoBee::enemyMovement()
 				dirEnemy = DOWN;
 			}
 		}
-			
-	
-	
+		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+			currentAnim = &snoDownAnim2;
+
+			if (App->tilemap->thereIsABlock(position.x, position.y + 16))
+			{
+				App->tilemap->DestroyBlock(position.x, position.y + 16);
+				if (App->tilemap->destroyedAnimBlock) {
+					currentAnim = &snoDownAnim2;
+
+				}
+			}
+
+			/*if (position.x % 16 == 0) {
+				finalEnemyPositionX = position.x - (EnemyToWall * 16);
+				dirEnemy = DOWN;
+			}*/
+
+		}
+
+
+
 	}
 
 	randfinish = false;

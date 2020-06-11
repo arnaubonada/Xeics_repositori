@@ -524,6 +524,43 @@ int ModuleTileMap::spaceToBlock(int x, int y, Direction d) {
 
 }
 
+int ModuleTileMap::spaceToWall(int x, int y, Direction d) {
+	int space = 0;
+	int posX;
+	int posY;
+	posX = x / 16;
+	posY = (y - 16) / 16;
+
+
+	if (d == LEFT) {
+		while (tilemap[posY][posX - 1] == TILE_NOBLOCK || tilemap[posY][posX - 1] == TILE_BLOCK) {
+			space++;
+			posX--;
+		}
+	}
+	else if (d == RIGHT) {
+		while (tilemap[posY][posX + 1] == TILE_NOBLOCK || tilemap[posY][posX + 1] == TILE_BLOCK) {
+			space++;
+			posX++;
+		}
+	}
+	else if (d == DOWN) {
+		while (tilemap[posY + 1][posX] == TILE_NOBLOCK || tilemap[posY + 1][posX] == TILE_BLOCK) {
+			space++;
+			posY++;
+		}
+	}
+	else if (d == UP) {
+		while (tilemap[posY - 1][posX] == TILE_NOBLOCK || tilemap[posY - 1][posX] == TILE_BLOCK) {
+			space++;
+			posY--;
+		}
+	}
+
+	return space;
+
+}
+
 
 void ModuleTileMap::DestroyBlock(int x, int y)
 {	

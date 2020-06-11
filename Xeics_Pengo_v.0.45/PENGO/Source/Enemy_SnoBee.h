@@ -28,7 +28,6 @@ public:
 	Path path;
 
 	void enemyMovement();
-
 	
 	void OnCollision(Collider* c2) override;
 
@@ -104,6 +103,8 @@ public:
 	int movedEnemyY;
 
 	int EnemyToBlock;
+	int EnemyToWall;
+
 
 	int finalEnemyPositionX;
 	int finalEnemyPositionY;

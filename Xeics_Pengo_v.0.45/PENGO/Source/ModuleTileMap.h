@@ -86,7 +86,7 @@ public:
 	void checkDiamonds();
 
 	int spaceToBlock(int x, int y, Direction d);
-
+	int spaceToWall(int x, int y, Direction d);
 
 	//// Called at the middle of the application loop
 	//// Updates the scene's background animations
