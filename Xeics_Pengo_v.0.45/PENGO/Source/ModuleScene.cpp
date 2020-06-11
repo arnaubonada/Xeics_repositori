@@ -27,7 +27,7 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 	name = "level 1";
 
 
-	pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 };
+	pYellow =SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 }; pYellowFive = SDL_Rect{ 72,150,16,16 };
 	
 
 	oneAnim.PushBack({ 0, 0, 16, 8 });
@@ -293,7 +293,46 @@ update_status ModuleScene::PostUpdate()
 	}
 
 
-	App->render->Blit(scTexture, 64, 280, &pYellow);
+	if (App->tilemap->scenelvl1 == true || App->tilemap->scenelvl6 == true || App->tilemap->scenelvl11 == true)
+	{
+		App->render->Blit(scTexture, 64, 280, &pYellow);
+	}
+	else if (App->tilemap->scenelvl2 == true || App->tilemap->scenelvl7 == true || App->tilemap->scenelvl12 == true)
+	{
+		App->render->Blit(scTexture, 64, 280, &pYellow);
+		App->render->Blit(scTexture, 80, 280, &pYellow);
+	}
+	else if (App->tilemap->scenelvl3 == true || App->tilemap->scenelvl8 == true || App->tilemap->scenelvl13 == true)
+	{
+		App->render->Blit(scTexture, 64, 280, &pYellow);
+		App->render->Blit(scTexture, 80, 280, &pYellow);
+		App->render->Blit(scTexture, 96, 280, &pYellow);
+	}
+	else if (App->tilemap->scenelvl4 == true || App->tilemap->scenelvl9 == true || App->tilemap->scenelvl14 == true)
+	{
+		App->render->Blit(scTexture, 64, 280, &pYellow);
+		App->render->Blit(scTexture, 80, 280, &pYellow);
+		App->render->Blit(scTexture, 96, 280, &pYellow);
+		App->render->Blit(scTexture, 112, 280, &pYellow);
+	}
+	else if (App->tilemap->scenelvl5 == true || App->tilemap->scenelvl10 == true || App->tilemap->scenelvl15 == true)
+	{
+		App->render->Blit(scTexture, 64, 280, &pYellow);
+		App->render->Blit(scTexture, 80, 280, &pYellow);
+		App->render->Blit(scTexture, 96, 280, &pYellow);
+		App->render->Blit(scTexture, 112, 280, &pYellow);
+		App->render->Blit(scTexture, 128, 280, &pYellow);
+	}
+
+	if (App->tilemap->scenelvl6 == true || App->tilemap->scenelvl7 == true || App->tilemap->scenelvl8 == true || App->tilemap->scenelvl9 == true || App->tilemap->scenelvl10 == true)
+	{
+		App->render->Blit(scTexture, 216, 8, &pYellowFive);
+	}
+	else if (App->tilemap->scenelvl11 == true || App->tilemap->scenelvl12 == true || App->tilemap->scenelvl13 == true || App->tilemap->scenelvl14 == true || App->tilemap->scenelvl15 == true)
+	{
+		App->render->Blit(scTexture, 216, 8, &pYellowFive);
+		App->render->Blit(scTexture, 200, 8, &pYellowFive);
+	}
 
 	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);

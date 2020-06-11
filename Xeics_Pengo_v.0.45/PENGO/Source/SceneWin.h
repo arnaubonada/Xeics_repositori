@@ -37,7 +37,7 @@ public:
 
 	Animation oneAnim;
 
-	SDL_Rect pYellow, pRed;
+	SDL_Rect pYellow, pYellowFive, pRed;
 
 	bool SpacePressed = false;
 	bool counterWinFinish = false;
