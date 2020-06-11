@@ -33,6 +33,9 @@ SceneWin::SceneWin(bool startEnabled) : Module(startEnabled)
 	oneAnim.PushBack({ 0, 8, 16, 8 });
 	oneAnim.PushBack({ 0, 8, 16, 8 });
 	oneAnim.speed = 0.1f;
+
+
+
 }
 
 SceneWin::~SceneWin()
@@ -46,7 +49,6 @@ bool SceneWin::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
 	bgTexture = App->textures->Load("Assets/blackScreen.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	oneTexture = App->textures->Load("Assets/1p.png");
@@ -219,13 +221,15 @@ update_status SceneWin::Update()
 	}
 	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl15 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneIntro , 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneSnow , 30);
 		SpacePressed = true;
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
 	}
+	
 	oneAnim.Update();
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -252,6 +256,8 @@ update_status SceneWin::PostUpdate()
 	App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
 	App->fonts->BlitText(24, 152, blueFont, "60 and over");
 	App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+
+	
 
 	App->fonts->BlitText(56, 0, whiteFont, App->player->scoreText);
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");

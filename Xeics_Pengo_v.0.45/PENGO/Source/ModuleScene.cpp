@@ -263,7 +263,9 @@ update_status ModuleScene::PostUpdate()
 	}
 	else if (App->player->lifes == 0 && App->player->destroyed)
 	{
-		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);		
+		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneLose, 60);
+		App->player->lifes = 4;
+		//App->tilemap->scenelvl1 = true;
 	}
 	
 	if (App->input->keys[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
