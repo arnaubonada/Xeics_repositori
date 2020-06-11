@@ -45,7 +45,7 @@ public:
 	// The enemy's collider
 	Collider* collider = nullptr;
 
-
+	bool enemyCanDie = false;
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;

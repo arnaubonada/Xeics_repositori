@@ -550,108 +550,58 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 		if (c2->type == Collider::Type::ENEMY)
 		{
-			if (!snobeeStunned) {
-				destroyed = true;
-				rep = 0;
-				c1->pendingToDelete = true;
-				c2->pendingToDelete = true;
-				lifes--;
+			for (uint i = 0; i < MAX_ENEMIES; ++i)
+			{
+				if (App->enemies->enemies[i] != nullptr)
+				{
+					if (!App->enemies->enemies[i]->enemyCanDie) {
+						if (App->tilemap->pushRight) {
+							if (App->enemies->enemies[i]->position.x == 208) {
+								destroyed = true;
+								rep = 0;
+								c1->pendingToDelete = true;
+								c2->pendingToDelete = true;
+								lifes--;
+							}
+						}
+						if (App->tilemap->pushLeft) {
+							if (App->enemies->enemies[i]->position.x == 16) {
+								destroyed = true;
+								rep = 0;
+								c1->pendingToDelete = true;
+								c2->pendingToDelete = true;
+								lifes--;
+							}
+						}
+						if (App->tilemap->pushDown) {
+							if (App->enemies->enemies[i]->position.y == 256) {
+								destroyed = true;
+								rep = 0;
+								c1->pendingToDelete = true;
+								c2->pendingToDelete = true;
+								lifes--;
+							}
+						}
+						if (App->tilemap->pushUp) {
+							if (App->enemies->enemies[i]->position.y == 32) {
+								destroyed = true;
+								rep = 0;
+								c1->pendingToDelete = true;
+								c2->pendingToDelete = true;
+								lifes--;
+							}
+						}
+					}
+					else if (App->enemies->enemies[i]->enemyCanDie) {
+						scoreOneHundred = true;
+						score += 100;
+						App->scene->enemiesAlive--;
+					}
+				}
 			}
-			else{
-				scoreOneHundred = true;
-				score += 100;
-				App->scene->enemiesAlive--;
-			}
-
-			
-		}
-	/*	if (c2->type == Collider::Type::BLOCK && opcio == 'l')
-		{
-			position.x += move;
 
 		}
-		if (c2->type == Collider::Type::BLOCK && opcio == 'r')
-		{
-			position.x -= move;
-
-		}if (c2->type == Collider::Type::BLOCK && opcio == 'd')
-		{
-			position.y -= move;
-
-		}
-		if (c2->type == Collider::Type::BLOCK && opcio == 'u')
-		{
-			position.y += move;
-
-		}*/
+	
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-	//if (c1 == collider && opcio == 'l')
-	//{
-	//
-	//	position.x += move;
-	//	//collidatoL = true;
-
-	//}
-
-
-	//if (c1 == collider && opcio == 'r')
-	//{
-
-	//	position.x -= move;
-	//	//collidatoR = true;
-	//}
-
-
-	//if (c1 == collider && opcio == 'd')
-	//{
-
-	//	position.y -= move;
-	//	//collidatoD = true;
-
-	//}
-
-
-	//if (c1 == collider && opcio == 'u')
-	//{
-	//	position.y += move;
-	//	//collidatoU = true;
-
-	//}
-
-
-	//collider->SetPos(position.x, position.y);
-
-
-
-
-	//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
-
-	//App->audio->PlayFx(explosionFx);
-	//destroyed = true;
-
 }
-
-//void ModulePlayer::OnCollision2(Collider* c1, Collider* c2)
-//{
-//	if (c1 == collider && c2 == )
-//	{
-//		//App->fade->FadeToBlack((Module*)App->scene, (Module*)App->sceneIntro, 60);
-//
-//		App->audio->PlayFx(explosionFx);
-//		destroyed = true;
-//	}
-//
-//}

@@ -158,7 +158,6 @@ void Enemy_SnoBee::Update()
 
 		if (dirEnemy != NOMOVE) {
 
-
 			if (dirEnemy == LEFT) {
 				if (App->tilemap->isWalkable(position.x - 1, position.y)) {
 					
@@ -243,7 +242,15 @@ void Enemy_SnoBee::Update()
 			if (position.x == 16) {
 				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
-				App->player->snobeeStunned = true;
+				for (uint i = 0; i < MAX_ENEMIES; ++i)
+				{
+					if (App->enemies->enemies[i] != nullptr)
+					{
+						if (App->enemies->enemies[i]->position.x == 16) {
+							App->enemies->enemies[i]->enemyCanDie = true;
+						}
+					}
+				}
 				timeStunned = 1;
 				App->scene->timescore = 1;
 
@@ -255,7 +262,15 @@ void Enemy_SnoBee::Update()
 			if (position.x == 208) {
 				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
-				App->player->snobeeStunned = true;
+				for (uint i = 0; i < MAX_ENEMIES; ++i)
+				{
+					if (App->enemies->enemies[i] != nullptr)
+					{
+						if (App->enemies->enemies[i]->position.x == 208) {
+							App->enemies->enemies[i]->enemyCanDie = true;
+						}
+					}
+				}
 				timeStunned = 1;
 				App->scene->timescore = 1;
 
@@ -267,7 +282,15 @@ void Enemy_SnoBee::Update()
 			if (position.y == 32) {
 				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
-				App->player->snobeeStunned = true;
+				for (uint i = 0; i < MAX_ENEMIES; ++i)
+				{
+					if (App->enemies->enemies[i] != nullptr)
+					{
+						if (App->enemies->enemies[i]->position.y == 32) {
+							App->enemies->enemies[i]->enemyCanDie = true;
+						}
+					}
+				}
 				timeStunned = 1;
 				App->scene->timescore = 1;
 
@@ -279,7 +302,15 @@ void Enemy_SnoBee::Update()
 			if (position.y == 256) {
 				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
-				App->player->snobeeStunned = true;
+				for (uint i = 0; i < MAX_ENEMIES; ++i)
+				{
+					if (App->enemies->enemies[i] != nullptr)
+					{
+						if (App->enemies->enemies[i]->position.y == 256) {
+							App->enemies->enemies[i]->enemyCanDie = true;
+						}
+					}
+				}
 				timeStunned = 1;
 				App->scene->timescore = 1;
 
@@ -287,6 +318,7 @@ void Enemy_SnoBee::Update()
 				App->scene->posEnemyY = position.y;
 			}
 		}
+
 		if (!App->tilemap->threeDiamondsDone) {
 			if (timeStunned != 0) {
 				stunnedEnemy = true;

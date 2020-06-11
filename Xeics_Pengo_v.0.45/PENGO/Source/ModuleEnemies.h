@@ -69,6 +69,7 @@ public:
 	// The enemies sprite sheet
 	SDL_Texture* texture = nullptr;
 
+	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);
@@ -78,9 +79,9 @@ private:
 	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
 
 	// All spawned enemies in the scene
-	Enemy* enemies[MAX_ENEMIES] = { nullptr };
+	
 
-	Collider* snobeeCollider = snobee.collider;
+	//Collider* snobeeCollider = snobee.collider;
 
 	// The audio fx for destroying an enemy
 	int enemyDestroyedFx = 0;
