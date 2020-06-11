@@ -53,5 +53,5 @@ _Arnau Ustrell_
 
 
 ### Our Github repository Link [HERE](https://github.com/arnaubonada/Xeics_repositori)
-### Our game Wiki page for more information [HERE](https://github.com/Wilhelman/Gunbird_P01/wiki)
+### Our game Wiki page for more information [HERE](https://github.com/arnaubonada/Xeics_repositori/wiki)
 ### Link to download last version of the game [HERE]()
