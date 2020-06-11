@@ -8,8 +8,11 @@
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
+#include "ModuleScene.h"
 
+#include <stdlib.h>
 
+#include <SDL/include/SDL.h>
 #include "SDL/include/SDL_scancode.h"
 
 ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
@@ -714,13 +717,58 @@ void ModuleTileMap::checkDiamonds() {
 
 }
 
+void ModuleTileMap::MouseState() {
+
+	SDL_GetMouseState(&mousePositionX, &mousePositionY);
+
+	while (mousePositionX % 16 != 0) {
+		mousePositionX--;
+	}
+	while (mousePositionY % 16 != 0) {
+		mousePositionY--;
+	}
+	if (mousePositionX > 16* SCREEN_SIZE && mousePositionX < 224* SCREEN_SIZE && mousePositionY > 32* SCREEN_SIZE && mousePositionY < 272* SCREEN_SIZE) {
+
+		if (App->input->keys[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN) {
+
+			if (mousePositionX % 16 == 0 && mousePositionY % 16 == 0) {
+
+				iBlock = (mousePositionX / SCREEN_SIZE) / 16;
+				jBlock = ((mousePositionY / SCREEN_SIZE) - 16) / 16;
+
+				tilemap[jBlock][iBlock] = TILE_BLOCK;
+			}
+
+		}
+		if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN) {
+
+			if (mousePositionX % 16 == 0 && mousePositionY % 16 == 0) {
+
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, mousePositionX / SCREEN_SIZE, mousePositionY / SCREEN_SIZE);
+
+				App->scene->enemiesAlive++;
+
+			}
+		}
+		if (App->input->keys[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN) {
+
+			if (mousePositionX % 16 == 0 && mousePositionY % 16 == 0) {
+
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, mousePositionX / SCREEN_SIZE, mousePositionY / SCREEN_SIZE);
+
+				App->scene->enemiesAlive++;
+
+			}
+		}
+	}
+}
+
 update_status ModuleTileMap::Update()
 {
 
-
-
-
-
+	if (!App->player->destroyed) {
+		MouseState();
+	}
 
 	/*if(counter % 10==0) {
 		tilemap[counter/10][1] = 1;

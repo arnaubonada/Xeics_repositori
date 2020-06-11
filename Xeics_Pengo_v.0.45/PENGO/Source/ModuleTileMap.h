@@ -69,6 +69,8 @@ public:
 
 	void PushDownWall();
 
+	void MouseState();
+
 	bool isWalkable(int x, int y);
 
 	bool thereIsABlock(int x, int y);
@@ -166,6 +168,12 @@ public:
 
 	bool threeDiamondsFinish = false;
 	int timeDiamondStunned = 0;
+
+	int mousePositionX;
+	int mousePositionY;
+
+	int iBlock;
+	int jBlock;
 
 	SDL_Texture* texture;
 	SDL_Texture* scTexture;
