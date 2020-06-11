@@ -8,6 +8,7 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "ModuleScene.h"
+#include "SceneSnow.h"
 #include "SceneWin.h"
 #include "SceneLose.h"
 #include "ModuleParticles.h"
@@ -34,18 +35,19 @@ Application::Application()
 	modules[4] =	sceneIntro =	new SceneIntro(true);
 	
 	modules[5] =	scene =			new ModuleScene(false);		
-	modules[6] =	sceneWin =		new SceneWin(false);
-	modules[7] =	sceneLose =		new SceneLose(false);
-	modules[8] =	player =		new ModulePlayer(false);
-	modules[9] =	particles =		new ModuleParticles(true);
-	modules[10] =	enemies =		new ModuleEnemies(false);
-	modules[11] =	blocks =		new ModuleBlocks(false);
-	modules[12] =	collisions =	new ModuleCollisions(true);
-	modules[13] =	fade =			new ModuleFadeToBlack(true);
-	modules[14] =	fonts =			new ModuleFonts(true);
-	modules[15] =	debugInfo =		new ModuleDebugInfo(true);
-	modules[16] =	tilemap =		new ModuleTileMap(false);
-	modules[17] =	render =		new ModuleRender(true);
+	modules[6] =	sceneSnow =		new SceneSnow(false);
+	modules[7] =	sceneWin =		new SceneWin(false);
+	modules[8] =	sceneLose =		new SceneLose(false);
+	modules[9] =	player =		new ModulePlayer(false);
+	modules[10] =	particles =		new ModuleParticles(true);
+	modules[11] =	enemies =		new ModuleEnemies(false);
+	modules[12] =	blocks =		new ModuleBlocks(false);
+	modules[13] =	collisions =	new ModuleCollisions(true);
+	modules[14] =	fade =			new ModuleFadeToBlack(true);
+	modules[15] =	fonts =			new ModuleFonts(true);
+	modules[16] =	debugInfo =		new ModuleDebugInfo(true);
+	modules[17] =	tilemap =		new ModuleTileMap(false);
+	modules[18] =	render =		new ModuleRender(true);
 
 }
 

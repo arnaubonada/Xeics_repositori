@@ -39,6 +39,15 @@ public:
 	int blueFont = -1;
 	char scoreText[10] = { "\0" };
 
+	//////prova
+	//SDL_Texture* skyTexture = nullptr;
+	//SDL_Texture* snowTexture = nullptr;
+	//Animation skyAnim;
+
+
+
+
+
 	int contador = 0;
 };
 

@@ -7,12 +7,35 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "SceneSnow.h"
 
 #include "SDL/include/SDL_scancode.h"
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
 	name = "s intro";
+
+
+
+	/////prova
+	//skyAnim.PushBack({ 0, 0, 224, 104 });
+	//skyAnim.PushBack({ 232, 0, 224, 104 });
+	//skyAnim.PushBack({ 464, 0, 224, 104 });
+	//skyAnim.PushBack({ 696, 0, 224, 104 });
+	//skyAnim.PushBack({ 0, 108, 224, 104 });
+	//skyAnim.PushBack({ 232, 108, 224, 104 });
+	//skyAnim.PushBack({ 464, 108, 224, 104 });
+	//skyAnim.PushBack({ 696, 108, 224, 104 });
+	//skyAnim.PushBack({ 0, 216, 224, 104 });
+	//skyAnim.PushBack({ 232, 216, 224, 104 });
+	//skyAnim.PushBack({ 464, 216, 224, 104 });
+	//skyAnim.PushBack({ 696, 216, 224, 104 });
+	//skyAnim.PushBack({ 0, 324, 224, 104 });
+	//skyAnim.PushBack({ 232, 324, 224, 104 });
+	//skyAnim.PushBack({ 464, 324, 224, 104 });
+	//skyAnim.PushBack({ 696, 324, 224, 104 });
+	//skyAnim.speed = 0.02f;
+
 }
 
 SceneIntro::~SceneIntro()
@@ -26,6 +49,10 @@ bool SceneIntro::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+
+	/////prova
+	//skyTexture = App->textures->Load("Assets/Intro.png");
+	//snowTexture = App->textures->Load("Assets/snow.png");
 
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
@@ -47,11 +74,13 @@ bool SceneIntro::Start()
 update_status SceneIntro::Update()
 {
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && contador == 3)
+  	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && contador == 3)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene, 30);
+		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
+
 	}
 
+	//skyAnim.Update();
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -100,7 +129,11 @@ update_status SceneIntro::PostUpdate()
 	{
 		App->render->Blit(bgTexture, 8, 0, NULL);
 	}
-
+	//if (contador == 4)
+	//{
+	//	App->render->Blit(skyTexture, 8, 0, &(skyAnim.GetCurrentFrame()), 0.4f);
+	//	App->render->Blit(snowTexture, 8, 104, NULL);
+	//}
 	return update_status::UPDATE_CONTINUE;
 }
 

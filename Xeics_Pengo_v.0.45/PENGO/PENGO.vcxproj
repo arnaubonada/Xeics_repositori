@@ -46,6 +46,7 @@
     <ClCompile Include="Source\Path.cpp" />
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\SceneLose.cpp" />
+    <ClCompile Include="Source\SceneSnow.cpp" />
     <ClCompile Include="Source\SceneWin.cpp" />
     <ClCompile Include="Source\TileMap.cpp" />
   </ItemGroup>
@@ -79,6 +80,7 @@
     <ClInclude Include="Source\Path.h" />
     <ClInclude Include="Source\SceneIntro.h" />
     <ClInclude Include="Source\SceneLose.h" />
+    <ClInclude Include="Source\SceneSnow.h" />
     <ClInclude Include="Source\SceneWin.h" />
     <ClInclude Include="Source\TileMap.h" />
   </ItemGroup>
