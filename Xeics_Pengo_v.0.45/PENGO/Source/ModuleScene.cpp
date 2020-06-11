@@ -103,7 +103,7 @@ bool ModuleScene::Start()
 	App->blocks->Enable();
 	
 
-	enemiesAlive = 1;
+	enemiesAlive = 3;
 
 	App->sceneWin->SpacePressed = false;
 

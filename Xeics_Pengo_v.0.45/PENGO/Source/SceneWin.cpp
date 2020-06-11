@@ -222,6 +222,8 @@ update_status SceneWin::Update()
 	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl15 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneSnow , 30);
+		App->tilemap->scenelvl15 = false;
+		App->tilemap->scenelvl1 = true;
 		SpacePressed = true;
 		counterWinFinish = false;
 		App->player->timerLevel = 0;

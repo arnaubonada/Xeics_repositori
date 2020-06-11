@@ -200,7 +200,7 @@ update_status ModulePlayer::Update()
 
 	if (rep == 0) {
 		if (!destroyed) {
-			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.l_x < 0.0f)
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.left == 1)
 			{
 				currentAnimation = &leftAnim2;
 				opcio = 'l';
@@ -217,7 +217,7 @@ update_status ModulePlayer::Update()
 			}
 			else {
 
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.l_x > 0.0f)
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.right == 1)
 				{
 					currentAnimation = &rightAnim2;
 					opcio = 'r';
@@ -232,7 +232,7 @@ update_status ModulePlayer::Update()
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.l_y > 0.0f)
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.down == 1)
 					{
 						currentAnimation = &downAnim2;
 						opcio = 'd';
@@ -250,7 +250,7 @@ update_status ModulePlayer::Update()
 					}
 
 					else {
-						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.l_y < 0.0f)
+						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == 1)
 						{
 							currentAnimation = &upAnim2;
 							opcio = 'u';
