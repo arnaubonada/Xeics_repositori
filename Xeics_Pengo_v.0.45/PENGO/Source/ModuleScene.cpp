@@ -13,6 +13,7 @@
 #include "ModuleBlocks.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleTileMap.h"
+#include "SceneWin.h"
 #include "ModuleFonts.h"
 #include "Enemy.h"
 #include "Enemy_SnoBee.h"
@@ -91,9 +92,9 @@ bool ModuleScene::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
 
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 32);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 32);
 
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
 
 
 	App->tilemap->Enable();
@@ -104,22 +105,28 @@ bool ModuleScene::Start()
 
 	enemiesAlive = 1;
 
-	App->tilemap->scenelvl1 = true;
-	App->tilemap->scenelvl2 = false;
-	App->tilemap->scenelvl3 = false;
-	App->tilemap->scenelvl4 = false;
-	App->tilemap->scenelvl5 = false;
-	App->tilemap->scenelvl6 = false;
-	App->tilemap->scenelvl7 = false;
-	App->tilemap->scenelvl8 = false;
-	App->tilemap->scenelvl9 = false;
-	App->tilemap->scenelvl10 = false;
-	App->tilemap->scenelvl11 = false;
-	App->tilemap->scenelvl12 = false;
-	App->tilemap->scenelvl13 = false;
-	App->tilemap->scenelvl14 = false;
-	App->tilemap->scenelvl15 = false;
+	App->sceneWin->SpacePressed = false;
 
+	if (App->tilemap->scenelvl1) {
+		App->tilemap->scenelvl1 = true;
+		App->tilemap->scenelvl2 = false;
+		App->tilemap->scenelvl3 = false;
+		App->tilemap->scenelvl4 = false;
+		App->tilemap->scenelvl5 = false;
+		App->tilemap->scenelvl6 = false;
+		App->tilemap->scenelvl7 = false;
+		App->tilemap->scenelvl8 = false;
+		App->tilemap->scenelvl9 = false;
+		App->tilemap->scenelvl10 = false;
+		App->tilemap->scenelvl11 = false;
+		App->tilemap->scenelvl12 = false;
+		App->tilemap->scenelvl13 = false;
+		App->tilemap->scenelvl14 = false;
+		App->tilemap->scenelvl15 = false;
+	}
+	else {
+		App->tilemap->scenelvl1 = false;
+	}
 	return ret;
 }
 
@@ -165,6 +172,66 @@ update_status ModuleScene::PostUpdate()
 
 	App->tilemap->DrawMap();
 
+	if (App->tilemap->scenelvl1 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 1");
+	}
+	else if (App->tilemap->scenelvl2 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 2");
+	}
+	else if (App->tilemap->scenelvl3 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 3");
+	}
+	else if (App->tilemap->scenelvl4 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 4");
+	}
+	else if (App->tilemap->scenelvl5 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 5");
+	}
+	else if (App->tilemap->scenelvl6 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 6");
+	}
+	else if (App->tilemap->scenelvl7 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 7");
+	}
+	else if (App->tilemap->scenelvl8 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 8");
+	}
+	else if (App->tilemap->scenelvl9 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act 9");
+	}
+	else if (App->tilemap->scenelvl10 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act10");
+	}
+	else if (App->tilemap->scenelvl11 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act11");
+	}
+	else if (App->tilemap->scenelvl12 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act12");
+	}
+	else if (App->tilemap->scenelvl13 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act13");
+	}
+	else if (App->tilemap->scenelvl14 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act14");
+	}
+	else if (App->tilemap->scenelvl15 == true)
+	{
+		App->fonts->BlitText(16, 280, whiteFont, "act15");
+	}
 
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
 	App->fonts->BlitText(88, 0, blueFont, "hi");

@@ -149,8 +149,10 @@ void Enemy_SnoBee::Update()
 			if (stunnedEnemy) {
 				dirEnemy = NOMOVE;
 			}
-
-		if (dirEnemy == NOMOVE) {
+			if (randfinish) {
+				dirEnemy = NOMOVE;
+			}
+		if (dirEnemy == NOMOVE ) {
 			enemyMovement();
 		}
 
@@ -158,64 +160,84 @@ void Enemy_SnoBee::Update()
 
 
 			if (dirEnemy == LEFT) {
-				if (App->tilemap->isWalkable(position.x - 16, position.y)) {
+				if (App->tilemap->isWalkable(position.x - 1, position.y)) {
+					
+					/*if (position.x % 2 != 0 && position.x - 1 == finalEnemyPositionX) {
+						position.x--;
+					}*/
 					position.x--;
 					if (position.x == finalEnemyPositionX) {
 						dirEnemy = NOMOVE;
+
 					}
 					//positionEnemyX--;
-
+					
 
 				}
 				else {
-					dirEnemy = NOMOVE;
+					randfinish = true;
 				}
+				
 			}
 
 			else if (dirEnemy == RIGHT) {
 				if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+					
+					/*if (position.x % 2 != 0 && position.x + 1 == finalEnemyPositionX) {
+						position.x++;
+					}*/
 					position.x++;
-
 					if (position.x == finalEnemyPositionX) {
 						dirEnemy = NOMOVE;
 					}
+					
 					//	positionEnemyX++;
 				}
 				else {
-					dirEnemy = NOMOVE;
+					randfinish = true;
 				}
+				
 			}
 			else if (dirEnemy == UP) {
-				if (App->tilemap->isWalkable(position.x, position.y - 16)) {
+				if (App->tilemap->isWalkable(position.x, position.y - 1)) {
+					
+					/*if (position.y % 2 != 0 && position.y - 1 == finalEnemyPositionY) {
+						position.y--;
+					}*/
 					position.y--;
-
 					if (position.y == finalEnemyPositionY) {
 						dirEnemy = NOMOVE;
 					}
+					
 					//positionEnemyY--;
 
 				}
 				else {
-					dirEnemy = NOMOVE;
+					randfinish = true;
 				}
 			}
 			else if (dirEnemy == DOWN) {
 				if (App->tilemap->isWalkable(position.x, position.y + 16)) {
+					
+					/*if (position.y % 2 != 0 && position.y + 1 == finalEnemyPositionY) {
+						position.y++;
+					}*/
 					position.y++;
 					if (position.y == finalEnemyPositionY) {
 						dirEnemy = NOMOVE;
 					}
 					//positionEnemyY++;
-
+					
 				}
+				
 				else {
-					dirEnemy = NOMOVE;
-					}
-
+					randfinish = true;
+				}
 				}
 			}
 		}
-
+		/*LOG("Pos x: %d", position.x);
+		LOG("Pos y: %d", position.y);*/
 
 		if (App->tilemap->pushLeft) {
 			if (position.x == 16) {
@@ -383,44 +405,53 @@ void Enemy_SnoBee::enemyMovement()
 
 	if (dirEnemy == LEFT) {
 		
+		if (App->tilemap->isWalkable(position.x - 1, position.y)) {
+			//dirEnemy = LEFT;
 
-		//dirEnemy = LEFT;
-		if (App->tilemap->isWalkable(position.x - 16, position.y)) {
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
 				currentAnim = &snoLeftAnim2;
 			}
 			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoLeftAnim;
 			}
-			finalEnemyPositionX = position.x - (EnemyToBlock * 16);
-			dirEnemy = LEFT;
-
+			if (position.x % 16 == 0) {
+				finalEnemyPositionX = position.x - (EnemyToBlock * 16);
+				dirEnemy = LEFT;
+			}
 		}
+
+		
 	}
 	else if (dirEnemy == RIGHT) {
 		//dirEnemy = RIGHT;
-		if (App->tilemap->isWalkable(position.x + 16, position.y)) {
+		if (App->tilemap->isWalkable(position.x +16, position.y)) {
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
 				currentAnim = &snoRightAnim2;
 			}
 			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoRightAnim;
 			}
-			finalEnemyPositionX = position.x + (EnemyToBlock * 16);
-			dirEnemy = RIGHT;
+			if (position.x % 16 == 0) {
+				finalEnemyPositionX = position.x + (EnemyToBlock * 16);
+				dirEnemy = RIGHT;
+			}
 		}
+		
 	}
 	else if (dirEnemy == UP) {
 		//dirEnemy = UP;
-		if (App->tilemap->isWalkable(position.x, position.y-16)) {
+		if (App->tilemap->isWalkable(position.x, position.y - 1)) {
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
 				currentAnim = &snoUpAnim2;
 			}
 			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoUpAnim;
 			}
-			finalEnemyPositionY = position.y - (EnemyToBlock * 16);
-			dirEnemy = UP;
+			if (position.y % 16 == 0) {
+				finalEnemyPositionY = position.y - (EnemyToBlock * 16);
+				dirEnemy = UP;
+			}
+
 		}
 	}
 	else if (dirEnemy == DOWN) {
@@ -432,13 +463,20 @@ void Enemy_SnoBee::enemyMovement()
 			else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoDownAnim;
 			}
-			finalEnemyPositionY = position.y + (EnemyToBlock * 16);
-			dirEnemy = DOWN;
+			if (position.y % 16 == 0) {
+				finalEnemyPositionY = position.y + (EnemyToBlock * 16);
+				dirEnemy = DOWN;
+			}
 		}
+			
+	
 	
 	}
 
+	randfinish = false;
 
+	LOG("Final x: %d", finalEnemyPositionX);
+	LOG("Final y: %d", finalEnemyPositionY);
 
 
 	/*if (dirEnemy != NOMOVE) {

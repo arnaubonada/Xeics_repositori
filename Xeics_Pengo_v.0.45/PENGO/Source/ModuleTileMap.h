@@ -79,6 +79,10 @@ public:
 
 	bool thereIsEnemy(int x, int y);
 
+	//bool isWalkable_pixel(int x, int y);
+
+
+
 	void checkDiamonds();
 
 	int spaceToBlock(int x, int y, Direction d);

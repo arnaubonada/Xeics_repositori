@@ -401,9 +401,28 @@ bool ModuleTileMap::isWalkable(int x, int y)
 	{
 		valid = true;
 	}
-	
+	LOG("pos x tile %d", posX);
+	LOG("pos y tile %d", posY);
 	return valid;
+	
 }
+
+//bool ModuleTileMap::isWalkable_pixel(int x, int y)
+//{
+//	bool valid = false;
+//
+//	int posX;
+//	int posY;
+//	posX = x/16;
+//	posY = (y-16)/16;
+//
+//	if (tilemap[posY][posX] == TILE_NOBLOCK)
+//	{
+//		valid = true;
+//	}
+//	
+//	return valid;
+//}
 
 bool ModuleTileMap::thereIsABlock(int x, int y)
 {

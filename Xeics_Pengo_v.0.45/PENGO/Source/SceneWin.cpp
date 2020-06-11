@@ -69,95 +69,161 @@ bool SceneWin::Start()
 }
 update_status SceneWin::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl1 == true)
+	counterWinDelay++;
+	if (counterWinDelay > 300) {
+		counterWinFinish = true;
+		counterWinDelay = 0;
+	}
+
+	if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl1 == true && SpacePressed == false)|| counterWinFinish && App->tilemap->scenelvl1 == true)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl1 = false;
 		App->tilemap->scenelvl2 = true;
-	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl2 == true)
-	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
+
+		
+	}
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl2 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl2 == true)
+	{
 		App->tilemap->scenelvl2 = false;
 		App->tilemap->scenelvl3 = true;
+		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl3 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl3 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl3 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl3 = false;
 		App->tilemap->scenelvl4 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl4 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl4 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl4 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl4 = false;
 		App->tilemap->scenelvl5 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl5 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl5 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl5 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl5 = false;
 		App->tilemap->scenelvl6 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl6 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl6 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl6 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl6 = false;
 		App->tilemap->scenelvl7 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl7 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl7 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl7 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl7 = false;
 		App->tilemap->scenelvl8 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl8 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl8 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl8 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl8 = false;
 		App->tilemap->scenelvl9 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl9 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl9 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl9 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl9 = false;
 		App->tilemap->scenelvl10 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl10 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl10 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl10 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl10 = false;
 		App->tilemap->scenelvl11 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl11 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl11 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl11 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl11 = false;
 		App->tilemap->scenelvl12 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl12 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl12 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl12 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl12 = false;
 		App->tilemap->scenelvl13 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl13 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl13 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl13 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl14 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl14 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl14 == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = true;
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
-	else if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl15 == true)
+	else if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl15 == true && SpacePressed == false) || counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
-		App->tilemap->scenelvl15 = false;
-		App->tilemap->scenelvl1 = true;
+		App->fade->FadeToBlack(this, (Module*)App->sceneIntro , 90);
+		SpacePressed = true;
+		counterWinFinish = false;
+		App->player->timerLevel = 0;
+		App->player->minutes = 0;
 	}
 	oneAnim.Update();
 	return update_status::UPDATE_CONTINUE;
@@ -168,11 +234,17 @@ update_status SceneWin::PostUpdate()
 {
 	// Draw everything --------------------------------------
 
+	
+	
+	
 
 	//App->render->Blit(bgTexture, 0, 0, NULL);
 	App->fonts->BlitText(24, 40, yellowFont, "game time");
+	App->fonts->BlitText(112, 40, whiteFont, App->player->minutesText);
 	App->fonts->BlitText(128, 40, yellowFont, "min.");
+	App->fonts->BlitText(160, 40, whiteFont, App->player->secondsText);
 	App->fonts->BlitText(184, 40, yellowFont, "sec.");
+
 	App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
 	App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
 	App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
@@ -226,27 +298,27 @@ update_status SceneWin::PostUpdate()
 	}
 	else if (App->tilemap->scenelvl10 == true)
 	{
-		App->fonts->BlitText(16, 280, whiteFont, "act 10");
+		App->fonts->BlitText(16, 280, whiteFont, "act10");
 	}
 	else if (App->tilemap->scenelvl11 == true)
 	{
-		App->fonts->BlitText(16, 280, whiteFont, "act 11");
+		App->fonts->BlitText(16, 280, whiteFont, "act11");
 	}
 	else if (App->tilemap->scenelvl12 == true)
 	{
-		App->fonts->BlitText(16, 280, whiteFont, "act 12");
+		App->fonts->BlitText(16, 280, whiteFont, "act12");
 	}
 	else if (App->tilemap->scenelvl13 == true)
 	{
-		App->fonts->BlitText(16, 280, whiteFont, "act 13");
+		App->fonts->BlitText(16, 280, whiteFont, "act13");
 	}
 	else if (App->tilemap->scenelvl14 == true)
 	{
-		App->fonts->BlitText(16, 280, whiteFont, "act 14");
+		App->fonts->BlitText(16, 280, whiteFont, "act14");
 	}
 	else if (App->tilemap->scenelvl15 == true)
 	{
-		App->fonts->BlitText(16, 280, whiteFont, "act 15");
+		App->fonts->BlitText(16, 280, whiteFont, "act15");
 	}
 
 	if (App->player->lifes == 4) {
@@ -269,4 +341,22 @@ update_status SceneWin::PostUpdate()
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+
+bool SceneWin::CleanUp()
+{
+	
+	App->fonts->UnLoad(whiteFont);
+	App->fonts->UnLoad(blueFont);
+	App->fonts->UnLoad(yellowFont);
+
+	App->textures->Unload(bgTexture);
+	App->textures->Unload(scTexture);
+	App->textures->Unload(oneTexture);
+
+
+
+
+	return true;
 }

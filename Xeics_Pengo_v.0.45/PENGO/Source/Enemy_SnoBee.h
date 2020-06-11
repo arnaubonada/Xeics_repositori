@@ -88,6 +88,8 @@ public:
 
 	bool smashedEnemy = false;
 
+	bool randfinish = false;
+
 	int timeStunned = 0;
 	int lastTimeStunned = 0;
 

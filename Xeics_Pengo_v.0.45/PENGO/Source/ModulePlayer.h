@@ -84,10 +84,16 @@ public:
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	//uint destroyedCountdown = 120;
 
+	int timerLevel = 0;
+	int minutes = 0;
+
+
+
 	uint score = 000;
 	int whiteFont=-1;
-	int blueFont=-1;
 	char scoreText[10] = { "\0" };
+	char secondsText[10] = { "\0" };
+	char minutesText[10] = { "\0" };
 
 	// Sound effects indices
 	uint laserFx = 0;
