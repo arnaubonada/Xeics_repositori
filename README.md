@@ -31,7 +31,7 @@ General controls:
 
 # We are Xeics Games - Team photo
 
-![team photo](D:\UNI\Projecte1\teamphoto)
+![](teamphoto.jpeg)
 
 ## Team members
 
