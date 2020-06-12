@@ -64,12 +64,19 @@ public:
 	// Destroys any enemies that have moved outside the camera limits
 	void HandleEnemiesDespawn();
 
+	void counterEnemiesStunned();
+
 	Enemy_SnoBee snobee;
 
 	// The enemies sprite sheet
 	SDL_Texture* texture = nullptr;
 
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
+
+	bool enemiesStunned[10]{ false,false,false,false,false,false,false,false,false,false };
+	int posEnemyX;
+	int posEnemyY;
+
 private:
 	// Spawns a new enemy using the data from the queue
 	void SpawnEnemy(const EnemySpawnpoint& info);

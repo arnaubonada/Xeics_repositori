@@ -15,7 +15,7 @@ struct Collider
 		WALL,
 		PLAYER,
 		ENEMY,
-		PLAYER_SHOT,
+		ENEMY_STUNNED,
 		BLOCK,
 
 		MAX

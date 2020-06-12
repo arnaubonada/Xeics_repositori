@@ -247,7 +247,14 @@ void Enemy_SnoBee::Update()
 					if (App->enemies->enemies[i] != nullptr)
 					{
 						if (App->enemies->enemies[i]->position.x == 16) {
-							App->enemies->enemies[i]->enemyCanDie = true;
+							App->enemies->enemiesStunned[i] = true;
+							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->collisions->RemoveCollider(collider);
+
+							//App->enemies->posEnemyX = position.x / 16;
+							//App->enemies->posEnemyY = (position.y - 16) / 16;
+							//App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
+							//App->enemies->enemies[i]->enemyCanDie = true;
 						}
 					}
 				}
@@ -267,7 +274,16 @@ void Enemy_SnoBee::Update()
 					if (App->enemies->enemies[i] != nullptr)
 					{
 						if (App->enemies->enemies[i]->position.x == 208) {
-							App->enemies->enemies[i]->enemyCanDie = true;
+							App->enemies->enemiesStunned[i] = true;
+
+							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->collisions->RemoveCollider(collider);
+
+							//App->enemies->posEnemyX = position.x / 16;
+							//App->enemies->posEnemyY = (position.y - 16) / 16;
+							//App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
+
+							//App->enemies->enemies[i]->enemyCanDie = true;
 						}
 					}
 				}
@@ -287,7 +303,15 @@ void Enemy_SnoBee::Update()
 					if (App->enemies->enemies[i] != nullptr)
 					{
 						if (App->enemies->enemies[i]->position.y == 32) {
-							App->enemies->enemies[i]->enemyCanDie = true;
+							App->enemies->enemiesStunned[i] = true;
+							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->collisions->RemoveCollider(collider);
+
+							//App->enemies->posEnemyX = position.x / 16;
+							//App->enemies->posEnemyY = (position.y - 16) / 16;
+							//App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
+
+							//App->enemies->enemies[i]->enemyCanDie = true;
 						}
 					}
 				}
@@ -307,15 +331,26 @@ void Enemy_SnoBee::Update()
 					if (App->enemies->enemies[i] != nullptr)
 					{
 						if (App->enemies->enemies[i]->position.y == 256) {
-							App->enemies->enemies[i]->enemyCanDie = true;
+							App->enemies->enemiesStunned[i] = true;
+							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->collisions->RemoveCollider(collider);
+
+							//App->enemies->posEnemyX = position.x/16;
+							//App->enemies->posEnemyY = (position.y-16)/16;
+							////App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
+
+							//App->enemies->enemies[i]->enemyCanDie = true;
 						}
 					}
 				}
 				timeStunned = 1;
 				App->scene->timescore = 1;
+				//App->collisions->RemoveCollider(colliderStunned);
+				
 
 				App->scene->posEnemyX = position.x;
 				App->scene->posEnemyY = position.y;
+				//App->collisions->RemoveCollider(colliderStunned);
 			}
 		}
 
@@ -331,6 +366,7 @@ void Enemy_SnoBee::Update()
 					stunnedEnemy = false;
 					App->player->snobeeStunned = false;
 					timeStunned = 0;
+					collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 					//App->tilemap->threeDiamondsFinish = true;
 					//	}
 				}

@@ -31,7 +31,14 @@ void Enemy::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+
+		
+	//if (collider != nullptr)
+	//	colliderStunned->SetPos(position.x, position.y);
+
+
 }
+
 
 void Enemy::Draw()
 {

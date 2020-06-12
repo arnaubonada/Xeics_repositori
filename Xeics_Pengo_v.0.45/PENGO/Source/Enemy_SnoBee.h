@@ -21,7 +21,9 @@ public:
 
 	uint snobeeFx = 0;
 
-	uint enemiesAlive = 0;
+	//uint enemiesAlive = 0;
+
+	//bool enemiesStunned[10]{ false,false,false,false,false,false,false,false,false,false };
 
 public:
 

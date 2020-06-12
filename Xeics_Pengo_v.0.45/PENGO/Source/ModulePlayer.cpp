@@ -484,7 +484,6 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-
 	currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
 }
@@ -545,62 +544,37 @@ bool ModulePlayer::CleanUp()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	
+
+
 	if (c1->type == Collider::Type::PLAYER) {
+		//for (uint i = 0; i < MAX_ENEMIES; ++i)
+		//{
 
-		
-		if (c2->type == Collider::Type::ENEMY)
-		{
-			for (uint i = 0; i < MAX_ENEMIES; ++i)
-			{
-				if (App->enemies->enemies[i] != nullptr)
+
+
+
+			
+				if (c2->type == Collider::Type::ENEMY)
 				{
-					if (!App->enemies->enemies[i]->enemyCanDie) {
-						if (App->tilemap->pushRight) {
-							if (App->enemies->enemies[i]->position.x == 208) {
-								destroyed = true;
-								rep = 0;
-								c1->pendingToDelete = true;
-								c2->pendingToDelete = true;
-								lifes--;
-							}
-						}
-						if (App->tilemap->pushLeft) {
-							if (App->enemies->enemies[i]->position.x == 16) {
-								destroyed = true;
-								rep = 0;
-								c1->pendingToDelete = true;
-								c2->pendingToDelete = true;
-								lifes--;
-							}
-						}
-						if (App->tilemap->pushDown) {
-							if (App->enemies->enemies[i]->position.y == 256) {
-								destroyed = true;
-								rep = 0;
-								c1->pendingToDelete = true;
-								c2->pendingToDelete = true;
-								lifes--;
-							}
-						}
-						if (App->tilemap->pushUp) {
-							if (App->enemies->enemies[i]->position.y == 32) {
-								destroyed = true;
-								rep = 0;
-								c1->pendingToDelete = true;
-								c2->pendingToDelete = true;
-								lifes--;
-							}
-						}
-					}
-					else if (App->enemies->enemies[i]->enemyCanDie) {
-						scoreOneHundred = true;
-						score += 100;
-						App->scene->enemiesAlive--;
-					}
-				}
-			}
 
-		}
+					//if (!snobeeStunned) {
+						destroyed = true;
+						rep = 0;
+						c1->pendingToDelete = true;
+						c2->pendingToDelete = true;
+						lifes--;
+					//}
+					
+				}
+				if(c2->type == Collider::Type::ENEMY_STUNNED)
+				{
+					App->player->scoreOneHundred = true;
+					App->player->score += 100;
+					App->scene->enemiesAlive--;
+				}
+
+			
+		
 	
 	}
 
