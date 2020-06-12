@@ -50,7 +50,7 @@ void Enemy::Draw()
 		
 }
 
-void Enemy::OnCollision(Collider* collider)
+void Enemy::OnCollision(Collider* c1, Collider* c2)
 {
 	App->audio->PlayFx(destroyedFx);
 

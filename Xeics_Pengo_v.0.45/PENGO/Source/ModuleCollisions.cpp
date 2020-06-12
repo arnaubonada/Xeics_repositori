@@ -36,12 +36,12 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::ENEMY_STUNNED] = false;
-	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::BLOCK] = false;
+	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::BLOCK] = true;
 
 	matrix[Collider::Type::BLOCK][Collider::Type::WALL] = true;
 	matrix[Collider::Type::BLOCK][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::BLOCK][Collider::Type::ENEMY] = false;
-	//matrix[Collider::Type::BLOCK][Collider::Type::ENEMY_STUNNED] = false;
+	matrix[Collider::Type::BLOCK][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::BLOCK][Collider::Type::ENEMY_STUNNED] = true;
 	matrix[Collider::Type::BLOCK][Collider::Type::BLOCK] = false;
 }
 

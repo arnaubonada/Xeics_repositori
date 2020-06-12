@@ -31,7 +31,7 @@ public:
 
 	void enemyMovement();
 	
-	void OnCollision(Collider* c2) override;
+	void OnCollision(Collider* c1, Collider* c2) override;
 
 	enum class ENEMY_TYPE typeEnemy;
 

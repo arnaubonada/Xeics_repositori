@@ -115,7 +115,7 @@ bool ModulePlayer::Start()
 
 	position.x = 112;
 	position.y = 128;
-
+	rep = 0;
 	//position.x = 176;
 	//position.y = 64;
 
@@ -555,7 +555,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					c1->pendingToDelete = true;
 					c2->pendingToDelete = true;
 					lifes--;
-					
 					
 				}
 				if(c2->type == Collider::Type::ENEMY_STUNNED)

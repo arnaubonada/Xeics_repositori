@@ -30,7 +30,7 @@ public:
 
 	// Collision response
 	// Triggers an animation and a sound fx
-	virtual void OnCollision(Collider* collider);
+	virtual void OnCollision(Collider* c1, Collider* c2);
 
 public:
 	// The current position in the world
@@ -44,7 +44,8 @@ public:
 
 	// The enemy's collider
 	Collider* collider = nullptr;
-	
+
+	Collider* colliderStunned = nullptr;
 
 
 	bool enemyCanDie = false;

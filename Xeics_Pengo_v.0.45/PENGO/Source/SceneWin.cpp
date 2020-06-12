@@ -35,6 +35,21 @@ SceneWin::SceneWin(bool startEnabled) : Module(startEnabled)
 	oneAnim.speed = 0.1f;
 
 
+	rightAnimWin.PushBack({ 96, 0, 16, 16 });
+	rightAnimWin.PushBack({ 112, 0, 16, 16 });
+	rightAnimWin.speed = 0.1f;
+
+	leftAnimWin.PushBack({ 32, 0, 16, 16 });
+	leftAnimWin.PushBack({ 48, 0, 16, 16 });
+	leftAnimWin.speed = 0.1f;
+
+	estampadadreta.PushBack({ 33, 32, 16, 16 });
+	estampadadreta.speed = 0.1f;
+	estampadadreta.loop = false;
+
+	estampadaesquerra.PushBack({ 591, 32, 16, 16 });
+	estampadaesquerra.speed = 0.1f;
+	estampadaesquerra.loop = false;
 
 }
 
@@ -52,6 +67,8 @@ bool SceneWin::Start()
 	bgTexture = App->textures->Load("Assets/blackScreen.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	oneTexture = App->textures->Load("Assets/1p.png");
+	texturePengo = App->textures->Load("Assets/Characters.png");
+	texturePengoEstampadaEsquerra = App->textures->Load("Assets/Characters2.png");
 	App->audio->PlayMusic("Assets/Audio/ActClear.ogg", 1.0f);
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
@@ -61,6 +78,10 @@ bool SceneWin::Start()
 	++activeFonts; ++totalFonts;
 	yellowFont = App->fonts->Load("Assets/yellowFont.png", lookupTable, 3);
 	++activeFonts; ++totalFonts;
+
+	esquerra = false;
+	dreta = false;
+	espera = 0;
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -72,7 +93,7 @@ bool SceneWin::Start()
 update_status SceneWin::Update()
 {
 	counterWinDelay++;
-	if (counterWinDelay > 300) {
+	if (counterWinDelay > 400) {
 		counterWinFinish = true;
 		counterWinDelay = 0;
 	}
@@ -87,7 +108,7 @@ update_status SceneWin::Update()
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
 
-		
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl2 == true)
 	{
@@ -98,7 +119,7 @@ update_status SceneWin::Update()
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
 	}
-	else if ( counterWinFinish && App->tilemap->scenelvl3 == true)
+	else if (counterWinFinish && App->tilemap->scenelvl3 == true)
 	{
 		App->tilemap->scenelvl3 = false;
 		App->tilemap->scenelvl4 = true;
@@ -208,15 +229,18 @@ update_status SceneWin::Update()
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneSnow , 30);
+		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
 		App->tilemap->scenelvl15 = false;
 		App->tilemap->scenelvl1 = true;
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
 	}
-	
+	rightAnimWin.Update();
 	oneAnim.Update();
+	estampadadreta.Update();
+	estampadaesquerra.Update();
+	leftAnimWin.Update();
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -225,78 +249,54 @@ update_status SceneWin::Update()
 update_status SceneWin::PostUpdate()
 {
 	// Draw everything --------------------------------------
+	//dreta = false;
+	if (App->player->position.x > 0 && App->player->position.x < 120 && !esquerra)
+	{
+		dreta = true;
+	}
+	if (App->player->position.x >= 120 && !dreta)
+	{
+		esquerra = true;
+	}
 
-	
-	
-	
+	if (dreta) {
 
-	//App->render->Blit(bgTexture, 0, 0, NULL);
-	App->fonts->BlitText(24, 40, yellowFont, "game time");
-	App->fonts->BlitText(112, 40, whiteFont, App->player->minutesText);
-	App->fonts->BlitText(128, 40, yellowFont, "min.");
-	App->fonts->BlitText(160, 40, whiteFont, App->player->secondsText);
-	App->fonts->BlitText(184, 40, yellowFont, "sec.");
+		if (App->player->position.x == 190) {
+			App->render->Blit(texturePengo, App->player->position.x, App->player->position.y, &(estampadadreta.GetCurrentFrame()), 0.01f);
+			count++;
 
-	if (App->player->minutes < 1) {
-		if (App->player->timerLevel >= 0 && App->player->timerLevel < 1200) {
-			App->fonts->BlitText(24, 72, yellowFont, "from 00 to 19 .5000 pts.");
-			App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
-			App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
-			App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
-			App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
-			App->fonts->BlitText(24, 152, blueFont, "60 and over");
-			App->fonts->BlitText(144, 152, blueFont, "no bonus.");
 		}
-		else if (App->player->timerLevel >= 1200 && App->player->timerLevel < 1800) {
-			App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
-			App->fonts->BlitText(24, 88, yellowFont, "from 20 to 29 .2000 pts.");
-			App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
-			App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
-			App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
-			App->fonts->BlitText(24, 152, blueFont, "60 and over");
-			App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+		else
+		{
+			App->render->Blit(texturePengo, App->player->position.x, App->player->position.y, &(rightAnimWin.GetCurrentFrame()), 0.1f);
+			App->player->position.x +=2;
 		}
-		else if (App->player->timerLevel >= 1800 && App->player->timerLevel < 2400) {
-			App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
-			App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
-			App->fonts->BlitText(24, 104, yellowFont, "from 30 to 39 .1000 pts.");
-			App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
-			App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
-			App->fonts->BlitText(24, 152, blueFont, "60 and over");
-			App->fonts->BlitText(144, 152, blueFont, "no bonus.");
-		}
-		else if (App->player->timerLevel >= 2400 && App->player->timerLevel < 3000) {
-			App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
-			App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
-			App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
-			App->fonts->BlitText(24, 120, yellowFont, "from 40 to 49 ..500 pts.");
-			App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
-			App->fonts->BlitText(24, 152, blueFont, "60 and over");
-			App->fonts->BlitText(144, 152, blueFont, "no bonus.");
-		}
-		else if (App->player->timerLevel >= 3000 && App->player->timerLevel < 3600) {
-			App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
-			App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
-			App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
-			App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
-			App->fonts->BlitText(24, 136, yellowFont, "from 50 to 59 ...10 pts.");
-			App->fonts->BlitText(24, 152, blueFont, "60 and over");
-			App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+		if (count == 60) {
+			App->player->position.x++;
+			count = 0;
+
 		}
 	}
-	else {
-		App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
-		App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
-		App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
-		App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
-		App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
-		App->fonts->BlitText(24, 152, yellowFont, "60 and over");
-		App->fonts->BlitText(144, 152, yellowFont, "no bonus.");
 
+	if (esquerra) {
+		if (App->player->position.x == 40) {
+			App->render->Blit(texturePengoEstampadaEsquerra, App->player->position.x, App->player->position.y, &(estampadaesquerra.GetCurrentFrame()), 0.01f);
+			count++;
+
+		}
+		else
+		{
+			App->render->Blit(texturePengo, App->player->position.x, App->player->position.y, &(leftAnimWin.GetCurrentFrame()), 0.1f);
+			App->player->position.x -= 2;
+		}
+		if (count == 60) {
+			App->player->position.x--;
+			count = 0;
+		}
 	}
-	
 
 	App->fonts->BlitText(56, 0, whiteFont, App->player->scoreText);
+
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
 	App->fonts->BlitText(88, 0, blueFont, "hi");
 	App->fonts->BlitText(112, 0, whiteFont, "20000");
@@ -377,12 +377,11 @@ update_status SceneWin::PostUpdate()
 		App->render->Blit(scTexture, 8, 8, &pRed);
 	}
 	if (App->player->lifes == 1) {
-
 	}
 
 	if (App->tilemap->scenelvl1 == true || App->tilemap->scenelvl6 == true || App->tilemap->scenelvl11 == true)
 	{
-		App->render->Blit(scTexture, 64, 280, &pYellow );
+		App->render->Blit(scTexture, 64, 280, &pYellow);
 	}
 	else if (App->tilemap->scenelvl2 == true || App->tilemap->scenelvl7 == true || App->tilemap->scenelvl12 == true)
 	{
@@ -421,6 +420,75 @@ update_status SceneWin::PostUpdate()
 	}
 
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
+	espera++;
+
+	if (espera > 170) {
+		//App->render->Blit(bgTexture, 0, 0, NULL);
+		App->fonts->BlitText(24, 40, yellowFont, "game time");
+		App->fonts->BlitText(112, 40, whiteFont, App->player->minutesText);
+		App->fonts->BlitText(128, 40, yellowFont, "min.");
+		App->fonts->BlitText(160, 40, whiteFont, App->player->secondsText);
+		App->fonts->BlitText(184, 40, yellowFont, "sec.");
+
+		if (App->player->minutes < 1) {
+			if (App->player->timerLevel >= 0 && App->player->timerLevel < 1200) {
+				App->fonts->BlitText(24, 72, yellowFont, "from 00 to 19 .5000 pts.");
+				App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
+				App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
+				App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
+				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
+				App->fonts->BlitText(24, 152, blueFont, "60 and over");
+				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+			}
+			else if (App->player->timerLevel >= 1200 && App->player->timerLevel < 1800) {
+				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
+				App->fonts->BlitText(24, 88, yellowFont, "from 20 to 29 .2000 pts.");
+				App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
+				App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
+				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
+				App->fonts->BlitText(24, 152, blueFont, "60 and over");
+				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+			}
+			else if (App->player->timerLevel >= 1800 && App->player->timerLevel < 2400) {
+				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
+				App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
+				App->fonts->BlitText(24, 104, yellowFont, "from 30 to 39 .1000 pts.");
+				App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
+				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
+				App->fonts->BlitText(24, 152, blueFont, "60 and over");
+				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+			}
+			else if (App->player->timerLevel >= 2400 && App->player->timerLevel < 3000) {
+				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
+				App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
+				App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
+				App->fonts->BlitText(24, 120, yellowFont, "from 40 to 49 ..500 pts.");
+				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
+				App->fonts->BlitText(24, 152, blueFont, "60 and over");
+				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+			}
+			else if (App->player->timerLevel >= 3000 && App->player->timerLevel < 3600) {
+				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
+				App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
+				App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
+				App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
+				App->fonts->BlitText(24, 136, yellowFont, "from 50 to 59 ...10 pts.");
+				App->fonts->BlitText(24, 152, blueFont, "60 and over");
+				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+			}
+		}
+		else {
+			App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
+			App->fonts->BlitText(24, 88, blueFont, "from 20 to 29 .2000 pts.");
+			App->fonts->BlitText(24, 104, blueFont, "from 30 to 39 .1000 pts.");
+			App->fonts->BlitText(24, 120, blueFont, "from 40 to 49 ..500 pts.");
+			App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
+			App->fonts->BlitText(24, 152, yellowFont, "60 and over");
+			App->fonts->BlitText(144, 152, yellowFont, "no bonus.");
+
+		}
+
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -428,7 +496,8 @@ update_status SceneWin::PostUpdate()
 
 bool SceneWin::CleanUp()
 {
-	
+
+
 	App->fonts->UnLoad(whiteFont);
 	App->fonts->UnLoad(blueFont);
 	App->fonts->UnLoad(yellowFont);

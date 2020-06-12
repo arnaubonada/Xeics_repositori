@@ -84,7 +84,6 @@ bool ModuleScene::Start()
 
 
 
-
 	blueFont = App->fonts->Load("Assets/blueFont.png", lookupTable, 3);
 	
 
@@ -97,10 +96,6 @@ bool ModuleScene::Start()
 	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
 
 
-	App->tilemap->Enable();
-	App->player->Enable();
-	App->enemies->Enable();
-	App->blocks->Enable();
 	
 
 	enemiesAlive = 3;
@@ -127,6 +122,12 @@ bool ModuleScene::Start()
 	else {
 		App->tilemap->scenelvl1 = false;
 	}
+	
+	App->tilemap->Enable();
+	App->enemies->Enable();
+	App->blocks->Enable();
+	App->player->Enable();
+
 	return ret;
 }
 
@@ -152,6 +153,7 @@ update_status ModuleScene::Update()
 	if (enemiesAlive == 0)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneWin, 30);
+
 	}
 	
 

@@ -73,7 +73,8 @@ public:
 
 	Enemy* enemies[MAX_ENEMIES] = { nullptr };
 
-	bool enemiesStunned[10]{ false,false,false,false,false,false,false,false,false,false };
+	bool enemiesStunned[MAX_ENEMIES]{ false };
+	bool enemiesSmashed[MAX_ENEMIES]{ false };
 	int posEnemyX;
 	int posEnemyY;
 

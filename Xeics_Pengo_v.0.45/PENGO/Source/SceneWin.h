@@ -32,13 +32,23 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* scTexture = nullptr;
-
+	SDL_Texture* texturePengo = nullptr;
+	SDL_Texture* texturePengoEstampadaEsquerra = nullptr;
 	SDL_Texture* oneTexture;
 
+	Animation estampadadreta;
+	Animation estampadaesquerra;
 	Animation oneAnim;
-
+	Animation rightAnimWin;
+	Animation leftAnimWin;
 	SDL_Rect pYellow, pYellowFive, pRed;
 
+
+	bool dreta;
+	bool esquerra = false;
+
+	int count = 0;
+	int espera = 0;
 	bool SpacePressed = false;
 	bool counterWinFinish = false;
 
