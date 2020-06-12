@@ -44,7 +44,7 @@ public:
 
 	// The enemy's collider
 	Collider* collider = nullptr;
-	Collider* colliderStunned = nullptr;
+	
 
 
 	bool enemyCanDie = false;

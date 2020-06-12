@@ -248,9 +248,9 @@ void Enemy_SnoBee::Update()
 					{
 						if (App->enemies->enemies[i]->position.x == 16) {
 							App->enemies->enemiesStunned[i] = true;
-							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->player->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 							App->collisions->RemoveCollider(collider);
-
+							break;
 							//App->enemies->posEnemyX = position.x / 16;
 							//App->enemies->posEnemyY = (position.y - 16) / 16;
 							//App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
@@ -276,9 +276,9 @@ void Enemy_SnoBee::Update()
 						if (App->enemies->enemies[i]->position.x == 208) {
 							App->enemies->enemiesStunned[i] = true;
 
-							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->player->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 							App->collisions->RemoveCollider(collider);
-
+							break;
 							//App->enemies->posEnemyX = position.x / 16;
 							//App->enemies->posEnemyY = (position.y - 16) / 16;
 							//App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
@@ -304,9 +304,9 @@ void Enemy_SnoBee::Update()
 					{
 						if (App->enemies->enemies[i]->position.y == 32) {
 							App->enemies->enemiesStunned[i] = true;
-							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->player->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 							App->collisions->RemoveCollider(collider);
-
+							break;
 							//App->enemies->posEnemyX = position.x / 16;
 							//App->enemies->posEnemyY = (position.y - 16) / 16;
 							//App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
@@ -332,9 +332,9 @@ void Enemy_SnoBee::Update()
 					{
 						if (App->enemies->enemies[i]->position.y == 256) {
 							App->enemies->enemiesStunned[i] = true;
-							colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+							App->player->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 							App->collisions->RemoveCollider(collider);
-
+							break;
 							//App->enemies->posEnemyX = position.x/16;
 							//App->enemies->posEnemyY = (position.y-16)/16;
 							////App->tilemap->tilemap[App->enemies->posEnemyX][App->enemies->posEnemyY] = TILE_ENEMY;
@@ -363,10 +363,22 @@ void Enemy_SnoBee::Update()
 					currentAnim = &stunnedBlueAnim;
 				}
 				if (timeStunned > 300) {
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr)
+						{
+							if (App->enemies->enemiesStunned[i]) {
+								App->enemies->enemiesStunned[i] = false;
+							}
+						}
+					}
 					stunnedEnemy = false;
 					App->player->snobeeStunned = false;
-					timeStunned = 0;
+					
 					collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
+					//App->player->colliderStunned->pendingToDelete = true;
+					//App->collisions->RemoveCollider(App->player->colliderStunned);
+					timeStunned = 0;
 					//App->tilemap->threeDiamondsFinish = true;
 					//	}
 				}
@@ -419,6 +431,7 @@ void Enemy_SnoBee::Update()
 					App->player->snobeeStunned = false;
 					lastTimeStunned = 0;
 					DiamondFinished = true;
+					
 					//	}
 				}
 			}
@@ -872,7 +885,7 @@ void Enemy_SnoBee::OnCollision(Collider* c2) {
 				if (App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
 					currentAnim = &secondSmashRightAnim;
 				}
-				
+
 			}
 			else if (App->tilemap->dirBlock == UP) {
 				smashedEnemy = true;
@@ -884,7 +897,7 @@ void Enemy_SnoBee::OnCollision(Collider* c2) {
 				if (App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
 					currentAnim = &secondSmashUpAnim;
 				}
-				
+
 			}
 			else if (App->tilemap->dirBlock == DOWN) {
 				smashedEnemy = true;
@@ -896,16 +909,16 @@ void Enemy_SnoBee::OnCollision(Collider* c2) {
 				if (App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
 					currentAnim = &secondSmashDownAnim;
 				}
-				
+
 			}
 		}
-
+	}
 	}
 
-	if (c2->type == Collider::Type::PLAYER)
-	{
-		if (c2->Intersects(r) == true && stunnedEnemy == true) {
-			App->player->scoreOneHundred = true;
-		}
-	}
-}
+//	if (c2->type == Collider::Type::PLAYER)
+//	{
+//		if (c2->Intersects(r) == true && stunnedEnemy == true) {
+//			//App->player->scoreOneHundred = true;
+//		}
+//	}
+//}

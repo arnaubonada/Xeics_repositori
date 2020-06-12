@@ -76,6 +76,8 @@ public:
 	bool Collide = true;
 	Collider* collider = nullptr;
 
+	Collider* colliderStunned = nullptr;
+
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 	bool snobeeStunned = false;

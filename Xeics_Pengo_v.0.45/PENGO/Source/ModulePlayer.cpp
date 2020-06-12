@@ -547,30 +547,33 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 
 	if (c1->type == Collider::Type::PLAYER) {
-		//for (uint i = 0; i < MAX_ENEMIES; ++i)
-		//{
 
-
-
-
-			
 				if (c2->type == Collider::Type::ENEMY)
 				{
-
-					//if (!snobeeStunned) {
-						destroyed = true;
-						rep = 0;
-						c1->pendingToDelete = true;
-						c2->pendingToDelete = true;
-						lifes--;
-					//}
+					destroyed = true;
+					rep = 0;
+					c1->pendingToDelete = true;
+					c2->pendingToDelete = true;
+					lifes--;
+					
 					
 				}
 				if(c2->type == Collider::Type::ENEMY_STUNNED)
 				{
-					App->player->scoreOneHundred = true;
-					App->player->score += 100;
-					App->scene->enemiesAlive--;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesStunned[i]) {
+							
+							delete App->enemies->enemies[i];
+							App->enemies->enemies[i] = nullptr;
+							scoreOneHundred = true;
+							score += 100;
+							App->scene->enemiesAlive--;
+							break;
+
+						}
+					}
+					c2->pendingToDelete = true;
 				}
 
 			

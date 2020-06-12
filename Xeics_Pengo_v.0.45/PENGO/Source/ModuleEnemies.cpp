@@ -207,17 +207,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c2); //Notify the enemy of a collision
 
 			if (c2->type == Collider::Type::PLAYER) {
-				if (enemiesStunned[i]) {
 					delete enemies[i];
 					enemies[i] = nullptr;
-					//enemiesStunned[i] = false;
-					//App->player->scoreOneHundred = true;
-					//App->player->score += 100;
-					//App->scene->enemiesAlive--;
 					break;
-				}
+				
 			}
 		}
+
 	}
 }
 

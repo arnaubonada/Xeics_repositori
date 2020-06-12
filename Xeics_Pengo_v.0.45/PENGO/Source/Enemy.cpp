@@ -24,6 +24,8 @@ const Collider* Enemy::GetCollider() const
 	return collider;
 }
 
+
+
 void Enemy::Update()
 {
 	if (currentAnim != nullptr)
