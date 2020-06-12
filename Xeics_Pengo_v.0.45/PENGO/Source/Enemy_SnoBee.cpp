@@ -7,6 +7,8 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleTileMap.h"
+#include "Particle.h"
+#include "ModuleParticles.h"
 
 #include "time.h"
 
@@ -124,6 +126,19 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	
 	secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
 	secondSmashDownAnim.speed = 0.1f;
+
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.speed = 0.1f;
+	oneHundredParticle.anim.loop = false;
 
 	currentAnim = &snoDownAnim;
 
@@ -771,13 +786,14 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 			}
 
 		}
-	}
+
+			if (c2->type == Collider::Type::PLAYER)
+			{
+				if (stunnedEnemy == true) {
+					App->particles->AddParticle(oneHundredParticle, position.x, position.y, Collider::Type::NONE, 0);
+					stunnedEnemy = false;
+				}
+			}
+		}
 	}
 
-//	if (c2->type == Collider::Type::PLAYER)
-//	{
-//		if (c2->Intersects(r) == true && stunnedEnemy == true) {
-//			//App->player->scoreOneHundred = true;
-//		}
-//	}
-//}

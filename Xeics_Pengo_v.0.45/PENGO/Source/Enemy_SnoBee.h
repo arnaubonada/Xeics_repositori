@@ -5,6 +5,7 @@
 #include "Path.h"
 #include "time.h"
 #include "ModuleTileMap.h"
+#include "Particle.h"
 
 class Enemy_SnoBee : public Enemy
 {
@@ -69,6 +70,8 @@ public:
 	Animation stunnedAnim;
 	Animation stunnedBlueAnim;
 
+
+	Particle oneHundredParticle;
 
 	//Direction direct = NOMOVE;
 

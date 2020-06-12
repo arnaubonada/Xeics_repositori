@@ -68,15 +68,18 @@ public:
 	SDL_Texture* chTexture = nullptr;
 	SDL_Texture* blTexture = nullptr;
 	SDL_Texture* oneTexture;
-	SDL_Texture* onehundredPoints = nullptr;
+//	SDL_Texture* onehundredPoints = nullptr;
 
 	Animation oneAnim;
 	Animation miniEnemyEggAnim;
-	Animation oneHundred;
+	//Animation oneHundred;
 
 	int timescore = 0;
 	int posEnemyX;
 	int posEnemyY;
+
+	int lvlRep = 0;
+	int lvlCont = 0;
 
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
 	SDL_Rect pYellow, pRed, pYellowFive;

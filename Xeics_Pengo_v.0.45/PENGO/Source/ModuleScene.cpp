@@ -40,9 +40,7 @@ ModuleScene::ModuleScene(bool startEnabled) :Module (startEnabled)
 	oneAnim.PushBack({ 0, 8, 16, 8 });
 	oneAnim.speed = 0.1f;
 
-	oneHundred.PushBack({ 0, 0, 16, 16 });
-	oneHundred.speed = 0.1f;
-	oneHundred.loop = false;
+	
 
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
@@ -75,31 +73,564 @@ bool ModuleScene::Start()
 	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	oneTexture = App->textures->Load("Assets/1p.png");
-	onehundredPoints= App->textures->Load("Assets/100points.png");
+	//onehundredPoints = App->textures->Load("Assets/100points.png");
 
 	App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
 	
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 
-
-
 	blueFont = App->fonts->Load("Assets/blueFont.png", lookupTable, 3);
 	
+	if (lvlCont == 0 && App->tilemap->scenelvl1 == true) {
+		if (lvlRep == 0) {
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 1 && App->tilemap->scenelvl2 == true) {
+		if (lvlRep == 0) {
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 2 && App->tilemap->scenelvl3 == true) {
+		if (lvlRep == 0) {
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 3 && App->tilemap->scenelvl4 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 4 && App->tilemap->scenelvl5 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 5 && App->tilemap->scenelvl6 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 6 && App->tilemap->scenelvl7 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 7 && App->tilemap->scenelvl8 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 8 && App->tilemap->scenelvl9 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 9 && App->tilemap->scenelvl10 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+				else if (j == 3) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 10 && App->tilemap->scenelvl11 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+				else if (j == 3) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 11 && App->tilemap->scenelvl12 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+				else if (j == 3) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 12 && App->tilemap->scenelvl13 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+				else if (j == 3) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 13 && App->tilemap->scenelvl14 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+				else if (j == 3) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+	else if (lvlCont == 14 && App->tilemap->scenelvl15 == true) {
+		if (lvlRep == 0) {
+
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
+
+
+		}
+		if (lvlRep > 0) {
+
+			for (int j = 0; j < enemiesAlive; j++) {
+
+				if (j == 0) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					enemiesAlive--;
+				}
+				else if (j == 1) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+					enemiesAlive--;
+				}
+				else if (j == 2) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					enemiesAlive--;
+				}
+				else if (j == 3) {
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
+					enemiesAlive--;
+				}
+
+			}
+
+		}
+		lvlRep++;
+	}
+
+
+
 
 
 	
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
-
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 32);
-
-	App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 176, 160);
-
-
-	
-
-	enemiesAlive = 3;
-
 	App->sceneWin->SpacePressed = false;
 
 	if (App->tilemap->scenelvl1) {
@@ -276,23 +807,23 @@ update_status ModuleScene::PostUpdate()
 	}
 
 
-	if (App->player->scoreOneHundred)
-	{
-		
-		if (timescore != 0) {
-			timescore++;
-			App->render->Blit(onehundredPoints, posEnemyX, posEnemyY, &(oneHundred.GetCurrentFrame()), 0.1f);
-			if (timescore > 100 ) {
-				App->player->scoreOneHundred = false;
-				
-				timescore = false;
-				timescore = 0;
-				timescore = true;
-				//App->player->snobeeStunned = false;
-			}
-		}
+	//if (App->player->scoreOneHundred)
+	//{
+	//	
+	//	if (timescore != 0) {
+	//		timescore++;
+	//		App->render->Blit(onehundredPoints, posEnemyX, posEnemyY, &(oneHundred.GetCurrentFrame()), 0.1f);
+	//		if (timescore > 100 ) {
+	//			App->player->scoreOneHundred = false;
+	//			
+	//			timescore = false;
+	//			timescore = 0;
+	//			timescore = true;
+	//			//App->player->snobeeStunned = false;
+	//		}
+	//	}
 
-	}
+	//}
 
 
 	if (App->tilemap->scenelvl1 == true || App->tilemap->scenelvl6 == true || App->tilemap->scenelvl11 == true)
@@ -367,7 +898,7 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(blTexture);
 	App->textures->Unload(scTexture);
 	App->textures->Unload(oneTexture);
-	App->textures->Unload(onehundredPoints);
+	
 
 
 

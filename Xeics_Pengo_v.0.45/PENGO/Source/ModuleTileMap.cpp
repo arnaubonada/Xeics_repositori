@@ -732,11 +732,12 @@ void ModuleTileMap::MouseState() {
 		if (App->input->keys[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN) {
 
 			if (mousePositionX % 16 == 0 && mousePositionY % 16 == 0) {
-
+				
 				iBlock = (mousePositionX / SCREEN_SIZE) / 16;
 				jBlock = ((mousePositionY / SCREEN_SIZE) - 16) / 16;
-
-				tilemap[jBlock][iBlock] = TILE_BLOCK;
+				if (tilemap[jBlock][iBlock] == TILE_NOBLOCK) {
+					tilemap[jBlock][iBlock] = TILE_BLOCK;
+				}
 			}
 
 		}
@@ -981,6 +982,7 @@ update_status ModuleTileMap::Update()
 update_status ModuleTileMap::PostUpdate()
 {
 	if (destroyedBlock) {
+
 		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
 	}
 	if (pushLeft) {

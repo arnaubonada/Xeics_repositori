@@ -8,6 +8,7 @@
 #include "ModuleInput.h"
 #include "SceneIntro.h"
 #include "ModuleCollisions.h"
+#include "ModuleTileMap.h"
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
 #include <stdio.h>
@@ -53,6 +54,7 @@ update_status SceneLose::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
 		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
+		App->tilemap->scenelvl1 = true;
 	}
 	return update_status::UPDATE_CONTINUE;
 }

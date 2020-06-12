@@ -25,25 +25,9 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Score.png");
+	texture = App->textures->Load("Assets/100points.png");
+	//oneHundredTexture = App->textures->Load("Assets/100points.png");
 
-
-
-
-	// Explosion particle
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
-
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
 
 	return true;
 }
@@ -108,31 +92,36 @@ update_status ModuleParticles::PostUpdate()
 		if (particle != nullptr && particle->isAlive)
 		{
 			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			//App->render->Blit(oneHundredTexture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+
+Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
 {
+	Particle* newParticle = nullptr;
+
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
 		if (particles[i] == nullptr)
 		{
-			Particle* p = new Particle(particle);
-
-			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-			p->position.y = y;
+			newParticle = new Particle(particle);
+			newParticle->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			newParticle->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			newParticle->position.y = y;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
-				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
+				newParticle->collider = App->collisions->AddCollider(newParticle->anim.GetCurrentFrame(), colliderType, this);
 
-			particles[i] = p;
+			particles[i] = newParticle;
 			break;
 		}
 	}
+
+	return newParticle;
 }

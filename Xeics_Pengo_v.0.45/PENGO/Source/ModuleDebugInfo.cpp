@@ -93,7 +93,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 0;
 		App->tilemap->LoadMap(App->tilemap->lvl1);
 	}	
 	
@@ -116,7 +116,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 1;
 		App->tilemap->LoadMap(App->tilemap->lvl2);
 
 	}
@@ -140,7 +140,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 2;
 		App->tilemap->LoadMap(App->tilemap->lvl3);
 
 	}
@@ -164,7 +164,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 3;
 		App->tilemap->LoadMap(App->tilemap->lvl4);
 
 	}
@@ -188,7 +188,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 4;
 		App->tilemap->LoadMap(App->tilemap->lvl5);
 
 	}
@@ -212,7 +212,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 5;
 		App->tilemap->LoadMap(App->tilemap->lvl6);
 
 	}
@@ -236,7 +236,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 6;
 		App->tilemap->LoadMap(App->tilemap->lvl7);
 
 	}
@@ -260,7 +260,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 7;
 		App->tilemap->LoadMap(App->tilemap->lvl8);
 
 	}
@@ -284,7 +284,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 8;
 		App->tilemap->LoadMap(App->tilemap->lvl9);
 
 	}
@@ -308,7 +308,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 9;
 		App->tilemap->LoadMap(App->tilemap->lvl10);
 
 	}
@@ -332,7 +332,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 10;
 		App->tilemap->LoadMap(App->tilemap->lvl11);
 
 	}
@@ -356,7 +356,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 11;
 		App->tilemap->LoadMap(App->tilemap->lvl12);
 
 	}
@@ -380,7 +380,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = true;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 12;
 		App->tilemap->LoadMap(App->tilemap->lvl13);
 
 	}
@@ -404,7 +404,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = true;
 		App->tilemap->scenelvl15 = false;
-
+		App->scene->lvlCont = 13;
 		App->tilemap->LoadMap(App->tilemap->lvl14);
 
 	}
@@ -428,7 +428,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = true;
-
+		App->scene->lvlCont = 14;
 		App->tilemap->LoadMap(App->tilemap->lvl15);
 
 	}

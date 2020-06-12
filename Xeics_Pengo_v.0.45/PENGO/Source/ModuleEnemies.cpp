@@ -112,6 +112,8 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPE type, int x, int y)
 {
 	bool ret = false;
 
+	App->scene->enemiesAlive++;
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		//App->enemies[i].touchWall = false;

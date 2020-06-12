@@ -9,6 +9,8 @@
 
 #include "SDL/include/SDL_Rect.h"
 
+#define MAX_BLOCKS 208
+
 struct SDL_Texture;
 
 enum TileType
@@ -83,7 +85,7 @@ public:
 
 	//bool isWalkable_pixel(int x, int y);
 
-
+	int blocks[MAX_BLOCKS];
 
 	void checkDiamonds();
 

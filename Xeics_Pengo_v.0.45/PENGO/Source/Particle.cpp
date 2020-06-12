@@ -54,9 +54,3 @@ bool Particle::Update()
 	return ret;
 }
 
-void Particle::SetToDelete()
-{
-	pendingToDelete = true;
-	if (collider != nullptr)
-		collider->pendingToDelete = true;
-}

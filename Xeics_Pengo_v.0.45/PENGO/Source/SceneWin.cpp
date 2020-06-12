@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleTileMap.h"
+#include "ModuleScene.h"
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "SceneIntro.h"
@@ -98,6 +99,7 @@ update_status SceneWin::Update()
 		counterWinDelay = 0;
 	}
 
+
 	if (/*(App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->tilemap->scenelvl1 == true && SpacePressed == false)|| */counterWinFinish && App->tilemap->scenelvl1 == true)
 	{
 		App->tilemap->scenelvl1 = false;
@@ -107,6 +109,8 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
 
 
 	}
@@ -118,6 +122,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl3 == true)
 	{
@@ -127,6 +135,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl4 == true)
 	{
@@ -136,6 +148,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl5 == true)
 	{
@@ -145,6 +161,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl6 == true)
 	{
@@ -154,6 +174,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl7 == true)
 	{
@@ -163,6 +187,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl8 == true)
 	{
@@ -172,6 +200,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl9 == true)
 	{
@@ -181,6 +213,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl10 == true)
 	{
@@ -190,6 +226,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl11 == true)
 	{
@@ -199,6 +239,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl12 == true)
 	{
@@ -208,6 +252,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl13 == true)
 	{
@@ -217,6 +265,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl14 == true)
 	{
@@ -226,6 +278,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
@@ -235,7 +291,13 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
+
+		App->scene->lvlCont++;
+		App->scene->lvlRep = 0;
+
+
 	}
+
 	rightAnimWin.Update();
 	oneAnim.Update();
 	estampadadreta.Update();
