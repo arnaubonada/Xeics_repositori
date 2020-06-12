@@ -298,6 +298,7 @@ void Enemy_SnoBee::Update()
 			if (position.y == 32) {
 				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
+
 				for (uint i = 0; i < MAX_ENEMIES; ++i)
 				{
 					if (App->enemies->enemies[i] != nullptr)
@@ -306,6 +307,7 @@ void Enemy_SnoBee::Update()
 							App->enemies->enemiesStunned[i] = true;
 							App->player->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 							App->collisions->RemoveCollider(collider);
+							
 							break;
 							//App->enemies->posEnemyX = position.x / 16;
 							//App->enemies->posEnemyY = (position.y - 16) / 16;
@@ -374,11 +376,12 @@ void Enemy_SnoBee::Update()
 					}
 					stunnedEnemy = false;
 					App->player->snobeeStunned = false;
-					
+					App->collisions->RemoveCollider(App->player->colliderStunned);
 					collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 					//App->player->colliderStunned->pendingToDelete = true;
-					//App->collisions->RemoveCollider(App->player->colliderStunned);
+					
 					timeStunned = 0;
+
 					//App->tilemap->threeDiamondsFinish = true;
 					//	}
 				}

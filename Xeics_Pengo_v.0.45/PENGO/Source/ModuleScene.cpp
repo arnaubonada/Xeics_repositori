@@ -286,7 +286,7 @@ update_status ModuleScene::PostUpdate()
 				timescore = false;
 				timescore = 0;
 				timescore = true;
-				App->player->snobeeStunned = false;
+				//App->player->snobeeStunned = false;
 			}
 		}
 

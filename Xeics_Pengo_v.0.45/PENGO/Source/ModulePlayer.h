@@ -45,7 +45,7 @@ public:
 	//Where the player goes
 	char opcio = 'a';
 
-
+	int timeEnemyStunned = 0;
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 	

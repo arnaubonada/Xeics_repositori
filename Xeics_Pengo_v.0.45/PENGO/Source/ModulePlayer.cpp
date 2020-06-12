@@ -574,6 +574,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 						}
 					}
 					c2->pendingToDelete = true;
+					
 				}
 
 			
