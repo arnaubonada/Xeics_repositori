@@ -72,12 +72,17 @@ public:
 	Animation downPushAnim;
 	Animation rightPushAnim;
 	
+	Animation upShortPushAnim;
+	Animation leftShortPushAnim;
+	Animation downShortPushAnim;
+	Animation rightShortPushAnim;
+	
 	// The player's collider
 	bool Collide = true;
 	Collider* collider = nullptr;
 
 	
-
+	bool animDone = false;
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 	bool snobeeStunned = false;

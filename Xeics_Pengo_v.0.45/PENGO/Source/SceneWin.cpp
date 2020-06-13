@@ -111,6 +111,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
+		App->scene->i++;
+		App->scene->cont = 0;
 
 
 	}
@@ -124,6 +126,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
+		App->scene->i++;
+		App->scene->cont = 0;
 
 
 	}
@@ -137,6 +141,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
+		App->scene->i++;
+		App->scene->cont = 0;
 
 
 	}
@@ -150,8 +156,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl5 == true)
 	{
@@ -163,8 +169,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl6 == true)
 	{
@@ -176,8 +182,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl7 == true)
 	{
@@ -189,8 +195,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl8 == true)
 	{
@@ -202,8 +208,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl9 == true)
 	{
@@ -215,8 +221,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl10 == true)
 	{
@@ -228,8 +234,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl11 == true)
 	{
@@ -241,8 +247,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl12 == true)
 	{
@@ -254,8 +260,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl13 == true)
 	{
@@ -267,8 +273,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl14 == true)
 	{
@@ -280,8 +286,8 @@ update_status SceneWin::Update()
 		App->player->minutes = 0;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
@@ -291,11 +297,10 @@ update_status SceneWin::Update()
 		counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
-
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
-
-
+		App->scene->i++;
+		App->scene->cont = 0;
 	}
 
 	rightAnimWin.Update();
@@ -331,7 +336,7 @@ update_status SceneWin::PostUpdate()
 		else
 		{
 			App->render->Blit(texturePengo, App->player->position.x, App->player->position.y, &(rightAnimWin.GetCurrentFrame()), 0.1f);
-			App->player->position.x +=2;
+			App->player->position.x += 2;
 		}
 		if (count == 60) {
 			App->player->position.x++;

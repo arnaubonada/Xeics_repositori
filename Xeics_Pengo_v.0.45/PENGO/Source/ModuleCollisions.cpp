@@ -14,31 +14,31 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	for(uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
 
-	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
-	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::WALL][Collider::Type::ENEMY_STUNNED] = true;
-	matrix[Collider::Type::WALL][Collider::Type::BLOCK] = true;
+	matrix[Collider::Type::DIAMOND][Collider::Type::DIAMOND] = false;
+	matrix[Collider::Type::DIAMOND][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::DIAMOND][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::DIAMOND][Collider::Type::ENEMY_STUNNED] = true;
+	matrix[Collider::Type::DIAMOND][Collider::Type::BLOCK] = true;
 
-	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::DIAMOND] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_STUNNED] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BLOCK] = true;
 
-	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::DIAMOND] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
-	//matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_STUNNED] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_STUNNED] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::BLOCK] = true;
 
-    matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::WALL] = false;
+    matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::DIAMOND] = true;
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::ENEMY_STUNNED] = false;
 	matrix[Collider::Type::ENEMY_STUNNED][Collider::Type::BLOCK] = true;
 
-	matrix[Collider::Type::BLOCK][Collider::Type::WALL] = true;
+	matrix[Collider::Type::BLOCK][Collider::Type::DIAMOND] = true;
 	matrix[Collider::Type::BLOCK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::BLOCK][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::BLOCK][Collider::Type::ENEMY_STUNNED] = true;
@@ -128,7 +128,7 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::NONE: // white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 			break;
-			case Collider::Type::WALL: // blue
+			case Collider::Type::DIAMOND: // blue
 			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 			case Collider::Type::PLAYER: // green

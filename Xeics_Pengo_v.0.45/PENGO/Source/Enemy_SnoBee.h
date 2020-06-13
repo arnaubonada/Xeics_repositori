@@ -31,8 +31,11 @@ public:
 	Path path;
 
 	void enemyMovement();
+
+	void createColliderStun(int x, int y);
+	void removeColliderStun();
 	
-	void OnCollision(Collider* c1, Collider* c2) override;
+	void OnCollision(Collider* c1, Collider* c2);
 
 	enum class ENEMY_TYPE typeEnemy;
 
@@ -70,6 +73,7 @@ public:
 	Animation stunnedAnim;
 	Animation stunnedBlueAnim;
 
+	SDL_Rect r;
 
 	Particle oneHundredParticle;
 
@@ -81,7 +85,7 @@ public:
 
 	//Where the player goes
 	//int opcio = 1;
-
+	int countColliders = 0;
 	//int rep = 0;
 	//int longer;
 
@@ -94,12 +98,17 @@ public:
 
 	bool randfinish = false;
 
+
+
 	int timeStunned = 0;
 	int lastTimeStunned = 0;
 
 	bool DiamondFinished = false;
 
 	int j = 0;
+
+	bool oneTime = false;
+	bool oneTimeRemove = false;
 
 
 	int positionEnemyX;

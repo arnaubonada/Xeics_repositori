@@ -38,7 +38,7 @@ public:
 private:
 	bool debugMemLeaks = false;
 	Module* inspectedModule = nullptr;
-
+	
 	int debugFont = -1;
 	char debugText[150] = { "\0" };
 };

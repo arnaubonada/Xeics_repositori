@@ -25,7 +25,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/100points.png");
+	texture = App->textures->Load("Assets/score.png");
 	//oneHundredTexture = App->textures->Load("Assets/100points.png");
 
 

@@ -189,6 +189,7 @@ public:
 	SDL_Rect destination;
 
 	Collider* collider = nullptr;
+	Collider* colliderDiamond = nullptr;
 
 	int timeDiamond = 0;
 

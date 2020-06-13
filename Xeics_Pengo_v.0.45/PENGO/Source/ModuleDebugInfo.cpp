@@ -54,7 +54,7 @@ update_status ModuleDebugInfo::Update()
 		inspectedModule = (Module*)App->sceneIntro;
 
 	if (App->input->keys[SDL_SCANCODE_F5] == KEY_DOWN)
-		inspectedModule = (Module*)App-> scene;
+		inspectedModule = (Module*)App->scene;
 
 	if (App->input->keys[SDL_SCANCODE_F6] == KEY_DOWN)
 		inspectedModule = nullptr;
@@ -94,9 +94,10 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 0;
+		App->scene->i = 0;
 		App->tilemap->LoadMap(App->tilemap->lvl1);
-	}	
-	
+	}
+
 	if (App->input->keys[SDL_SCANCODE_N] == KEY_DOWN)
 	{
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 10);
@@ -117,6 +118,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 1;
+		App->scene->i = 1;
 		App->tilemap->LoadMap(App->tilemap->lvl2);
 
 	}
@@ -141,6 +143,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 2;
+		App->scene->i = 2;
 		App->tilemap->LoadMap(App->tilemap->lvl3);
 
 	}
@@ -165,6 +168,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 3;
+		App->scene->i = 3;
 		App->tilemap->LoadMap(App->tilemap->lvl4);
 
 	}
@@ -189,6 +193,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 4;
+		App->scene->i = 4;
 		App->tilemap->LoadMap(App->tilemap->lvl5);
 
 	}
@@ -213,6 +218,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 5;
+		App->scene->i = 5;
 		App->tilemap->LoadMap(App->tilemap->lvl6);
 
 	}
@@ -237,6 +243,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 6;
+		App->scene->i = 6;
 		App->tilemap->LoadMap(App->tilemap->lvl7);
 
 	}
@@ -261,6 +268,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 7;
+		App->scene->i = 7;
 		App->tilemap->LoadMap(App->tilemap->lvl8);
 
 	}
@@ -285,6 +293,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 8;
+		App->scene->i = 8;
 		App->tilemap->LoadMap(App->tilemap->lvl9);
 
 	}
@@ -309,6 +318,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 9;
+		App->scene->i = 9;
 		App->tilemap->LoadMap(App->tilemap->lvl10);
 
 	}
@@ -333,6 +343,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 10;
+		App->scene->i = 10;
 		App->tilemap->LoadMap(App->tilemap->lvl11);
 
 	}
@@ -357,6 +368,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 11;
+		App->scene->i = 11;
 		App->tilemap->LoadMap(App->tilemap->lvl12);
 
 	}
@@ -381,6 +393,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 12;
+		App->scene->i = 12;
 		App->tilemap->LoadMap(App->tilemap->lvl13);
 
 	}
@@ -405,6 +418,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = true;
 		App->tilemap->scenelvl15 = false;
 		App->scene->lvlCont = 13;
+		App->scene->i = 13;
 		App->tilemap->LoadMap(App->tilemap->lvl14);
 
 	}
@@ -429,6 +443,7 @@ update_status ModuleDebugInfo::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = true;
 		App->scene->lvlCont = 14;
+		App->scene->i = 14;
 		App->tilemap->LoadMap(App->tilemap->lvl15);
 
 	}
@@ -441,7 +456,8 @@ update_status ModuleDebugInfo::Update()
 update_status ModuleDebugInfo::PostUpdate()
 {
 	if (!debugMemLeaks)
-	{}
+	{
+	}
 	else
 	{
 		App->fonts->BlitText(10, 1, debugFont, "press f2 to close mem leaks debug info");

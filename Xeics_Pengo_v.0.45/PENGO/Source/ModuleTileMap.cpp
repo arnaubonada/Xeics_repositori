@@ -633,6 +633,7 @@ void ModuleTileMap::MoveDiamond(int x, int y, Direction d)
 	else if (dirDiamond == DOWN) {
 		finalpositionY_diamond = y + (spacestoblock_diamond * 16);
 	}
+	colliderDiamond = App->collisions->AddCollider({ positionDiamond.x, positionDiamond.y, 16, 16 }, Collider::Type::DIAMOND, (Module*)App->blocks);
 
 	tilemap[movedDiamondY][movedDiamondX] = TILE_NOBLOCK;
 
@@ -895,6 +896,7 @@ update_status ModuleTileMap::Update()
 			if (positionDiamond.x == finalpositionX_diamond) {
 				dirDiamond = NOMOVE;
 				tilemap[movedDiamondY][movedDiamondX] = TILE_DIAMOND;
+				App->collisions->RemoveCollider(colliderDiamond);
 			}
 		}
 
@@ -908,6 +910,7 @@ update_status ModuleTileMap::Update()
 			if (positionDiamond.x == finalpositionX_diamond) {
 				dirDiamond = NOMOVE;
 				tilemap[movedDiamondY][movedDiamondX] = TILE_DIAMOND;
+				App->collisions->RemoveCollider(colliderDiamond);
 			}
 		}
 
@@ -922,6 +925,7 @@ update_status ModuleTileMap::Update()
 			if (positionDiamond.y == finalpositionY_diamond) {
 				dirDiamond = NOMOVE;
 				tilemap[movedDiamondY][movedDiamondX] = TILE_DIAMOND;
+				App->collisions->RemoveCollider(colliderDiamond);
 			}
 		}
 
@@ -935,8 +939,10 @@ update_status ModuleTileMap::Update()
 			if (positionDiamond.y == finalpositionY_diamond) {
 				dirDiamond = NOMOVE;
 				tilemap[movedDiamondY][movedDiamondX] = TILE_DIAMOND;
+				App->collisions->RemoveCollider(colliderDiamond);
 			}
 		}
+		colliderDiamond->SetPos(positionDiamond.x, positionDiamond.y);
 	}
 	
 

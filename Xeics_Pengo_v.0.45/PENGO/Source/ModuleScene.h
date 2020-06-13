@@ -80,6 +80,8 @@ public:
 
 	int lvlRep = 0;
 	int lvlCont = 0;
+	int i = 0;
+	int cont = 0;
 
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
 	SDL_Rect pYellow, pRed, pYellowFive;

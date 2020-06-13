@@ -70,8 +70,12 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	deadAnim.PushBack({ 0, 32, 16, 16 });
 	deadAnim.PushBack({ 16, 32, 16, 16 });
+	deadAnim.PushBack({ 0, 32, 16, 16 });
+	deadAnim.PushBack({ 16, 32, 16, 16 });
 	deadAnim.speed = 0.1f;
 
+	upPushAnim.PushBack({ 64, 16, 16, 16 });
+	upPushAnim.PushBack({ 80, 16, 16, 16 });
 	upPushAnim.PushBack({ 64, 16, 16, 16 });
 	upPushAnim.PushBack({ 80, 16, 16, 16 });
 	upPushAnim.loop = false;
@@ -79,9 +83,13 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	downPushAnim.PushBack({ 0, 16, 16, 16 });
 	downPushAnim.PushBack({ 16, 16, 16, 16 });
+	downPushAnim.PushBack({ 0, 16, 16, 16 });
+	downPushAnim.PushBack({ 16, 16, 16, 16 });
 	downPushAnim.loop = false;
 	downPushAnim.speed = 0.1f;
 
+	leftPushAnim.PushBack({ 32, 16, 16, 16 });
+	leftPushAnim.PushBack({ 48, 16, 16, 16 });
 	leftPushAnim.PushBack({ 32, 16, 16, 16 });
 	leftPushAnim.PushBack({ 48, 16, 16, 16 });
 	leftPushAnim.loop = false;
@@ -89,8 +97,30 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 	rightPushAnim.PushBack({ 96, 16, 16, 16 });
 	rightPushAnim.PushBack({ 112, 16, 16, 16 });
+	rightPushAnim.PushBack({ 96, 16, 16, 16 });
+	rightPushAnim.PushBack({ 112, 16, 16, 16 });
 	rightPushAnim.loop = false;
 	rightPushAnim.speed = 0.1f;
+	
+	upShortPushAnim.PushBack({ 64, 16, 16, 16 });
+	upShortPushAnim.PushBack({ 80, 16, 16, 16 });
+	upShortPushAnim.loop = false;
+	upShortPushAnim.speed = 0.1f;
+
+	downShortPushAnim.PushBack({ 0, 16, 16, 16 });
+	downShortPushAnim.PushBack({ 16, 16, 16, 16 });
+	downShortPushAnim.loop = false;
+	downShortPushAnim.speed = 0.1f;
+
+	leftShortPushAnim.PushBack({ 32, 16, 16, 16 });
+	leftShortPushAnim.PushBack({ 48, 16, 16, 16 });
+	leftShortPushAnim.loop = false;
+	leftShortPushAnim.speed = 0.1f;
+
+	rightShortPushAnim.PushBack({ 96, 16, 16, 16 });
+	rightShortPushAnim.PushBack({ 112, 16, 16, 16 });
+	rightShortPushAnim.loop = false;
+	rightShortPushAnim.speed = 0.1f;
 
 
 }
@@ -200,6 +230,7 @@ update_status ModulePlayer::Update()
 
 	if (rep == 0) {
 		if (!destroyed) {
+			if (!animDone) {
 			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.left == 1)
 			{
 				currentAnimation = &leftAnim2;
@@ -227,7 +258,7 @@ update_status ModulePlayer::Update()
 							//App->tilemap->tilemap[(position.y - 16) / 16][(position.x / 16)]  = TILE_NOBLOCK;
 							position.x += move;
 							rep++;
-							
+
 						}
 					}
 				}
@@ -237,14 +268,14 @@ update_status ModulePlayer::Update()
 						currentAnimation = &downAnim2;
 						opcio = 'd';
 
-						if(App->tilemap->isWalkable(position.x, position.y + 16)){
+						if (App->tilemap->isWalkable(position.x, position.y + 16)) {
 
 							if (currentAnimation != &downAnim)
 							{
 								//App->tilemap->tilemap[((position.y - 16) / 16)][position.x / 16] = TILE_NOBLOCK;
 								position.y += move;
 								rep++;
-								
+
 							}
 						}
 					}
@@ -255,20 +286,21 @@ update_status ModulePlayer::Update()
 							currentAnimation = &upAnim2;
 							opcio = 'u';
 
-							if(App->tilemap->isWalkable(position.x, position.y - 16)){
-								
+							if (App->tilemap->isWalkable(position.x, position.y - 16)) {
+
 								if (currentAnimation != &upAnim)
-								{	
+								{
 									//App->tilemap->tilemap[((position.y - 16) / 16)][position.x / 16] = TILE_NOBLOCK;								
 									position.y -= move;
 									rep++;
-									
+
 								}
 							}
 						}
 					}
 
 				}
+			}
 
 
 			}
@@ -340,139 +372,199 @@ update_status ModulePlayer::Update()
 	int posBlock = 1;
 
 	if (!destroyed && !App->tilemap->threeDiamonds) {
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true) 
+		if (App->input->keys[SDL_SCANCODE_W] != KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_D] != KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] != KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_A] != KEY_STATE::KEY_DOWN) {
+		
+			if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) || pad.a == true)
 		{
-			if (opcio == 'l') 
-			{
-				if (App->tilemap->thereIsABlock(position.x - 1, position.y)) 
+			
+				if (opcio == 'l')
 				{
-					currentAnimation = &leftPushAnim;
-					
-					if (App->tilemap->thereIsABlock(position.x - 32, position.y) || App->tilemap->thereIsAWall(position.x - 32, position.y) || App->tilemap->thereIsADiamond(position.x - 32, position.y))
+					if (App->tilemap->thereIsABlock(position.x - 1, position.y))
 					{
-						
-						App->tilemap->DestroyBlock(position.x - 16, position.y);
-						score += 30;
-						if (App->tilemap->destroyedAnimBlock) {
-							currentAnimation = &leftAnim2;
-						
+						currentAnimation = &leftPushAnim;
+						animDone = true;
+
+						if (App->tilemap->thereIsABlock(position.x - 32, position.y) || App->tilemap->thereIsAWall(position.x - 32, position.y) || App->tilemap->thereIsADiamond(position.x - 32, position.y))
+						{
+							
+
+							App->tilemap->DestroyBlock(position.x - 16, position.y);
+							score += 30;
+
 						}
-					}
 						else {
+							currentAnimation = &leftShortPushAnim;
 							App->tilemap->MoveBlock(position.x - 16, position.y, LEFT);
+
 						}
-						
-					
-				}
-				else if (App->tilemap->thereIsADiamond(position.x - 16, position.y)) 
-				{
-					currentAnimation = &leftPushAnim;
-					//if (leftPushAnim.HasFinished()) {
+
+
+					}
+					else if (App->tilemap->thereIsADiamond(position.x - 16, position.y))
+					{
+						currentAnimation = &leftShortPushAnim;
+						animDone = true;
 						if (!App->tilemap->thereIsABlock(position.x - 32, position.y) || !App->tilemap->thereIsAWall(position.x - 32, position.y) || !App->tilemap->thereIsADiamond(position.x - 32, position.y))
 						{
 							App->tilemap->MoveDiamond(position.x - 16, position.y, LEFT);
 						}
-						//currentAnimation = &leftAnim2;
-					//}
-				}
-				else if (App->tilemap->thereIsAWall(position.x - 1, position.y)) 
-				{
-					currentAnimation = &leftPushAnim;
-					App->tilemap->PushLeftWall();
-				}
-			}
-			if (opcio == 'r') 
-			{
-				if (App->tilemap->thereIsABlock(position.x + 16, position.y)) 
-				{
-					currentAnimation = &rightPushAnim;
-					if (App->tilemap->thereIsABlock(position.x + 32, position.y) || App->tilemap->thereIsAWall(position.x + 32, position.y) || App->tilemap->thereIsADiamond(position.x + 32, position.y))
-					{
-						App->tilemap->DestroyBlock(position.x + 16, position.y);
-						score += 30;
 					}
-					else {
-						App->tilemap->MoveBlock(position.x + 16, position.y, RIGHT);
+					else if (App->tilemap->thereIsAWall(position.x - 1, position.y))
+					{
+						currentAnimation = &leftPushAnim;
+						animDone = true;
+						App->tilemap->PushLeftWall();
+					}
+				}
+				if (opcio == 'r')
+				{
+					if (App->tilemap->thereIsABlock(position.x + 16, position.y))
+					{
+						
+						animDone = true;
+						if (App->tilemap->thereIsABlock(position.x + 32, position.y) || App->tilemap->thereIsAWall(position.x + 32, position.y) || App->tilemap->thereIsADiamond(position.x + 32, position.y))
+						{
+							currentAnimation = &rightPushAnim;
+							App->tilemap->DestroyBlock(position.x + 16, position.y);
+							score += 30;
+						}
+						else {
+							currentAnimation = &rightShortPushAnim;
+							App->tilemap->MoveBlock(position.x + 16, position.y, RIGHT);
+						}
+
+					}
+					else if (App->tilemap->thereIsADiamond(position.x + 16, position.y))
+					{
+						currentAnimation = &rightShortPushAnim;
+						animDone = true;
+						if (!App->tilemap->thereIsABlock(position.x + 32, position.y) || !App->tilemap->thereIsAWall(position.x + 32, position.y) || !App->tilemap->thereIsADiamond(position.x + 32, position.y))
+						{
+							App->tilemap->MoveDiamond(position.x + 16, position.y, RIGHT);
+						}
+					}
+					else if (App->tilemap->thereIsAWall(position.x + 16, position.y))
+					{
+						currentAnimation = &rightPushAnim;
+						animDone = true;
+						App->tilemap->PushRightWall();
+					}
+				}
+				if (opcio == 'u')
+				{
+					if (App->tilemap->thereIsABlock(position.x, position.y - 1))
+					{
+						
+						animDone = true;
+						if (App->tilemap->thereIsABlock(position.x, position.y - 32) || App->tilemap->thereIsAWall(position.x, position.y - 32) || App->tilemap->thereIsADiamond(position.x, position.y - 32))
+						{
+							currentAnimation = &upPushAnim;
+							App->tilemap->DestroyBlock(position.x, position.y - 16);
+							score += 30;
+						}
+						else {
+							currentAnimation = &upShortPushAnim;
+							App->tilemap->MoveBlock(position.x, position.y - 16, UP);
+						}
+					}
+
+					else if (App->tilemap->thereIsADiamond(position.x, position.y - 16))
+					{
+						currentAnimation = &upShortPushAnim;
+						animDone = true;
+						if (!App->tilemap->thereIsABlock(position.x, position.y - 32) || !App->tilemap->thereIsAWall(position.x, position.y - 32) || !App->tilemap->thereIsADiamond(position.x, position.y - 32))
+						{
+							App->tilemap->MoveDiamond(position.x, position.y - 16, UP);
+						}
+					}
+					else if (App->tilemap->thereIsAWall(position.x, position.y - 1))
+					{
+						currentAnimation = &upPushAnim;
+						animDone = true;
+						App->tilemap->PushUpWall();
 					}
 
 				}
-				else if (App->tilemap->thereIsADiamond(position.x + 16, position.y))
+
+				if (opcio == 'd')
 				{
-					currentAnimation = &rightPushAnim;
-					if (!App->tilemap->thereIsABlock(position.x + 32, position.y) || !App->tilemap->thereIsAWall(position.x + 32, position.y) || !App->tilemap->thereIsADiamond(position.x + 32, position.y))
+
+					if (App->tilemap->thereIsABlock(position.x, position.y + 16))
 					{
-						App->tilemap->MoveDiamond(position.x + 16, position.y, RIGHT);
+						
+						animDone = true;
+						if (App->tilemap->thereIsABlock(position.x, position.y + 32) || App->tilemap->thereIsAWall(position.x, position.y + 32) || App->tilemap->thereIsADiamond(position.x, position.y + 32))
+						{
+							currentAnimation = &downPushAnim;
+							App->tilemap->DestroyBlock(position.x, position.y + 16);
+							score += 30;
+						}
+						else {
+							currentAnimation = &downShortPushAnim;
+							App->tilemap->MoveBlock(position.x, position.y + 16, DOWN);
+						}
 					}
-				}
-				else if (App->tilemap->thereIsAWall(position.x + 16, position.y))
-				{
-					currentAnimation = &rightPushAnim;
-					App->tilemap->PushRightWall();
-				}
-			}
-			if (opcio == 'u') 
-			{
-				if (App->tilemap->thereIsABlock(position.x, position.y - 1)) 
-				{
-					currentAnimation = &upPushAnim;
-					if (App->tilemap->thereIsABlock(position.x, position.y - 32) || App->tilemap->thereIsAWall(position.x, position.y - 32) || App->tilemap->thereIsADiamond(position.x, position.y - 32))
+					else if (App->tilemap->thereIsADiamond(position.x, position.y + 16))
 					{
-						App->tilemap->DestroyBlock(position.x, position.y - 16);
-						score += 30;
+						currentAnimation = &downShortPushAnim;
+						animDone = true;
+						if (!App->tilemap->thereIsABlock(position.x, position.y + 32) || !App->tilemap->thereIsAWall(position.x, position.y + 32) || !App->tilemap->thereIsADiamond(position.x, position.y + 32))
+						{
+							App->tilemap->MoveDiamond(position.x, position.y + 16, DOWN);
+						}
 					}
-					else {
-						App->tilemap->MoveBlock(position.x, position.y - 16, UP);
+					else if (App->tilemap->thereIsAWall(position.x, position.y + 16))
+					{
+						currentAnimation = &downPushAnim;
+						animDone = true;
+						App->tilemap->PushDownWall();
 					}
 				}
+
 				
-				else if (App->tilemap->thereIsADiamond(position.x, position.y - 16))
-				{
-					currentAnimation = &upPushAnim;
-					if (!App->tilemap->thereIsABlock(position.x, position.y - 32) || !App->tilemap->thereIsAWall(position.x, position.y - 32) || !App->tilemap->thereIsADiamond(position.x, position.y - 32))
-					{
-						App->tilemap->MoveDiamond(position.x, position.y - 16, UP);
-					}
-				}
-				else if (App->tilemap->thereIsAWall(position.x, position.y - 1))
-				{
-					currentAnimation = &upPushAnim;
-					App->tilemap->PushUpWall();
-				}
-
 			}
-			
-			if (opcio == 'd') 
-			{
-				
-				if (App->tilemap->thereIsABlock(position.x, position.y + 16)) 
-				{
-					currentAnimation = &downPushAnim;
-					if (App->tilemap->thereIsABlock(position.x, position.y + 32) || App->tilemap->thereIsAWall(position.x, position.y + 32) || App->tilemap->thereIsADiamond(position.x, position.y + 32))
-					{
-						App->tilemap->DestroyBlock(position.x, position.y + 16);
-						score += 30;
-					}
-					else {
-						App->tilemap->MoveBlock(position.x, position.y + 16, DOWN);
-					}
+			if (leftPushAnim.HasFinished()) {
+					animDone = false;
+					leftPushAnim.Reset();
+					currentAnimation = &leftAnim;
 				}
-				else if (App->tilemap->thereIsADiamond(position.x, position.y + 16))
-				{
-					currentAnimation = &downPushAnim;
-					if (!App->tilemap->thereIsABlock(position.x, position.y + 32) || !App->tilemap->thereIsAWall(position.x, position.y + 32) || !App->tilemap->thereIsADiamond(position.x, position.y + 32))
-					{
-						App->tilemap->MoveDiamond(position.x, position.y + 16, DOWN);
-					}
+			if (rightPushAnim.HasFinished()) {
+					animDone = false;
+					rightPushAnim.Reset();
+					currentAnimation = &rightAnim;
 				}
-				else if (App->tilemap->thereIsAWall(position.x, position.y + 16))
-				{
-					currentAnimation = &downPushAnim;
-					App->tilemap->PushDownWall();
+			if (upPushAnim.HasFinished()) {
+					animDone = false;
+					upPushAnim.Reset();
+					currentAnimation = &upAnim;
 				}
-			}
-
-			
+			if (downPushAnim.HasFinished()) {
+					animDone = false;
+					downPushAnim.Reset();
+					currentAnimation = &downAnim;
+				}
+			if (leftShortPushAnim.HasFinished()) {
+					animDone = false;
+					leftShortPushAnim.Reset();
+					currentAnimation = &leftAnim;
+				}
+			if (rightShortPushAnim.HasFinished()) {
+					animDone = false;
+					rightShortPushAnim.Reset();
+					currentAnimation = &rightAnim;
+				}
+			if (upShortPushAnim.HasFinished()) {
+					animDone = false;
+					upShortPushAnim.Reset();
+					currentAnimation = &upAnim;
+				}
+			if (downShortPushAnim.HasFinished()) {
+					animDone = false;
+					downShortPushAnim.Reset();
+					currentAnimation = &downAnim;
+				}
 		}
+		
 	}
 			
 

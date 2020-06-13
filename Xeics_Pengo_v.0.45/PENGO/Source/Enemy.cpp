@@ -24,6 +24,11 @@ const Collider* Enemy::GetCollider() const
 	return collider;
 }
 
+const Collider* Enemy::GetColliderStun() const
+{
+	return colliderStunned;
+}
+
 
 
 void Enemy::Update()
