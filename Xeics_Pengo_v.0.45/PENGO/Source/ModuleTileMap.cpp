@@ -573,6 +573,7 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 	destroyedBlock = true;
 	currentAnimation = &blockDestrAnim;
 	
+	destroyedAnimBlock = false;
 	//App->render->Blit(noBlock, destination.x, destination.y, &source);
 }
 
@@ -795,6 +796,12 @@ update_status ModuleTileMap::Update()
 			blockDestrAnim.Reset();
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
+		else {
+
+			destroyedAnimBlock = true;
+			//blockDestrAnim.Reset();
+			tilemap[blockY][blockX] = TILE_NOBLOCK;
+		}
 	}
 
 	if (pushLeft) {
@@ -990,6 +997,7 @@ update_status ModuleTileMap::PostUpdate()
 	if (destroyedBlock) {
 
 		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+
 	}
 	if (pushLeft) {
 		App->render->Blit(texture, 8, 24, &(sidesWallAnim.GetCurrentFrame()), 0.1f);

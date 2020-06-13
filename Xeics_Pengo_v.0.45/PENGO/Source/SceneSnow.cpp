@@ -7,6 +7,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleTileMap.h"
 
 #include "SDL/include/SDL_scancode.h"
 
@@ -88,6 +89,7 @@ update_status SceneSnow::Update()
 	{
 	
 		App->fade->FadeToBlack(this, (Module*)App->scene, 30);
+
 	}
 
 	skyAnim.Update();
