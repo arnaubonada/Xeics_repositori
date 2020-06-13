@@ -208,7 +208,7 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 		normalSnoDownAnim.speed = 0.1f;
 
 		normalSnoLeftAnim.PushBack({ 288, 144, 16, 16 });
-		normalSnoLeftAnim.PushBack({ 308, 144, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 304, 144, 16, 16 });
 		normalSnoLeftAnim.speed = 0.1f;
 
 		normalSnoRightAnim.PushBack({ 352, 144, 16, 16 });
@@ -529,7 +529,7 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 		normalSnoDownAnim.speed = 0.1f;
 
 		normalSnoLeftAnim.PushBack({ 288, 224, 16, 16 });
-		normalSnoLeftAnim.PushBack({ 308, 224, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 304, 224, 16, 16 });
 		normalSnoLeftAnim.speed = 0.1f;
 
 		normalSnoRightAnim.PushBack({ 352, 224, 16, 16 });
@@ -664,18 +664,7 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
 		secondSmashDownAnim.speed = 0.1f;
 	}
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.speed = 0.1f;
-	oneHundredParticle.anim.loop = false;
+
 
 	currentAnim = &snoDownAnim;
 
@@ -874,7 +863,6 @@ void Enemy_SnoBee::Update()
 		}
 		if (App->tilemap->pushRight) {
 			if (position.x == 208) {
-				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
 				for (uint i = 0; i < MAX_ENEMIES; ++i)
 				{
@@ -884,18 +872,24 @@ void Enemy_SnoBee::Update()
 							App->enemies->enemiesStunned[i] = true;
 							if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
+
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
 								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
+
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
 								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -904,7 +898,6 @@ void Enemy_SnoBee::Update()
 						}
 					}
 				}
-				timeStunned = 1;
 				App->scene->timescore = 1;
 
 				App->scene->posEnemyX = position.x;
@@ -913,7 +906,6 @@ void Enemy_SnoBee::Update()
 		}
 		if (App->tilemap->pushUp) {
 			if (position.y == 32) {
-				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
 
 				for (uint i = 0; i < MAX_ENEMIES; ++i)
@@ -924,18 +916,24 @@ void Enemy_SnoBee::Update()
 							App->enemies->enemiesStunned[i] = true;
 							if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
+
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
 								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
+
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
 								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -945,7 +943,6 @@ void Enemy_SnoBee::Update()
 						}
 					}
 				}
-				timeStunned = 1;
 				App->scene->timescore = 1;
 
 				App->scene->posEnemyX = position.x;
@@ -954,7 +951,6 @@ void Enemy_SnoBee::Update()
 		}
 		if (App->tilemap->pushDown) {
 			if (position.y == 256) {
-				currentAnim = &stunnedAnim;
 				stunnedEnemy = true;
 				for (uint i = 0; i < MAX_ENEMIES; ++i)
 				{
@@ -964,18 +960,24 @@ void Enemy_SnoBee::Update()
 							App->enemies->enemiesStunned[i] = true;
 							if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
+
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
 								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
+
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
 								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -984,7 +986,6 @@ void Enemy_SnoBee::Update()
 						}
 					}
 				}
-				timeStunned = 1;
 				App->scene->timescore = 1;
 				//App->collisions->RemoveCollider(colliderStunned);
 				
@@ -1277,7 +1278,7 @@ void Enemy_SnoBee::enemyMovement()
 
 void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 
-	
+
 
 	if (c1->type == Collider::Type::ENEMY) {
 
@@ -1390,19 +1391,158 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 				}
 			}
 
-		
-		else if (App->tilemap->dirBlock == DOWN) {
+
+			else if (App->tilemap->dirBlock == DOWN) {
+				smashedEnemy = true;
+
+				position.x = App->tilemap->positionBlock.x;
+				position.y = App->tilemap->positionBlock.y + 16;
+				currentAnim = &dragEnemyDownAnim;
+				if (App->tilemap->positionBlock.y >= (App->tilemap->finalpositionY - 16) && App->tilemap->positionBlock.y < App->tilemap->finalpositionY) {
+					position.x = App->tilemap->positionBlock.x;
+					position.y = App->tilemap->positionBlock.y;
+					currentAnim = &firstSmashDownAnim;
+				}
+				if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY - 4) {
+					currentAnim = &secondSmashDownAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->collider->Intersects(r)) {
+								App->enemies->enemiesSmashed[i] = true;
+							}
+						}
+						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
+							delete App->enemies->enemies[i];
+							App->enemies->enemies[i] = nullptr;
+							App->scene->enemiesAlive--;
+							App->enemies->enemiesSmashed[i] = false;
+							smashedEnemy = false;
+						}
+					}
+				}
+			}
+		}
+		if (c2->type == Collider::Type::DIAMOND)
+		{
+
+			if (App->tilemap->dirDiamond == LEFT) {
+				smashedEnemy = true;
+				position.x = App->tilemap->positionDiamond.x - 16;
+				position.y = App->tilemap->positionDiamond.y;
+				currentAnim = &dragEnemyLeftAnim;
+				if (App->tilemap->positionDiamond.x <= (App->tilemap->finalpositionX_diamond + 16) && App->tilemap->positionDiamond.x > App->tilemap->finalpositionX_diamond) {
+					position.x = App->tilemap->positionDiamond.x;
+					position.y = App->tilemap->positionDiamond.y;
+					currentAnim = &firstSmashLeftAnim;
+				}
+				if (App->tilemap->positionDiamond.x == App->tilemap->finalpositionX_diamond + 4) {
+					currentAnim = &secondSmashLeftAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->collider->Intersects(r)) {
+								App->enemies->enemiesSmashed[i] = true;
+
+							}
+						}
+						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
+							delete App->enemies->enemies[i];
+							App->enemies->enemies[i] = nullptr;
+							App->scene->enemiesAlive--;
+							App->enemies->enemiesSmashed[i] = false;
+							smashedEnemy = false;
+
+
+
+						}
+					}
+
+				}
+
+			}
+			else if (App->tilemap->dirDiamond == RIGHT) {
+				smashedEnemy = true;
+
+
+				position.x = App->tilemap->positionDiamond.x + 16;
+				position.y = App->tilemap->positionDiamond.y;
+				currentAnim = &dragEnemyRightAnim;
+				if (App->tilemap->positionDiamond.x >= (App->tilemap->finalpositionX - 16) && App->tilemap->positionDiamond.x < App->tilemap->finalpositionX_diamond) {
+					position.x = App->tilemap->positionDiamond.x;
+					position.y = App->tilemap->positionDiamond.y;
+					currentAnim = &firstSmashRightAnim;
+				}
+				if (App->tilemap->positionDiamond.x == App->tilemap->finalpositionX_diamond - 4) {
+					currentAnim = &secondSmashRightAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->collider->Intersects(r)) {
+								App->enemies->enemiesSmashed[i] = true;
+							}
+						}
+						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
+							delete App->enemies->enemies[i];
+							App->enemies->enemies[i] = nullptr;
+							App->scene->enemiesAlive--;
+							App->enemies->enemiesSmashed[i] = false;
+							smashedEnemy = false;
+
+						}
+					}
+				}
+
+			}
+			else if (App->tilemap->dirDiamond == UP) {
+				smashedEnemy = true;
+
+				position.x = App->tilemap->positionDiamond.x;
+				position.y = App->tilemap->positionDiamond.y - 16;
+				currentAnim = &dragEnemyUpAnim;
+				if (App->tilemap->positionDiamond.y <= (App->tilemap->finalpositionY_diamond + 16) && App->tilemap->positionDiamond.y > App->tilemap->finalpositionY_diamond) {
+					position.x = App->tilemap->positionDiamond.x;
+					position.y = App->tilemap->positionDiamond.y;
+					currentAnim = &firstSmashUpAnim;
+
+				}
+				if (App->tilemap->positionDiamond.y == App->tilemap->finalpositionY_diamond + 4) {
+					currentAnim = &secondSmashUpAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->collider->Intersects(r)) {
+								App->enemies->enemiesSmashed[i] = true;
+							}
+						}
+						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
+							delete App->enemies->enemies[i];
+							App->enemies->enemies[i] = nullptr;
+							App->scene->enemiesAlive--;
+							App->enemies->enemiesSmashed[i] = false;
+							smashedEnemy = false;
+						}
+					}
+				}
+			}
+
+		}
+		else if (App->tilemap->dirDiamond == DOWN) {
 			smashedEnemy = true;
 
-			position.x = App->tilemap->positionBlock.x;
-			position.y = App->tilemap->positionBlock.y + 16;
+			position.x = App->tilemap->positionDiamond.x;
+			position.y = App->tilemap->positionDiamond.y + 16;
 			currentAnim = &dragEnemyDownAnim;
-			if (App->tilemap->positionBlock.y >= (App->tilemap->finalpositionY - 16) && App->tilemap->positionBlock.y < App->tilemap->finalpositionY) {
-				position.x = App->tilemap->positionBlock.x;
-				position.y = App->tilemap->positionBlock.y;
+			if (App->tilemap->positionDiamond.y >= (App->tilemap->finalpositionY_diamond - 16) && App->tilemap->positionDiamond.y < App->tilemap->finalpositionY_diamond) {
+				position.x = App->tilemap->positionDiamond.x;
+				position.y = App->tilemap->positionDiamond.y;
 				currentAnim = &firstSmashDownAnim;
 			}
-			if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY - 4) {
+			if (App->tilemap->positionDiamond.y == App->tilemap->finalpositionY_diamond - 4) {
 				currentAnim = &secondSmashDownAnim;
 				for (uint i = 0; i < MAX_ENEMIES; ++i)
 				{
@@ -1422,179 +1562,40 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 				}
 			}
 		}
+
 	}
-				if (c2->type == Collider::Type::DIAMOND)
-			{
-
-					if (App->tilemap->dirDiamond == LEFT) {
-						smashedEnemy = true;
-						position.x = App->tilemap->positionDiamond.x - 16;
-						position.y = App->tilemap->positionDiamond.y;
-						currentAnim = &dragEnemyLeftAnim;
-						if (App->tilemap->positionDiamond.x <= (App->tilemap->finalpositionX_diamond + 16) && App->tilemap->positionDiamond.x > App->tilemap->finalpositionX_diamond) {
-							position.x = App->tilemap->positionDiamond.x;
-							position.y = App->tilemap->positionDiamond.y;
-							currentAnim = &firstSmashLeftAnim;
-						}
-						if (App->tilemap->positionDiamond.x == App->tilemap->finalpositionX_diamond + 4) {
-							currentAnim = &secondSmashLeftAnim;
-							for (uint i = 0; i < MAX_ENEMIES; ++i)
-							{
-								if (App->enemies->enemies[i] != nullptr) {
-									if (App->enemies->enemies[i]->collider->Intersects(r)) {
-										App->enemies->enemiesSmashed[i] = true;
-									
-									}
-								}
-								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-									App->audio->PlayFx(snobeeSmashedFx, 0);
-									delete App->enemies->enemies[i];
-									App->enemies->enemies[i] = nullptr;
-									App->scene->enemiesAlive--;
-									App->enemies->enemiesSmashed[i] = false;
-									smashedEnemy = false;
-
-									
-								
-						}
-					}
-
-				}
-
-			}
-			else if (App->tilemap->dirDiamond == RIGHT) {
-				smashedEnemy = true;
-				
-
-					position.x = App->tilemap->positionDiamond.x + 16;
-					position.y = App->tilemap->positionDiamond.y;
-					currentAnim = &dragEnemyRightAnim;
-					if (App->tilemap->positionDiamond.x >= (App->tilemap->finalpositionX - 16) && App->tilemap->positionDiamond.x < App->tilemap->finalpositionX_diamond) {
-						position.x = App->tilemap->positionDiamond.x;
-						position.y = App->tilemap->positionDiamond.y;
-						currentAnim = &firstSmashRightAnim;
-					}
-					if (App->tilemap->positionDiamond.x == App->tilemap->finalpositionX_diamond -4) {
-						currentAnim = &secondSmashRightAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->collider->Intersects(r)) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
-							}
-								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-									App->audio->PlayFx(snobeeSmashedFx, 0);
-									delete App->enemies->enemies[i];
-									App->enemies->enemies[i] = nullptr;
-									App->scene->enemiesAlive--;
-									App->enemies->enemiesSmashed[i] = false;
-									smashedEnemy = false;
-								
-							}
-					}
-				}
-
-			}
-			else if (App->tilemap->dirDiamond == UP) {
-				smashedEnemy = true;
-				
-					position.x = App->tilemap->positionDiamond.x;
-					position.y = App->tilemap->positionDiamond.y - 16;
-					currentAnim = &dragEnemyUpAnim;
-					if (App->tilemap->positionDiamond.y <= (App->tilemap->finalpositionY_diamond + 16) && App->tilemap->positionDiamond.y > App->tilemap->finalpositionY_diamond) {
-						position.x = App->tilemap->positionDiamond.x;
-						position.y = App->tilemap->positionDiamond.y;
-						currentAnim = &firstSmashUpAnim;
-
-					}
-					if (App->tilemap->positionDiamond.y == App->tilemap->finalpositionY_diamond +4) {
-						currentAnim = &secondSmashUpAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->collider->Intersects(r)) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
-							}
-								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-									App->audio->PlayFx(snobeeSmashedFx, 0);
-									delete App->enemies->enemies[i];
-									App->enemies->enemies[i] = nullptr;
-									App->scene->enemiesAlive--;
-									App->enemies->enemiesSmashed[i] = false;
-									smashedEnemy = false;
-								}
-							}
-					}
-				}
-
-			}
-			else if (App->tilemap->dirDiamond == DOWN) {
-				smashedEnemy = true;
-				
-					position.x = App->tilemap->positionDiamond.x;
-					position.y = App->tilemap->positionDiamond.y + 16;
-					currentAnim = &dragEnemyDownAnim;
-					if (App->tilemap->positionDiamond.y >= (App->tilemap->finalpositionY_diamond - 16) && App->tilemap->positionDiamond.y < App->tilemap->finalpositionY_diamond) {
-						position.x = App->tilemap->positionDiamond.x;
-						position.y = App->tilemap->positionDiamond.y;
-						currentAnim = &firstSmashDownAnim;
-					}
-					if (App->tilemap->positionDiamond.y == App->tilemap->finalpositionY_diamond -4) {
-						currentAnim = &secondSmashDownAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->collider->Intersects(r)) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
-							}
-								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-									App->audio->PlayFx(snobeeSmashedFx, 0);
-									delete App->enemies->enemies[i];
-									App->enemies->enemies[i] = nullptr;
-									App->scene->enemiesAlive--;
-									App->enemies->enemiesSmashed[i] = false;
-									smashedEnemy = false;
-								}
-							}
-						}
-				}
-
-			}
 
 
-		
-		if (c1->type == Collider::Type::ENEMY_STUNNED) {
-		
+
+	if (c1->type == Collider::Type::ENEMY_STUNNED) {
+
 		if (c2->type == Collider::Type::BLOCK)
 		{
 
 			if (App->tilemap->dirBlock == LEFT) {
 				smashedEnemy = true;
-				
 
-					position.x = App->tilemap->positionBlock.x - 16;
-					currentAnim = &dragEnemyLeftAnim;
-					if (App->tilemap->positionBlock.x <= (App->tilemap->finalpositionX + 16) && App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
-						currentAnim = &firstSmashLeftAnim;
-					}
-					if (App->tilemap->positionBlock.x == App->tilemap->finalpositionX + 4) {
-						currentAnim = &secondSmashLeftAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
+
+				position.x = App->tilemap->positionBlock.x - 16;
+				currentAnim = &dragEnemyLeftAnim;
+				if (App->tilemap->positionBlock.x <= (App->tilemap->finalpositionX + 16) && App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
+					currentAnim = &firstSmashLeftAnim;
+				}
+				if (App->tilemap->positionBlock.x == App->tilemap->finalpositionX + 4) {
+					currentAnim = &secondSmashLeftAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+								App->enemies->enemiesSmashed[i] = true;
 							}
-							if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-								delete App->enemies->enemies[i];
-								App->enemies->enemies[i] = nullptr;
-								App->scene->enemiesAlive--;
-								App->enemies->enemiesSmashed[i] = false;
-								smashedEnemy = false;
+						}
+						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							delete App->enemies->enemies[i];
+							App->enemies->enemies[i] = nullptr;
+							App->scene->enemiesAlive--;
+							App->enemies->enemiesSmashed[i] = false;
+							smashedEnemy = false;
 						}
 					}
 
@@ -1603,22 +1604,22 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 			}
 			else if (App->tilemap->dirBlock == RIGHT) {
 				smashedEnemy = true;
-				
 
-					position.x = App->tilemap->positionBlock.x + 16;
-					currentAnim = &dragEnemyRightAnim;
-					if (App->tilemap->positionBlock.x >= (App->tilemap->finalpositionX - 16) && App->tilemap->positionBlock.x < App->tilemap->finalpositionX) {
-						currentAnim = &firstSmashRightAnim;
-					}
-					if (App->tilemap->positionBlock.x == App->tilemap->finalpositionX -4) {
-						currentAnim = &secondSmashRightAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
+
+				position.x = App->tilemap->positionBlock.x + 16;
+				currentAnim = &dragEnemyRightAnim;
+				if (App->tilemap->positionBlock.x >= (App->tilemap->finalpositionX - 16) && App->tilemap->positionBlock.x < App->tilemap->finalpositionX) {
+					currentAnim = &firstSmashRightAnim;
+				}
+				if (App->tilemap->positionBlock.x == App->tilemap->finalpositionX - 4) {
+					currentAnim = &secondSmashRightAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+								App->enemies->enemiesSmashed[i] = true;
 							}
+						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
@@ -1632,22 +1633,22 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 			}
 			else if (App->tilemap->dirBlock == UP) {
 				smashedEnemy = true;
-				
 
-					position.y = App->tilemap->positionBlock.y - 16;
-					currentAnim = &dragEnemyUpAnim;
-					if (App->tilemap->positionBlock.y <= (App->tilemap->finalpositionY + 16) && App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
-						currentAnim = &firstSmashUpAnim;
-					}
-					if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY+4) {
-						currentAnim = &secondSmashUpAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
+
+				position.y = App->tilemap->positionBlock.y - 16;
+				currentAnim = &dragEnemyUpAnim;
+				if (App->tilemap->positionBlock.y <= (App->tilemap->finalpositionY + 16) && App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
+					currentAnim = &firstSmashUpAnim;
+				}
+				if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY + 4) {
+					currentAnim = &secondSmashUpAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+								App->enemies->enemiesSmashed[i] = true;
 							}
+						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
@@ -1661,22 +1662,22 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 			}
 			else if (App->tilemap->dirBlock == DOWN) {
 				smashedEnemy = true;
-				
 
-					position.y = App->tilemap->positionBlock.y + 16;
-					currentAnim = &dragEnemyDownAnim;
-					if (App->tilemap->positionBlock.y >= (App->tilemap->finalpositionY - 16) && App->tilemap->positionBlock.y < App->tilemap->finalpositionY) {
-						currentAnim = &firstSmashDownAnim;
-					}
-					if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY-4) {
-						currentAnim = &secondSmashDownAnim;
-						for (uint i = 0; i < MAX_ENEMIES; ++i)
-						{
-							if (App->enemies->enemies[i] != nullptr) {
-								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
-									App->enemies->enemiesSmashed[i] = true;
-								}
+
+				position.y = App->tilemap->positionBlock.y + 16;
+				currentAnim = &dragEnemyDownAnim;
+				if (App->tilemap->positionBlock.y >= (App->tilemap->finalpositionY - 16) && App->tilemap->positionBlock.y < App->tilemap->finalpositionY) {
+					currentAnim = &firstSmashDownAnim;
+				}
+				if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY - 4) {
+					currentAnim = &secondSmashDownAnim;
+					for (uint i = 0; i < MAX_ENEMIES; ++i)
+					{
+						if (App->enemies->enemies[i] != nullptr) {
+							if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+								App->enemies->enemiesSmashed[i] = true;
 							}
+						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
@@ -1691,13 +1692,13 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 
 		}
 
-			if (c2->type == Collider::Type::PLAYER)
-			{
-				App->particles->AddParticle(oneHundredParticle, position.x, position.y, Collider::Type::NONE, 0);
-				
-			}
-		}
+		/*if (c2->type == Collider::Type::PLAYER)
+		{
+			App->particles->AddParticle(oneHundredParticle, position.x, position.y, Collider::Type::NONE, 0);
+
+		}*/
 	}
+}
 
 
 	bool Enemy_SnoBee::CleanUp()

@@ -74,18 +74,38 @@ bool SceneSnow::Start()
 	snowTexture=App->textures->Load("Assets/snow.png");
 
 
+
 	
 	//App->render->camera.x = 0;
 	//App->render->camera.y = 0;
 
+	App->tilemap->scenelvl1 = true;
+	App->tilemap->scenelvl2 = false;
+	App->tilemap->scenelvl3 = false;
+	App->tilemap->scenelvl4 = false;
+	App->tilemap->scenelvl5 = false;
+	App->tilemap->scenelvl6 = false;
+	App->tilemap->scenelvl7 = false;
+	App->tilemap->scenelvl8 = false;
+	App->tilemap->scenelvl9 = false;
+	App->tilemap->scenelvl10 = false;
+	App->tilemap->scenelvl11 = false;
+	App->tilemap->scenelvl12 = false;
+	App->tilemap->scenelvl13 = false;
+	App->tilemap->scenelvl14 = false;
+	App->tilemap->scenelvl15 = false;
+
 	App->input->Enable();
+
+
 	return ret;
 }
 
 update_status SceneSnow::Update()
 {
+	GamePad& pad = App->input->pads[0];
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
 	{
 	
 		App->fade->FadeToBlack(this, (Module*)App->scene, 30);

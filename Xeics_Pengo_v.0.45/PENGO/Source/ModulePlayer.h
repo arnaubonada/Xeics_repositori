@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "Particle.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -76,6 +77,9 @@ public:
 	Animation leftShortPushAnim;
 	Animation downShortPushAnim;
 	Animation rightShortPushAnim;
+
+	Particle oneHundredParticle;
+
 	
 	// The player's collider
 	bool Collide = true;

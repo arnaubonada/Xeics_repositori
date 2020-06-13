@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "SDL/include/SDL_scancode.h"
 
 #define MAX_KEYS 256
 #define MAX_PADS 4

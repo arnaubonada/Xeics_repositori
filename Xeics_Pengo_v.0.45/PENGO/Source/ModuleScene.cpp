@@ -17,6 +17,8 @@
 #include "ModuleFonts.h"
 #include "Enemy.h"
 #include "Enemy_SnoBee.h"
+#include "ModuleParticles.h"
+#include "SceneLose.h"
 
 #include"SceneIntro.h" 
 
@@ -98,11 +100,20 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1]==TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
+
+					
+
+
+					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
 					enemiesAlive--;
 				}
 				else if (j == 2) {
@@ -131,7 +142,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}					
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -164,7 +180,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}	
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -198,7 +219,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -233,7 +259,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -267,7 +298,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -301,7 +337,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -335,7 +376,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -369,7 +415,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -405,7 +456,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -413,7 +469,12 @@ bool ModuleScene::Start()
 					enemiesAlive--;
 				}
 				else if (j == 2) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					if (App->tilemap->tilemap[15][12] == TILE_BLOCK && App->tilemap->tilemap[14][13] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 3) {
@@ -445,7 +506,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -453,7 +519,12 @@ bool ModuleScene::Start()
 					enemiesAlive--;
 				}
 				else if (j == 2) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					if (App->tilemap->tilemap[15][12] == TILE_BLOCK && App->tilemap->tilemap[14][13] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 3) {
@@ -485,7 +556,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -493,7 +569,12 @@ bool ModuleScene::Start()
 					enemiesAlive--;
 				}
 				else if (j == 2) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					if (App->tilemap->tilemap[15][12] == TILE_BLOCK && App->tilemap->tilemap[14][13] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 3) {
@@ -525,7 +606,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -533,7 +619,12 @@ bool ModuleScene::Start()
 					enemiesAlive--;
 				}
 				else if (j == 2) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					if (App->tilemap->tilemap[15][12] == TILE_BLOCK && App->tilemap->tilemap[14][13] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 3) {
@@ -565,7 +656,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -573,7 +669,12 @@ bool ModuleScene::Start()
 					enemiesAlive--;
 				}
 				else if (j == 2) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					if (App->tilemap->tilemap[15][12] == TILE_BLOCK && App->tilemap->tilemap[14][13] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 3) {
@@ -605,7 +706,12 @@ bool ModuleScene::Start()
 			for (int j = 0; j < enemiesAlive; j++) {
 
 				if (j == 0) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					if (App->tilemap->tilemap[1][2] == TILE_BLOCK && App->tilemap->tilemap[2][1] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+					}
 					enemiesAlive--;
 				}
 				else if (j == 1) {
@@ -613,7 +719,14 @@ bool ModuleScene::Start()
 					enemiesAlive--;
 				}
 				else if (j == 2) {
-					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					if (App->tilemap->tilemap[15][12] == TILE_BLOCK && App->tilemap->tilemap[14][13] == TILE_BLOCK) {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
+					}
+					else {
+						App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+					}
+
+					
 					enemiesAlive--;
 				}
 				else if (j == 3) {
@@ -647,15 +760,30 @@ bool ModuleScene::Start()
 		App->tilemap->scenelvl13 = false;
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
+
 	}
 	else {
 		App->tilemap->scenelvl1 = false;
 	}
 
-	App->tilemap->Enable();
-	App->enemies->Enable();
-	App->blocks->Enable();
-	App->player->Enable();
+	
+	if (App->sceneLose->losed) {
+		App->player->Enable();
+		App->enemies->Enable();
+		App->tilemap->Enable();
+		//App->blocks->Enable();
+
+
+		App->particles->Enable();
+		App->sceneLose->losed = false;
+	}
+	else {
+		App->tilemap->Enable();
+		App->enemies->Enable();
+		//App->blocks->Enable();
+		App->player->Enable();
+		App->particles->Enable();
+	}
 
 	return ret;
 }
@@ -1146,6 +1274,8 @@ bool ModuleScene::CleanUp()
 	App->enemies->Disable();
 	App->blocks->Disable();
 	App->tilemap->Disable();
+	App->particles->Disable();
+
 
 	App->fonts->UnLoad(whiteFont);
 	App->fonts->UnLoad(blueFont);

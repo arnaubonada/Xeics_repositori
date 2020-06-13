@@ -13,6 +13,7 @@
 #include "ModuleEnemies.h"
 #include "Enemy_SnoBee.h"
 #include "ModuleTileMap.h"
+#include "ModuleParticles.h"
 
 #include <stdio.h>
 
@@ -121,7 +122,21 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	rightShortPushAnim.PushBack({ 112, 16, 16, 16 });
 	rightShortPushAnim.loop = false;
 	rightShortPushAnim.speed = 0.1f;
+	
 
+
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
+	oneHundredParticle.anim.speed = 0.1f;
+	oneHundredParticle.anim.loop = false;
 
 }
 
@@ -187,34 +202,6 @@ update_status ModulePlayer::Update()
 		rep = 0;
 	}
 
-	//switch (opcio)
-	//{
-
-	//case 'a':
-	//	currentAnimation = &downAnim2;
-	//	break;
-
-	//case 'l':
-	//	currentAnimation = &leftAnim2;
-	//	break;
-
-	//case 'r':
-	//	currentAnimation = &rightAnim2;
-	//	break;
-	//case 'd':
-	//	currentAnimation = &downAnim2;
-	//	break;
-
-	//case 'u':
-	//	currentAnimation = &upAnim2;
-	//	break;
-
-
-	//default:
-	//	break;
-	//}
-
-
 	//Debug key for gamepad rumble testing purposes
 	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 	{
@@ -236,7 +223,7 @@ update_status ModulePlayer::Update()
 	if (rep == 0) {
 		if (!destroyed) {
 			if (!animDone) {
-			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.left == 1)
+			if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT || pad.left == true)
 			{
 				currentAnimation = &leftAnim2;
 				opcio = 'l';
@@ -252,8 +239,7 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else {
-
-				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.right == 1)
+				if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT || pad.right == true)
 				{
 					currentAnimation = &rightAnim2;
 					opcio = 'r';
@@ -268,7 +254,7 @@ update_status ModulePlayer::Update()
 					}
 				}
 				else {
-					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.down == 1)
+					if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT || pad.down == true)
 					{
 						currentAnimation = &downAnim2;
 						opcio = 'd';
@@ -286,7 +272,7 @@ update_status ModulePlayer::Update()
 					}
 
 					else {
-						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == 1)
+						if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT || pad.up == true)
 						{
 							currentAnimation = &upAnim2;
 							opcio = 'u';
@@ -663,7 +649,11 @@ bool ModulePlayer::CleanUp()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
+
+
+
+
+
 
 
 	if (c1->type == Collider::Type::PLAYER) {
@@ -682,8 +672,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					for (uint i = 0; i < MAX_ENEMIES; ++i)
 					{
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesStunned[i]) {
+							App->particles->AddParticle(oneHundredParticle, App->enemies->enemies[i]->position.x, App->enemies->enemies[i]->position.y, Collider::Type::NONE, 0);
+
 							App->audio->PlayFx(snobeeFx, 0);
 							delete App->enemies->enemies[i];
+
 							App->enemies->enemies[i] = nullptr;
 							scoreOneHundred = true;
 							score += 100;

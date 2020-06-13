@@ -26,7 +26,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/score.png");
-	//oneHundredTexture = App->textures->Load("Assets/100points.png");
+	oneHundredTexture = App->textures->Load("Assets/100points.png");
 
 
 	return true;
@@ -91,8 +91,8 @@ update_status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-			//App->render->Blit(oneHundredTexture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			//App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(oneHundredTexture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

@@ -9,6 +9,7 @@
 #include "ModuleFonts.h"
 #include "SceneSnow.h"
 
+
 #include "SDL/include/SDL_scancode.h"
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
@@ -73,8 +74,8 @@ bool SceneIntro::Start()
 
 update_status SceneIntro::Update()
 {
-
-  	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && contador == 3)
+	GamePad& pad = App->input->pads[0];
+  	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && contador == 3 || pad.a == true && contador == 3)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
 
@@ -87,7 +88,9 @@ update_status SceneIntro::Update()
 // Update: draw background
 update_status SceneIntro::PostUpdate()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	GamePad& pad = App->input->pads[0];
+
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
 	{
 		contador++;
 	}
