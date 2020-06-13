@@ -140,6 +140,9 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
+	destroyBlockFx= App->audio->LoadFx("Assets/Audio/Ice Block Destroyed.wav");
+	pushBlockFx= App->audio->LoadFx("Assets/Audio/Push Ice Block.wav");
+
 	texture = App->textures->Load("Assets/Characters.png");
 	++activeTextures; ++totalTextures;
 	currentAnimation = &downAnim;
@@ -390,12 +393,15 @@ update_status ModulePlayer::Update()
 							
 
 							App->tilemap->DestroyBlock(position.x - 16, position.y);
+							App->audio->PlayFx(destroyBlockFx, 0);
+
 							score += 30;
 
 						}
 						else {
 							currentAnimation = &leftShortPushAnim;
 							App->tilemap->MoveBlock(position.x - 16, position.y, LEFT);
+							App->audio->PlayFx(pushBlockFx, 0);
 
 						}
 
@@ -408,6 +414,7 @@ update_status ModulePlayer::Update()
 						if (!App->tilemap->thereIsABlock(position.x - 32, position.y) || !App->tilemap->thereIsAWall(position.x - 32, position.y) || !App->tilemap->thereIsADiamond(position.x - 32, position.y))
 						{
 							App->tilemap->MoveDiamond(position.x - 16, position.y, LEFT);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 					}
 					else if (App->tilemap->thereIsAWall(position.x - 1, position.y))
@@ -427,11 +434,13 @@ update_status ModulePlayer::Update()
 						{
 							currentAnimation = &rightPushAnim;
 							App->tilemap->DestroyBlock(position.x + 16, position.y);
+							App->audio->PlayFx(destroyBlockFx, 0);
 							score += 30;
 						}
 						else {
 							currentAnimation = &rightShortPushAnim;
 							App->tilemap->MoveBlock(position.x + 16, position.y, RIGHT);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 
 					}
@@ -442,6 +451,7 @@ update_status ModulePlayer::Update()
 						if (!App->tilemap->thereIsABlock(position.x + 32, position.y) || !App->tilemap->thereIsAWall(position.x + 32, position.y) || !App->tilemap->thereIsADiamond(position.x + 32, position.y))
 						{
 							App->tilemap->MoveDiamond(position.x + 16, position.y, RIGHT);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 					}
 					else if (App->tilemap->thereIsAWall(position.x + 16, position.y))
@@ -461,11 +471,13 @@ update_status ModulePlayer::Update()
 						{
 							currentAnimation = &upPushAnim;
 							App->tilemap->DestroyBlock(position.x, position.y - 16);
+							App->audio->PlayFx(destroyBlockFx, 0);
 							score += 30;
 						}
 						else {
 							currentAnimation = &upShortPushAnim;
 							App->tilemap->MoveBlock(position.x, position.y - 16, UP);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 					}
 
@@ -476,6 +488,7 @@ update_status ModulePlayer::Update()
 						if (!App->tilemap->thereIsABlock(position.x, position.y - 32) || !App->tilemap->thereIsAWall(position.x, position.y - 32) || !App->tilemap->thereIsADiamond(position.x, position.y - 32))
 						{
 							App->tilemap->MoveDiamond(position.x, position.y - 16, UP);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 					}
 					else if (App->tilemap->thereIsAWall(position.x, position.y - 1))
@@ -498,11 +511,13 @@ update_status ModulePlayer::Update()
 						{
 							currentAnimation = &downPushAnim;
 							App->tilemap->DestroyBlock(position.x, position.y + 16);
+							App->audio->PlayFx(destroyBlockFx, 0);
 							score += 30;
 						}
 						else {
 							currentAnimation = &downShortPushAnim;
 							App->tilemap->MoveBlock(position.x, position.y + 16, DOWN);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 					}
 					else if (App->tilemap->thereIsADiamond(position.x, position.y + 16))
@@ -512,6 +527,7 @@ update_status ModulePlayer::Update()
 						if (!App->tilemap->thereIsABlock(position.x, position.y + 32) || !App->tilemap->thereIsAWall(position.x, position.y + 32) || !App->tilemap->thereIsADiamond(position.x, position.y + 32))
 						{
 							App->tilemap->MoveDiamond(position.x, position.y + 16, DOWN);
+							App->audio->PlayFx(pushBlockFx, 0);
 						}
 					}
 					else if (App->tilemap->thereIsAWall(position.x, position.y + 16))
@@ -617,11 +633,11 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(texture);
 	--totalTextures;
 
-	App->audio->UnloadFx(laserFx);
+	App->audio->UnloadFx(snobeeFx);
+	--totalFx;
+	App->audio->UnloadFx(destroyBlockFx);
 	--totalFx;
 
-	App->audio->UnloadFx(explosionFx);
-	--totalFx;
 
 	App->collisions->RemoveCollider(collider);
 	--totalColliders;

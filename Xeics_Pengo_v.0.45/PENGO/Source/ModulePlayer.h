@@ -82,8 +82,8 @@ public:
 	Collider* collider = nullptr;
 
 	uint snobeeFx = 0;
-
-
+	uint destroyBlockFx = 0;
+	uint pushBlockFx = 0;
 	bool animDone = false;
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
