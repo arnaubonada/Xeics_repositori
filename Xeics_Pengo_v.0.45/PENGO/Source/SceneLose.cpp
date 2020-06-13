@@ -56,6 +56,7 @@ update_status SceneLose::Update()
 		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
 
 		App->tilemap->scenelvl1 = true; 
+
 	}
 	return update_status::UPDATE_CONTINUE;
 }

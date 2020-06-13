@@ -18,115 +18,652 @@
 Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, y)
 {
 	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
+	snobeeSmashedFx = App->audio->LoadFx("Assets/Audio/SnoBee Smashed.wav");
+	snobeeStunnedFx = App->audio->LoadFx("Assets/Audio/SnoBee Stunned.wav");
 
 	typeEnemy = type;
+	if (App->tilemap->scenelvl1 || App->tilemap->scenelvl9) {
+		snoUpAnim.PushBack({ 64, 160, 16, 16 });
+		snoUpAnim.PushBack({ 80, 160, 16, 16 });
+		snoUpAnim.speed = 0.1f;
 
-	// move up
-	snoUpAnim.PushBack({ 64, 160, 16, 16 });
-	snoUpAnim.PushBack({ 80, 160, 16, 16 });
-	snoUpAnim.speed = 0.1f;
-	//currentAnim = &snoUpAnim;
+		snoDownAnim.PushBack({ 0, 160, 16, 16 });
+		snoDownAnim.PushBack({ 16, 160, 16, 16 });
+		snoDownAnim.speed = 0.1f;
 
-	// Move down
-	snoDownAnim.PushBack({ 0, 160, 16, 16 });
-	snoDownAnim.PushBack({ 16, 160, 16, 16 });
-	snoDownAnim.speed = 0.1f;
+		snoLeftAnim.PushBack({ 32, 160, 16, 16 });
+		snoLeftAnim.PushBack({ 48, 160, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
 
-	// move left
-	snoLeftAnim.PushBack({ 32, 160, 16, 16 });
-	snoLeftAnim.PushBack({ 48, 160, 16, 16 });
-	snoLeftAnim.speed = 0.1f;
+		snoRightAnim.PushBack({ 96, 160, 16, 16 });
+		snoRightAnim.PushBack({ 112, 160, 16, 16 });
+		snoRightAnim.speed = 0.1f;
 
-	// Move right
-	snoRightAnim.PushBack({ 96, 160, 16, 16 });
-	snoRightAnim.PushBack({ 112, 160, 16, 16 });
-	snoRightAnim.speed = 0.1f;
+		normalSnoUpAnim.PushBack({ 64, 144, 16, 16 });
+		normalSnoUpAnim.PushBack({ 80, 144, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 0, 144, 16, 16 });
+		normalSnoDownAnim.PushBack({ 16, 144, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 32, 144, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 48, 144, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 96, 144, 16, 16 });
+		normalSnoRightAnim.PushBack({ 112, 144, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 96, 128, 16, 16 });
+		stunnedAnim.PushBack({ 112, 128, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 96, 128, 16, 16 });
+		stunnedBlueAnim.PushBack({ 112, 128, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
 
 
-	// move up
-	snoUpAnim2.PushBack({ 64, 160, 16, 16 });
-	snoUpAnim2.PushBack({ 80, 160, 16, 16 });
-	snoUpAnim2.speed = 0.1f;
-	//currentAnim = &snoUpAnim;
+		dragEnemyLeftAnim.PushBack({ 96, 144, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
 
-	// Move down
-	snoDownAnim2.PushBack({ 0, 160, 16, 16 });
-	snoDownAnim2.PushBack({ 16, 160, 16, 16 });
-	snoDownAnim2.speed = 0.1f;
+		dragEnemyRightAnim.PushBack({ 32, 144, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
 
-	// move left
-	snoLeftAnim2.PushBack({ 32, 160, 16, 16 });
-	snoLeftAnim2.PushBack({ 48, 160, 16, 16 });
-	snoLeftAnim2.speed = 0.1f;
+		dragEnemyUpAnim.PushBack({ 0, 144, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
 
-	// Move right
-	snoRightAnim2.PushBack({ 96, 160, 16, 16 });
-	snoRightAnim2.PushBack({ 112, 160, 16, 16 });
-	snoRightAnim2.speed = 0.1f;
+		dragEnemyDownAnim.PushBack({ 64, 144, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
 
-	normalSnoUpAnim.PushBack({ 64, 144, 16, 16 });
-	normalSnoUpAnim.PushBack({ 80, 144, 16, 16 });
-	normalSnoUpAnim.speed = 0.1f;
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
 
-	normalSnoDownAnim.PushBack({ 0, 144, 16, 16 });
-	normalSnoDownAnim.PushBack({ 16, 144, 16, 16 });
-	normalSnoDownAnim.speed = 0.1f;
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
 
-	normalSnoLeftAnim.PushBack({ 32, 144, 16, 16 });
-	normalSnoLeftAnim.PushBack({ 48, 144, 16, 16 });
-	normalSnoLeftAnim.speed = 0.1f;
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
 
-	normalSnoRightAnim.PushBack({ 96, 144, 16, 16 });
-	normalSnoRightAnim.PushBack({ 112, 144, 16, 16 });
-	normalSnoRightAnim.speed = 0.1f;
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
 
-	stunnedAnim.PushBack({ 96, 128, 16, 16 });
-	stunnedAnim.PushBack({ 112, 128, 16, 16 });
-	stunnedAnim.speed = 0.1f;
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
+	if (App->tilemap->scenelvl2 || App->tilemap->scenelvl10) {
+		snoUpAnim.PushBack({ 192, 160, 16, 16 });
+		snoUpAnim.PushBack({ 208, 160, 16, 16 });
+		snoUpAnim.speed = 0.1f;
+
+		snoDownAnim.PushBack({ 128, 160, 16, 16 });
+		snoDownAnim.PushBack({ 144, 160, 16, 16 });
+		snoDownAnim.speed = 0.1f;
+
+		snoLeftAnim.PushBack({ 160, 160, 16, 16 });
+		snoLeftAnim.PushBack({ 176, 160, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 224, 160, 16, 16 });
+		snoRightAnim.PushBack({ 240, 160, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 192, 144, 16, 16 });
+		normalSnoUpAnim.PushBack({ 208, 144, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 128, 144, 16, 16 });
+		normalSnoDownAnim.PushBack({ 144, 144, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 160, 144, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 176, 144, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 224, 144, 16, 16 });
+		normalSnoRightAnim.PushBack({ 240, 144, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 224, 128, 16, 16 });
+		stunnedAnim.PushBack({ 240, 128, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 224, 128, 16, 16 });
+		stunnedBlueAnim.PushBack({ 240, 128, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
+
+
+		dragEnemyLeftAnim.PushBack({ 224, 144, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
+
+		dragEnemyRightAnim.PushBack({ 160, 144, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
+
+		dragEnemyUpAnim.PushBack({ 128, 144, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
+
+		dragEnemyDownAnim.PushBack({ 192, 144, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
+
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
+	if (App->tilemap->scenelvl3 || App->tilemap->scenelvl11) {
+		snoUpAnim.PushBack({ 320, 160, 16, 16 });
+		snoUpAnim.PushBack({ 336, 160, 16, 16 });
+		snoUpAnim.speed = 0.1f;
+
+		snoDownAnim.PushBack({ 256, 160, 16, 16 });
+		snoDownAnim.PushBack({ 272, 160, 16, 16 });
+		snoDownAnim.speed = 0.1f;
+
+		snoLeftAnim.PushBack({ 288, 160, 16, 16 });
+		snoLeftAnim.PushBack({ 304, 160, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 352, 160, 16, 16 });
+		snoRightAnim.PushBack({ 368, 160, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 320, 144, 16, 16 });
+		normalSnoUpAnim.PushBack({ 336, 144, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 256, 144, 16, 16 });
+		normalSnoDownAnim.PushBack({ 272, 144, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 288, 144, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 308, 144, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 352, 144, 16, 16 });
+		normalSnoRightAnim.PushBack({ 368, 144, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 352, 128, 16, 16 });
+		stunnedAnim.PushBack({ 368, 128, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 352, 128, 16, 16 });
+		stunnedBlueAnim.PushBack({ 368, 128, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
+
+
+		dragEnemyLeftAnim.PushBack({ 352, 144, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
+
+		dragEnemyRightAnim.PushBack({ 288, 144, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
+
+		dragEnemyUpAnim.PushBack({ 256, 144, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
+
+		dragEnemyDownAnim.PushBack({ 320, 144, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
+
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
 	
-	stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
-	stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
-	stunnedBlueAnim.PushBack({ 96, 128, 16, 16 });
-	stunnedBlueAnim.PushBack({ 112, 128, 16, 16 });
-	stunnedBlueAnim.speed = 0.1f;
+	if (App->tilemap->scenelvl4 || App->tilemap->scenelvl12) {
+		snoUpAnim.PushBack({ 448, 160, 16, 16 });
+		snoUpAnim.PushBack({ 464, 160, 16, 16 });
+		snoUpAnim.speed = 0.1f;
+
+		snoDownAnim.PushBack({ 384, 160, 16, 16 });
+		snoDownAnim.PushBack({ 400, 160, 16, 16 });
+		snoDownAnim.speed = 0.1f;
+
+		snoLeftAnim.PushBack({ 416, 160, 16, 16 });
+		snoLeftAnim.PushBack({ 432, 160, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 480, 160, 16, 16 });
+		snoRightAnim.PushBack({ 496, 160, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 448, 144, 16, 16 });
+		normalSnoUpAnim.PushBack({ 464, 144, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 384, 144, 16, 16 });
+		normalSnoDownAnim.PushBack({ 400, 144, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 416, 144, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 432, 144, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 480, 144, 16, 16 });
+		normalSnoRightAnim.PushBack({ 496, 144, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 480, 128, 16, 16 });
+		stunnedAnim.PushBack({ 496, 128, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 480, 128, 16, 16 });
+		stunnedBlueAnim.PushBack({ 496, 128, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
 
 
-	dragEnemyLeftAnim.PushBack({ 96, 144, 16, 16 });
-	dragEnemyLeftAnim.speed = 0.1f;
+		dragEnemyLeftAnim.PushBack({ 480, 144, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
 
-	dragEnemyRightAnim.PushBack({ 32, 144, 16, 16 });
-	dragEnemyRightAnim.speed = 0.1f;
+		dragEnemyRightAnim.PushBack({ 416, 144, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
 
-	dragEnemyUpAnim.PushBack({ 0, 144, 16, 16 });
-	dragEnemyUpAnim.speed = 0.1f;
+		dragEnemyUpAnim.PushBack({ 384, 144, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
 
-	dragEnemyDownAnim.PushBack({ 64, 144, 16, 16 });
-	dragEnemyDownAnim.speed = 0.1f;
+		dragEnemyDownAnim.PushBack({ 448, 144, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
 
-	firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
-	firstSmashLeftAnim.speed = 0.1f;
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
+	if (App->tilemap->scenelvl5 || App->tilemap->scenelvl13) {
+		snoUpAnim.PushBack({ 64, 240, 16, 16 });
+		snoUpAnim.PushBack({ 80, 240, 16, 16 });
+		snoUpAnim.speed = 0.1f;
+
+		snoDownAnim.PushBack({ 0, 240, 16, 16 });
+		snoDownAnim.PushBack({ 16, 240, 16, 16 });
+		snoDownAnim.speed = 0.1f;
+
+		snoLeftAnim.PushBack({ 32, 240, 16, 16 });
+		snoLeftAnim.PushBack({ 48, 240, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 96, 240, 16, 16 });
+		snoRightAnim.PushBack({ 112, 240, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 64, 224, 16, 16 });
+		normalSnoUpAnim.PushBack({ 80, 224, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 0, 224, 16, 16 });
+		normalSnoDownAnim.PushBack({ 16, 224, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 32, 224, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 48, 224, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 96, 224, 16, 16 });
+		normalSnoRightAnim.PushBack({ 112, 224, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 96, 208, 16, 16 });
+		stunnedAnim.PushBack({ 112, 208, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 96, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 112, 208, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
+
+
+		dragEnemyLeftAnim.PushBack({ 96, 224, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
+
+		dragEnemyRightAnim.PushBack({ 32, 224, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
+
+		dragEnemyUpAnim.PushBack({ 0, 224, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
+
+		dragEnemyDownAnim.PushBack({ 64, 224, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
+
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
+	if (App->tilemap->scenelvl6 || App->tilemap->scenelvl14) {
+		snoUpAnim.PushBack({ 192, 240, 16, 16 });
+		snoUpAnim.PushBack({ 208, 240, 16, 16 });
+		snoUpAnim.speed = 0.1f;
+
+		snoDownAnim.PushBack({ 128, 240, 16, 16 });
+		snoDownAnim.PushBack({ 144, 240, 16, 16 });
+		snoDownAnim.speed = 0.1f;
+
+		snoLeftAnim.PushBack({ 160, 240, 16, 16 });
+		snoLeftAnim.PushBack({ 176, 240, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 224, 240, 16, 16 });
+		snoRightAnim.PushBack({ 240, 240, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 192, 224, 16, 16 });
+		normalSnoUpAnim.PushBack({ 208, 224, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 128, 224, 16, 16 });
+		normalSnoDownAnim.PushBack({ 144, 224, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 160, 224, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 176, 224, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 224, 224, 16, 16 });
+		normalSnoRightAnim.PushBack({ 240, 224, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 224, 208, 16, 16 });
+		stunnedAnim.PushBack({ 240, 208, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 224, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 240, 208, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
+
+
+		dragEnemyLeftAnim.PushBack({ 224, 224, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
+
+		dragEnemyRightAnim.PushBack({ 160, 224, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
+
+		dragEnemyUpAnim.PushBack({ 128, 224, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
+
+		dragEnemyDownAnim.PushBack({ 192, 224, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
+
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
+	if (App->tilemap->scenelvl7 || App->tilemap->scenelvl15) {
+		snoUpAnim.PushBack({ 320, 240, 16, 16 });
+		snoUpAnim.PushBack({ 336, 240, 16, 16 });
+		snoUpAnim.speed = 0.1f;
+
+		snoDownAnim.PushBack({ 256, 240, 16, 16 });
+		snoDownAnim.PushBack({ 272, 240, 16, 16 });
+		snoDownAnim.speed = 0.1f;
+
+		snoLeftAnim.PushBack({ 288, 240, 16, 16 });
+		snoLeftAnim.PushBack({ 304, 240, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 352, 240, 16, 16 });
+		snoRightAnim.PushBack({ 368, 240, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 320, 224, 16, 16 });
+		normalSnoUpAnim.PushBack({ 336, 224, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 256, 224, 16, 16 });
+		normalSnoDownAnim.PushBack({ 272, 224, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 288, 224, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 308, 224, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 352, 224, 16, 16 });
+		normalSnoRightAnim.PushBack({ 368, 224, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 352, 208, 16, 16 });
+		stunnedAnim.PushBack({ 368, 208, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 352, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 368, 208, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
+
+
+		dragEnemyLeftAnim.PushBack({ 352, 224, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
+
+		dragEnemyRightAnim.PushBack({ 288, 224, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
+
+		dragEnemyUpAnim.PushBack({ 256, 224, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
+
+		dragEnemyDownAnim.PushBack({ 320, 224, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
+
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
 	
-	firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
-	firstSmashRightAnim.speed = 0.1f;
-	
-	firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
-	firstSmashUpAnim.speed = 0.1f;
-	
-	firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
-	firstSmashDownAnim.speed = 0.1f;
-	
-	secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
-	secondSmashLeftAnim.speed = 0.1f;
+	if (App->tilemap->scenelvl8) {
+		snoUpAnim.PushBack({ 448, 240, 16, 16 });
+		snoUpAnim.PushBack({ 464, 240, 16, 16 });
+		snoUpAnim.speed = 0.1f;
 
-	secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
-	secondSmashRightAnim.speed = 0.1f;
-	
-	secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
-	secondSmashUpAnim.speed = 0.1f;
-	
-	secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
-	secondSmashDownAnim.speed = 0.1f;
+		snoDownAnim.PushBack({ 384, 240, 16, 16 });
+		snoDownAnim.PushBack({ 400, 240, 16, 16 });
+		snoDownAnim.speed = 0.1f;
 
+		snoLeftAnim.PushBack({ 416, 240, 16, 16 });
+		snoLeftAnim.PushBack({ 432, 240, 16, 16 });
+		snoLeftAnim.speed = 0.1f;
+
+		snoRightAnim.PushBack({ 480, 240, 16, 16 });
+		snoRightAnim.PushBack({ 496, 240, 16, 16 });
+		snoRightAnim.speed = 0.1f;
+
+		normalSnoUpAnim.PushBack({ 448, 224, 16, 16 });
+		normalSnoUpAnim.PushBack({ 464, 224, 16, 16 });
+		normalSnoUpAnim.speed = 0.1f;
+
+		normalSnoDownAnim.PushBack({ 384, 224, 16, 16 });
+		normalSnoDownAnim.PushBack({ 400, 224, 16, 16 });
+		normalSnoDownAnim.speed = 0.1f;
+
+		normalSnoLeftAnim.PushBack({ 416, 224, 16, 16 });
+		normalSnoLeftAnim.PushBack({ 432, 224, 16, 16 });
+		normalSnoLeftAnim.speed = 0.1f;
+
+		normalSnoRightAnim.PushBack({ 480, 224, 16, 16 });
+		normalSnoRightAnim.PushBack({ 496, 224, 16, 16 });
+		normalSnoRightAnim.speed = 0.1f;
+
+		stunnedAnim.PushBack({ 480, 208, 16, 16 });
+		stunnedAnim.PushBack({ 496, 208, 16, 16 });
+		stunnedAnim.speed = 0.1f;
+
+		stunnedBlueAnim.PushBack({ 608, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 624, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 480, 208, 16, 16 });
+		stunnedBlueAnim.PushBack({ 496, 208, 16, 16 });
+		stunnedBlueAnim.speed = 0.1f;
+
+
+		dragEnemyLeftAnim.PushBack({ 480, 224, 16, 16 });
+		dragEnemyLeftAnim.speed = 0.1f;
+
+		dragEnemyRightAnim.PushBack({ 416, 224, 16, 16 });
+		dragEnemyRightAnim.speed = 0.1f;
+
+		dragEnemyUpAnim.PushBack({ 384, 224, 16, 16 });
+		dragEnemyUpAnim.speed = 0.1f;
+
+		dragEnemyDownAnim.PushBack({ 448, 224, 16, 16 });
+		dragEnemyDownAnim.speed = 0.1f;
+
+		firstSmashLeftAnim.PushBack({ 96, 192, 16, 16 });
+		firstSmashLeftAnim.speed = 0.1f;
+
+		firstSmashRightAnim.PushBack({ 32, 192, 16, 16 });
+		firstSmashRightAnim.speed = 0.1f;
+
+		firstSmashUpAnim.PushBack({ 0, 192, 16, 16 });
+		firstSmashUpAnim.speed = 0.1f;
+
+		firstSmashDownAnim.PushBack({ 64, 192, 16, 16 });
+		firstSmashDownAnim.speed = 0.1f;
+
+		secondSmashLeftAnim.PushBack({ 112, 192, 16, 16 });
+		secondSmashLeftAnim.speed = 0.1f;
+
+		secondSmashRightAnim.PushBack({ 48, 192, 16, 16 });
+		secondSmashRightAnim.speed = 0.1f;
+
+		secondSmashUpAnim.PushBack({ 16, 192, 16, 16 });
+		secondSmashUpAnim.speed = 0.1f;
+
+		secondSmashDownAnim.PushBack({ 80, 192, 16, 16 });
+		secondSmashDownAnim.speed = 0.1f;
+	}
 	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
 	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
 	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
@@ -189,6 +726,14 @@ void Enemy_SnoBee::Update()
 						position.x--;
 					}*/
 					position.x--;
+					if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+						if (App->tilemap->thereIsABlock(position.x - 1, position.y))
+						{
+							App->tilemap->DestroyBlock(position.x - 16, position.y);
+							
+						}
+
+					}
 					if (position.x == finalEnemyPositionX) {
 						dirEnemy = NOMOVE;
 
@@ -210,6 +755,13 @@ void Enemy_SnoBee::Update()
 						position.x++;
 					}*/
 					position.x++;
+					if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+						if (App->tilemap->thereIsABlock(position.x + 16, position.y))
+						{
+							App->tilemap->DestroyBlock(position.x + 16, position.y);
+							
+						}
+					}
 					if (position.x == finalEnemyPositionX) {
 						dirEnemy = NOMOVE;
 					}
@@ -228,6 +780,13 @@ void Enemy_SnoBee::Update()
 						position.y--;
 					}*/
 					position.y--;
+					if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+					if (App->tilemap->thereIsABlock(position.x, position.y - 1))
+					{
+						App->tilemap->DestroyBlock(position.x, position.y - 16);
+						
+					}
+					}
 					if (position.y == finalEnemyPositionY) {
 						dirEnemy = NOMOVE;
 					}
@@ -246,6 +805,15 @@ void Enemy_SnoBee::Update()
 						position.y++;
 					}*/
 					position.y++;
+					if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+						if (App->tilemap->thereIsABlock(position.x, position.y + 16))
+						{
+							App->tilemap->DestroyBlock(position.x, position.y + 16);
+							
+						}
+
+					
+					}
 					if (position.y == finalEnemyPositionY) {
 						dirEnemy = NOMOVE;
 					}
@@ -264,7 +832,7 @@ void Enemy_SnoBee::Update()
 
 		if (App->tilemap->pushLeft) {
 			if (position.x == 16) {
-				currentAnim = &stunnedAnim;
+				
 				stunnedEnemy = true;
 				for (uint i = 0; i < MAX_ENEMIES; ++i)
 				{
@@ -274,18 +842,22 @@ void Enemy_SnoBee::Update()
 							App->enemies->enemiesStunned[i] = true;
 							if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-
+								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
 							{
+								currentAnim = &stunnedAnim;
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-
+								App->audio->PlayFx(snobeeStunnedFx, 0);
+								timeStunned = 1;
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 							App->collisions->RemoveCollider(collider);
@@ -293,7 +865,7 @@ void Enemy_SnoBee::Update()
 						}
 					}
 				}
-				timeStunned = 1;
+				
 				App->scene->timescore = 1;
 
 				App->scene->posEnemyX = position.x;
@@ -315,6 +887,7 @@ void Enemy_SnoBee::Update()
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
+								App->audio->PlayFx(snobeeStunnedFx, 0);
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
@@ -322,6 +895,7 @@ void Enemy_SnoBee::Update()
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
+								App->audio->PlayFx(snobeeStunnedFx, 0);
 
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -353,6 +927,7 @@ void Enemy_SnoBee::Update()
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
+								App->audio->PlayFx(snobeeStunnedFx, 0);
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
@@ -360,6 +935,7 @@ void Enemy_SnoBee::Update()
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
+								App->audio->PlayFx(snobeeStunnedFx, 0);
 
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -391,6 +967,7 @@ void Enemy_SnoBee::Update()
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
+								App->audio->PlayFx(snobeeStunnedFx, 0);
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
@@ -398,6 +975,7 @@ void Enemy_SnoBee::Update()
 								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
+								App->audio->PlayFx(snobeeStunnedFx, 0);
 
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -546,6 +1124,9 @@ void Enemy_SnoBee::enemyMovement()
 	if (App->tilemap->spaceToWall(position.x, position.y, dirEnemy) != 0) {
 		EnemyToWall = rand() % App->tilemap->spaceToWall(position.x, position.y, dirEnemy);
 	}
+	else {
+		EnemyToWall = 0;
+	}
 
 	LOG("dirEnemy: %d", dirEnemy);
 	
@@ -560,31 +1141,28 @@ void Enemy_SnoBee::enemyMovement()
 
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoLeftAnim;
-			}
-			if (position.x % 16 == 0) {
-				finalEnemyPositionX = position.x - (EnemyToBlock * 16);
-				dirEnemy = LEFT;
+				if (position.x % 16 == 0) {
+					finalEnemyPositionX = position.x - (EnemyToBlock * 16);
+					dirEnemy = LEFT;
+				}
 			}
 		}
-		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-			currentAnim = &snoLeftAnim2;
-
-			if (App->tilemap->thereIsABlock(position.x - 1, position.y))
-			{
-
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoLeftAnim;
+				if (position.x % 16 == 0) {
+					finalEnemyPositionX = position.x - (EnemyToWall * 16);
+					dirEnemy = LEFT;
+				}
+				if (App->tilemap->thereIsABlock(position.x - 1, position.y))
+				{
 				App->tilemap->DestroyBlock(position.x - 16, position.y);
 				if (App->tilemap->destroyedAnimBlock) {
-					currentAnim = &snoLeftAnim2;
-
+					currentAnim = &snoLeftAnim;
 				}
 			}
 
-			/*if (position.x % 16 == 0) {
-			finalEnemyPositionX = position.x - (EnemyToWall * 16);
-			dirEnemy = LEFT;
-			}*/
-
 		}
+		
 
 	}
 	else if (dirEnemy == RIGHT) {
@@ -592,30 +1170,30 @@ void Enemy_SnoBee::enemyMovement()
 		if (App->tilemap->isWalkable(position.x + 16, position.y)) {
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoRightAnim;
-			}
-			if (position.x % 16 == 0) {
-				finalEnemyPositionX = position.x + (EnemyToBlock * 16);
-				dirEnemy = RIGHT;
+				if (position.x % 16 == 0) {
+					finalEnemyPositionX = position.x + (EnemyToBlock * 16);
+					dirEnemy = RIGHT;
+				}
+
 			}
 		}
-		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-			currentAnim = &snoRightAnim2;
-
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+			currentAnim = &snoRightAnim;
+			if (position.x % 16 == 0) {
+				finalEnemyPositionX = position.x + (EnemyToWall * 16);
+				dirEnemy = RIGHT;
+						}
 			if (App->tilemap->thereIsABlock(position.x + 16, position.y))
 			{
 				App->tilemap->DestroyBlock(position.x + 16, position.y);
 				if (App->tilemap->destroyedAnimBlock) {
-					currentAnim = &snoRightAnim2;
+					currentAnim = &snoRightAnim;
 
 				}
 			}
-
-			/*if (position.x % 16 == 0) {
-				finalEnemyPositionX = position.x - (EnemyToWall * 16);
-				dirEnemy = RIGHT;
-			}*/
-
+				
 		}
+		
 	}
 	else if (dirEnemy == UP) {
 		//dirEnemy = UP;
@@ -623,63 +1201,66 @@ void Enemy_SnoBee::enemyMovement()
 
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoUpAnim;
+
+				if (position.y % 16 == 0) {
+					finalEnemyPositionY = position.y - (EnemyToBlock * 16);
+					dirEnemy = UP;
+				}
 			}
+		}
+		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+			currentAnim = &snoUpAnim;
 			if (position.y % 16 == 0) {
-				finalEnemyPositionY = position.y - (EnemyToBlock * 16);
+				finalEnemyPositionY = position.y - (EnemyToWall * 16);
 				dirEnemy = UP;
 			}
-			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-				currentAnim = &snoUpAnim2;
+			if (App->tilemap->thereIsABlock(position.x, position.y - 1))
+			{
+				App->tilemap->DestroyBlock(position.x, position.y - 16);
+				if (App->tilemap->destroyedAnimBlock) {
+					currentAnim = &snoUpAnim;
 
-				if (App->tilemap->thereIsABlock(position.x, position.y - 1))
-				{
-					App->tilemap->DestroyBlock(position.x, position.y - 16);
-					if (App->tilemap->destroyedAnimBlock) {
-						currentAnim = &snoUpAnim2;
-
-					}
 				}
-
-				/*if (position.x % 16 == 0) {
-					finalEnemyPositionX = position.x - (EnemyToWall * 16);
-					dirEnemy = UP;
-				}*/
-
 			}
 
+
 		}
-	}
+			}
+
+		
+	
 	else if (dirEnemy == DOWN) {
 		//dirEnemy = DOWN;
 		if (App->tilemap->isWalkable(position.x, position.y + 16)) {
 
 			if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL) {
 				currentAnim = &normalSnoDownAnim;
-			}
-			if (position.y % 16 == 0) {
-				finalEnemyPositionY = position.y + (EnemyToBlock * 16);
-				dirEnemy = DOWN;
-			}
-		}
-		if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
-			currentAnim = &snoDownAnim2;
-
-			if (App->tilemap->thereIsABlock(position.x, position.y + 16))
-			{
-				App->tilemap->DestroyBlock(position.x, position.y + 16);
-				if (App->tilemap->destroyedAnimBlock) {
-					currentAnim = &snoDownAnim2;
-
+				if (position.y % 16 == 0) {
+					finalEnemyPositionY = position.y + (EnemyToBlock * 16);
+					dirEnemy = DOWN;
 				}
+
 			}
-
-			/*if (position.x % 16 == 0) {
-				finalEnemyPositionX = position.x - (EnemyToWall * 16);
-				dirEnemy = DOWN;
-			}*/
-
 		}
+			if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER) {
+				currentAnim = &snoDownAnim;
+				if (position.y % 16 == 0) {
+					finalEnemyPositionY = position.y + (EnemyToWall * 16);
+					dirEnemy = DOWN;
+				}
 
+				if (App->tilemap->thereIsABlock(position.x, position.y + 16))
+				{
+					App->tilemap->DestroyBlock(position.x, position.y + 16);
+					if (App->tilemap->destroyedAnimBlock) {
+						currentAnim = &snoDownAnim;
+
+					}
+				}
+
+				
+			
+		}
 
 
 	}
@@ -728,6 +1309,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -763,6 +1345,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -796,6 +1379,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+							App->audio->PlayFx(snobeeSmashedFx, 0);
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -828,6 +1412,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 					}
 					if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+						App->audio->PlayFx(snobeeSmashedFx, 0);
 						delete App->enemies->enemies[i];
 						App->enemies->enemies[i] = nullptr;
 						App->scene->enemiesAlive--;
@@ -862,11 +1447,13 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 									}
 								}
 								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+									App->audio->PlayFx(snobeeSmashedFx, 0);
 									delete App->enemies->enemies[i];
 									App->enemies->enemies[i] = nullptr;
 									App->scene->enemiesAlive--;
 									App->enemies->enemiesSmashed[i] = false;
 									smashedEnemy = false;
+
 									
 								
 						}
@@ -897,6 +1484,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 								}
 							}
 								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+									App->audio->PlayFx(snobeeSmashedFx, 0);
 									delete App->enemies->enemies[i];
 									App->enemies->enemies[i] = nullptr;
 									App->scene->enemiesAlive--;
@@ -930,6 +1518,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 								}
 							}
 								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+									App->audio->PlayFx(snobeeSmashedFx, 0);
 									delete App->enemies->enemies[i];
 									App->enemies->enemies[i] = nullptr;
 									App->scene->enemiesAlive--;
@@ -962,6 +1551,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 								}
 							}
 								if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+									App->audio->PlayFx(snobeeSmashedFx, 0);
 									delete App->enemies->enemies[i];
 									App->enemies->enemies[i] = nullptr;
 									App->scene->enemiesAlive--;
@@ -1109,3 +1699,16 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 		}
 	}
 
+
+	bool Enemy_SnoBee::CleanUp()
+	{
+		App->audio->UnloadFx(snobeeFx);
+		App->audio->UnloadFx(snobeeSmashedFx);
+		App->audio->UnloadFx(snobeeStunnedFx);
+
+
+
+
+
+		return true;
+	}

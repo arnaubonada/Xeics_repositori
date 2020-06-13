@@ -799,7 +799,6 @@ update_status ModuleTileMap::Update()
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
 		else {
-
 			destroyedAnimBlock = true;
 			//blockDestrAnim.Reset();
 			tilemap[blockY][blockX] = TILE_NOBLOCK;

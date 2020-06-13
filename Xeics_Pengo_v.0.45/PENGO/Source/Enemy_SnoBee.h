@@ -18,9 +18,11 @@ public:
 
 	// The enemy is going to perform a sinusoidal movement
 	void Update() override;
-
+	bool CleanUp();
 
 	uint snobeeFx = 0;
+	uint snobeeSmashedFx = 0;
+	uint snobeeStunnedFx = 0;
 
 	//uint enemiesAlive = 0;
 
@@ -44,11 +46,6 @@ public:
 	Animation snoDownAnim;
 	Animation snoLeftAnim;
 	Animation snoRightAnim;
-
-	Animation snoUpAnim2;
-	Animation snoDownAnim2;
-	Animation snoLeftAnim2;
-	Animation snoRightAnim2;
 
 	Animation normalSnoUpAnim;
 	Animation normalSnoDownAnim;
