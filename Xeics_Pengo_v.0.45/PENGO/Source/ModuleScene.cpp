@@ -87,13 +87,12 @@ bool ModuleScene::Start()
 	if (lvlCont == i && App->tilemap->scenelvl1 == true) {
 		if (lvlRep == 0) {
 
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 208);		
 
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
-
-
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+		
 		}
 		else if (lvlRep > 0) {
 
@@ -110,9 +109,6 @@ bool ModuleScene::Start()
 				}
 				else if (j == 1) {
 
-					
-
-
 					App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
 					enemiesAlive--;
 				}
@@ -128,13 +124,12 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl2 == true) {
 		if (lvlRep == 0) {
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 176);
+		
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
 
 		}
 		else if (lvlRep > 0) {
@@ -167,11 +162,13 @@ bool ModuleScene::Start()
 	else if (lvlCont == i && App->tilemap->scenelvl3 == true) {
 		if (lvlRep == 0) {
 
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 48);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 112);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+		
 
 
 		}
@@ -204,15 +201,13 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl4 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
-
-
+						
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 112);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -244,17 +239,15 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl5 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+		
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 176);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 240);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -290,15 +283,14 @@ bool ModuleScene::Start()
 	else if (lvlCont == i && App->tilemap->scenelvl6 == true) {
 		if (lvlRep == 0) {
 
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 240);
 
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 208);
 
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 112);
 
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
-
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -333,17 +325,15 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl7 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
+		
 		}
 		else if (lvlRep > 0) {
 
@@ -378,17 +368,15 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl8 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
-
-
+		
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 208);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -423,16 +411,14 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl9 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 48);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 240);		
 
 		}
 		else if (lvlRep > 0) {
@@ -468,16 +454,14 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl10 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 48);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
 
 		}
 		else if (lvlRep > 0) {
@@ -518,17 +502,15 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl11 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
+		
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 112);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 240);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -568,17 +550,15 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl12 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 48);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 144);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -618,17 +598,15 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl13 == true) {
 		if (lvlRep == 0) {
-
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 48);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -669,16 +647,14 @@ bool ModuleScene::Start()
 	else if (lvlCont == i && App->tilemap->scenelvl14 == true) {
 		if (lvlRep == 0) {
 
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 176);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 240);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -719,16 +695,14 @@ bool ModuleScene::Start()
 	else if (lvlCont == i && App->tilemap->scenelvl15 == true) {
 		if (lvlRep == 0) {
 
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 208, 32);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 16, 256);
-
-
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 144);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
+			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 128);
+			
 		}
 		else if (lvlRep > 0) {
 
@@ -845,378 +819,956 @@ update_status ModuleScene::Update()
 	}
 
 
-	if (App->tilemap->scenelvl1 == true) {   //4
+	if (App->tilemap->scenelvl1 == true) {   //1
+
+
+		if (App->tilemap->tilemap[12][6] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[12][6] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][10] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[12][12] == TILE_NOBLOCK;
+		}
+
 
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
+			}
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 144);
+			}
 		}
 
 
 	}
-	else if (App->tilemap->scenelvl2 == true) {   //4
+	else if (App->tilemap->scenelvl2 == true) {   //2
+
+		if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][6] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[14][10] == TILE_NOBLOCK;
+		}
+
 
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
+			}			
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
+			}
 		}
 
 
 	}
-	else if (App->tilemap->scenelvl3 == true) {   //4
+	else if (App->tilemap->scenelvl3 == true) {   //3
+
+		if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[2][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][12] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[12][12] == TILE_NOBLOCK;
+		}
 
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
+			}
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 112);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		if (enemiesAlive == 2 && cont == 3) {
+			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			}
 		}
 
 	}
 	else if (App->tilemap->scenelvl4 == true) {   //4
 
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 80);
+			}
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 48);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		if (enemiesAlive == 2 && cont == 3) {
+			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
+			}
 		}
 
 
 	}
 	else if (App->tilemap->scenelvl5 == true) {   //5
+		
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[14][10] == TILE_NOBLOCK;
+		}
 
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+			}
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		if (enemiesAlive == 2 && cont == 3) {
+			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 32);
+			}
 		}
 
 	}
 	else if (App->tilemap->scenelvl6 == true) {   //6
+		
+		if (App->tilemap->tilemap[14][6] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[14][6] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[12][6] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[12][6] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][10] == TILE_NOBLOCK;
+		}
 
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
+			}
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		if (enemiesAlive == 2 && cont == 3) {
+			if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl7 == true) {   //7
 
+		if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 112);
+			}
 			cont++;
 		}
 		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 144);
+		if (enemiesAlive == 2 && cont == 2) {
+			if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		if (enemiesAlive == 2 && cont == 3) {
+			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl8 == true) {   //8
 
+		if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][10] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[12][12] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 144);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 112);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[12][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 208);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);		
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 176);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl9 == true) {   //9
 
+		if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[2][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[12][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[14][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[14][4] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 144);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 176);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl10 == true) { //10
 
+		if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[2][10] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 80);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[14][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 240);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl11 == true) { //11
 
+		if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][6] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][12] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[14][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[14][2] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 144);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl12 == true) {  //12
 
+		if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[2][6] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[2][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][10] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 48);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 48);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 144);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);	
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+		else if (enemiesAlive == 3 && cont == 6) {
+			if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 176);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		else if (enemiesAlive == 3 && cont == 7) {
+			if (App->tilemap->tilemap[14][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 240);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl13 == true) {  //13
 
+		if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[2][10] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 80);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 176);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[14][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 224);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+		else if (enemiesAlive == 3 && cont == 6) {
+			if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		else if (enemiesAlive == 3 && cont == 7) {
+			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl14 == true) {  //14
 
+		if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[14][10] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+		else if (enemiesAlive == 3 && cont == 6) {
+			if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 80);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		else if (enemiesAlive == 3 && cont == 7) {
+			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
+			}
 		}
 	}
 	else if (App->tilemap->scenelvl15 == true) { //15
 
+		if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[4][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][2] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+		}
+		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
+
+			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
+			}
 			cont++;
 		}
 		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+			if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 0) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
+		if (enemiesAlive == 2 && cont == 4) {
+			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
+			}
 			cont++;
 		}
-		if (enemiesAlive == 2 && cont == 1) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
+		if (enemiesAlive == 2 && cont == 5) {
+			if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[4][6] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 80);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
+		else if (enemiesAlive == 3 && cont == 6) {
+			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
+			}
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 3) {
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
+		else if (enemiesAlive == 3 && cont == 7) {
+			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
+
+				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
+			}
 		}
 	}
 
