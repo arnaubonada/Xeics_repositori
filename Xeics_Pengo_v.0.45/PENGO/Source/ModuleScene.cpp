@@ -1448,7 +1448,7 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(scTexture);
 	App->textures->Unload(oneTexture);
 
-
+	App->textures->Unload(bgTexture);
 
 
 

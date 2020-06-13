@@ -107,3 +107,13 @@ update_status SceneLose::PostUpdate()
 
 	return update_status::UPDATE_CONTINUE;
 }
+
+bool SceneLose::CleanUp()
+{
+
+	App->textures->Unload(bgTexture);
+	App->fonts->UnLoad(whiteFont);
+
+
+	return true;
+}

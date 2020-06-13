@@ -627,8 +627,9 @@ bool SceneWin::CleanUp()
 	App->textures->Unload(bgTexture);
 	App->textures->Unload(scTexture);
 	App->textures->Unload(oneTexture);
-
-
+	App->textures->Unload(texturePengo);
+	App->textures->Unload(texturePengoEstampadaEsquerra);
+	App->audio->UnloadFx(timeBonusFx);
 
 
 	return true;
