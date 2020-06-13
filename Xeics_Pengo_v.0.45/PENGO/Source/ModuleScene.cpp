@@ -678,95 +678,89 @@ update_status ModuleScene::Update()
 
 	if (App->tilemap->scenelvl4 == true) {   //4
 
-		if (enemiesAlive == 3 && cont == 0) {
+		if (enemiesAlive == 2 && cont == 0) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 1) {
+		if (enemiesAlive == 2 && cont == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
-			cont++;
 		}
 
 
 	}
 	else if (App->tilemap->scenelvl5 == true) {   //5
 
-		if (enemiesAlive == 3 && cont == 0) {
+		if (enemiesAlive == 2 && cont == 0) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 1) {
+		else if (enemiesAlive == 2 && cont == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
-			cont++;
 		}
 
 	}
 	else if (App->tilemap->scenelvl6 == true) {   //6
 
-		if (enemiesAlive == 3 && cont == 0) {
+		if (enemiesAlive == 2 && cont == 0) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 1) {
+		else if (enemiesAlive == 2 && cont == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
+		else if (enemiesAlive == 2 && cont == 2) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl7 == true) {   //7
 
-		if (enemiesAlive == 3 && cont == 0) {
+		if (enemiesAlive == 2 && cont == 0) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 1) {
+		else if (enemiesAlive == 2 && cont == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
+		else if (enemiesAlive == 2 && cont == 2) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl8 == true) {   //8
 
-		if (enemiesAlive == 3 && cont == 0) {
+		if (enemiesAlive == 2 && cont == 0) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 1) {
+		else if (enemiesAlive == 2 && cont == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
+		else if (enemiesAlive == 2 && cont == 2) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 3) {
+		else if (enemiesAlive == 2 && cont == 3) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl9 == true) {   //9
 
-		if (enemiesAlive == 3 && cont == 0) {
+		if (enemiesAlive == 2 && cont == 0) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 1) {
+		else if (enemiesAlive == 2 && cont == 1) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 2) {
+		else if (enemiesAlive == 2 && cont == 2) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 256);
 			cont++;
 		}
-		else if (enemiesAlive == 3 && cont == 3) {
+		else if (enemiesAlive == 2 && cont == 3) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 32);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl10 == true) { //10
@@ -789,7 +783,6 @@ update_status ModuleScene::Update()
 		}
 		else if (enemiesAlive == 3 && cont == 4) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl11 == true) { //11
@@ -812,7 +805,6 @@ update_status ModuleScene::Update()
 		}
 		else if (enemiesAlive == 3 && cont == 4) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 32);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl12 == true) {  //12
@@ -839,7 +831,6 @@ update_status ModuleScene::Update()
 		}
 		else if (enemiesAlive == 3 && cont == 5) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 16, 256);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl13 == true) {  //13
@@ -870,7 +861,6 @@ update_status ModuleScene::Update()
 		}
 		else if (enemiesAlive == 3 && cont == 5) {
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 208, 256);
-			cont++;
 		}
 	}
 	else if (App->tilemap->scenelvl14 == true) {  //14
