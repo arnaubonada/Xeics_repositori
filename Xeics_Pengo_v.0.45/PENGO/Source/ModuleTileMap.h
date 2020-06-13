@@ -188,6 +188,9 @@ public:
 	SDL_Rect source;
 	SDL_Rect destination;
 
+
+	uint stoppedBlockFx = 0;
+
 	Collider* collider = nullptr;
 	Collider* colliderDiamond = nullptr;
 

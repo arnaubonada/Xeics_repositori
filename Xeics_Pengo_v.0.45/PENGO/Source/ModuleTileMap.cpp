@@ -9,7 +9,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModuleScene.h"
-
+#include "ModuleAudio.h"
 #include <stdlib.h>
 
 #include <SDL/include/SDL.h>
@@ -283,6 +283,8 @@ bool ModuleTileMap::Start()
 	texture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 
+	stoppedBlockFx = App->audio->LoadFx("Assets/Audio/Block Stopped.wav");
+	
 	noBlock = App->textures->Load("Assets/noBlock.png");
 	Block = App->textures->Load("Assets/Block.png");
 	Diamond = App->textures->Load("Assets/Diamond.png");
@@ -848,6 +850,7 @@ update_status ModuleTileMap::Update()
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 					App->collisions->RemoveCollider(collider);
+					App->audio->PlayFx(stoppedBlockFx, 0);
 				}
 			}
 
@@ -860,6 +863,7 @@ update_status ModuleTileMap::Update()
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 					App->collisions->RemoveCollider(collider);
+					App->audio->PlayFx(stoppedBlockFx, 0);
 				}
 			}
 
@@ -872,6 +876,7 @@ update_status ModuleTileMap::Update()
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 					App->collisions->RemoveCollider(collider);
+					App->audio->PlayFx(stoppedBlockFx, 0);
 				}
 			}
 
@@ -884,6 +889,7 @@ update_status ModuleTileMap::Update()
 					dirBlock = NOMOVE;
 					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
 					App->collisions->RemoveCollider(collider);
+					App->audio->PlayFx(stoppedBlockFx, 0);
 				}
 			}
 			collider->SetPos(positionBlock.x, positionBlock.y);
@@ -1118,7 +1124,7 @@ bool ModuleTileMap::CleanUp()
 	App->textures->Unload(Block);
 	App->textures->Unload(Diamond);
 
-
+	App->audio->UnloadFx(stoppedBlockFx);
 
 	return true;
 }

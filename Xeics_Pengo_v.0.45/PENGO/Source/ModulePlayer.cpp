@@ -142,6 +142,7 @@ bool ModulePlayer::Start()
 	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
 	destroyBlockFx= App->audio->LoadFx("Assets/Audio/Ice Block Destroyed.wav");
 	pushBlockFx= App->audio->LoadFx("Assets/Audio/Push Ice Block.wav");
+	pushWallFx= App->audio->LoadFx("Assets/Audio/Push Outside Walls.wav");
 
 	texture = App->textures->Load("Assets/Characters.png");
 	++activeTextures; ++totalTextures;
@@ -422,6 +423,7 @@ update_status ModulePlayer::Update()
 						currentAnimation = &leftPushAnim;
 						animDone = true;
 						App->tilemap->PushLeftWall();
+						App->audio->PlayFx(pushWallFx, 0);
 					}
 				}
 				if (opcio == 'r')
@@ -459,6 +461,7 @@ update_status ModulePlayer::Update()
 						currentAnimation = &rightPushAnim;
 						animDone = true;
 						App->tilemap->PushRightWall();
+						App->audio->PlayFx(pushWallFx, 0);
 					}
 				}
 				if (opcio == 'u')
@@ -496,6 +499,7 @@ update_status ModulePlayer::Update()
 						currentAnimation = &upPushAnim;
 						animDone = true;
 						App->tilemap->PushUpWall();
+						App->audio->PlayFx(pushWallFx, 0);
 					}
 
 				}
@@ -535,6 +539,7 @@ update_status ModulePlayer::Update()
 						currentAnimation = &downPushAnim;
 						animDone = true;
 						App->tilemap->PushDownWall();
+						App->audio->PlayFx(pushWallFx, 0);
 					}
 				}
 
@@ -635,9 +640,15 @@ bool ModulePlayer::CleanUp()
 
 	App->audio->UnloadFx(snobeeFx);
 	--totalFx;
+
 	App->audio->UnloadFx(destroyBlockFx);
 	--totalFx;
 
+	App->audio->UnloadFx(pushBlockFx);
+	--totalFx;
+
+	App->audio->UnloadFx(pushWallFx);
+	--totalFx;
 
 	App->collisions->RemoveCollider(collider);
 	--totalColliders;
