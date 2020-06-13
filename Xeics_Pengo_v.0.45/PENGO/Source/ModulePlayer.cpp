@@ -131,10 +131,6 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
 	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
 	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
-	oneHundredParticle.anim.PushBack({ 0,0,16,16 });
 	oneHundredParticle.anim.speed = 0.1f;
 	oneHundredParticle.anim.loop = false;
 
@@ -176,7 +172,7 @@ bool ModulePlayer::Start()
 	++activeColliders; ++totalColliders;
 	destroyed = false;
 
-
+	animDone = false;
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
@@ -606,7 +602,28 @@ update_status ModulePlayer::PostUpdate()
 	}
 
 	sprintf_s(scoreText, 10, "%d", score);
-	App->fonts->BlitText(56, 0, whiteFont, scoreText);
+	if (score < 10) {
+		App->fonts->BlitText(72, 0, whiteFont, scoreText);
+	}
+	else if (score >= 10 && score < 100) {
+		App->fonts->BlitText(64, 0, whiteFont, scoreText);
+	}
+	else if (score >= 100 && score < 1000) {
+		App->fonts->BlitText(56, 0, whiteFont, scoreText);
+	}
+	else if (score >= 1000 && score < 10000) {
+		App->fonts->BlitText(48, 0, whiteFont, scoreText);
+	}
+	else if (score >= 10000 && score < 100000) {
+		App->fonts->BlitText(40, 0, whiteFont, scoreText);
+	}
+	if (score > 20000) {
+		App->fonts->BlitText(40, 0, whiteFont, scoreText);
+		App->fonts->BlitText(112, 0, whiteFont, scoreText);
+	}
+
+
+
 
 	sprintf_s(secondsText, 10, "%d", timerLevel/60);
 	sprintf_s(minutesText, 10, "%d", minutes);

@@ -665,6 +665,14 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 		secondSmashDownAnim.speed = 0.1f;
 	}
 
+	fourHundredParticle.anim.PushBack({ 0,16,16,16 });
+	fourHundredParticle.anim.PushBack({ 0,16,16,16 });
+	fourHundredParticle.anim.PushBack({ 0,16,16,16 });
+	fourHundredParticle.anim.PushBack({ 0,16,16,16 });
+	fourHundredParticle.anim.PushBack({ 0,16,16,16 });
+	fourHundredParticle.anim.PushBack({ 0,16,16,16 });
+	fourHundredParticle.anim.speed = 0.1f;
+	fourHundredParticle.anim.loop = false;
 
 	currentAnim = &snoDownAnim;
 
@@ -1311,6 +1319,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x -4, App->tilemap->positionBlock.y, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1347,6 +1357,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x + 4, App->tilemap->positionBlock.y, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1381,6 +1393,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x, App->tilemap->positionBlock.y-4, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1414,6 +1428,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x, App->tilemap->positionBlock.y+4, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1449,6 +1465,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x - 4, App->tilemap->positionDiamond.y, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1486,6 +1504,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x + 4, App->tilemap->positionDiamond.y, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1520,6 +1540,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x, App->tilemap->positionDiamond.y - 4, Collider::Type::NONE, 0);
+							App->player->score += 400;
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							App->scene->enemiesAlive--;
@@ -1553,6 +1575,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 					}
 					if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
 						App->audio->PlayFx(snobeeSmashedFx, 0);
+						App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x, App->tilemap->positionDiamond.y + 4, Collider::Type::NONE, 0);
+						App->player->score += 400;
 						delete App->enemies->enemies[i];
 						App->enemies->enemies[i] = nullptr;
 						App->scene->enemiesAlive--;

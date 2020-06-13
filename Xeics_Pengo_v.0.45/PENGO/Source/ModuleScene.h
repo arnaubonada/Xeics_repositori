@@ -83,7 +83,8 @@ public:
 	int i = 0;
 	int cont = 0;
 
-
+	bool music1 = false;
+	bool music2 = false;
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
 	SDL_Rect pYellow, pRed, pYellowFive;
 

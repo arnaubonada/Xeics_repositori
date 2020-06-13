@@ -72,7 +72,7 @@ public:
 
 	SDL_Rect r;
 
-	Particle oneHundredParticle;
+	Particle fourHundredParticle;
 
 	//Direction direct = NOMOVE;
 

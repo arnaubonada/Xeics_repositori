@@ -71,6 +71,8 @@ bool SceneWin::Start()
 	texturePengo = App->textures->Load("Assets/Characters.png");
 	texturePengoEstampadaEsquerra = App->textures->Load("Assets/Characters2.png");
 	App->audio->PlayMusic("Assets/Audio/ActClear.ogg", 1.0f);
+	timeBonusFx = App->audio->LoadFx("Assets/Audio/TimeBonusExtend.wav");
+
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
@@ -83,6 +85,8 @@ bool SceneWin::Start()
 	esquerra = false;
 	dreta = false;
 	espera = 0;
+
+	bonusAddedOneTime = false;
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -303,6 +307,8 @@ update_status SceneWin::Update()
 		App->scene->cont = 0;
 	}
 
+	scoreWin = App->player->score;
+
 	rightAnimWin.Update();
 	oneAnim.Update();
 	estampadadreta.Update();
@@ -362,11 +368,35 @@ update_status SceneWin::PostUpdate()
 		}
 	}
 
-	App->fonts->BlitText(56, 0, whiteFont, App->player->scoreText);
+	sprintf_s(scoreWinText, 10, "%d", scoreWin);
+	if (scoreWin < 10) {
+		App->fonts->BlitText(72, 0, whiteFont, scoreWinText);
+	}
+	else if (scoreWin >= 10 && scoreWin < 100) {
+		App->fonts->BlitText(64, 0, whiteFont, scoreWinText);
+	}
+	else if (scoreWin >= 100 && scoreWin < 1000) {
+		App->fonts->BlitText(56, 0, whiteFont, scoreWinText);
+	}
+	else if (scoreWin >= 1000 && scoreWin < 10000) {
+		App->fonts->BlitText(48, 0, whiteFont, scoreWinText);
+	}
+	else if (scoreWin >= 10000 && scoreWin < 100000) {
+		App->fonts->BlitText(40, 0, whiteFont, scoreWinText);
+	}
+	if (scoreWin > 20000) {
+		App->fonts->BlitText(40, 0, whiteFont, scoreWinText);
+		App->fonts->BlitText(112, 0, whiteFont, scoreWinText);
+	}
+
 
 	App->fonts->BlitText(144, 280, whiteFont, "© sega 1982");
 	App->fonts->BlitText(88, 0, blueFont, "hi");
-	App->fonts->BlitText(112, 0, whiteFont, "20000");
+
+	if (scoreWin <= 20000) {
+		App->fonts->BlitText(112, 0, whiteFont, "20000");
+	}
+
 	App->fonts->BlitText(160, 0, blueFont, "2p");
 	App->fonts->BlitText(216, 0, whiteFont, "0");
 
@@ -506,6 +536,11 @@ update_status SceneWin::PostUpdate()
 				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
 				App->fonts->BlitText(24, 152, blueFont, "60 and over");
 				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+				if (!bonusAddedOneTime) {
+					App->player->score += 5000;
+					App->audio->PlayFx(timeBonusFx, 0);
+					bonusAddedOneTime = true;
+				}
 			}
 			else if (App->player->timerLevel >= 1200 && App->player->timerLevel < 1800) {
 				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
@@ -515,6 +550,11 @@ update_status SceneWin::PostUpdate()
 				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
 				App->fonts->BlitText(24, 152, blueFont, "60 and over");
 				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+				if (!bonusAddedOneTime) {
+					App->player->score += 2000;
+					App->audio->PlayFx(timeBonusFx, 0);
+					bonusAddedOneTime = true;
+				}
 			}
 			else if (App->player->timerLevel >= 1800 && App->player->timerLevel < 2400) {
 				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
@@ -524,6 +564,11 @@ update_status SceneWin::PostUpdate()
 				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
 				App->fonts->BlitText(24, 152, blueFont, "60 and over");
 				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+				if (!bonusAddedOneTime) {
+					App->player->score += 1000;
+					App->audio->PlayFx(timeBonusFx, 0);
+					bonusAddedOneTime = true;
+				}
 			}
 			else if (App->player->timerLevel >= 2400 && App->player->timerLevel < 3000) {
 				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
@@ -533,6 +578,11 @@ update_status SceneWin::PostUpdate()
 				App->fonts->BlitText(24, 136, blueFont, "from 50 to 59 ...10 pts.");
 				App->fonts->BlitText(24, 152, blueFont, "60 and over");
 				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+				if (!bonusAddedOneTime) {
+					App->player->score += 500;
+					App->audio->PlayFx(timeBonusFx, 0);
+					bonusAddedOneTime = true;
+				}
 			}
 			else if (App->player->timerLevel >= 3000 && App->player->timerLevel < 3600) {
 				App->fonts->BlitText(24, 72, blueFont, "from 00 to 19 .5000 pts.");
@@ -542,6 +592,11 @@ update_status SceneWin::PostUpdate()
 				App->fonts->BlitText(24, 136, yellowFont, "from 50 to 59 ...10 pts.");
 				App->fonts->BlitText(24, 152, blueFont, "60 and over");
 				App->fonts->BlitText(144, 152, blueFont, "no bonus.");
+				if (!bonusAddedOneTime) {
+					App->player->score += 10;
+					App->audio->PlayFx(timeBonusFx, 0);
+					bonusAddedOneTime = true;
+				}
 			}
 		}
 		else {

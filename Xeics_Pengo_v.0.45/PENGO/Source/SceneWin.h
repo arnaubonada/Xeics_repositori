@@ -43,7 +43,11 @@ public:
 	Animation leftAnimWin;
 	SDL_Rect pYellow, pYellowFive, pRed;
 
+	uint timeBonusFx = 0;
 
+	uint scoreWin = 000;
+	char scoreWinText[10] = { "\0" };
+	bool bonusAddedOneTime = false;
 	bool dreta;
 	bool esquerra = false;
 

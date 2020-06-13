@@ -81,6 +81,8 @@ update_status ModuleInput::PreUpdate()
 
 	UpdateGamepadsInput();
 
+	if (keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) return update_status::UPDATE_STOP;
+
 	return update_status::UPDATE_CONTINUE;
 }
 
