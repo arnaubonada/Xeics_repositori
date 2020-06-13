@@ -139,6 +139,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
+	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
 	texture = App->textures->Load("Assets/Characters.png");
 	++activeTextures; ++totalTextures;
 	currentAnimation = &downAnim;
@@ -654,7 +655,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					for (uint i = 0; i < MAX_ENEMIES; ++i)
 					{
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesStunned[i]) {
-							
+							App->audio->PlayFx(snobeeFx, 0);
 							delete App->enemies->enemies[i];
 							App->enemies->enemies[i] = nullptr;
 							scoreOneHundred = true;

@@ -1130,6 +1130,10 @@ update_status ModuleScene::PostUpdate()
 		App->render->Blit(scTexture, 200, 8, &pYellowFive);
 	}
 
+
+	
+
+
 	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
 	App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
