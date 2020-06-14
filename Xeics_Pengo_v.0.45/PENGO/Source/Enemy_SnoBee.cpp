@@ -20,8 +20,8 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 	App->audio->UnloadFx(App->enemies->snobeeSmashedFx);
 	App->audio->UnloadFx(App->enemies->snobeeStunnedFx);
 
-	App->collisions->RemoveCollider(collider);
-	App->collisions->RemoveCollider(App->enemies->colliderStunned);
+	//App->collisions->RemoveCollider(collider);
+	//App->collisions->RemoveCollider(App->enemies->colliderStunned);
 
 	App->enemies->snobeeSmashedFx = App->audio->LoadFx("Assets/Audio/SnoBee Smashed.wav");
 	App->enemies->snobeeStunnedFx = App->audio->LoadFx("Assets/Audio/SnoBee Stunned.wav");

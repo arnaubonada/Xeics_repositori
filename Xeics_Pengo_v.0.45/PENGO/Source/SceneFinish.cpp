@@ -79,6 +79,7 @@ update_status SceneFinish::Update()
 		App->player->lifes = 4;
 		App->scene->cont = 0;
 		App->scene->enemiesAlive = 0;
+		App->player->score = 0;
 	}
 
 	return update_status::UPDATE_CONTINUE;
