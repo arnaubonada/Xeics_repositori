@@ -15,7 +15,7 @@ with the highest score possible.
 Our project consists on creating a replication of Pengo Arcade Game as acurate as possible. This project takes part of the subject "Project 1" of an a University from Catalonia called UPC-CITM.
 
 ## Gameplay
-POSAR VIDEO
+<iframe width="740" height="590" src="https://youtu.be/0MlxHxWbrJE" frameborder="0" allowfullscreen></iframe>
 
 ## Controls
 Player controls:
