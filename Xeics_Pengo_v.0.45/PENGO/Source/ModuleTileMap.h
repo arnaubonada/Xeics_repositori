@@ -52,7 +52,7 @@ public:
 	void LoadMap(int arr[17][15]); //inicialitzem el mapa
 
 	bool Start() override;
-	
+
 	update_status PostUpdate() override;
 
 	void DrawMap();
@@ -160,7 +160,7 @@ public:
 
 	Animation sidesWallAnim;
 	Animation topbotWallAnim;
-	
+
 
 	Direction dirBlock;
 
@@ -203,8 +203,22 @@ public:
 	bool twoDiamonds = false;
 	bool threeDiamonds = false;
 	bool threeDiamondsDone = false;
+	bool threeDiamondsAnimation = false;
+	bool bonusCounter = false;
 
 	bool threeDiamondsFinish = false;
+
+	bool oneTimeFx = false;
+	bool oneTime2Fx = false;
+
+	int whiteFont = -1;
+	int blueFont = -1;
+	int yellowFont = -1;
+
+	uint scoreBonus = 10000;
+	char scoreBonusText[10] = { "\0" };
+
+
 	int timeDiamondStunned = 0;
 
 	int mousePositionX;
@@ -246,6 +260,8 @@ public:
 
 
 	uint stoppedBlockFx = 0;
+	uint threeDiamondsFx = 0;
+	uint countingbonusFx = 0;
 
 	Collider* collider = nullptr;
 	Collider* colliderDiamond = nullptr;

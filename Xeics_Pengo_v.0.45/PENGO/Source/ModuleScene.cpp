@@ -928,6 +928,9 @@ bool ModuleScene::Start()
 
 	music1 = true;
 	music2 = true;
+	music3 = true;
+	oneTimeSound = false;
+	App->tilemap->threeDiamondsFinish = false;
 
 	return ret;
 }
@@ -946,15 +949,42 @@ update_status ModuleScene::Update()
 		App->player->destroyed = true;
 
 	}*/
-	if (App->player->minutes == 1 && music1 == true) {
-		music1 = false;
-		App->audio->PlayMusic("Assets/Audio/popcorn fast.ogg", 0.0f);
+	if (App->tilemap->threeDiamondsFinish && !oneTimeSound) {
+		if (App->player->minutes < 1) {
+			music1 = true;
+			oneTimeSound = true;
+		}
+		else if (App->player->minutes == 1) {
+			music2 = true;
+			oneTimeSound = true;
+		}
+
+		else if (App->player->minutes == 2) {
+			music3 = true;
+			oneTimeSound = true;
+		}
+
+	}
+	if (!App->tilemap->threeDiamonds) {
+
+		if (App->player->minutes < 1 && music1 == true) {
+			App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 0.0f);
+			music1 = false;
+		}
+		else if (App->player->minutes == 1 && music2 == true) {
+			App->audio->PlayMusic("Assets/Audio/popcorn fast.ogg", 0.0f);
+			music2 = false;
+		}
+
+		else if (App->player->minutes == 2 && music3 == true) {
+			App->audio->PlayMusic("Assets/Audio/popcorn faster.ogg", 0.0f);
+			music3 = false;
+		}
+	}
+	if (App->tilemap->threeDiamonds) {
+		App->audio->PlayMusic("Assets/Audio/nothing.ogg", 0.0f);
 	}
 
-	if (App->player->minutes == 2 && music2 == true) {
-		music2 = false;
-		App->audio->PlayMusic("Assets/Audio/popcorn faster.ogg", 0.0f);
-	}
 
 
 	if (App->tilemap->scenelvl1 == true) {   //1

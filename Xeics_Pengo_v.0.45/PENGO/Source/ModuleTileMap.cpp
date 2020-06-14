@@ -9,9 +9,10 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModuleScene.h"
+#include "ModuleFonts.h"
 #include "ModuleAudio.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 #include <SDL/include/SDL.h>
 #include "SDL/include/SDL_scancode.h"
 
@@ -19,7 +20,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 {
 	blockAnim.PushBack({ 708, 0, 16, 16 });
 	blockAnim.speed = 0.1f;
-	
+
 	diamondAnim.PushBack({ 708, 16, 16, 16 });
 	diamondAnim.speed = 0.1f;
 
@@ -28,8 +29,8 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	twodiamondsAnim.PushBack({ 772, 32, 16, 16 });
 	twodiamondsAnim.PushBack({ 772, 32, 16, 16 });
 	twodiamondsAnim.speed = 0.2f;
-	
-	
+
+
 	threediamondsAnim.PushBack({ 836, 16, 16, 16 });
 	threediamondsAnim.PushBack({ 708, 16, 16, 16 });
 	threediamondsAnim.PushBack({ 820, 16, 16, 16 });
@@ -47,8 +48,8 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	threediamondsAnim.PushBack({ 724, 16, 16, 16 });
 	threediamondsAnim.PushBack({ 772, 32, 16, 16 });
 	threediamondsAnim.speed = 0.4f;
-	
-	
+
+
 	blockColoredAnim.PushBack({ 836, 0, 16, 16 });
 	blockColoredAnim.PushBack({ 836, 0, 16, 16 });
 	blockColoredAnim.PushBack({ 820, 0, 16, 16 });
@@ -88,8 +89,8 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalRedAnim.PushBack({ 904, 0, 16, 8 });
 	starsHorizontalRedAnim.PushBack({ 888, 0, 16, 8 });
 	starsHorizontalRedAnim.PushBack({ 872, 0, 16, 8 });
-	starsHorizontalRedAnim.speed = 0.2f;	
-	
+	starsHorizontalRedAnim.speed = 0.2f;
+
 	starsHorizontalGreenAnim.PushBack({ 872, 0, 16, 8 });
 	starsHorizontalGreenAnim.PushBack({ 856, 0, 16, 8 });
 	starsHorizontalGreenAnim.PushBack({ 968, 0, 16, 8 });
@@ -99,7 +100,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalGreenAnim.PushBack({ 904, 0, 16, 8 });
 	starsHorizontalGreenAnim.PushBack({ 888, 0, 16, 8 });
 	starsHorizontalGreenAnim.speed = 0.2f;
-	
+
 	starsHorizontalYellowAnim.PushBack({ 888, 0, 16, 8 });
 	starsHorizontalYellowAnim.PushBack({ 872, 0, 16, 8 });
 	starsHorizontalYellowAnim.PushBack({ 856, 0, 16, 8 });
@@ -109,7 +110,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalYellowAnim.PushBack({ 920, 0, 16, 8 });
 	starsHorizontalYellowAnim.PushBack({ 904, 0, 16, 8 });
 	starsHorizontalYellowAnim.speed = 0.2f;
-	
+
 	starsHorizontalPinkAnim.PushBack({ 904, 0, 16, 8 });
 	starsHorizontalPinkAnim.PushBack({ 888, 0, 16, 8 });
 	starsHorizontalPinkAnim.PushBack({ 872, 0, 16, 8 });
@@ -119,7 +120,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalPinkAnim.PushBack({ 936, 0, 16, 8 });
 	starsHorizontalPinkAnim.PushBack({ 920, 0, 16, 8 });
 	starsHorizontalPinkAnim.speed = 0.2f;
-	
+
 	starsHorizontalOrangeAnim.PushBack({ 920, 0, 16, 8 });
 	starsHorizontalOrangeAnim.PushBack({ 904, 0, 16, 8 });
 	starsHorizontalOrangeAnim.PushBack({ 888, 0, 16, 8 });
@@ -129,7 +130,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalOrangeAnim.PushBack({ 952, 0, 16, 8 });
 	starsHorizontalOrangeAnim.PushBack({ 936, 0, 16, 8 });
 	starsHorizontalOrangeAnim.speed = 0.2f;
-	
+
 
 	starsHorizontalSoftYellowAnim.PushBack({ 936, 0, 16, 8 });
 	starsHorizontalSoftYellowAnim.PushBack({ 920, 0, 16, 8 });
@@ -140,7 +141,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalSoftYellowAnim.PushBack({ 968, 0, 16, 8 });
 	starsHorizontalSoftYellowAnim.PushBack({ 952, 0, 16, 8 });
 	starsHorizontalSoftYellowAnim.speed = 0.4f;
-	
+
 
 	starsHorizontalPurpleAnim.PushBack({ 952, 0, 16, 8 });
 	starsHorizontalPurpleAnim.PushBack({ 936, 0, 16, 8 });
@@ -151,7 +152,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsHorizontalPurpleAnim.PushBack({ 856, 0, 16, 8 });
 	starsHorizontalPurpleAnim.PushBack({ 968, 0, 16, 8 });
 	starsHorizontalPurpleAnim.speed = 0.2f;
-	
+
 
 	starsHorizontalBlueAnim.PushBack({ 968, 0, 16, 8 });
 	starsHorizontalBlueAnim.PushBack({ 952, 0, 16, 8 });
@@ -173,7 +174,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalRedAnim.PushBack({ 856, 120, 8, 16 });
 	starsVerticalRedAnim.PushBack({ 856, 136, 8, 16 });
 	starsVerticalRedAnim.speed = 0.2f;
-	
+
 
 	starsVerticalGreenAnim.PushBack({ 856, 136, 8, 16 });
 	starsVerticalGreenAnim.PushBack({ 856, 24, 8, 16 });
@@ -184,7 +185,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalGreenAnim.PushBack({ 856, 104, 8, 16 });
 	starsVerticalGreenAnim.PushBack({ 856, 120, 8, 16 });
 	starsVerticalGreenAnim.speed = 0.2f;
-	
+
 
 	starsVerticalYellowAnim.PushBack({ 856, 120, 8, 16 });
 	starsVerticalYellowAnim.PushBack({ 856, 136, 8, 16 });
@@ -195,7 +196,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalYellowAnim.PushBack({ 856, 88, 8, 16 });
 	starsVerticalYellowAnim.PushBack({ 856, 104, 8, 16 });
 	starsVerticalYellowAnim.speed = 0.2f;
-	
+
 
 	starsVerticalPinkAnim.PushBack({ 856, 104, 8, 16 });
 	starsVerticalPinkAnim.PushBack({ 856, 120, 8, 16 });
@@ -206,7 +207,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalPinkAnim.PushBack({ 856, 72, 8, 16 });
 	starsVerticalPinkAnim.PushBack({ 856, 88, 8, 16 });
 	starsVerticalPinkAnim.speed = 0.2f;
-	
+
 
 	starsVerticalOrangeAnim.PushBack({ 856, 88, 8, 16 });
 	starsVerticalOrangeAnim.PushBack({ 856, 104, 8, 16 });
@@ -217,7 +218,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalOrangeAnim.PushBack({ 856, 56, 8, 16 });
 	starsVerticalOrangeAnim.PushBack({ 856, 72, 8, 16 });
 	starsVerticalOrangeAnim.speed = 0.2f;
-	
+
 
 	starsVerticalSoftYellowAnim.PushBack({ 856, 72, 8, 16 });
 	starsVerticalSoftYellowAnim.PushBack({ 856, 88, 8, 16 });
@@ -228,7 +229,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	starsVerticalSoftYellowAnim.PushBack({ 856, 40, 8, 16 });
 	starsVerticalSoftYellowAnim.PushBack({ 856, 56, 8, 16 });
 	starsVerticalSoftYellowAnim.speed = 0.2f;
-	
+
 
 	starsVerticalPurpleAnim.PushBack({ 856, 56, 8, 16 });
 	starsVerticalPurpleAnim.PushBack({ 856, 72, 8, 16 });
@@ -255,7 +256,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 
 	sidesWallAnim.PushBack({ 684, 0, 8, 256 });
 	sidesWallAnim.PushBack({ 696, 0, 8, 256 });
-	sidesWallAnim.PushBack({ 684, 0, 8, 256 });	
+	sidesWallAnim.PushBack({ 684, 0, 8, 256 });
 	sidesWallAnim.PushBack({ 696, 0, 8, 256 });
 	sidesWallAnim.loop = false;
 	sidesWallAnim.speed = 0.1f;
@@ -385,7 +386,7 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 
 ModuleTileMap::~ModuleTileMap()
 {
-	
+
 }
 
 bool ModuleTileMap::Start()
@@ -394,10 +395,20 @@ bool ModuleTileMap::Start()
 	scTexture = App->textures->Load("Assets/Score.png");
 	chTexture = App->textures->Load("Assets/Characters.png");
 	stoppedBlockFx = App->audio->LoadFx("Assets/Audio/Block Stopped.wav");
-	
+	threeDiamondsFx = App->audio->LoadFx("Assets/Audio/threeDiamonds.wav");
+	countingbonusFx = App->audio->LoadFx("Assets/Audio/CountingBonusPoints.wav");
+
 	noBlock = App->textures->Load("Assets/noBlock.png");
 	Block = App->textures->Load("Assets/Block.png");
 	Diamond = App->textures->Load("Assets/Diamond.png");
+
+	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
+	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
+	++activeFonts; ++totalFonts;
+	blueFont = App->fonts->Load("Assets/blueFont.png", lookupTable, 3);
+	++activeFonts; ++totalFonts;
+	yellowFont = App->fonts->Load("Assets/yellowFont.png", lookupTable, 3);
+	++activeFonts; ++totalFonts;
 
 	if (!App->player->destroyed) {
 		if (scenelvl1) {
@@ -446,10 +457,13 @@ bool ModuleTileMap::Start()
 			LoadMap(lvl15);
 		}
 	}
-	
-	else{
+
+	else {
 		LoadMap(tilemap);
 	}
+
+	oneTimeFx = false;
+	oneTime2Fx = false;
 
 	return true;
 }
@@ -472,36 +486,36 @@ void ModuleTileMap::DrawMap()
 			type = tilemap[i][j];
 
 			destination.x = j * 16;
-			destination.y = 16+i * 16;
+			destination.y = 16 + i * 16;
 			//App->render->Blit(Block, destination.x, destination.y, &source);
 			switch (type)
 			{
 			case TILE_NOBLOCK:
 				App->render->Blit(noBlock, destination.x, destination.y, &source);
 				break;
-			
+
 			case TILE_BLOCK:
 				App->render->Blit(Block, destination.x, destination.y, &source);
 				break;
-			
+
 			case TILE_WALL:
 				break;
-			
+
 			case TILE_DIAMOND:
 				App->render->Blit(Diamond, destination.x, destination.y, &source);
 				break;
-			
+
 			case TILE_CORNER:
-				
-				break;		
-			
+
+				break;
+
 			default:
 				break;              //si treiem el break no compila
 			}
 
 		}
 	}
-	
+
 }
 
 bool ModuleTileMap::isWalkable(int x, int y)
@@ -509,8 +523,8 @@ bool ModuleTileMap::isWalkable(int x, int y)
 	bool valid = false;
 	int posX;
 	int posY;
-	posX = x/16;
-	posY = (y-16)/16;
+	posX = x / 16;
+	posY = (y - 16) / 16;
 
 	if (tilemap[posY][posX] == TILE_NOBLOCK)
 	{
@@ -519,7 +533,7 @@ bool ModuleTileMap::isWalkable(int x, int y)
 	LOG("pos x tile %d", posX);
 	LOG("pos y tile %d", posY);
 	return valid;
-	
+
 }
 
 //bool ModuleTileMap::isWalkable_pixel(int x, int y)
@@ -612,8 +626,8 @@ int ModuleTileMap::spaceToBlock(int x, int y, Direction d) {
 
 	if (d == LEFT) {
 		while (tilemap[posY][posX - 1] == TILE_NOBLOCK) {
-		space++;
-		posX--;
+			space++;
+			posX--;
 		}
 	}
 	else if (d == RIGHT) {
@@ -678,18 +692,18 @@ int ModuleTileMap::spaceToWall(int x, int y, Direction d) {
 
 
 void ModuleTileMap::DestroyBlock(int x, int y)
-{	
+{
 	blockX = x / 16;
 	blockY = (y - 16) / 16;
 
 	destroyedBlock = true;
 	currentAnimation = &blockDestrAnim;
-	
+
 	destroyedAnimBlock = false;
 }
 
 void ModuleTileMap::DestroyBlock2(int x, int y)
-{	
+{
 	block2X = x / 16;
 	block2Y = (y - 16) / 16;
 
@@ -697,18 +711,18 @@ void ModuleTileMap::DestroyBlock2(int x, int y)
 }
 
 void ModuleTileMap::DestroyBlock3(int x, int y)
-{	
+{
 	block3X = x / 16;
 	block3Y = (y - 16) / 16;
-	
+
 	destroyedBlock3 = true;
 }
 
 void ModuleTileMap::DestroyBlock4(int x, int y)
-{	
+{
 	block4X = x / 16;
 	block4Y = (y - 16) / 16;
-	
+
 	destroyedBlock4 = true;
 }
 
@@ -782,16 +796,16 @@ void ModuleTileMap::MoveBlock(int x, int y, Direction d)
 	spacestoblock = spaceToBlock(positionBlock.x, positionBlock.y, dirBlock);
 
 	if (dirBlock == LEFT) {
-		finalpositionX = x - (spacestoblock*16);
+		finalpositionX = x - (spacestoblock * 16);
 	}
 	else if (dirBlock == RIGHT) {
-		finalpositionX = x + (spacestoblock*16);
+		finalpositionX = x + (spacestoblock * 16);
 	}
 	else if (dirBlock == UP) {
-		finalpositionY = y - (spacestoblock*16);
+		finalpositionY = y - (spacestoblock * 16);
 	}
 	else if (dirBlock == DOWN) {
-		finalpositionY = y + (spacestoblock*16);
+		finalpositionY = y + (spacestoblock * 16);
 	}
 	collider = App->collisions->AddCollider({ positionBlock.x, positionBlock.y, 16, 16 }, Collider::Type::BLOCK, (Module*)App->blocks);
 
@@ -858,7 +872,7 @@ void ModuleTileMap::checkDiamonds() {
 		threeDiamonds = true;
 		timeDiamond = 1;
 	}
-	
+
 
 	for (int i = 0; i < 17; i++) {
 		for (int j = 0; j < 15; j++) {
@@ -868,6 +882,7 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i + 2][j] == TILE_DIAMOND || tilemap[i - 1][j] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						threeDiamondsAnimation = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
 						timeDiamondStunned = 1;
@@ -878,6 +893,7 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i - 2][j] == TILE_DIAMOND || tilemap[i + 1][j] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						threeDiamondsAnimation = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
 						timeDiamondStunned = 1;
@@ -888,6 +904,7 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i][j + 2] == TILE_DIAMOND || tilemap[i][j - 1] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						threeDiamondsAnimation = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
 						timeDiamondStunned = 1;
@@ -898,6 +915,7 @@ void ModuleTileMap::checkDiamonds() {
 					if (tilemap[i][j - 2] == TILE_DIAMOND || tilemap[i][j + 1] == TILE_DIAMOND) {
 						twoDiamonds = false;
 						threeDiamonds = true;
+						threeDiamondsAnimation = true;
 						timeDiamond = 1;
 						threeDiamondsDone = true;
 						timeDiamondStunned = 1;
@@ -906,7 +924,7 @@ void ModuleTileMap::checkDiamonds() {
 			}
 		}
 	}
-	
+
 
 
 }
@@ -949,12 +967,12 @@ void ModuleTileMap::MouseState() {
 	while (mousePositionY % 16 != 0) {
 		mousePositionY--;
 	}
-	if (mousePositionX > 16* SCREEN_SIZE && mousePositionX < 224* SCREEN_SIZE && mousePositionY > 32* SCREEN_SIZE && mousePositionY < 272* SCREEN_SIZE) {
+	if (mousePositionX > 16 * SCREEN_SIZE && mousePositionX < 224 * SCREEN_SIZE && mousePositionY > 32 * SCREEN_SIZE && mousePositionY < 272 * SCREEN_SIZE) {
 
 		if (App->input->keys[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN) {
 
 			if (mousePositionX % 16 == 0 && mousePositionY % 16 == 0) {
-				
+
 				iBlock = (mousePositionX / SCREEN_SIZE) / 16;
 				jBlock = ((mousePositionY / SCREEN_SIZE) - 16) / 16;
 				if (tilemap[jBlock][iBlock] == TILE_NOBLOCK) {
@@ -1024,7 +1042,7 @@ update_status ModuleTileMap::Update()
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
 	}
-	
+
 	if (nextBlock1 || nextBlock2 || nextBlock3 || nextBlock4 || nextBlock5 || nextBlock6 || nextBlock7 || nextBlock8) {
 		nextSpawnBlock.Update();
 		if (nextSpawnBlock.HasFinished()) {
@@ -1039,7 +1057,7 @@ update_status ModuleTileMap::Update()
 			nextSpawnBlock.Reset();
 		}
 	}
-	
+
 
 
 	if (pushLeft) {
@@ -1048,21 +1066,21 @@ update_status ModuleTileMap::Update()
 			pushLeft = false;
 			sidesWallAnim.Reset();
 		}
-	}	
+	}
 	if (pushRight) {
 		sidesWallAnim.Update();
 		if (sidesWallAnim.HasFinished()) {
 			pushRight = false;
 			sidesWallAnim.Reset();
 		}
-	}	
+	}
 	if (pushUp) {
 		topbotWallAnim.Update();
 		if (topbotWallAnim.HasFinished()) {
 			pushUp = false;
 			topbotWallAnim.Reset();
 		}
-	}	
+	}
 	if (pushDown) {
 		topbotWallAnim.Update();
 		if (topbotWallAnim.HasFinished()) {
@@ -1081,66 +1099,66 @@ update_status ModuleTileMap::Update()
 			spawnFromBlock.Reset();
 		}
 	}
-	
 
 
-	if (dirBlock != NOMOVE) 
+
+	if (dirBlock != NOMOVE)
 	{
-			
-			if (dirBlock == LEFT) {
-				if (positionBlock.x % 16 == 0) {
-					movedBlockX--;
 
-				}
-				positionBlock.x-=4;
+		if (dirBlock == LEFT) {
+			if (positionBlock.x % 16 == 0) {
+				movedBlockX--;
 
-				if (positionBlock.x == finalpositionX) {
-					dirBlock = NOMOVE;
-					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-					App->collisions->RemoveCollider(collider);
-					App->audio->PlayFx(stoppedBlockFx, 0);
-				}
 			}
+			positionBlock.x -= 4;
 
-			else if (dirBlock == RIGHT) {
-				if (positionBlock.x % 16 == 0) {
-					movedBlockX++;
-				}
-				positionBlock.x+=4;
-				if (positionBlock.x == finalpositionX) {
-					dirBlock = NOMOVE;
-					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-					App->collisions->RemoveCollider(collider);
-					App->audio->PlayFx(stoppedBlockFx, 0);
-				}
+			if (positionBlock.x == finalpositionX) {
+				dirBlock = NOMOVE;
+				tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+				App->collisions->RemoveCollider(collider);
+				App->audio->PlayFx(stoppedBlockFx, 0);
 			}
+		}
 
-			else if (dirBlock == UP) {
-				if (positionBlock.y % 16 == 0) {
-					movedBlockY--;
-				}
-				positionBlock.y-=4;
-				if (positionBlock.y == finalpositionY) {
-					dirBlock = NOMOVE;
-					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-					App->collisions->RemoveCollider(collider);
-					App->audio->PlayFx(stoppedBlockFx, 0);
-				}
+		else if (dirBlock == RIGHT) {
+			if (positionBlock.x % 16 == 0) {
+				movedBlockX++;
 			}
+			positionBlock.x += 4;
+			if (positionBlock.x == finalpositionX) {
+				dirBlock = NOMOVE;
+				tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+				App->collisions->RemoveCollider(collider);
+				App->audio->PlayFx(stoppedBlockFx, 0);
+			}
+		}
 
-			else if (dirBlock == DOWN) {
-				if (positionBlock.y % 16 == 0) {
-					movedBlockY++;
-				}
-				positionBlock.y+=4;
-				if (positionBlock.y == finalpositionY) {
-					dirBlock = NOMOVE;
-					tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
-					App->collisions->RemoveCollider(collider);
-					App->audio->PlayFx(stoppedBlockFx, 0);
-				}
+		else if (dirBlock == UP) {
+			if (positionBlock.y % 16 == 0) {
+				movedBlockY--;
 			}
-			collider->SetPos(positionBlock.x, positionBlock.y);
+			positionBlock.y -= 4;
+			if (positionBlock.y == finalpositionY) {
+				dirBlock = NOMOVE;
+				tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+				App->collisions->RemoveCollider(collider);
+				App->audio->PlayFx(stoppedBlockFx, 0);
+			}
+		}
+
+		else if (dirBlock == DOWN) {
+			if (positionBlock.y % 16 == 0) {
+				movedBlockY++;
+			}
+			positionBlock.y += 4;
+			if (positionBlock.y == finalpositionY) {
+				dirBlock = NOMOVE;
+				tilemap[movedBlockY][movedBlockX] = TILE_BLOCK;
+				App->collisions->RemoveCollider(collider);
+				App->audio->PlayFx(stoppedBlockFx, 0);
+			}
+		}
+		collider->SetPos(positionBlock.x, positionBlock.y);
 
 	}
 
@@ -1182,7 +1200,7 @@ update_status ModuleTileMap::Update()
 				}
 				positionDiamond.y -= 4;
 			}
-			
+
 			if (positionDiamond.y == finalpositionY_diamond) {
 				dirDiamond = NOMOVE;
 				tilemap[movedDiamondY][movedDiamondX] = TILE_DIAMOND;
@@ -1205,19 +1223,43 @@ update_status ModuleTileMap::Update()
 		}
 		colliderDiamond->SetPos(positionDiamond.x, positionDiamond.y);
 	}
-	
+
 
 	checkDiamonds();
 
 	if (timeDiamond != 0) {
 		timeDiamond++;
-		if (timeDiamond > 300) {
+		if (!oneTimeFx) {
+			App->audio->PlayFx(threeDiamondsFx);
+
+			oneTimeFx = true;
+		}
+		if (timeDiamond > 300 && timeDiamond <= 600) {
+
+			threeDiamondsAnimation = false;
+			bonusCounter = true;
+
+		}
+		if (timeDiamond > 600) {
+
 			threeDiamonds = false;
 			timeDiamond = 0;
 			threeDiamondsDone = true;
+			bonusCounter = false;
+		}
+
+	}
+	if (bonusCounter) {
+		if (!oneTime2Fx) {
+			App->audio->PlayFx(countingbonusFx);
+
+			oneTime2Fx = true;
+		}
+		if (scoreBonus > 0) {
+			scoreBonus -= 50;
+			App->player->score += 50;
 		}
 	}
-	
 
 	twodiamondsAnim.Update();
 	threediamondsAnim.Update();
@@ -1231,7 +1273,7 @@ update_status ModuleTileMap::Update()
 	starsHorizontalPinkAnim.Update();
 	starsHorizontalSoftYellowAnim.Update();
 	starsHorizontalGreenAnim.Update();
-	
+
 	starsVerticalRedAnim.Update();
 	starsVerticalBlueAnim.Update();
 	starsVerticalPurpleAnim.Update();
@@ -1241,7 +1283,7 @@ update_status ModuleTileMap::Update()
 	starsVerticalSoftYellowAnim.Update();
 	starsVerticalGreenAnim.Update();
 
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -1263,41 +1305,41 @@ update_status ModuleTileMap::PostUpdate()
 	}
 
 	if (destroyedBlock) {
-		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+		App->render->Blit(texture, blockX * 16, (blockY * 16) + 16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
 	}
 	if (destroyedBlock2) {
-		App->render->Blit(texture, block2X*16, (block2Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+		App->render->Blit(texture, block2X * 16, (block2Y * 16) + 16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
 	}
 	if (destroyedBlock3) {
-		App->render->Blit(texture, block3X*16, (block3Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+		App->render->Blit(texture, block3X * 16, (block3Y * 16) + 16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
 	}
 	if (destroyedBlock4) {
-		App->render->Blit(texture, block4X*16, (block4Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+		App->render->Blit(texture, block4X * 16, (block4Y * 16) + 16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);
 	}
-	
+
 	if (nextBlock1) {
-		App->render->Blit(texture, nextSpawnX*16, (nextSpawnY*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawnX * 16, (nextSpawnY * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock2) {
-		App->render->Blit(texture, nextSpawn2X *16, (nextSpawn2Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn2X * 16, (nextSpawn2Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock3) {
-		App->render->Blit(texture, nextSpawn3X *16, (nextSpawn3Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn3X * 16, (nextSpawn3Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock4) {
-		App->render->Blit(texture, nextSpawn4X *16, (nextSpawn4Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn4X * 16, (nextSpawn4Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock5) {
-		App->render->Blit(texture, nextSpawn5X *16, (nextSpawn5Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn5X * 16, (nextSpawn5Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock6) {
-		App->render->Blit(texture, nextSpawn6X *16, (nextSpawn6Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn6X * 16, (nextSpawn6Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock7) {
-		App->render->Blit(texture, nextSpawn7X *16, (nextSpawn7Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn7X * 16, (nextSpawn7Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 	if (nextBlock8) {
-		App->render->Blit(texture, nextSpawn8X *16, (nextSpawn8Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+		App->render->Blit(texture, nextSpawn8X * 16, (nextSpawn8Y * 16) + 16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 
 	if (pushLeft) {
@@ -1324,25 +1366,27 @@ update_status ModuleTileMap::PostUpdate()
 		for (int i = 0; i < 17; i++) {
 			for (int j = 0; j < 15; j++) {
 				if (tilemap[i][j] == TILE_DIAMOND) {
-					App->render->Blit(texture, j*16, i*16 +16, &(twodiamondsAnim.GetCurrentFrame()), 0.1f);
+					App->render->Blit(texture, j * 16, i * 16 + 16, &(twodiamondsAnim.GetCurrentFrame()), 0.1f);
 				}
 			}
 		}
-		
+
 	}
-	
-	if (threeDiamonds) {
+
+	if (threeDiamondsAnimation) {
 		for (int i = 0; i < 17; i++) {
 			for (int j = 0; j < 15; j++) {
 				if (tilemap[i][j] == TILE_DIAMOND) {
-					App->render->Blit(texture, j*16, i*16 +16, &(threediamondsAnim.GetCurrentFrame()), 0.4f);
+					App->render->Blit(texture, j * 16, i * 16 + 16, &(threediamondsAnim.GetCurrentFrame()), 0.4f);
 				}
 				if (tilemap[i][j] == TILE_BLOCK) {
-					App->render->Blit(texture, j*16, i*16 +16, &(blockColoredAnim.GetCurrentFrame()), 0.4f);
+					App->render->Blit(texture, j * 16, i * 16 + 16, &(blockColoredAnim.GetCurrentFrame()), 0.4f);
 				}
 
 			}
 		}
+	}
+	if (threeDiamonds) {
 		App->render->Blit(texture, 8, 24, &(starsHorizontalRedAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 24, 24, &(starsHorizontalGreenAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 40, 24, &(starsHorizontalYellowAnim.GetCurrentFrame()), 0.4f);
@@ -1357,7 +1401,7 @@ update_status ModuleTileMap::PostUpdate()
 		App->render->Blit(texture, 184, 24, &(starsHorizontalPinkAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 200, 24, &(starsHorizontalOrangeAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 216, 24, &(starsHorizontalSoftYellowAnim.GetCurrentFrame()), 0.4f);
-		
+
 		App->render->Blit(texture, 8, 272, &(starsHorizontalYellowAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 24, 272, &(starsHorizontalGreenAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 40, 272, &(starsHorizontalRedAnim.GetCurrentFrame()), 0.4f);
@@ -1388,7 +1432,7 @@ update_status ModuleTileMap::PostUpdate()
 		App->render->Blit(texture, 224, 224, &(starsVerticalYellowAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 224, 240, &(starsVerticalPinkAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 224, 256, &(starsVerticalOrangeAnim.GetCurrentFrame()), 0.4f);
-		
+
 		App->render->Blit(texture, 8, 32, &(starsVerticalGreenAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 8, 48, &(starsVerticalRedAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 8, 64, &(starsVerticalBlueAnim.GetCurrentFrame()), 0.4f);
@@ -1404,7 +1448,15 @@ update_status ModuleTileMap::PostUpdate()
 		App->render->Blit(texture, 8, 224, &(starsVerticalSoftYellowAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 8, 240, &(starsVerticalOrangeAnim.GetCurrentFrame()), 0.4f);
 		App->render->Blit(texture, 8, 256, &(starsVerticalPinkAnim.GetCurrentFrame()), 0.4f);
-	
+
+	}
+
+	if (bonusCounter) {
+		sprintf_s(scoreBonusText, 10, "%d", scoreBonus);
+		App->fonts->BlitText(88, 152, yellowFont, "bonus");
+		App->fonts->BlitText(96, 160, whiteFont, scoreBonusText);
+		App->fonts->BlitText(120, 168, blueFont, "pts.");
+
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -1421,6 +1473,9 @@ bool ModuleTileMap::CleanUp()
 	App->textures->Unload(Diamond);
 
 	App->audio->UnloadFx(stoppedBlockFx);
+	App->audio->UnloadFx(threeDiamondsFx);
+	App->audio->UnloadFx(countingbonusFx);
+
 	App->collisions->RemoveCollider(collider);
 	App->collisions->RemoveCollider(colliderDiamond);
 
@@ -1453,7 +1508,8 @@ bool ModuleTileMap::CleanUp()
 	spawnFromBlock.Reset();
 	sidesWallAnim.Reset();
 	topbotWallAnim.Reset();
-
+	spawnFromBlock.Reset();
+	nextSpawnBlock.Reset();
 
 	return true;
 }

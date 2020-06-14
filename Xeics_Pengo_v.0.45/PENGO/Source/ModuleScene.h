@@ -81,6 +81,9 @@ public:
 
 	bool music1 = false;
 	bool music2 = false;
+	bool music3 = false;
+	bool oneTimeSound = false;
+
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
 	SDL_Rect pYellow, pRed, pYellowFive;
 

@@ -1060,7 +1060,7 @@ void Enemy_SnoBee::Update()
 				/*if (App->tilemap->timeDiamondStunned < 300 && App->tilemap->timeDiamondStunned>120) {
 					currentAnim = &stunnedBlueAnim;
 				}*/
-				if (App->tilemap->timeDiamondStunned > 900 && App->tilemap->timeDiamondStunned < 1200) {
+				if (App->tilemap->timeDiamondStunned > 1800 && App->tilemap->timeDiamondStunned < 2400) {
 					currentAnim = &stunnedAnim;
 					stunnedEnemy = false;
 					App->player->snobeeStunned = false;
