@@ -30,15 +30,16 @@ A(move left)
 D(move right)
 W(move up)
 S(move down)
+Space(push block/break block/push wall)
 
+Other controls:
 Space(Jump to first level)
 Esc(close application)
 
 God Mode:
 F1(display collisions)
-F2(instant win)
-F3(instant lose)
-
-
-
-
+F2 to F6(debug memory Leaks)
+F7(instant lose)
+F8(god mode)
+F9(lose one life)
+F10(instant win of current level)
