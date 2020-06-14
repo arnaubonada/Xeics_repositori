@@ -126,6 +126,9 @@
     <ClCompile Include="Source\SceneSnow.cpp">
       <Filter>Archivos de recursos\Modules\Gameplay</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneFinish.cpp">
+      <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -219,6 +222,9 @@
       <Filter>Archivos de recursos\Modules\Core</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneSnow.h">
+      <Filter>Archivos de recursos\Modules\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneFinish.h">
       <Filter>Archivos de recursos\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>

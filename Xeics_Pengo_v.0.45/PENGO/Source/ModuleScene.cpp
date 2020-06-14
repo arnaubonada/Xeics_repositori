@@ -19,6 +19,7 @@
 #include "Enemy_SnoBee.h"
 #include "ModuleParticles.h"
 #include "SceneLose.h"
+#include "SceneFinish.h"
 
 #include"SceneIntro.h" 
 
@@ -834,7 +835,7 @@ bool ModuleScene::Start()
 	}
 
 	
-	if (App->sceneLose->losed) {
+	if (App->sceneLose->losed || App->sceneFinish->losed) {
 		App->player->Enable();
 		App->enemies->Enable();
 		App->tilemap->Enable();
@@ -843,6 +844,7 @@ bool ModuleScene::Start()
 
 		App->particles->Enable();
 		App->sceneLose->losed = false;
+		App->sceneFinish->losed = false;
 	}
 	else {
 		App->tilemap->Enable();

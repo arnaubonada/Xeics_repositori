@@ -1,65 +1,59 @@
-#include "SceneLose.h"
+#include "SceneFinish.h"
 
 #include "Application.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleTileMap.h"
+#include "ModuleScene.h"
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "SceneIntro.h"
 #include "ModuleCollisions.h"
-#include "ModuleTileMap.h"
 #include "ModulePlayer.h"
 #include "ModuleFonts.h"
-#include <stdio.h>
-#include "ModuleScene.h"
 #include "SceneWin.h"
 
-
-#include <SDL\include\SDL_scancode.h>
-
-SceneLose::SceneLose(bool startEnabled) : Module(startEnabled)
+SceneFinish::SceneFinish(bool startEnabled) : Module(startEnabled)
 {
-	name = "s lose";
-}
-
-SceneLose::~SceneLose()
-{
+	name = "s finish";
 
 }
 
-
-bool SceneLose::Start()
+SceneFinish::~SceneFinish()
 {
-	LOG("Loading background assets");
+
+}
+
+
+bool SceneFinish::Start()
+{
+	LOG("Loading snowscene assets");
 
 	bool ret = true;
-
-	bgTexture = App->textures->Load("Assets/blackScreen.png");
-	App->audio->PlayMusic("Assets/Audio/miss.ogg", 1.0f);
-
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 	++activeFonts; ++totalFonts;
+	yellowFont = App->fonts->Load("Assets/yellowFont.png", lookupTable, 3);
+	++activeFonts; ++totalFonts;
 
-
-	App->render->camera.x = 0;
-	App->render->camera.y = 0;
 
 	App->input->Enable();
 
 
 	return ret;
 }
-update_status SceneLose::Update()
+
+update_status SceneFinish::Update()
 {
 	GamePad& pad = App->input->pads[0];
 
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a==true) {
-		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
+	{
 
-		App->tilemap->scenelvl1 = true; 
+		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
+		App->tilemap->scenelvl1 = true;
 		App->tilemap->scenelvl2 = false;
 		App->tilemap->scenelvl3 = false;
 		App->tilemap->scenelvl4 = false;
@@ -75,45 +69,39 @@ update_status SceneLose::Update()
 		App->tilemap->scenelvl14 = false;
 		App->tilemap->scenelvl15 = false;
 		losed = true;
-	
+
 		App->sceneWin->counterWinFinish = false;
 		App->player->timerLevel = 0;
 		App->player->minutes = 0;
-		App->player->lifes = 4;
 		App->scene->lvlCont++;
 		App->scene->lvlRep = 0;
 		App->scene->i++;
+		App->player->lifes = 4;
 		App->scene->cont = 0;
 		App->scene->enemiesAlive = 0;
 	}
 
+	return update_status::UPDATE_CONTINUE;
+}
 
+
+update_status SceneFinish::PostUpdate()
+{
+	App->fonts->BlitText(48, 104, yellowFont, "congratulations !!");
+	App->fonts->BlitText(78, 128, whiteFont, "you win");
+	App->fonts->BlitText(38, 152, whiteFont, "we hope you enjoy it");
 
 	return update_status::UPDATE_CONTINUE;
 }
 
-// Update: draw background
-update_status SceneLose::PostUpdate()
-{
-	// Draw everything --------------------------------------
 
-
-	//App->render->Blit(bgTexture, 0, 0, NULL);
-
-	App->fonts->BlitText(40, 104, whiteFont, "thanks for playing");
-	App->fonts->BlitText(56, 128, whiteFont, "try once more !");
-
-
-
-
-	return update_status::UPDATE_CONTINUE;
-}
-
-bool SceneLose::CleanUp()
+bool SceneFinish::CleanUp()
 {
 
-	App->textures->Unload(bgTexture);
+
 	App->fonts->UnLoad(whiteFont);
+	App->fonts->UnLoad(yellowFont);
+
 
 
 	return true;

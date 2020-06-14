@@ -12,6 +12,7 @@
 #include "SceneIntro.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+
 #include "ModuleFonts.h"
 
 #include <stdio.h>
@@ -295,7 +296,7 @@ update_status SceneWin::Update()
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneSnow, 30);
+		App->fade->FadeToBlack(this, (Module*)App->sceneFinish, 30);
 		App->tilemap->scenelvl15 = false;
 		App->tilemap->scenelvl1 = true;
 		counterWinFinish = false;

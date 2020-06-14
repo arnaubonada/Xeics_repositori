@@ -20,7 +20,7 @@
 #include "ModuleRender.h"
 #include "ModuleBlocks.h"
 #include "ModuleTilemap.h"
-
+#include "SceneFinish.h"
 
 Application::Application()
 {
@@ -38,16 +38,17 @@ Application::Application()
 	modules[6] =	sceneSnow =		new SceneSnow(false);
 	modules[7] =	sceneWin =		new SceneWin(false);
 	modules[8] =	sceneLose =		new SceneLose(false);
-	modules[9] =	player =		new ModulePlayer(false);
-	modules[10] =	particles =		new ModuleParticles(true);
-	modules[11] =	enemies =		new ModuleEnemies(false);
-	modules[12] =	blocks =		new ModuleBlocks(false);
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =	fonts =			new ModuleFonts(true);
-	modules[16] =	debugInfo =		new ModuleDebugInfo(true);
-	modules[17] =	tilemap =		new ModuleTileMap(false);
-	modules[18] =	render =		new ModuleRender(true);
+	modules[9] =	sceneFinish =	new SceneFinish(false);
+	modules[10] =	player =		new ModulePlayer(false);
+	modules[11] =	particles =		new ModuleParticles(true);
+	modules[12] =	enemies =		new ModuleEnemies(false);
+	modules[13] =	blocks =		new ModuleBlocks(false);
+	modules[14] =	collisions =	new ModuleCollisions(true);
+	modules[15] =	fade =			new ModuleFadeToBlack(true);
+	modules[16] =	fonts =			new ModuleFonts(true);
+	modules[17] =	debugInfo =		new ModuleDebugInfo(true);
+	modules[18] =	tilemap =		new ModuleTileMap(false);
+	modules[19] =	render =		new ModuleRender(true);
 
 }
 

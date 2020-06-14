@@ -44,6 +44,7 @@
     <ClCompile Include="Source\ModuleWindow.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
     <ClCompile Include="Source\Path.cpp" />
+    <ClCompile Include="Source\SceneFinish.cpp" />
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\SceneLose.cpp" />
     <ClCompile Include="Source\SceneSnow.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="Source\p2Point.h" />
     <ClInclude Include="Source\Particle.h" />
     <ClInclude Include="Source\Path.h" />
+    <ClInclude Include="Source\SceneFinish.h" />
     <ClInclude Include="Source\SceneIntro.h" />
     <ClInclude Include="Source\SceneLose.h" />
     <ClInclude Include="Source\SceneSnow.h" />
