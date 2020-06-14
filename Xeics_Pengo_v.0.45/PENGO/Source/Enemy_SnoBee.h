@@ -20,9 +20,9 @@ public:
 	void Update() override;
 	bool CleanUp();
 
-	uint snobeeFx = 0;
-	uint snobeeSmashedFx = 0;
-	uint snobeeStunnedFx = 0;
+	//uint snobeeFx = 0;
+	//uint snobeeSmashedFx = 0;
+	//uint snobeeStunnedFx = 0;
 
 	//uint enemiesAlive = 0;
 

@@ -99,8 +99,12 @@ bool ModuleEnemies::CleanUp()
 
 	SDL_DestroyTexture(texture);
 
-	//App->textures->Unload(texture);
+	App->audio->UnloadFx(App->enemies->snobeeFx);
+	App->audio->UnloadFx(App->enemies->snobeeSmashedFx);
+	App->audio->UnloadFx(App->enemies->snobeeStunnedFx);
 
+	//App->textures->Unload(texture);
+	//App->collisions->RemoveCollider(App->enemies->colliderStunned);
 	//App->collisions->RemoveCollider(collider);
 	//--totalColliders;
 
@@ -222,8 +226,9 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					delete enemies[i];
 					enemies[i] = nullptr;
 					App->scene->enemiesAlive--;
-					c2->pendingToDelete = true;
+					c1->pendingToDelete = true;
 					App->player->score += 400;
+					break;
 			}
 		}
 		

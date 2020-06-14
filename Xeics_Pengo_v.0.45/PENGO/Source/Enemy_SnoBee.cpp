@@ -17,16 +17,16 @@
 
 Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, y)
 {
-	App->audio->UnloadFx(snobeeFx);
-	App->audio->UnloadFx(snobeeSmashedFx);
-	App->audio->UnloadFx(snobeeStunnedFx);
+	App->audio->UnloadFx(App->enemies->snobeeFx);
+	App->audio->UnloadFx(App->enemies->snobeeSmashedFx);
+	App->audio->UnloadFx(App->enemies->snobeeStunnedFx);
 
-	App->collisions->RemoveCollider(collider);
-	App->collisions->RemoveCollider(colliderStunned);
+	//App->collisions->RemoveCollider(collider);
+	//App->collisions->RemoveCollider(App->enemies->colliderStunned);
 
-	snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
-	snobeeSmashedFx = App->audio->LoadFx("Assets/Audio/SnoBee Smashed.wav");
-	snobeeStunnedFx = App->audio->LoadFx("Assets/Audio/SnoBee Stunned.wav");
+	App->enemies->snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
+	App->enemies->snobeeSmashedFx = App->audio->LoadFx("Assets/Audio/SnoBee Smashed.wav");
+	App->enemies->snobeeStunnedFx = App->audio->LoadFx("Assets/Audio/SnoBee Stunned.wav");
 
 	typeEnemy = type;
 	if (App->tilemap->scenelvl1 || App->tilemap->scenelvl9) {
@@ -704,10 +704,9 @@ Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, 
 
 void Enemy_SnoBee::Update()
 {
-	if (App->player->destroyed) {
-		App->collisions->RemoveCollider(colliderStunned);
-
-	}
+	//if (App->player->destroyed) {
+	//	App->collisions->RemoveCollider(App->enemies->colliderStunned);
+	//}
 
 	if (!App->player->destroyed) {
 		if (!App->tilemap->threeDiamonds) {
@@ -851,20 +850,20 @@ void Enemy_SnoBee::Update()
 							if (typeEnemy == ENEMY_TYPE::SNOBEE_DESTROYER && stunnedEnemy && !oneTime)
 							{
 								currentAnim = &stunnedAnim;
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
 							else if (typeEnemy == ENEMY_TYPE::SNOBEE_NORMAL && stunnedEnemy && !oneTime)
 							{
 								currentAnim = &stunnedAnim;
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 							}
 							//colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
@@ -893,10 +892,10 @@ void Enemy_SnoBee::Update()
 							{
 								currentAnim = &stunnedAnim;
 
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
@@ -904,10 +903,10 @@ void Enemy_SnoBee::Update()
 							{
 								currentAnim = &stunnedAnim;
 
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
@@ -937,10 +936,10 @@ void Enemy_SnoBee::Update()
 							{
 								currentAnim = &stunnedAnim;
 
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
@@ -948,10 +947,10 @@ void Enemy_SnoBee::Update()
 							{
 								currentAnim = &stunnedAnim;
 
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
@@ -981,10 +980,10 @@ void Enemy_SnoBee::Update()
 							{
 								currentAnim = &stunnedAnim;
 
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
@@ -992,10 +991,10 @@ void Enemy_SnoBee::Update()
 							{
 								currentAnim = &stunnedAnim;
 
-								colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+								App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 								oneTime = true;
 								oneTimeRemove = true;
-								App->audio->PlayFx(snobeeStunnedFx, 0);
+								App->audio->PlayFx(App->enemies->snobeeStunnedFx, 0);
 								timeStunned = 1;
 
 							}
@@ -1037,7 +1036,7 @@ void Enemy_SnoBee::Update()
 					
 					stunnedEnemy = false;
 					if (oneTimeRemove) {
-						App->collisions->RemoveCollider(colliderStunned);
+						App->collisions->RemoveCollider(App->enemies->colliderStunned);
 						oneTimeRemove = false;
 						oneTime = false;
 					}
@@ -1067,8 +1066,9 @@ void Enemy_SnoBee::Update()
 					currentAnim = &stunnedAnim;
 					stunnedEnemy = false;
 					App->player->snobeeStunned = false;
+
 					App->collisions->RemoveCollider(collider);
-					colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
+					App->enemies->colliderStunned = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY_STUNNED, (Module*)App->enemies);
 					//App->tilemap->timeDiamondStunned = 1;
 					if (lastTimeStunned == 0) {
 						lastTimeStunned = 1;
@@ -1104,7 +1104,7 @@ void Enemy_SnoBee::Update()
 					lastTimeStunned = 0;
 					timeStunned = 0;
 
-					App->collisions->RemoveCollider(colliderStunned);
+					App->collisions->RemoveCollider(App->enemies->colliderStunned);
 					collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 					DiamondFinished = true;
 					diamondComplete = true;
@@ -1342,7 +1342,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x -4, App->tilemap->positionBlock.y, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1380,7 +1380,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x + 4, App->tilemap->positionBlock.y, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1416,7 +1416,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x, App->tilemap->positionBlock.y-4, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1451,7 +1451,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionBlock.x, App->tilemap->positionBlock.y+4, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1488,7 +1488,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x - 4, App->tilemap->positionDiamond.y, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1527,7 +1527,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x + 4, App->tilemap->positionDiamond.y, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1563,7 +1563,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 							}
 						}
 						if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-							App->audio->PlayFx(snobeeSmashedFx, 0);
+							App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 							App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x, App->tilemap->positionDiamond.y - 4, Collider::Type::NONE, 0);
 							App->player->score += 400;
 							delete App->enemies->enemies[i];
@@ -1598,7 +1598,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 						}
 					}
 					if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
-						App->audio->PlayFx(snobeeSmashedFx, 0);
+						App->audio->PlayFx(App->enemies->snobeeSmashedFx, 0);
 						App->particles->AddParticle(fourHundredParticle, App->tilemap->positionDiamond.x, App->tilemap->positionDiamond.y + 4, Collider::Type::NONE, 0);
 						App->player->score += 400;
 						delete App->enemies->enemies[i];

@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleRender.h"
+#include "ModuleEnemies.h"
 
 
 
@@ -26,7 +27,7 @@ const Collider* Enemy::GetCollider() const
 
 const Collider* Enemy::GetColliderStun() const
 {
-	return colliderStunned;
+	return App->enemies->colliderStunned;
 }
 
 
