@@ -118,6 +118,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -136,6 +137,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -154,6 +156,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -172,6 +175,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -189,6 +193,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -206,6 +211,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -223,6 +229,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -240,6 +247,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -257,6 +265,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -274,6 +283,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -291,6 +301,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -308,6 +319,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -325,6 +337,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -342,6 +355,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;
@@ -359,6 +373,7 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->scene->eggsCont = 0;
 		App->tilemap->threeDiamonds = false;
 		App->tilemap->timeDiamond = 0;
 		App->tilemap->threeDiamondsDone = false;

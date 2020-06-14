@@ -973,6 +973,29 @@ update_status ModuleScene::Update()
 			App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
 		}
 
+		if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[4][8] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[8][12] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[4][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][8] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 2) {
+
+			if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[4][8] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
@@ -1024,6 +1047,29 @@ update_status ModuleScene::Update()
 			App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
 		}
 
+		if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[10][2] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[10][10] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 2) {
+
+			if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
@@ -1073,6 +1119,107 @@ update_status ModuleScene::Update()
 		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 			App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+		}
+
+		if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[6][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[4][12] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[6][4] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[8][4] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 3) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 4) {
+
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
@@ -1139,6 +1286,107 @@ update_status ModuleScene::Update()
 		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
 			App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
+		}
+
+		if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[2][10] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[6][10] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[10][10] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[14][12] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 3) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 4) {
+
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
@@ -1212,6 +1460,56 @@ update_status ModuleScene::Update()
 			App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
 		}
 
+		if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[2][2] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[6][4] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[2][6] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 3) {
+
+			if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][2] == TILE_NOBLOCK && App->tilemap->tilemap[6][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
@@ -1270,6 +1568,56 @@ update_status ModuleScene::Update()
 		if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
 
 			App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+		}
+
+		if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[4][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[8][4] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[12][4] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 3) {
+
+			if (App->tilemap->tilemap[2][8] == TILE_NOBLOCK && App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
@@ -1331,6 +1679,56 @@ update_status ModuleScene::Update()
 			App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
 		}
 
+		if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[2][6] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[14][10] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[10][2] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 3) {
+
+			if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[10][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
@@ -1388,6 +1786,202 @@ update_status ModuleScene::Update()
 		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 			App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+		}
+
+		if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[6][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[8][10] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[6][2] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[12][6] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[10][8] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 3) {
+			if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 4) {
+			if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 5) {
+
+			if (App->tilemap->tilemap[4][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
@@ -1469,6 +2063,202 @@ update_status ModuleScene::Update()
 			App->tilemap->tilemap[14][4] = TILE_NOBLOCK;
 		}
 
+		if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[8][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[10][4] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[10][2] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[12][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[14][10] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 3) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 4) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 5) {
+
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[10][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
@@ -1548,6 +2338,202 @@ update_status ModuleScene::Update()
 			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 
+		if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[6][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[6][10] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[14][4] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[14][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[10][10] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 3) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][8] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 4) {
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 5) {
+
+			if (App->tilemap->tilemap[4][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[14][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
@@ -1625,6 +2611,202 @@ update_status ModuleScene::Update()
 		if (App->tilemap->tilemap[14][2] == TILE_BLOCK) {
 
 			App->tilemap->tilemap[14][2] = TILE_NOBLOCK;
+		}
+
+		if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[8][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[10][4] == TILE_NOBLOCK && eggsCont == 0
+			|| App->tilemap->tilemap[10][2] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[12][12] == TILE_NOBLOCK && eggsCont == 0 || App->tilemap->tilemap[14][10] == TILE_NOBLOCK && eggsCont == 0) {
+
+			eggsCont++;
+
+		}
+		if (eggsCont == 1) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 2) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 3) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+
+		}
+		if (eggsCont == 4) {
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[8][10] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[6][2] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+			else if (App->tilemap->tilemap[10][4] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[6][2] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[12][6] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
+		}
+		if (eggsCont == 5) {
+
+			if (App->tilemap->tilemap[2][6] == TILE_NOBLOCK && App->tilemap->tilemap[8][12] == TILE_NOBLOCK && App->tilemap->tilemap[10][4] == TILE_NOBLOCK
+				&& App->tilemap->tilemap[10][2] == TILE_NOBLOCK && App->tilemap->tilemap[12][12] == TILE_NOBLOCK && App->tilemap->tilemap[14][10] == TILE_NOBLOCK) {
+				eggsCont++;
+			}
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
@@ -2274,17 +3456,440 @@ update_status ModuleScene::PostUpdate()
 		App->render->Blit(scTexture, 216, 8, &pYellowFive);
 		App->render->Blit(scTexture, 200, 8, &pYellowFive);
 	}
+		
+	if (App->tilemap->scenelvl1 == true) {
 
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {}
+		else {
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
 
-	
+	}
+	if (App->tilemap->scenelvl2 == true) {
 
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {}
+		else {
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
 
-	App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
-	App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+	}
+	if (App->tilemap->scenelvl3 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 5) {}
+		else {
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+
+	}
+	if (App->tilemap->scenelvl4 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 5) {}
+		else {
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+
+	}
+	if (App->tilemap->scenelvl5 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+		}
+		else {
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		if (App->tilemap->scenelvl6 == true) {
+
+			if (!App->tilemap->spawn1 && eggsCont == 0) {
+				App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			}
+			else if (eggsCont == 1) {
+				App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			}
+			else if (eggsCont == 2) {
+				App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			}
+			else if (eggsCont == 3) {
+				App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			}
+			else if (eggsCont == 4) {
+			}
+			else {
+				App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+				App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			}
+		}
+	}
+	if (App->tilemap->scenelvl7 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+		}
+		else {
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+	}
+	if (App->tilemap->scenelvl8 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 5) {
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 6) {
+		}
+		else {
+			App->render->Blit(scTexture, 80, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+	}
+	if (App->tilemap->scenelvl9 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 5) {
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 6) {
+		}
+		else {
+			App->render->Blit(scTexture, 80, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+	}
+	if (App->tilemap->scenelvl10 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 5) {
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 6) {
+		}
+		else {
+			App->render->Blit(scTexture, 80, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+	}
+	if (App->tilemap->scenelvl11 == true) {
+
+		if (!App->tilemap->spawn1 && eggsCont == 0) {
+
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 1) {
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 2) {
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 3) {
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 4) {
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 5) {
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+		else if (eggsCont == 6) {
+		}
+		else {
+			App->render->Blit(scTexture, 80, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 88, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 96, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 104, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 112, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 120, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 128, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 136, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 144, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 152, 16, &(miniEnemyEggAnim.GetCurrentFrame()), 0.1f);
+		}
+	}
 
 	App->render->Blit(oneTexture, 16, 0, &(oneAnim.GetCurrentFrame()), 0.1f);
 

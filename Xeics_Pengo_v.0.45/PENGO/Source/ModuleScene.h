@@ -77,6 +77,7 @@ public:
 	int lvlCont = 0;
 	int i = 0;
 	int cont = 0;
+	int eggsCont = 0;
 
 	bool music1 = false;
 	bool music2 = false;

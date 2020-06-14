@@ -86,6 +86,7 @@ update_status SceneLose::Update()
 		App->scene->cont = 0;
 		App->scene->enemiesAlive = 0;
 		App->player->score = 0;
+		App->scene->eggsCont = 0;
 
 	}
 
