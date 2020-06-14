@@ -69,7 +69,7 @@ bool SceneSnow::Start()
 	LOG("Loading snowscene assets");
 
 	bool ret = true;
-
+	App->audio->PlayMusic("Assets/Audio/Intermission.ogg", 1.0f);
 	skyTexture = App->textures->Load("Assets/Intro.png");
 	snowTexture=App->textures->Load("Assets/snow.png");
 

@@ -31,7 +31,7 @@ bool SceneFinish::Start()
 	LOG("Loading snowscene assets");
 
 	bool ret = true;
-
+	App->audio->PlayMusic("Assets/Audio/finishSong.ogg", 1.0f);
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
 	++activeFonts; ++totalFonts;

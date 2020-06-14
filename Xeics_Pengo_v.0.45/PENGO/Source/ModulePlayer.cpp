@@ -164,7 +164,7 @@ bool ModulePlayer::Start()
 	position.y = 128;
 	rep = 0;
 
-	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
+	colliderPlayer = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
 	++activeColliders; ++totalColliders;
 	destroyed = false;
 
@@ -185,7 +185,7 @@ update_status ModulePlayer::Update()
 	GamePad& pad = App->input->pads[0];
 
 	if (!Collide) {
-		App->collisions->RemoveCollider(collider);
+		App->collisions->RemoveCollider(colliderPlayer);
 		--totalColliders;
 	}
 	
@@ -349,7 +349,7 @@ update_status ModulePlayer::Update()
 
 		}
 	}
-	collider->SetPos(position.x, position.y);
+	colliderPlayer->SetPos(position.x, position.y);
 
 
 	int posBlock = 1;
@@ -655,7 +655,7 @@ bool ModulePlayer::CleanUp()
 	App->audio->UnloadFx(playerDieFx);
 	--totalFx;
 
-	App->collisions->RemoveCollider(collider);
+	App->collisions->RemoveCollider(colliderPlayer);
 	--totalColliders;
 
 	App->fonts->UnLoad(whiteFont);

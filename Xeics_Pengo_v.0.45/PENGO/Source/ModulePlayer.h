@@ -83,7 +83,7 @@ public:
 	
 	// The player's collider
 	bool Collide = true;
-	Collider* collider = nullptr;
+	Collider* colliderPlayer = nullptr;
 
 	uint snobeeFx = 0;
 	uint destroyBlockFx = 0;

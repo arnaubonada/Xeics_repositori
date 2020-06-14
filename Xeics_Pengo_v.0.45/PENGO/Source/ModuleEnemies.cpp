@@ -94,7 +94,7 @@ bool ModuleEnemies::CleanUp()
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
-			App->collisions->RemoveCollider(App->enemies->colliderStunned);
+			
 		}
 	}
 
@@ -104,7 +104,7 @@ bool ModuleEnemies::CleanUp()
 	App->audio->UnloadFx(App->enemies->snobeeStunnedFx);
 
 	//App->textures->Unload(texture);
-	
+	App->collisions->RemoveCollider(App->enemies->colliderStunned);
 	//App->collisions->RemoveCollider(collider);
 	//--totalColliders;
 

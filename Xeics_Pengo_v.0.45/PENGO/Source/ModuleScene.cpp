@@ -2200,7 +2200,7 @@ update_status ModuleScene::PostUpdate()
 	if (App->player->lifes > 0 && App->player->destroyed)
 	{
 		App->fade->FadeToBlack((Module*)App->scene, (Module*)App->scene, 60);
-		App->player->collider->pendingToDelete = true;
+		App->player->colliderPlayer->pendingToDelete = true;
 	}
 	else if (App->player->lifes == 0 && App->player->destroyed)
 	{

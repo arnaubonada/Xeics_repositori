@@ -63,7 +63,7 @@ bool SceneIntro::Start()
 	bgTexture = App->textures->Load("Assets/startScreen.png");
 	logo = App->textures->Load("Assets/Logoodef.png");
 
-	App->audio->PlayMusic("Assets/Audio/Intermission.ogg", 1.0f);
+	
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
