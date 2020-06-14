@@ -36,10 +36,14 @@ Other controls:
 Space(Jump to first level)
 Esc(close application)
 
-God Mode:
+Debug Keys:
 F1(display collisions)
 F2 to F6(debug memory Leaks)
 F7(instant lose)
 F8(god mode)
 F9(lose one life)
 F10(instant win of current level)
+
+z+mouse position(Block creation)
+q+mouse position(snobee normal creation)
+x+mouse position(snobee destroyer creation)
