@@ -58,6 +58,9 @@ public:
 	void DrawMap();
 
 	void DestroyBlock(int x, int y);
+	void DestroyBlock2(int x, int y);
+	void DestroyBlock3(int x, int y);
+	void DestroyBlock4(int x, int y);
 
 	void MoveBlock(int x, int y, Direction d);
 
@@ -90,7 +93,13 @@ public:
 	void checkDiamonds();
 
 	int spaceToBlock(int x, int y, Direction d);
+
 	int spaceToWall(int x, int y, Direction d);
+
+	void spawnfromBlock1(int x, int y);
+	void spawnfromBlock2(int x, int y);
+	void spawnfromBlock3(int x, int y);
+	void spawnfromBlock4(int x, int y);
 
 	//// Called at the middle of the application loop
 	//// Updates the scene's background animations
@@ -102,6 +111,7 @@ public:
 
 	bool CleanUp() override;
 
+	//void OnCollision(Collider* c1, Collider* c2) override;
 	//char* getLevel(int level);
 	//int timer;
 
@@ -133,6 +143,8 @@ public:
 	Animation starsVerticalSoftYellowAnim;
 	Animation starsVerticalGreenAnim;
 
+	Animation spawnFromBlock;
+
 
 	Animation sidesWallAnim;
 	Animation topbotWallAnim;
@@ -156,6 +168,9 @@ public:
 	int finalpositionY_diamond;
 
 	bool destroyedBlock = false;
+	bool destroyedBlock2 = false;
+	bool destroyedBlock3 = false;
+	bool destroyedBlock4 = false;
 
 	bool movedBlockfinish = false;
 	bool destroyedAnimBlock = false;
@@ -177,8 +192,19 @@ public:
 	int iBlock;
 	int jBlock;
 
+	int posSpawnX, posSpawnY;
+	int posSpawn2X, posSpawn2Y;
+	int posSpawn3X, posSpawn3Y;
+	int posSpawn4X, posSpawn4Y;
+
+	bool spawn1 = false;
+	bool spawn2 = false;
+	bool spawn3 = false;
+	bool spawn4 = false;
+
 	SDL_Texture* texture;
 	SDL_Texture* scTexture;
+	SDL_Texture* chTexture;
 
 	SDL_Texture* noBlock;
 	SDL_Texture* Block;
@@ -197,6 +223,9 @@ public:
 	int timeDiamond = 0;
 
 	int blockX, blockY;
+	int block2X, block2Y;
+	int block3X, block3Y;
+	int block4X, block4Y;
 
 	int movedBlockX, movedBlockY;
 

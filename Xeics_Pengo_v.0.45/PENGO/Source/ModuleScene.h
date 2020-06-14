@@ -57,10 +57,6 @@ public:
 
 public:
 
-	Collider* rightWall = nullptr;
-	Collider* leftWall = nullptr;
-	Collider* topWall = nullptr;
-	Collider* bottomWall = nullptr;
 
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
@@ -72,7 +68,6 @@ public:
 
 	Animation oneAnim;
 	Animation miniEnemyEggAnim;
-	//Animation oneHundred;
 
 	int timescore = 0;
 	int posEnemyX;

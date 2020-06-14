@@ -267,6 +267,16 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	topbotWallAnim.loop = false;
 	topbotWallAnim.speed = 0.1f;
 
+	spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+	spawnFromBlock.PushBack({ 16, 128, 16, 16 });
+	spawnFromBlock.PushBack({ 64, 144, 16, 16 });
+	spawnFromBlock.PushBack({ 32, 128, 16, 16 });
+	spawnFromBlock.PushBack({ 48, 128, 16, 16 });
+	spawnFromBlock.PushBack({ 64, 128, 16, 16 });
+	spawnFromBlock.PushBack({ 80, 128, 16, 16 });
+	spawnFromBlock.speed = 0.1f;
+	spawnFromBlock.loop = false;
+
 	source.x = source.y = 0;
 	source.w = source.h = 16;
 	destination.w = destination.h = 16;
@@ -282,7 +292,7 @@ bool ModuleTileMap::Start()
 {
 	texture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
-
+	chTexture = App->textures->Load("Assets/Characters.png");
 	stoppedBlockFx = App->audio->LoadFx("Assets/Audio/Block Stopped.wav");
 	
 	noBlock = App->textures->Load("Assets/noBlock.png");
@@ -576,7 +586,30 @@ void ModuleTileMap::DestroyBlock(int x, int y)
 	currentAnimation = &blockDestrAnim;
 	
 	destroyedAnimBlock = false;
-	//App->render->Blit(noBlock, destination.x, destination.y, &source);
+}
+
+void ModuleTileMap::DestroyBlock2(int x, int y)
+{	
+	block2X = x / 16;
+	block2Y = (y - 16) / 16;
+
+	destroyedBlock2 = true;
+}
+
+void ModuleTileMap::DestroyBlock3(int x, int y)
+{	
+	block3X = x / 16;
+	block3Y = (y - 16) / 16;
+	
+	destroyedBlock3 = true;
+}
+
+void ModuleTileMap::DestroyBlock4(int x, int y)
+{	
+	block4X = x / 16;
+	block4Y = (y - 16) / 16;
+	
+	destroyedBlock4 = true;
 }
 
 void ModuleTileMap::MoveBlock(int x, int y, Direction d)
@@ -721,6 +754,34 @@ void ModuleTileMap::checkDiamonds() {
 
 }
 
+void ModuleTileMap::spawnfromBlock1(int x, int y) {
+	posSpawnX = x;
+	posSpawnY = y;
+
+	spawn1 = true;
+}
+
+void ModuleTileMap::spawnfromBlock2(int x, int y) {
+	posSpawn2X = x;
+	posSpawn2Y = y;
+
+	spawn2 = true;
+}
+
+void ModuleTileMap::spawnfromBlock3(int x, int y) {
+	posSpawn3X = x;
+	posSpawn3Y = y;
+
+	spawn3 = true;
+}
+
+void ModuleTileMap::spawnfromBlock4(int x, int y) {
+	posSpawn4X = x;
+	posSpawn4Y = y;
+
+	spawn4 = true;
+}
+
 void ModuleTileMap::MouseState() {
 
 	SDL_GetMouseState(&mousePositionX, &mousePositionY);
@@ -790,20 +851,24 @@ update_status ModuleTileMap::Update()
 
 	tilemap[posYplayer][posXplayer] = TILE_PLAYER;*/
 
-	if (destroyedBlock) {
+	if (destroyedBlock || destroyedBlock2 || destroyedBlock3 || destroyedBlock4) {
 		blockDestrAnim.Update();
 		if (blockDestrAnim.HasFinished()) {
 			destroyedBlock = false;
+			destroyedBlock2 = false;
+			destroyedBlock3 = false;
+			destroyedBlock4 = false;
 			destroyedAnimBlock = true;
 			blockDestrAnim.Reset();
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
 		else {
 			destroyedAnimBlock = true;
-			//blockDestrAnim.Reset();
 			tilemap[blockY][blockX] = TILE_NOBLOCK;
 		}
 	}
+	
+
 
 	if (pushLeft) {
 		sidesWallAnim.Update();
@@ -833,6 +898,18 @@ update_status ModuleTileMap::Update()
 			topbotWallAnim.Reset();
 		}
 	}
+
+	if (spawn1 || spawn2 || spawn3 || spawn4) {
+		spawnFromBlock.Update();
+		if (spawnFromBlock.HasFinished()) {
+			spawn1 = false;
+			spawn2 = false;
+			spawn3 = false;
+			spawn4 = false;
+			spawnFromBlock.Reset();
+		}
+	}
+	
 
 
 	if (dirBlock != NOMOVE) 
@@ -992,18 +1069,40 @@ update_status ModuleTileMap::Update()
 	starsVerticalSoftYellowAnim.Update();
 	starsVerticalGreenAnim.Update();
 
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
 
 update_status ModuleTileMap::PostUpdate()
 {
-	if (destroyedBlock) {
 
-		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
-
+	if (spawn1) {
+		App->render->Blit(chTexture, posSpawnX, posSpawnY, &(spawnFromBlock.GetCurrentFrame()), 0.1f);
 	}
+	if (spawn2) {
+		App->render->Blit(chTexture, posSpawn2X, posSpawn2Y, &(spawnFromBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (spawn3) {
+		App->render->Blit(chTexture, posSpawn3X, posSpawn3Y, &(spawnFromBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (spawn4) {
+		App->render->Blit(chTexture, posSpawn4X, posSpawn4Y, &(spawnFromBlock.GetCurrentFrame()), 0.1f);
+	}
+
+	if (destroyedBlock) {
+		App->render->Blit(texture, blockX*16, (blockY*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+	}
+	if (destroyedBlock2) {
+		App->render->Blit(texture, block2X*16, (block2Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+	}
+	if (destroyedBlock3) {
+		App->render->Blit(texture, block3X*16, (block3Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+	}
+	if (destroyedBlock4) {
+		App->render->Blit(texture, block4X*16, (block4Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+	}
+
 	if (pushLeft) {
 		App->render->Blit(texture, 8, 24, &(sidesWallAnim.GetCurrentFrame()), 0.1f);
 	}
@@ -1119,11 +1218,147 @@ bool ModuleTileMap::CleanUp()
 
 	App->textures->Unload(texture);
 	App->textures->Unload(scTexture);
+	App->textures->Unload(chTexture);
 	App->textures->Unload(noBlock);
 	App->textures->Unload(Block);
 	App->textures->Unload(Diamond);
 
 	App->audio->UnloadFx(stoppedBlockFx);
-
+	App->collisions->RemoveCollider(collider);
+	App->collisions->RemoveCollider(colliderDiamond);
 	return true;
 }
+
+
+//
+//
+//void ModuleTileMap::OnCollision(Collider* c1, Collider* c2)
+//{
+//
+//	if (c1->type == Collider::Type::BLOCK) {
+//
+//
+//
+//		if (c2->type == Collider::Type::ENEMY_STUNNED) {
+//
+//				if (dirBlock == LEFT) {
+//					/*position.x = App->tilemap->positionBlock.x - 16;
+//					currentAnim = &dragEnemyLeftAnim;
+//					if (App->tilemap->positionBlock.x <= (App->tilemap->finalpositionX + 16) && App->tilemap->positionBlock.x > App->tilemap->finalpositionX) {
+//						currentAnim = &firstSmashLeftAnim;
+//					}
+//					if (App->tilemap->positionBlock.x == App->tilemap->finalpositionX + 4) {
+//						currentAnim = &secondSmashLeftAnim;*/
+//					for (uint i = 0; i < MAX_ENEMIES; ++i)
+//						{
+//							if (App->enemies->enemies[i] != nullptr) {
+//								if (App->enemies->enemies[i]->GetColliderStun() == c2) {
+//									App->enemies->enemiesSmashed[i] = true;
+//								}
+//							}
+//							if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+//								delete App->enemies->enemies[i];
+//								App->enemies->enemies[i] = nullptr;
+//								App->scene->enemiesAlive--;
+//								App->enemies->enemiesSmashed[i] = false;
+//								//smashedEnemy = false;
+//							}
+//						}
+//
+//					}
+//
+//				/*
+//				else if (App->tilemap->dirBlock == RIGHT) {
+//					smashedEnemy = true;
+//
+//
+//					position.x = App->tilemap->positionBlock.x + 16;
+//					currentAnim = &dragEnemyRightAnim;
+//					if (App->tilemap->positionBlock.x >= (App->tilemap->finalpositionX - 16) && App->tilemap->positionBlock.x < App->tilemap->finalpositionX) {
+//						currentAnim = &firstSmashRightAnim;
+//					}
+//					if (App->tilemap->positionBlock.x == App->tilemap->finalpositionX - 4) {
+//						currentAnim = &secondSmashRightAnim;
+//						for (uint i = 0; i < MAX_ENEMIES; ++i)
+//						{
+//							if (App->enemies->enemies[i] != nullptr) {
+//								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+//									App->enemies->enemiesSmashed[i] = true;
+//								}
+//							}
+//							if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+//								delete App->enemies->enemies[i];
+//								App->enemies->enemies[i] = nullptr;
+//								App->scene->enemiesAlive--;
+//								App->enemies->enemiesSmashed[i] = false;
+//								smashedEnemy = false;
+//							}
+//						}
+//					}
+//
+//				}
+//				else if (App->tilemap->dirBlock == UP) {
+//					smashedEnemy = true;
+//
+//
+//					position.y = App->tilemap->positionBlock.y - 16;
+//					currentAnim = &dragEnemyUpAnim;
+//					if (App->tilemap->positionBlock.y <= (App->tilemap->finalpositionY + 16) && App->tilemap->positionBlock.y > App->tilemap->finalpositionY) {
+//						currentAnim = &firstSmashUpAnim;
+//					}
+//					if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY + 4) {
+//						currentAnim = &secondSmashUpAnim;
+//						for (uint i = 0; i < MAX_ENEMIES; ++i)
+//						{
+//							if (App->enemies->enemies[i] != nullptr) {
+//								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+//									App->enemies->enemiesSmashed[i] = true;
+//								}
+//							}
+//							if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+//								delete App->enemies->enemies[i];
+//								App->enemies->enemies[i] = nullptr;
+//								App->scene->enemiesAlive--;
+//								App->enemies->enemiesSmashed[i] = false;
+//								smashedEnemy = false;
+//							}
+//						}
+//					}
+//
+//				}
+//				else if (App->tilemap->dirBlock == DOWN) {
+//					smashedEnemy = true;
+//
+//
+//					position.y = App->tilemap->positionBlock.y + 16;
+//					currentAnim = &dragEnemyDownAnim;
+//					if (App->tilemap->positionBlock.y >= (App->tilemap->finalpositionY - 16) && App->tilemap->positionBlock.y < App->tilemap->finalpositionY) {
+//						currentAnim = &firstSmashDownAnim;
+//					}
+//					if (App->tilemap->positionBlock.y == App->tilemap->finalpositionY - 4) {
+//						currentAnim = &secondSmashDownAnim;
+//						for (uint i = 0; i < MAX_ENEMIES; ++i)
+//						{
+//							if (App->enemies->enemies[i] != nullptr) {
+//								if (App->enemies->enemies[i]->GetColliderStun() == c1) {
+//									App->enemies->enemiesSmashed[i] = true;
+//								}
+//							}
+//							if (App->enemies->enemies[i] != nullptr && App->enemies->enemiesSmashed[i]) {
+//								delete App->enemies->enemies[i];
+//								App->enemies->enemies[i] = nullptr;
+//								App->scene->enemiesAlive--;
+//								App->enemies->enemiesSmashed[i] = false;
+//								smashedEnemy = false;
+//							}
+//						}
+//					}*/
+//
+//				}
+//
+//			}
+//
+//			
+//	}
+//
+

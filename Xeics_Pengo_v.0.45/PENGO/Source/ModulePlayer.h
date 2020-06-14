@@ -110,9 +110,6 @@ public:
 	char secondsText[10] = { "\0" };
 	char minutesText[10] = { "\0" };
 
-	// Sound effects indices
-	uint laserFx = 0;
-	uint explosionFx = 0;
 
 	int rep = 0;
 

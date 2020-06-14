@@ -162,11 +162,6 @@ bool ModulePlayer::Start()
 	position.x = 112;
 	position.y = 128;
 	rep = 0;
-	//position.x = 176;
-	//position.y = 64;
-
-	/*laserFx = App->audio->LoadFx("Assets/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");*/
 
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::PLAYER, this);
 	++activeColliders; ++totalColliders;

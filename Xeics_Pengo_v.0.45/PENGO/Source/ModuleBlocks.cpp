@@ -34,7 +34,7 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 	//position.x = 70;
 	//position.y = 70;
 
-	blockAnim.PushBack({ 708, 0, 16, 16 });
+	/*blockAnim.PushBack({ 708, 0, 16, 16 });
 	blockAnim.speed = 0.1f;
 
 	blockDestrAnim.PushBack({ 708, 48, 16, 16 });
@@ -46,7 +46,7 @@ ModuleBlocks::ModuleBlocks(bool startEnabled) : Module(startEnabled)
 	blockDestrAnim.PushBack({ 804, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 820, 48, 16, 16 });
 	blockDestrAnim.PushBack({ 836, 48, 16, 16 });
-	blockDestrAnim.speed = 0.2f;
+	blockDestrAnim.speed = 0.2f;*/
 }
 
 ModuleBlocks::~ModuleBlocks()
@@ -56,16 +56,16 @@ ModuleBlocks::~ModuleBlocks()
 
 bool ModuleBlocks::Start()
 {
-	LOG("Loading player textures");
+	//LOG("Loading player textures");
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/Blocks.png");
-	currentAnimation = &blockAnim;
+	//texture = App->textures->Load("Assets/Blocks.png");
+	//currentAnimation = &blockAnim;*/
 	//blockDestroyedFx = App->audio->LoadFx("Assets/explosion.wav");
 
 	
-	if (App->scene->rep) {
+	//if (App->scene->rep) {
 
 		/*for (int i = 32; i < 272; i += 16)
 		{
@@ -107,8 +107,7 @@ bool ModuleBlocks::Start()
 			}
 			
 		}*/
-	}
-	
+	//}
 	
 	
 	//App->scene->pintarBlock(App->scene->getState(positionBlock.x, positionBlock.y));
@@ -124,7 +123,7 @@ bool ModuleBlocks::Start()
 update_status ModuleBlocks::PreUpdate()
 {
 
-	App->scene->rep = false;
+	//App->scene->rep = false;
 	
 	/*
 	// Remove all enemies scheduled for deletion
@@ -193,10 +192,10 @@ update_status ModuleBlocks::Update()
 
 	//HandleBlockDespawn();
 
-	currentAnimation = &blockAnim;
+	//currentAnimation = &blockAnim;
 	
 
-	currentAnimation->Update();
+	//currentAnimation->Update();
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -275,7 +274,7 @@ bool ModuleBlocks::CleanUp()
 			blocks[i] = nullptr;
 		}
 	}*/
-	App->textures->Unload(texture);
+	//App->textures->Unload(texture);
 	return true;
 }
 

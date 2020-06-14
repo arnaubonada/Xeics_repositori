@@ -54,6 +54,7 @@ ModuleScene::ModuleScene(bool startEnabled) :Module(startEnabled)
 	miniEnemyEggAnim.PushBack({ 90, 82, 8, 8 });
 	miniEnemyEggAnim.speed = 0.1f;
 
+	
 
 
 }
@@ -74,8 +75,7 @@ bool ModuleScene::Start()
 	chTexture = App->textures->Load("Assets/Characters.png");
 	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
-	oneTexture = App->textures->Load("Assets/1p.png");
-	//onehundredPoints = App->textures->Load("Assets/100points.png");
+	oneTexture = App->textures->Load("Assets/1p.png");;
 
 	App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
 
@@ -86,13 +86,17 @@ bool ModuleScene::Start()
 
 	if (lvlCont == i && App->tilemap->scenelvl1 == true) {
 		if (lvlRep == 0) {
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 208);		
-
+			App->tilemap->DestroyBlock(96, 208);
+			App->tilemap->DestroyBlock2(160, 144);
+			App->tilemap->DestroyBlock3(192, 208);
+			App->tilemap->spawnfromBlock1(96, 208);
+			App->tilemap->spawnfromBlock2(160, 144);
+			App->tilemap->spawnfromBlock3(192, 208);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 208);
+			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 144);
 			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
-		
 		}
 		else if (lvlRep > 0) {
 
@@ -124,7 +128,12 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl2 == true) {
 		if (lvlRep == 0) {
-			
+			App->tilemap->DestroyBlock(96, 80);
+			App->tilemap->DestroyBlock2(128, 176);
+			App->tilemap->DestroyBlock3(160, 240);
+			App->tilemap->spawnfromBlock1(96, 80);
+			App->tilemap->spawnfromBlock2(128, 176);
+			App->tilemap->spawnfromBlock3(160, 240);
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 80);
 			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 176);
@@ -161,7 +170,12 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl3 == true) {
 		if (lvlRep == 0) {
-
+			App->tilemap->DestroyBlock(128, 48);
+			App->tilemap->DestroyBlock2(192, 112);
+			App->tilemap->DestroyBlock3(192, 208);
+			App->tilemap->spawnfromBlock1(128, 48);
+			App->tilemap->spawnfromBlock2(192, 112);
+			App->tilemap->spawnfromBlock3(192, 208);
 			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 48);
 			
@@ -201,7 +215,12 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl4 == true) {
 		if (lvlRep == 0) {
-						
+			App->tilemap->DestroyBlock(192, 144);
+			App->tilemap->DestroyBlock2(128, 80);
+			App->tilemap->DestroyBlock3(32, 112);
+			App->tilemap->spawnfromBlock1(192, 144);
+			App->tilemap->spawnfromBlock2(128, 80);
+			App->tilemap->spawnfromBlock3(32, 112);
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
 			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
@@ -240,12 +259,17 @@ bool ModuleScene::Start()
 	else if (lvlCont == i && App->tilemap->scenelvl5 == true) {
 		if (lvlRep == 0) {
 		
+			App->tilemap->DestroyBlock(192, 144);
+			App->tilemap->DestroyBlock2(32, 176);
+			App->tilemap->DestroyBlock3(64, 176);
+			App->tilemap->DestroyBlock4(160, 240);
+			App->tilemap->spawnfromBlock1(192, 144);
+			App->tilemap->spawnfromBlock2(32, 176);
+			App->tilemap->spawnfromBlock3(64, 176);
+			App->tilemap->spawnfromBlock4(160, 240);
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
-			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 176);
-			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
-			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 240);
 			
 		}
@@ -282,13 +306,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl6 == true) {
 		if (lvlRep == 0) {
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 240);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 208);
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 112);
-
+			App->tilemap->DestroyBlock(96, 240);
+			App->tilemap->DestroyBlock2(96, 208);
+			App->tilemap->DestroyBlock3(64, 112);
+			App->tilemap->DestroyBlock4(160, 112);
+			App->tilemap->spawnfromBlock1(96, 240);
+			App->tilemap->spawnfromBlock2(96, 208);
+			App->tilemap->spawnfromBlock3(64, 112);
+			App->tilemap->spawnfromBlock4(160, 112);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,  96, 240);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,  96, 208);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,  64, 112);
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
 			
 		}
@@ -325,13 +353,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl7 == true) {
 		if (lvlRep == 0) {
-			
+			App->tilemap->DestroyBlock(64, 80);
+			App->tilemap->DestroyBlock2(32, 144);
+			App->tilemap->DestroyBlock3(192, 144);
+			App->tilemap->DestroyBlock4(64, 176);
+			App->tilemap->spawnfromBlock1(64, 80);
+			App->tilemap->spawnfromBlock2(32, 144);
+			App->tilemap->spawnfromBlock3(192, 144);
+			App->tilemap->spawnfromBlock4(64, 176);
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);
-			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 144);
-			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
-			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
 		
 		}
@@ -368,14 +400,18 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl8 == true) {
 		if (lvlRep == 0) {
-		
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 144);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 208);
+			App->tilemap->DestroyBlock(64, 80);
+			App->tilemap->DestroyBlock2(32, 144);
+			App->tilemap->DestroyBlock3(160, 176);
+			App->tilemap->DestroyBlock4(192, 208);
+			App->tilemap->spawnfromBlock1(64, 80);
+			App->tilemap->spawnfromBlock2(32, 144);
+			App->tilemap->spawnfromBlock3(160, 176);
+			App->tilemap->spawnfromBlock4(192, 208);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,    64, 80);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,    32, 144);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,    192, 208);
 			
 		}
 		else if (lvlRep > 0) {
@@ -411,13 +447,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl9 == true) {
 		if (lvlRep == 0) {
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 48);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
-			
+			App->tilemap->DestroyBlock(32, 48);
+			App->tilemap->DestroyBlock2(128, 80);
+			App->tilemap->DestroyBlock3(64, 208);
+			App->tilemap->DestroyBlock4(64, 240);
+			App->tilemap->spawnfromBlock1(32, 48);
+			App->tilemap->spawnfromBlock2(128, 80);
+			App->tilemap->spawnfromBlock3(64, 208);
+			App->tilemap->spawnfromBlock4(64, 240);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 48);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL,	128, 80);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 240);		
 
 		}
@@ -454,13 +494,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl10 == true) {
 		if (lvlRep == 0) {
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 48);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);
-			
+			App->tilemap->DestroyBlock(160, 48);
+			App->tilemap->DestroyBlock2(128, 80);
+			App->tilemap->DestroyBlock3(32, 112);
+			App->tilemap->DestroyBlock4(192, 144);
+			App->tilemap->spawnfromBlock1(160, 48);
+			App->tilemap->spawnfromBlock2(128, 80);
+			App->tilemap->spawnfromBlock3(32, 112);
+			App->tilemap->spawnfromBlock4(192, 144);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 48);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
 
 		}
@@ -502,13 +546,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl11 == true) {
 		if (lvlRep == 0) {
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 80);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
-		
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 112);
-			
+			App->tilemap->DestroyBlock(96, 80);
+			App->tilemap->DestroyBlock2(128, 80);
+			App->tilemap->DestroyBlock3(192, 112);
+			App->tilemap->DestroyBlock4(32, 240);
+			App->tilemap->spawnfromBlock1(96, 80);
+			App->tilemap->spawnfromBlock2(128, 80);
+			App->tilemap->spawnfromBlock3(192, 112);
+			App->tilemap->spawnfromBlock4(32, 240);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 96, 80);		
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);		
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 112);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 240);
 			
 		}
@@ -550,13 +598,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl12 == true) {
 		if (lvlRep == 0) {
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 48);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);
-			
+			App->tilemap->DestroyBlock(96, 48);
+			App->tilemap->DestroyBlock2(128, 48);
+			App->tilemap->DestroyBlock3(32, 112);
+			App->tilemap->DestroyBlock4(160, 144);
+			App->tilemap->spawnfromBlock1(96, 48);
+			App->tilemap->spawnfromBlock2(128, 48);
+			App->tilemap->spawnfromBlock3(32, 112);
+			App->tilemap->spawnfromBlock4(160, 144);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 48);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 144);
 			
 		}
@@ -598,13 +650,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl13 == true) {
 		if (lvlRep == 0) {
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 48);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);
-			
+			App->tilemap->DestroyBlock(160, 48);
+			App->tilemap->DestroyBlock2(128, 80);
+			App->tilemap->DestroyBlock3(32, 112);
+			App->tilemap->DestroyBlock4(192, 144);
+			App->tilemap->spawnfromBlock1(160, 48);
+			App->tilemap->spawnfromBlock2(128, 80);
+			App->tilemap->spawnfromBlock3(32, 112);
+			App->tilemap->spawnfromBlock4(192, 144);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 48);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 128, 80);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 112);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
 			
 		}
@@ -646,13 +702,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl14 == true) {
 		if (lvlRep == 0) {
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 176);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 240);
-			
+			App->tilemap->DestroyBlock(32, 176);
+			App->tilemap->DestroyBlock2(64, 176);
+			App->tilemap->DestroyBlock3(160, 240);
+			App->tilemap->DestroyBlock4(192, 144);
+			App->tilemap->spawnfromBlock1(32, 176);
+			App->tilemap->spawnfromBlock2(64, 176);
+			App->tilemap->spawnfromBlock3(160, 240);
+			App->tilemap->spawnfromBlock4(192, 144);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 32, 176);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 160, 240);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 192, 144);
 			
 		}
@@ -694,13 +754,17 @@ bool ModuleScene::Start()
 	}
 	else if (lvlCont == i && App->tilemap->scenelvl15 == true) {
 		if (lvlRep == 0) {
-
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 144);
-			
-			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);
-			
+			App->tilemap->DestroyBlock(64, 80);
+			App->tilemap->DestroyBlock2(32, 144);
+			App->tilemap->DestroyBlock3(64, 176);
+			App->tilemap->DestroyBlock4(192, 128);
+			App->tilemap->spawnfromBlock1(64, 80);
+			App->tilemap->spawnfromBlock2(32, 144);
+			App->tilemap->spawnfromBlock3(64, 176);
+			App->tilemap->spawnfromBlock4(192, 128);
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 80);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 144);			
+			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_NORMAL, 64, 176);			
 			App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 128);
 			
 		}
@@ -824,15 +888,15 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[12][6] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[12][6] == TILE_NOBLOCK;
+			App->tilemap->tilemap[12][6] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][10] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[12][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
 		}
 
 
@@ -840,6 +904,9 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
+
+				App->tilemap->DestroyBlock(128, 48);
+				App->tilemap->spawnfromBlock1(128, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
 			}
 			cont++;
@@ -848,6 +915,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 80);
+				App->tilemap->spawnfromBlock1(128, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
 			}
 			cont++;
@@ -856,6 +925,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 144);
+				App->tilemap->spawnfromBlock1(192, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 144);
 			}
 		}
@@ -866,15 +937,15 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][6] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][6] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[14][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
 		}
 
 
@@ -882,6 +953,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 48);
+				App->tilemap->spawnfromBlock1(32, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
 			}			
 			cont++;
@@ -890,6 +963,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 176);
+				App->tilemap->spawnfromBlock1(32, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
 			}
 			cont++;
@@ -898,6 +973,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 176);
+				App->tilemap->spawnfromBlock1(160, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
 			}
 		}
@@ -908,21 +985,23 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[2][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[12][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 48);
+				App->tilemap->spawnfromBlock1(96, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
 			}
 			cont++;
@@ -931,6 +1010,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 80);
+				App->tilemap->spawnfromBlock1(192, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
 			}
 			cont++;
@@ -939,6 +1020,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 112);
+				App->tilemap->spawnfromBlock1(32, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 112);
 			}
 			cont++;
@@ -947,6 +1030,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 112);
+				App->tilemap->spawnfromBlock1(64, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
 			}
 			cont++;
@@ -955,6 +1040,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 144);
+				App->tilemap->spawnfromBlock1(64, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			}
 		}
@@ -964,21 +1051,23 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 80);
+				App->tilemap->spawnfromBlock1(64, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 80);
 			}
 			cont++;
@@ -987,6 +1076,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 48);
+				App->tilemap->spawnfromBlock1(160, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 48);
 			}
 			cont++;
@@ -995,6 +1086,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 112);
+				App->tilemap->spawnfromBlock1(160, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
 			}
 			cont++;
@@ -1003,6 +1096,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 176);
+				App->tilemap->spawnfromBlock1(160, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
 			}
 			cont++;
@@ -1011,6 +1106,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 240);
+				App->tilemap->spawnfromBlock1(192, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
 			}
 		}
@@ -1021,25 +1118,27 @@ update_status ModuleScene::Update()
 		
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[14][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 208);
+				App->tilemap->spawnfromBlock1(192, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
 			}
 			cont++;
@@ -1048,6 +1147,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 48);
+				App->tilemap->spawnfromBlock1(32, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
 			}
 			cont++;
@@ -1056,6 +1157,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 112);
+				App->tilemap->spawnfromBlock1(64, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
 			}
 			cont++;
@@ -1064,6 +1167,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 32);
+				App->tilemap->spawnfromBlock1(96, 32);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 32);
 			}
 		}
@@ -1073,25 +1178,27 @@ update_status ModuleScene::Update()
 		
 		if (App->tilemap->tilemap[14][6] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[14][6] == TILE_NOBLOCK;
+			App->tilemap->tilemap[14][6] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[12][6] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[12][6] == TILE_NOBLOCK;
+			App->tilemap->tilemap[12][6] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 48);
+				App->tilemap->spawnfromBlock1(128, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
 			}
 			cont++;
@@ -1100,6 +1207,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 80);
+				App->tilemap->spawnfromBlock1(192, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
 			}
 			cont++;
@@ -1108,6 +1217,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 144);
+				App->tilemap->spawnfromBlock1(64, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			}
 			cont++;
@@ -1116,6 +1227,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 208);
+				App->tilemap->spawnfromBlock1(64, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
 			}
 		}
@@ -1124,25 +1237,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 2 && cont == 0) {
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 112);
+				App->tilemap->spawnfromBlock1(96, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 112);
 			}
 			cont++;
@@ -1151,6 +1266,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 208);
+				App->tilemap->spawnfromBlock1(192, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
 			}
 			cont++;
@@ -1159,6 +1276,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 240);
+				App->tilemap->spawnfromBlock1(160, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
 			}
 			cont++;
@@ -1167,6 +1286,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 176);
+				App->tilemap->spawnfromBlock1(32, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
 			}
 		}
@@ -1175,25 +1296,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[12][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 80);
+				App->tilemap->spawnfromBlock1(192, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
 			}
 			cont++;
@@ -1202,6 +1325,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 112);
+				App->tilemap->spawnfromBlock1(192, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
 			}
 			cont++;
@@ -1210,6 +1335,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 144);
+				App->tilemap->spawnfromBlock1(160, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 144);
 			}
 			cont++;
@@ -1218,6 +1345,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 112);
+				App->tilemap->spawnfromBlock1(32, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 112);
 			}
 			cont++;
@@ -1226,6 +1355,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[12][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 208);
+				App->tilemap->spawnfromBlock1(96, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 208);
 			}
 			cont++;
@@ -1234,6 +1365,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 176);
+				App->tilemap->spawnfromBlock1(128, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 176);
 			}
 		}
@@ -1242,25 +1375,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[2][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[12][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[14][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[14][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[14][4] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 48);
+				App->tilemap->spawnfromBlock1(96, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
 			}
 			cont++;
@@ -1269,6 +1404,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 144);
+				App->tilemap->spawnfromBlock1(192, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 144);
 			}
 			cont++;
@@ -1277,6 +1414,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 176);
+				App->tilemap->spawnfromBlock1(64, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 176);
 			}
 			cont++;
@@ -1285,6 +1424,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 176);
+				App->tilemap->spawnfromBlock1(32, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
 			}
 			cont++;
@@ -1293,6 +1434,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 208);
+				App->tilemap->spawnfromBlock1(192, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
 			}
 			cont++;
@@ -1301,6 +1444,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 240);
+				App->tilemap->spawnfromBlock1(160, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
 			}
 		}
@@ -1309,25 +1454,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[2][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[2][10] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 80);
+				App->tilemap->spawnfromBlock1(64, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 80);
 			}
 			cont++;
@@ -1336,6 +1483,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 112);
+				App->tilemap->spawnfromBlock1(192, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
 			}
 			cont++;
@@ -1344,6 +1493,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 112);
+				App->tilemap->spawnfromBlock1(160, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
 			}
 			cont++;
@@ -1352,6 +1503,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 176);
+				App->tilemap->spawnfromBlock1(160, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
 			}
 			cont++;
@@ -1360,6 +1513,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 240);
+				App->tilemap->spawnfromBlock1(64, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 240);
 			}
 			cont++;
@@ -1368,6 +1523,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 240);
+				App->tilemap->spawnfromBlock1(192, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
 			}
 		}
@@ -1376,25 +1533,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][6] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][6] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[14][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[14][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[14][2] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 208);
+				App->tilemap->spawnfromBlock1(64, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
 			}
 			cont++;
@@ -1403,6 +1562,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 240);
+				App->tilemap->spawnfromBlock1(192, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
 			}
 			cont++;
@@ -1411,6 +1572,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 144);
+				App->tilemap->spawnfromBlock1(64, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			}
 			cont++;
@@ -1419,6 +1582,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 48);
+				App->tilemap->spawnfromBlock1(128, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
 			}
 			cont++;
@@ -1427,6 +1592,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 80);
+				App->tilemap->spawnfromBlock1(192, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
 			}
 			cont++;
@@ -1435,6 +1602,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 144);
+				App->tilemap->spawnfromBlock1(160, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 144);
 			}
 		}
@@ -1443,25 +1612,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[2][6] == TILE_NOBLOCK;
+			App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[2][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][10] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[2][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 48);
+				App->tilemap->spawnfromBlock1(192, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 48);
 			}
 			cont++;
@@ -1470,6 +1641,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 48);
+				App->tilemap->spawnfromBlock1(160, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 48);
 			}
 			cont++;
@@ -1478,6 +1651,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 80);
+				App->tilemap->spawnfromBlock1(128, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
 			}
 			cont++;
@@ -1486,6 +1661,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 144);
+				App->tilemap->spawnfromBlock1(32, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 144);
 			}
 			cont++;
@@ -1494,6 +1671,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 176);
+				App->tilemap->spawnfromBlock1(32, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
 			}
 			cont++;
@@ -1502,6 +1681,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[8][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[8][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 144);
+				App->tilemap->spawnfromBlock1(64, 144);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 144);
 			}
 			cont++;
@@ -1510,6 +1691,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 176);
+				App->tilemap->spawnfromBlock1(128, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 176);
 			}
 			cont++;
@@ -1518,6 +1701,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 240);
+				App->tilemap->spawnfromBlock1(96, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 240);
 			}
 		}
@@ -1526,25 +1711,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[2][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[2][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[2][10] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][8] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[6][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[6][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[6][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 80);
+				App->tilemap->spawnfromBlock1(64, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 80);
 			}
 			cont++;
@@ -1553,6 +1740,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 112);
+				App->tilemap->spawnfromBlock1(192, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
 			}
 			cont++;
@@ -1561,6 +1750,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 112);
+				App->tilemap->spawnfromBlock1(160, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 112);
 			}
 			cont++;
@@ -1569,6 +1760,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 176);
+				App->tilemap->spawnfromBlock1(160, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 176);
 			}
 			cont++;
@@ -1577,6 +1770,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 176);
+				App->tilemap->spawnfromBlock1(128, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 176);
 			}
 			cont++;
@@ -1585,6 +1780,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 224);
+				App->tilemap->spawnfromBlock1(64, 224);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 224);
 			}
 			cont++;
@@ -1593,6 +1790,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[12][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 208);
+				App->tilemap->spawnfromBlock1(64, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 208);
 			}
 			cont++;
@@ -1601,6 +1800,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 240);
+				App->tilemap->spawnfromBlock1(192, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 240);
 			}
 		}
@@ -1609,25 +1810,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[14][10] == TILE_NOBLOCK;
+			App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 208);
+				App->tilemap->spawnfromBlock1(192, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
 			}
 			cont++;
@@ -1636,6 +1839,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 80);
+				App->tilemap->spawnfromBlock1(128, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
 			}
 			cont++;
@@ -1644,6 +1849,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 112);
+				App->tilemap->spawnfromBlock1(192, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 112);
 			}
 			cont++;
@@ -1652,6 +1859,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 80);
+				App->tilemap->spawnfromBlock1(192, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 80);
 			}
 			cont++;
@@ -1660,6 +1869,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 48);
+				App->tilemap->spawnfromBlock1(32, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
 			}
 			cont++;
@@ -1668,6 +1879,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 48);
+				App->tilemap->spawnfromBlock1(96, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
 			}
 			cont++;
@@ -1676,6 +1889,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 80);
+				App->tilemap->spawnfromBlock1(96, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 80);
 			}
 			cont++;
@@ -1684,6 +1899,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 112);
+				App->tilemap->spawnfromBlock1(64, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
 			}
 		}
@@ -1692,25 +1909,27 @@ update_status ModuleScene::Update()
 
 		if (App->tilemap->tilemap[4][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[4][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[4][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][2] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][2] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][2] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[10][4] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[10][4] == TILE_NOBLOCK;
+			App->tilemap->tilemap[10][4] = TILE_NOBLOCK;
 		}
 		if (App->tilemap->tilemap[8][12] == TILE_BLOCK) {
 
-			App->tilemap->tilemap[8][12] == TILE_NOBLOCK;
+			App->tilemap->tilemap[8][12] = TILE_NOBLOCK;
 		}
 
 		if (enemiesAlive == 3 && cont == 0) {
 			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 48);
+				App->tilemap->spawnfromBlock1(32, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
 			}
 			cont++;
@@ -1719,6 +1938,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 48);
+				App->tilemap->spawnfromBlock1(96, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 48);
 			}
 			cont++;
@@ -1727,6 +1948,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[12][12] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[12][12] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(192, 208);
+				App->tilemap->spawnfromBlock1(192, 208);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 192, 208);
 			}
 			cont++;
@@ -1735,6 +1958,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[14][10] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[14][10] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(160, 240);
+				App->tilemap->spawnfromBlock1(160, 240);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 160, 240);
 			}
 			cont++;
@@ -1743,6 +1968,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(128, 80);
+				App->tilemap->spawnfromBlock1(128, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
 			}
 			cont++;
@@ -1751,6 +1978,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][6] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][6] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(96, 80);
+				App->tilemap->spawnfromBlock1(96, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 96, 80);
 			}
 			cont++;
@@ -1759,6 +1988,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[6][4] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[6][4] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(64, 112);
+				App->tilemap->spawnfromBlock1(64, 112);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 64, 112);
 			}
 			cont++;
@@ -1767,6 +1998,8 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
+				App->tilemap->DestroyBlock(32, 176);
+				App->tilemap->spawnfromBlock1(32, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
 			}
 		}
@@ -1784,6 +2017,7 @@ update_status ModuleScene::Update()
 
 	oneAnim.Update();
 	miniEnemyEggAnim.Update();
+	
 	return update_status::UPDATE_CONTINUE;
 }
 

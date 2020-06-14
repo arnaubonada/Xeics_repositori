@@ -112,8 +112,8 @@ void Block::OnCollision(Collider* c1)
 	//
 
 
-	App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	App->audio->PlayFx(destroyedFx);
+	//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	//App->audio->PlayFx(destroyedFx);
 
 	SetToDelete();
 }

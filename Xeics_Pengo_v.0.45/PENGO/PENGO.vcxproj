@@ -48,7 +48,6 @@
     <ClCompile Include="Source\SceneLose.cpp" />
     <ClCompile Include="Source\SceneSnow.cpp" />
     <ClCompile Include="Source\SceneWin.cpp" />
-    <ClCompile Include="Source\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Animation.h" />
@@ -82,7 +81,6 @@
     <ClInclude Include="Source\SceneLose.h" />
     <ClInclude Include="Source\SceneSnow.h" />
     <ClInclude Include="Source\SceneWin.h" />
-    <ClInclude Include="Source\TileMap.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

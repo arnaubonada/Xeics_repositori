@@ -41,9 +41,6 @@ public:
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
 
-	// Sound fx when destroyed
-	int destroyedFx = 0;
-
 	// The enemy's collider
 	Collider* collider = nullptr;
 

@@ -33,9 +33,6 @@ public:
 	Path path;
 
 	void enemyMovement();
-
-	void createColliderStun(int x, int y);
-	void removeColliderStun();
 	
 	void OnCollision(Collider* c1, Collider* c2);
 
@@ -101,6 +98,8 @@ public:
 	int lastTimeStunned = 0;
 
 	bool DiamondFinished = false;
+
+	bool diamondComplete = false;
 
 	int j = 0;
 

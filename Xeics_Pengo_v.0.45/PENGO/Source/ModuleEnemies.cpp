@@ -99,9 +99,8 @@ bool ModuleEnemies::CleanUp()
 
 	App->textures->Unload(texture);
 
-
-	/*App->collisions->RemoveCollider(collider);
-	--totalColliders;*/
+	//App->collisions->RemoveCollider(collider);
+	//--totalColliders;
 
 	return true;
 }
@@ -191,7 +190,6 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				break;
 			}
 			enemies[i]->texture = texture;
-			enemies[i]->destroyedFx = enemyDestroyedFx;
 			break;
 		}
 	}
@@ -211,6 +209,19 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					delete enemies[i];
 					enemies[i] = nullptr;
 				
+			}
+		}
+		
+		if (enemies[i] != nullptr && enemies[i]->GetColliderStun() == c1)
+		{
+			enemies[i]->OnCollision(c1,c2); //Notify the enemy of a collision
+
+			if (c2->type == Collider::Type::BLOCK) {
+					delete enemies[i];
+					enemies[i] = nullptr;
+					App->scene->enemiesAlive--;
+					c2->pendingToDelete = true;
+					App->player->score += 400;
 			}
 		}
 		
