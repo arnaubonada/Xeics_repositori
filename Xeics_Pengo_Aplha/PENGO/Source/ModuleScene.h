@@ -68,6 +68,7 @@ public:
 
 	Animation oneAnim;
 	Animation miniEnemyEggAnim;
+	Animation pRedBonus;
 
 	int timescore = 0;
 	int posEnemyX;
@@ -83,10 +84,11 @@ public:
 	bool music2 = false;
 	bool music3 = false;
 	bool oneTimeSound = false;
-
+	bool oneTimeStart = false;
+	bool actStartSound = false;
+	int countStart = 0;
 	//SDL_Rect noBlocks, blocks, pengo, snobees;
-	SDL_Rect pYellow, pRed, pYellowFive;
-
+	SDL_Rect pYellow, pRed, pRedDead, pYellowFive;
 	uint enemiesAlive;
 	// The sprite rectangle for the ground
 	//SDL_Texture* starsTexture = nullptr;

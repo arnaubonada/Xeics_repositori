@@ -30,7 +30,7 @@ ModuleScene::ModuleScene(bool startEnabled) :Module(startEnabled)
 	name = "level 1";
 
 
-	pYellow = SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 }; pYellowFive = SDL_Rect{ 72,150,16,16 };
+	pYellow = SDL_Rect{ 54,158,16,8 }; pRed = SDL_Rect{ 0,150,16,16 }; pRedDead = SDL_Rect{ 36,150,16,16 }; pYellowFive = SDL_Rect{ 72,150,16,16 };
 
 
 	oneAnim.PushBack({ 0, 0, 16, 8 });
@@ -43,7 +43,9 @@ ModuleScene::ModuleScene(bool startEnabled) :Module(startEnabled)
 	oneAnim.PushBack({ 0, 8, 16, 8 });
 	oneAnim.speed = 0.1f;
 
-
+	pRedBonus.PushBack({ 0, 150, 16, 16 });
+	pRedBonus.PushBack({ 18, 150, 16, 16 });
+	pRedBonus.speed = 0.1f;
 
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
 	miniEnemyEggAnim.PushBack({ 80, 82, 8, 8 });
@@ -77,8 +79,8 @@ bool ModuleScene::Start()
 	blTexture = App->textures->Load("Assets/Blocks.png");
 	scTexture = App->textures->Load("Assets/Score.png");
 	oneTexture = App->textures->Load("Assets/1p.png");;
-
-	App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
+	
+	//App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 1.0f);
 
 	char lookupTable[] = { "0123456789.,&!'-©abcdefghijklmnopqrstuvwxyz.    " };
 	whiteFont = App->fonts->Load("Assets/whiteFont.png", lookupTable, 3);
@@ -929,7 +931,9 @@ bool ModuleScene::Start()
 	music1 = true;
 	music2 = true;
 	music3 = true;
+	actStartSound = false;
 	oneTimeSound = false;
+	oneTimeStart = false;
 	App->tilemap->threeDiamondsFinish = false;
 
 	return ret;
@@ -965,7 +969,21 @@ update_status ModuleScene::Update()
 		}
 
 	}
-	if (!App->tilemap->threeDiamonds) {
+	if (!actStartSound && !oneTimeStart) {
+		App->audio->PlayMusic("Assets/Audio/nothing.ogg", 0.0f);
+		
+		countStart = 1;
+		oneTimeStart = true;
+	}
+	if (countStart > 0) {
+		countStart++;
+		if (countStart >= 120) {
+			actStartSound = true;
+			countStart = 0;
+		}
+	}
+
+	if (!App->tilemap->threeDiamonds && actStartSound) {
 
 		if (App->player->minutes < 1 && music1 == true) {
 			App->audio->PlayMusic("Assets/Audio/popcorn.ogg", 0.0f);
@@ -1031,8 +1049,6 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][8] = TILE_NOBLOCK;
-				App->tilemap->nextBlockSpawn1(128, 80);
-				App->tilemap->nextBlockSpawn2(192, 144);
 				App->tilemap->DestroyBlock(128, 48);
 				App->tilemap->spawnfromBlock1(128, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 48);
@@ -1043,7 +1059,6 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[4][8] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[4][8] = TILE_NOBLOCK;
-				App->tilemap->nextBlockSpawn1(192, 144);
 				App->tilemap->DestroyBlock(128, 80);
 				App->tilemap->spawnfromBlock1(128, 80);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 128, 80);
@@ -1105,8 +1120,6 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[2][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[2][2] = TILE_NOBLOCK;
-				App->tilemap->nextBlockSpawn1(32, 176);
-				App->tilemap->nextBlockSpawn2(160, 176);
 				App->tilemap->DestroyBlock(32, 48);
 				App->tilemap->spawnfromBlock1(32, 48);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 48);
@@ -1117,7 +1130,6 @@ update_status ModuleScene::Update()
 			if (App->tilemap->tilemap[10][2] == TILE_BLOCK) {
 
 				App->tilemap->tilemap[10][2] = TILE_NOBLOCK;
-				App->tilemap->nextBlockSpawn1(160, 176);
 				App->tilemap->DestroyBlock(32, 176);
 				App->tilemap->spawnfromBlock1(32, 176);
 				App->enemies->AddEnemy(ENEMY_TYPE::SNOBEE_DESTROYER, 32, 176);
@@ -3406,7 +3418,7 @@ update_status ModuleScene::Update()
 	}
 
 
-
+	pRedBonus.Update();
 	oneAnim.Update();
 	miniEnemyEggAnim.Update();
 	
@@ -3493,20 +3505,56 @@ update_status ModuleScene::PostUpdate()
 	App->fonts->BlitText(160, 0, blueFont, "2p");
 	App->fonts->BlitText(216, 0, whiteFont, "0");
 
-	if (App->player->lifes == 4) {
-		App->render->Blit(scTexture, 8, 8, &pRed);
-		App->render->Blit(scTexture, 24, 8, &pRed);
-		App->render->Blit(scTexture, 40, 8, &pRed);
-	}
-	if (App->player->lifes == 3) {
-		App->render->Blit(scTexture, 8, 8, &pRed);
-		App->render->Blit(scTexture, 24, 8, &pRed);
-	}
-	if (App->player->lifes == 2) {
-		App->render->Blit(scTexture, 8, 8, &pRed);
-	}
-	if (App->player->lifes == 1) {
+	if (!App->player->destroyed) {
+		if (App->player->lifes == 4) {
+			App->render->Blit(scTexture, 8, 8, &pRed);
+			App->render->Blit(scTexture, 24, 8, &pRed);
+			App->render->Blit(scTexture, 40, 8, &pRed);
+		}
+		if (App->player->lifes == 3) {
+			App->render->Blit(scTexture, 8, 8, &pRed);
+			App->render->Blit(scTexture, 24, 8, &pRed);
+		}
+		if (App->player->lifes == 2) {
+			App->render->Blit(scTexture, 8, 8, &pRed);
+		}
+		if (App->player->lifes == 1) {
 
+		}
+	}
+	if (App->player->destroyed) {
+		if (App->player->lifes == 4) {
+			App->render->Blit(scTexture, 8, 8, &pRedDead);
+			App->render->Blit(scTexture, 24, 8, &pRedDead);
+			App->render->Blit(scTexture, 40, 8, &pRedDead);
+		}
+		if (App->player->lifes == 3) {
+			App->render->Blit(scTexture, 8, 8, &pRedDead);
+			App->render->Blit(scTexture, 24, 8, &pRedDead);
+		}
+		if (App->player->lifes == 2) {
+			App->render->Blit(scTexture, 8, 8, &pRedDead);
+		}
+		if (App->player->lifes == 1) {
+
+		}
+	}
+	if (App->tilemap->bonusCounter) {
+		if (App->player->lifes == 4) {
+			App->render->Blit(scTexture, 8, 8, &(pRedBonus.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 24, 8, &(pRedBonus.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 40, 8, &(pRedBonus.GetCurrentFrame()), 0.1f);
+		}
+		if (App->player->lifes == 3) {
+			App->render->Blit(scTexture, 8, 8, &(pRedBonus.GetCurrentFrame()), 0.1f);
+			App->render->Blit(scTexture, 24, 8, &(pRedBonus.GetCurrentFrame()), 0.1f);
+		}
+		if (App->player->lifes == 2) {
+			App->render->Blit(scTexture, 8, 8, &(pRedBonus.GetCurrentFrame()), 0.1f);
+		}
+		if (App->player->lifes == 1) {
+
+		}
 	}
 
 

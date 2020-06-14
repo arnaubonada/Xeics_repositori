@@ -1479,6 +1479,9 @@ bool ModuleTileMap::CleanUp()
 	App->collisions->RemoveCollider(collider);
 	App->collisions->RemoveCollider(colliderDiamond);
 
+	App->fonts->UnLoad(whiteFont);
+	App->fonts->UnLoad(blueFont);
+	App->fonts->UnLoad(yellowFont);
 
 	blockDestrAnim.Reset();
 	blockAnim.Reset();
