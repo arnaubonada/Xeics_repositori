@@ -118,8 +118,11 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
-
-
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
+		App->tilemap->spawnFromBlock.Reset();
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl2 == true)
 	{
@@ -133,8 +136,11 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
-
-
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
+		App->tilemap->spawnFromBlock.Reset();
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl3 == true)
 	{
@@ -148,7 +154,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
-
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl4 == true)
@@ -163,6 +172,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl5 == true)
 	{
@@ -176,6 +189,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl6 == true)
 	{
@@ -189,6 +206,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl7 == true)
 	{
@@ -202,6 +223,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl8 == true)
 	{
@@ -215,6 +240,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl9 == true)
 	{
@@ -228,6 +257,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl10 == true)
 	{
@@ -241,6 +274,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl11 == true)
 	{
@@ -254,6 +291,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl12 == true)
 	{
@@ -267,6 +308,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl13 == true)
 	{
@@ -280,6 +325,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl14 == true)
 	{
@@ -293,6 +342,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 	else if (counterWinFinish && App->tilemap->scenelvl15 == true)
 	{
@@ -306,6 +359,10 @@ update_status SceneWin::Update()
 		App->scene->lvlRep = 0;
 		App->scene->i++;
 		App->scene->cont = 0;
+		App->tilemap->threeDiamonds = false;
+		App->tilemap->timeDiamond = 0;
+		App->tilemap->threeDiamondsDone = false;
+		App->tilemap->timeDiamondStunned = 0;
 	}
 
 	scoreWin = App->player->score;

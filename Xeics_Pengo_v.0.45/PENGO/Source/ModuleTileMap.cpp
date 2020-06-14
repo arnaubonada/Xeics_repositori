@@ -267,16 +267,116 @@ ModuleTileMap::ModuleTileMap(bool start_enabled) : Module(start_enabled)
 	topbotWallAnim.loop = false;
 	topbotWallAnim.speed = 0.1f;
 
-	spawnFromBlock.PushBack({ 576, 224, 16, 16 });
-	spawnFromBlock.PushBack({ 16, 128, 16, 16 });
-	spawnFromBlock.PushBack({ 64, 144, 16, 16 });
-	spawnFromBlock.PushBack({ 32, 128, 16, 16 });
-	spawnFromBlock.PushBack({ 48, 128, 16, 16 });
-	spawnFromBlock.PushBack({ 64, 128, 16, 16 });
-	spawnFromBlock.PushBack({ 80, 128, 16, 16 });
-	spawnFromBlock.speed = 0.1f;
-	spawnFromBlock.loop = false;
+	nextSpawnBlock.PushBack({ 724, 0, 16, 16 });
+	nextSpawnBlock.PushBack({ 708, 0, 16, 16 });
+	nextSpawnBlock.PushBack({ 724, 0, 16, 16 });
+	nextSpawnBlock.PushBack({ 708, 0, 16, 16 });
+	nextSpawnBlock.PushBack({ 724, 0, 16, 16 });
+	nextSpawnBlock.PushBack({ 708, 0, 16, 16 });
+	nextSpawnBlock.loop = false;
+	nextSpawnBlock.speed = 0.1f;
 
+	if (scenelvl1 || scenelvl9) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 16, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 64, 144, 16, 16 });
+		spawnFromBlock.PushBack({ 32, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 48, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 64, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 80, 128, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+	}
+	if (scenelvl2 || scenelvl10) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 144, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 192, 144, 16, 16 });
+		spawnFromBlock.PushBack({ 160, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 176, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 192, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 208, 128, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+	}
+	if (scenelvl3 || scenelvl11) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 272, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 320, 144, 16, 16 });
+		spawnFromBlock.PushBack({ 288, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 304, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 320, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 336, 128, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+
+	}
+
+	if (scenelvl4 || scenelvl12) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 400, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 448, 144, 16, 16 });
+		spawnFromBlock.PushBack({ 416, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 432, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 448, 128, 16, 16 });
+		spawnFromBlock.PushBack({ 464, 128, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+	}
+	if (scenelvl5 || scenelvl13) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 16, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 64, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 32, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 48, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 64, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 80, 208, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+
+	}
+	if (scenelvl6 || scenelvl14) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 144, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 192, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 160, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 176, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 192, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 208, 208, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+
+	}
+	if (scenelvl7 || scenelvl15) {
+
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 272, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 320, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 288, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 304, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 320, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 336, 208, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+	}
+
+	if (scenelvl8) {
+		spawnFromBlock.PushBack({ 576, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 400, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 448, 224, 16, 16 });
+		spawnFromBlock.PushBack({ 416, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 432, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 448, 208, 16, 16 });
+		spawnFromBlock.PushBack({ 464, 208, 16, 16 });
+		spawnFromBlock.speed = 0.1f;
+		spawnFromBlock.loop = false;
+
+	}
 	source.x = source.y = 0;
 	source.w = source.h = 16;
 	destination.w = destination.h = 16;
@@ -612,6 +712,63 @@ void ModuleTileMap::DestroyBlock4(int x, int y)
 	destroyedBlock4 = true;
 }
 
+void ModuleTileMap::nextBlockSpawn1(int x, int y)
+{
+	nextSpawnX = x / 16;
+	nextSpawnY = (y - 16) / 16;
+
+	nextBlock1 = true;
+}
+
+void ModuleTileMap::nextBlockSpawn2(int x, int y)
+{
+	nextSpawn2X = x / 16;
+	nextSpawn2Y = (y - 16) / 16;
+
+	nextBlock2 = true;
+}
+void ModuleTileMap::nextBlockSpawn3(int x, int y)
+{
+	nextSpawn3X = x / 16;
+	nextSpawn3Y = (y - 16) / 16;
+
+	nextBlock3 = true;
+}
+void ModuleTileMap::nextBlockSpawn4(int x, int y)
+{
+	nextSpawn4X = x / 16;
+	nextSpawn4Y = (y - 16) / 16;
+
+	nextBlock4 = true;
+}
+void ModuleTileMap::nextBlockSpawn5(int x, int y)
+{
+	nextSpawn5X = x / 16;
+	nextSpawn5Y = (y - 16) / 16;
+
+	nextBlock5 = true;
+}
+void ModuleTileMap::nextBlockSpawn6(int x, int y)
+{
+	nextSpawn6X = x / 16;
+	nextSpawn6Y = (y - 16) / 16;
+
+	nextBlock6 = true;
+}void ModuleTileMap::nextBlockSpawn7(int x, int y)
+{
+	nextSpawn7X = x / 16;
+	nextSpawn7Y = (y - 16) / 16;
+
+	nextBlock7 = true;
+}
+void ModuleTileMap::nextBlockSpawn8(int x, int y)
+{
+	nextSpawn8X = x / 16;
+	nextSpawn8Y = (y - 16) / 16;
+
+	nextBlock8 = true;
+}
+
 void ModuleTileMap::MoveBlock(int x, int y, Direction d)
 {
 	positionBlock.x = x;
@@ -868,6 +1025,21 @@ update_status ModuleTileMap::Update()
 		}
 	}
 	
+	if (nextBlock1 || nextBlock2 || nextBlock3 || nextBlock4 || nextBlock5 || nextBlock6 || nextBlock7 || nextBlock8) {
+		nextSpawnBlock.Update();
+		if (nextSpawnBlock.HasFinished()) {
+			nextBlock1 = false;
+			nextBlock2 = false;
+			nextBlock3 = false;
+			nextBlock4 = false;
+			nextBlock5 = false;
+			nextBlock6 = false;
+			nextBlock7 = false;
+			nextBlock8 = false;
+			nextSpawnBlock.Reset();
+		}
+	}
+	
 
 
 	if (pushLeft) {
@@ -1101,6 +1273,31 @@ update_status ModuleTileMap::PostUpdate()
 	}
 	if (destroyedBlock4) {
 		App->render->Blit(texture, block4X*16, (block4Y*16)+16, &(blockDestrAnim.GetCurrentFrame()), 0.1f);	
+	}
+	
+	if (nextBlock1) {
+		App->render->Blit(texture, nextSpawnX*16, (nextSpawnY*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock2) {
+		App->render->Blit(texture, nextSpawn2X *16, (nextSpawn2Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock3) {
+		App->render->Blit(texture, nextSpawn3X *16, (nextSpawn3Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock4) {
+		App->render->Blit(texture, nextSpawn4X *16, (nextSpawn4Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock5) {
+		App->render->Blit(texture, nextSpawn5X *16, (nextSpawn5Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock6) {
+		App->render->Blit(texture, nextSpawn6X *16, (nextSpawn6Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock7) {
+		App->render->Blit(texture, nextSpawn7X *16, (nextSpawn7Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
+	}
+	if (nextBlock8) {
+		App->render->Blit(texture, nextSpawn8X *16, (nextSpawn8Y*16)+16, &(nextSpawnBlock.GetCurrentFrame()), 0.1f);
 	}
 
 	if (pushLeft) {

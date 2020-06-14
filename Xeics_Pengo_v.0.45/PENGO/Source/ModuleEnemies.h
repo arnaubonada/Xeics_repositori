@@ -80,7 +80,6 @@ public:
 
 	Collider* colliderStunned = nullptr;
 	
-	uint snobeeFx = 0;
 	uint snobeeSmashedFx = 0;
 	uint snobeeStunnedFx = 0;
 

@@ -101,6 +101,16 @@ public:
 	void spawnfromBlock3(int x, int y);
 	void spawnfromBlock4(int x, int y);
 
+	void nextBlockSpawn1(int x, int y);
+	void nextBlockSpawn2(int x, int y);
+	void nextBlockSpawn3(int x, int y);
+	void nextBlockSpawn4(int x, int y);
+	void nextBlockSpawn5(int x, int y);
+	void nextBlockSpawn6(int x, int y);
+	void nextBlockSpawn7(int x, int y);
+	void nextBlockSpawn8(int x, int y);
+
+
 	//// Called at the middle of the application loop
 	//// Updates the scene's background animations
 	update_status Update() override;
@@ -145,6 +155,8 @@ public:
 
 	Animation spawnFromBlock;
 
+	Animation nextSpawnBlock;
+
 
 	Animation sidesWallAnim;
 	Animation topbotWallAnim;
@@ -172,6 +184,15 @@ public:
 	bool destroyedBlock3 = false;
 	bool destroyedBlock4 = false;
 
+	bool nextBlock1 = false;
+	bool nextBlock2 = false;
+	bool nextBlock3 = false;
+	bool nextBlock4 = false;
+	bool nextBlock5 = false;
+	bool nextBlock6 = false;
+	bool nextBlock7 = false;
+	bool nextBlock8 = false;
+
 	bool movedBlockfinish = false;
 	bool destroyedAnimBlock = false;
 	bool pushLeft = false;
@@ -196,6 +217,15 @@ public:
 	int posSpawn2X, posSpawn2Y;
 	int posSpawn3X, posSpawn3Y;
 	int posSpawn4X, posSpawn4Y;
+
+	int nextSpawnX, nextSpawnY;
+	int nextSpawn2X, nextSpawn2Y;
+	int nextSpawn3X, nextSpawn3Y;
+	int nextSpawn4X, nextSpawn4Y;
+	int nextSpawn5X, nextSpawn5Y;
+	int nextSpawn6X, nextSpawn6Y;
+	int nextSpawn7X, nextSpawn7Y;
+	int nextSpawn8X, nextSpawn8Y;
 
 	bool spawn1 = false;
 	bool spawn2 = false;

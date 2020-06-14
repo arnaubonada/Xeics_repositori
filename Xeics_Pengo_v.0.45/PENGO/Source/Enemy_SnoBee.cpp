@@ -17,14 +17,12 @@
 
 Enemy_SnoBee::Enemy_SnoBee(int x, int y, enum class ENEMY_TYPE type) : Enemy(x, y)
 {
-	App->audio->UnloadFx(App->enemies->snobeeFx);
 	App->audio->UnloadFx(App->enemies->snobeeSmashedFx);
 	App->audio->UnloadFx(App->enemies->snobeeStunnedFx);
 
-	//App->collisions->RemoveCollider(collider);
-	//App->collisions->RemoveCollider(App->enemies->colliderStunned);
+	App->collisions->RemoveCollider(collider);
+	App->collisions->RemoveCollider(App->enemies->colliderStunned);
 
-	App->enemies->snobeeFx = App->audio->LoadFx("Assets/Audio/snobeekill.wav");
 	App->enemies->snobeeSmashedFx = App->audio->LoadFx("Assets/Audio/SnoBee Smashed.wav");
 	App->enemies->snobeeStunnedFx = App->audio->LoadFx("Assets/Audio/SnoBee Stunned.wav");
 
@@ -1575,9 +1573,7 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 					}
 				}
 			}
-
-		}
-		else if (App->tilemap->dirDiamond == DOWN) {
+			else if (App->tilemap->dirDiamond == DOWN) {
 			smashedEnemy = true;
 
 			position.x = App->tilemap->positionDiamond.x;
@@ -1610,6 +1606,8 @@ void Enemy_SnoBee::OnCollision(Collider* c1, Collider* c2) {
 				}
 			}
 		}
+		}
+		
 
 	}
 

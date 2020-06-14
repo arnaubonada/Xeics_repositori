@@ -89,6 +89,8 @@ public:
 	uint destroyBlockFx = 0;
 	uint pushBlockFx = 0;
 	uint pushWallFx = 0;
+	uint actStartFx = 0;
+	uint playerDieFx = 0;
 
 	bool animDone = false;
 	// A flag to detect when the player has been destroyed

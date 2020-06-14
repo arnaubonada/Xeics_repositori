@@ -154,11 +154,12 @@ bool ModulePlayer::Start()
 	destroyBlockFx= App->audio->LoadFx("Assets/Audio/Ice Block Destroyed.wav");
 	pushBlockFx= App->audio->LoadFx("Assets/Audio/Push Ice Block.wav");
 	pushWallFx= App->audio->LoadFx("Assets/Audio/Push Outside Walls.wav");
-
+	actStartFx = App->audio->LoadFx("Assets/Audio/Act Start.wav");
+	playerDieFx = App->audio->LoadFx("Assets/Audio/playerDie.wav");
 	texture = App->textures->Load("Assets/Characters.png");
 	++activeTextures; ++totalTextures;
 	currentAnimation = &downAnim;
-
+	App->audio->PlayFx(actStartFx);
 	position.x = 112;
 	position.y = 128;
 	rep = 0;
@@ -648,6 +649,12 @@ bool ModulePlayer::CleanUp()
 	App->audio->UnloadFx(pushWallFx);
 	--totalFx;
 
+	App->audio->UnloadFx(actStartFx);
+	--totalFx;
+	
+	App->audio->UnloadFx(playerDieFx);
+	--totalFx;
+
 	App->collisions->RemoveCollider(collider);
 	--totalColliders;
 
@@ -694,6 +701,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 				if (c2->type == Collider::Type::ENEMY)
 				{
+					App->audio->PlayFx(playerDieFx);
 					destroyed = true;
 					rep = 0;
 					c1->pendingToDelete = true;
