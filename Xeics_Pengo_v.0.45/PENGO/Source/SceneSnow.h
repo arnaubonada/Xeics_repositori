@@ -34,6 +34,7 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* skyTexture = nullptr;
 	SDL_Texture* snowTexture = nullptr;
+
 	Animation skyAnim;
 
 	Animation redPengo;

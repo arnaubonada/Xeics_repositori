@@ -2220,12 +2220,6 @@ update_status ModuleScene::PostUpdate()
 
 bool ModuleScene::CleanUp()
 {
-	App->player->Disable();
-	App->enemies->Disable();
-	App->blocks->Disable();
-	App->tilemap->Disable();
-	App->particles->Disable();
-
 
 	App->fonts->UnLoad(whiteFont);
 	App->fonts->UnLoad(blueFont);
@@ -2235,10 +2229,17 @@ bool ModuleScene::CleanUp()
 	App->textures->Unload(blTexture);
 	App->textures->Unload(scTexture);
 	App->textures->Unload(oneTexture);
-
 	App->textures->Unload(bgTexture);
 
+	oneAnim.Reset();
+	miniEnemyEggAnim.Reset();
 
+
+	App->player->Disable();
+	App->enemies->Disable();
+	App->blocks->Disable();
+	App->tilemap->Disable();
+	App->particles->Disable();
 
 	return true;
 }

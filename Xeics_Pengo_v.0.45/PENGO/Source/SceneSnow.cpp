@@ -148,7 +148,13 @@ bool SceneSnow::CleanUp()
 	App->textures->Unload(skyTexture);
 	App->textures->Unload(snowTexture);
 
-
+	redPengo.Reset();
+	bluePengo.Reset();
+	yellowPengo.Reset();
+	pinkPengo.Reset();
+	greenSnoBee.Reset();
+	pinkSnoBee.Reset();
+	skyAnim.Reset();
 
 	return true;
 }

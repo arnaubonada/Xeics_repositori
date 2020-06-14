@@ -97,7 +97,9 @@ bool ModuleEnemies::CleanUp()
 		}
 	}
 
-	App->textures->Unload(texture);
+	SDL_DestroyTexture(texture);
+
+	//App->textures->Unload(texture);
 
 	//App->collisions->RemoveCollider(collider);
 	//--totalColliders;

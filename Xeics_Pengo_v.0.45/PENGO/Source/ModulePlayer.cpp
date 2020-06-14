@@ -653,7 +653,29 @@ bool ModulePlayer::CleanUp()
 
 	App->fonts->UnLoad(whiteFont);
 	--totalFonts;
-	
+
+
+	upAnim.Reset();
+	downAnim.Reset();
+	leftAnim.Reset();
+	rightAnim.Reset();
+
+
+	upAnim2.Reset();
+	downAnim2.Reset();
+	leftAnim2.Reset();
+	rightAnim2.Reset();
+
+	deadAnim.Reset();
+	upPushAnim.Reset();
+	leftPushAnim.Reset();
+	downPushAnim.Reset();
+	rightPushAnim.Reset();
+
+	upShortPushAnim.Reset();
+	leftShortPushAnim.Reset();
+	downShortPushAnim.Reset();
+	rightShortPushAnim.Reset();
 
 	return true;
 }

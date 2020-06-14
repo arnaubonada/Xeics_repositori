@@ -633,5 +633,11 @@ bool SceneWin::CleanUp()
 	App->audio->UnloadFx(timeBonusFx);
 
 
+	estampadadreta.Reset();
+	estampadaesquerra.Reset();
+	oneAnim.Reset();
+	rightAnimWin.Reset();
+	leftAnimWin.Reset();
+
 	return true;
 }

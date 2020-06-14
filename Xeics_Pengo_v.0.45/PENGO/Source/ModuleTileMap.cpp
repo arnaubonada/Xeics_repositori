@@ -1226,6 +1226,38 @@ bool ModuleTileMap::CleanUp()
 	App->audio->UnloadFx(stoppedBlockFx);
 	App->collisions->RemoveCollider(collider);
 	App->collisions->RemoveCollider(colliderDiamond);
+
+
+	blockDestrAnim.Reset();
+	blockAnim.Reset();
+	blockColoredAnim.Reset();
+	diamondAnim.Reset();
+	twodiamondsAnim.Reset();
+	threediamondsAnim.Reset();
+
+	starsHorizontalRedAnim.Reset();
+	starsHorizontalBlueAnim.Reset();
+	starsHorizontalPurpleAnim.Reset();
+	starsHorizontalYellowAnim.Reset();
+	starsHorizontalOrangeAnim.Reset();
+	starsHorizontalPinkAnim.Reset();
+	starsHorizontalSoftYellowAnim.Reset();
+	starsHorizontalGreenAnim.Reset();
+
+	starsVerticalRedAnim.Reset();
+	starsVerticalBlueAnim.Reset();
+	starsVerticalPurpleAnim.Reset();
+	starsVerticalYellowAnim.Reset();
+	starsVerticalOrangeAnim.Reset();
+	starsVerticalPinkAnim.Reset();
+	starsVerticalSoftYellowAnim.Reset();
+	starsVerticalGreenAnim.Reset();
+
+	spawnFromBlock.Reset();
+	sidesWallAnim.Reset();
+	topbotWallAnim.Reset();
+
+
 	return true;
 }
 
